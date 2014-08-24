@@ -95,6 +95,7 @@ bool GraphicSystem::Init(unsigned int width, unsigned int height)
 
     glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
 
+
     ChangeScene(new (std::nothrow) MenuScene());
     return true;
 }

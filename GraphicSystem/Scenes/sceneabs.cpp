@@ -3,7 +3,7 @@
 #include "../graphicsystem.h"
 
 SceneAbs::SceneAbs() :
-    mShaderProgram(NULL), mVBO(0), mIsStarted(true)
+    mShaderProgram(NULL)
 {
     ;
 }
@@ -20,16 +20,17 @@ void SceneAbs::DrawScene() const
 
 void SceneAbs::KeyBoard(unsigned char &key, int &x, int &y)
 {
-    ;
-}
-bool SceneAbs::getIsStarted() const
-{
-    return mIsStarted;
-}
-
-void SceneAbs::setIsStarted(bool value)
-{
-    mIsStarted = value;
+    switch(key)
+    {
+    case 27/*Escape*/:
+        exit(0);
+        break;
+    default:
+#ifdef _DEBUG
+        std::cerr << "User press: " << key << std::endl;
+#endif
+        break;
+    }
 }
 
 void SceneAbs::ChangeScene(SceneAbs *scene)

@@ -13,7 +13,6 @@ GameScene::GameScene() : SceneAbs()
     if (NULL == mShaderProgram)
     {
         std::cerr << "Can't allocate ShaderProgram" << std::endl;
-        setIsStarted(false);
     }
 
     mObjQuantity = 1;
@@ -32,13 +31,14 @@ GameScene::GameScene() : SceneAbs()
         glBufferData(GL_ARRAY_BUFFER, mObj[i]->GetVertexArraySize(), mObj[i]->GetColor(), GL_STREAM_DRAW);
     }
 
-    const char* unif_name_pvm = "PVM";
-    Unif_PVM = mShaderProgram->GetUniform(unif_name_pvm);
-    if(Unif_PVM == -1)
-    {
-        setIsStarted(false);
-        //return;
-    }
+    const char* unif_name= "PVM";
+    Unif_PVM = mShaderProgram->GetUniform(unif_name);
+
+    const char* unif_name1 = "ObjectSize";
+    mObjectScaleUniform = mShaderProgram->GetUniform(unif_name1);
+
+    const char* unif_name2 = "ObjectPosition";
+    mObjectCoordinateUniform = mShaderProgram->GetUniform(unif_name2);
 
     Projection = glm::perspective(90.0f, 4.0f / 3.0f, 0.1f, 100.0f);
     View       = glm::lookAt(
@@ -87,5 +87,10 @@ void GameScene::DrawScene() const
 
 void GameScene::KeyBoard(unsigned char &key, int &x, int &y)
 {
-    ;
+    switch (key)
+    {
+    default:
+        SceneAbs::KeyBoard(key, x, y);
+        break;
+    }
 }

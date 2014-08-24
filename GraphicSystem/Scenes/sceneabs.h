@@ -12,29 +12,23 @@ class SceneAbs
 {
 public:
     SceneAbs();
-    virtual ~SceneAbs();
+    virtual ~SceneAbs() = 0;
 
     virtual void DrawScene() const;
-
     virtual void KeyBoard(unsigned char &key, int &x, int &y);
 
-    bool getIsStarted() const;
-    void setIsStarted(bool value);
-
     void ChangeScene(SceneAbs *scene);
-    SceneAbs **GetCurrentScene() const;
 
 protected:
     ShaderProgram *mShaderProgram;
-    GLuint mVBO;
 
-    GLint Attrib_vertex;
-    GLint Unif_color, Unif_PVM;
+    GLint Unif_PVM;
+
+    GLint mObjectScaleUniform;
+    GLint mObjectCoordinateUniform;
 
     ObjectAbs **mObj;
     GLuint mObjQuantity;
-
-    bool mIsStarted;
 
     glm::mat4 PVM, Projection, View, Model;
 };

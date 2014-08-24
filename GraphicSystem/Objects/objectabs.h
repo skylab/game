@@ -32,10 +32,12 @@ protected:
     GLuint mVertexQuantity;
     GLuint mVertexArraySize;
 
+    glm::vec3 mObjectScale;
+    glm::vec3 mObjectCoordinate;
+
 private:
     virtual void FillVertexArray() = 0;
-    virtual void FillColorArray() = 0;
-    glm::vec3 mObjectCoordinate;
+    virtual void FillColorArray() = 0;    
 };
 
 #endif // OBJECTABS_H

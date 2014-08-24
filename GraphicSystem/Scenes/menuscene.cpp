@@ -22,8 +22,13 @@ void MenuScene::DrawScene() const
 
 void MenuScene::KeyBoard(unsigned char &key, int &x, int &y)
 {
-    if ('g' == key)
+    switch (key)
     {
+    case 13:
         ChangeScene(new (std::nothrow) GameScene());
+        break;
+    default:
+        SceneAbs::KeyBoard(key, x, y);
+        break;
     }
 }
