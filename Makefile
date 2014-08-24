@@ -305,7 +305,6 @@ compiler_clean:
 main.o: main.cpp game.h \
 		GraphicSystem/graphicsystem.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Types.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
@@ -314,7 +313,6 @@ main.o: main.cpp game.h \
 
 graphicsystem.o: GraphicSystem/graphicsystem.cpp GraphicSystem/graphicsystem.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Types.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
@@ -324,7 +322,6 @@ graphicsystem.o: GraphicSystem/graphicsystem.cpp GraphicSystem/graphicsystem.h \
 game.o: game.cpp game.h \
 		GraphicSystem/graphicsystem.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Types.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
@@ -333,7 +330,6 @@ game.o: game.cpp game.h \
 
 sceneabs.o: GraphicSystem/Scenes/sceneabs.cpp GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Types.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/Shaders/shader.h \
@@ -343,37 +339,31 @@ sceneabs.o: GraphicSystem/Scenes/sceneabs.cpp GraphicSystem/Scenes/sceneabs.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sceneabs.o GraphicSystem/Scenes/sceneabs.cpp
 
 objectabs.o: GraphicSystem/Objects/objectabs.cpp GraphicSystem/Objects/objectabs.h \
-		GraphicSystem/pregraphic.h \
-		GraphicSystem/Types.h
+		GraphicSystem/pregraphic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectabs.o GraphicSystem/Objects/objectabs.cpp
 
 shader.o: GraphicSystem/Shaders/shader.cpp GraphicSystem/Shaders/shader.h \
-		GraphicSystem/pregraphic.h \
-		GraphicSystem/Types.h
+		GraphicSystem/pregraphic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shader.o GraphicSystem/Shaders/shader.cpp
 
 shaderprogram.o: GraphicSystem/Shaders/shaderprogram.cpp GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Types.h \
 		GraphicSystem/Shaders/shader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shaderprogram.o GraphicSystem/Shaders/shaderprogram.cpp
 
 objecttriangle.o: GraphicSystem/Objects/objecttriangle.cpp GraphicSystem/Objects/objecttriangle.h \
 		GraphicSystem/Objects/objectabs.h \
-		GraphicSystem/pregraphic.h \
-		GraphicSystem/Types.h
+		GraphicSystem/pregraphic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objecttriangle.o GraphicSystem/Objects/objecttriangle.cpp
 
 objectcube.o: GraphicSystem/Objects/objectcube.cpp GraphicSystem/Objects/objectcube.h \
 		GraphicSystem/Objects/objectabs.h \
-		GraphicSystem/pregraphic.h \
-		GraphicSystem/Types.h
+		GraphicSystem/pregraphic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectcube.o GraphicSystem/Objects/objectcube.cpp
 
 objectquad.o: GraphicSystem/Objects/objectquad.cpp GraphicSystem/Objects/objectquad.h \
 		GraphicSystem/Objects/objectabs.h \
-		GraphicSystem/pregraphic.h \
-		GraphicSystem/Types.h
+		GraphicSystem/pregraphic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectquad.o GraphicSystem/Objects/objectquad.cpp
 
 ####### Install

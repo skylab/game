@@ -6,10 +6,11 @@
 class ObjectCube : public ObjectAbs
 {
 public:
-    ObjectCube();
+    ObjectCube(glm::vec3 position);
     ~ObjectCube();
 
-private:
+    void FillVertexArray();
+    void FillColorArray();
 };
 
 #endif // OBJECTCUBE_H

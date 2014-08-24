@@ -1,7 +1,7 @@
 #include "objectabs.h"
 
-ObjectAbs::ObjectAbs() throw() :
-    mVertexVBO(0), mColorVBO(0), mObjectVertexes(NULL), mObjectColor(NULL), mVertexQuantity(0), mVertexArraySize(0)
+ObjectAbs::ObjectAbs(glm::vec3 position) throw() :
+    mVertexVBO(0), mColorVBO(0), mObjectVertexes(NULL), mObjectColor(NULL), mVertexQuantity(0), mVertexArraySize(0), mPosition(position)
 {
     ;
 }
@@ -21,31 +21,36 @@ GLuint &ObjectAbs::GetColorVBO()
     return mColorVBO;
 }
 
-const GLfloat *ObjectAbs::GetVertexes()
+const glm::vec3 *ObjectAbs::GetVertexes()
 {
     if (NULL != mObjectVertexes)
     {
-        return *mObjectVertexes;
+        return mObjectVertexes;
     }
     return NULL;
 }
 
-const GLfloat *ObjectAbs::GetColor()
+const glm::vec3 *ObjectAbs::GetColor()
 {
     if (NULL != mObjectColor)
     {
-        return *mObjectColor;
+        return mObjectColor;
     }
     return NULL;
 }
 
 const GLuint &ObjectAbs::GetVertexArraySize()
 {
-    mVertexArraySize = mVertexQuantity * sizeof(Vertex3f);
+    mVertexArraySize = mVertexQuantity * sizeof(glm::vec3);
     return mVertexArraySize;
 }
 
 const GLuint &ObjectAbs::GetVertexQuantity()
 {
     return mVertexQuantity;
+}
+
+glm::vec3 &ObjectAbs::Position()
+{
+    return mPosition;
 }

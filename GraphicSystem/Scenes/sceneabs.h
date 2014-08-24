@@ -28,7 +28,8 @@ private:
     GLint Attrib_vertex;
     GLint Unif_color, Unif_PVM;
 
-    ObjectAbs *mObj;
+    ObjectAbs **mObj;
+    GLuint mObjQuantity;
 
     bool mIsStarted;
 

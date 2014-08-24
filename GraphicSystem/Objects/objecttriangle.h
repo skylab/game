@@ -6,7 +6,7 @@
 class ObjectTriangle : public ObjectAbs
 {
 public:
-    ObjectTriangle();
+    ObjectTriangle(glm::vec3 position);
     ~ObjectTriangle();
 };
 

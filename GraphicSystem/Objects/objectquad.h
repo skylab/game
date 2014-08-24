@@ -6,7 +6,7 @@
 class ObjectQuad : public ObjectAbs
 {
 public:
-    ObjectQuad();
+    ObjectQuad(glm::vec3 position);
     ~ObjectQuad();
 };
 

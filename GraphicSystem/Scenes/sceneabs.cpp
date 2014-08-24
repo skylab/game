@@ -17,17 +17,21 @@ SceneAbs::SceneAbs(GLuint VAO) throw() :
         setIsStarted(false);
     }
 
-    //mObj = new (std::nothrow) ObjectTriangle;
-    mObj = new (std::nothrow) ObjectCube;
+    mObjQuantity = 2;
+    mObj = new (std::nothrow) ObjectAbs*[mObjQuantity];
 
-    glGenBuffers(1, &mObj->GetVertexVBO());
-    glBindBuffer(GL_ARRAY_BUFFER, mObj->GetVertexVBO());
-    glBufferData(GL_ARRAY_BUFFER, mObj->GetVertexArraySize(), mObj->GetVertexes(), GL_STREAM_DRAW);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    for (GLuint i = 0; i < mObjQuantity; ++i)
+    {
+        mObj[i] = new (std::nothrow) ObjectCube(glm::vec3(i*2, i*2, i*2));
+        glGenBuffers(1, &mObj[i]->GetVertexVBO());
+        glBindBuffer(GL_ARRAY_BUFFER, mObj[i]->GetVertexVBO());
+        glBufferData(GL_ARRAY_BUFFER, mObj[i]->GetVertexArraySize(), mObj[i]->GetVertexes(), GL_STREAM_DRAW);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-    glGenBuffers(1, &mObj->GetColorVBO());
-    glBindBuffer(GL_ARRAY_BUFFER, mObj->GetColorVBO());
-    glBufferData(GL_ARRAY_BUFFER, mObj->GetVertexArraySize(), mObj->GetColor(), GL_STREAM_DRAW);
+        glGenBuffers(1, &mObj[i]->GetColorVBO());
+        glBindBuffer(GL_ARRAY_BUFFER, mObj[i]->GetColorVBO());
+        glBufferData(GL_ARRAY_BUFFER, mObj[i]->GetVertexArraySize(), mObj[i]->GetColor(), GL_STREAM_DRAW);
+    }
 
     const char* unif_name_pvm = "PVM";
     Unif_PVM = mShaderProgram->GetUniform(unif_name_pvm);
@@ -46,9 +50,6 @@ SceneAbs::SceneAbs(GLuint VAO) throw() :
     Model      = glm::mat4(1.0f);
     PVM        = Projection * View * Model;
 
-
-
-
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
 }
@@ -65,24 +66,24 @@ void SceneAbs::DrawScene() const throw()
 
     glUseProgram(*mShaderProgram);
 
-    static GLfloat red[4] = {1.0f, 0.0f, 0.0f, 1.0f};
-    glUniform4fv(Unif_color, 1, red);
-
     glUniformMatrix4fv(Unif_PVM, 1, false, &PVM[0][0]);
 
-    glEnableVertexAttribArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, mObj->GetVertexVBO());
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    for (GLuint i = 0; i < mObjQuantity; ++i)
+    {
+        glEnableVertexAttribArray(0);
+        glBindBuffer(GL_ARRAY_BUFFER, mObj[i]->GetVertexVBO());
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-    glEnableVertexAttribArray(1);
-    glBindBuffer(GL_ARRAY_BUFFER, mObj->GetColorVBO());
-    glVertexAttribPointer(1 /*position in shader*/, 3, GL_FLOAT, GL_FALSE, 0, 0);
+        glEnableVertexAttribArray(1);
+        glBindBuffer(GL_ARRAY_BUFFER, mObj[i]->GetColorVBO());
+        glVertexAttribPointer(1 /*position in shader*/, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-    glDrawArrays(GL_TRIANGLES, 0, mObj->GetVertexQuantity());
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glDrawArrays(GL_TRIANGLES, 0, mObj[i]->GetVertexQuantity());
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-    glDisableVertexAttribArray(0);
-    glDisableVertexAttribArray(1);
+        glDisableVertexAttribArray(0);
+        glDisableVertexAttribArray(1);
+    }
 
     glUseProgram(0);
 

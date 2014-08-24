@@ -28,7 +28,6 @@ HEADERS += \
     GraphicSystem/Shaders/shaderprogram.h \
     GraphicSystem/Objects/objecttriangle.h \
     GraphicSystem/Objects/objectcube.h \
-    GraphicSystem/Types.h \
     GraphicSystem/Objects/objectquad.h
 
 OTHER_FILES += \
