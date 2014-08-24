@@ -17,6 +17,10 @@ public:
     const glm::vec3 *GetVertexes();
     const glm::vec3 *GetColor();
 
+    glm::vec3 &GetScale();
+    glm::vec3 &GetPosition();
+
+
     const GLuint &GetVertexArraySize();
     const GLuint &GetVertexQuantity();
 
@@ -33,6 +37,7 @@ protected:
     GLuint mVertexArraySize;
 
     glm::vec3 mObjectScale;
+
     glm::vec3 mObjectCoordinate;
 
 private:

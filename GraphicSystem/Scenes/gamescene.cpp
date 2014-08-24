@@ -34,11 +34,11 @@ GameScene::GameScene() : SceneAbs()
     const char* unif_name= "PVM";
     Unif_PVM = mShaderProgram->GetUniform(unif_name);
 
-    const char* unif_name1 = "ObjectSize";
-    mObjectScaleUniform = mShaderProgram->GetUniform(unif_name1);
+    unif_name = "ObjectSize";
+    mObjectScaleUniform = mShaderProgram->GetUniform(unif_name);
 
-    const char* unif_name2 = "ObjectPosition";
-    mObjectCoordinateUniform = mShaderProgram->GetUniform(unif_name2);
+    unif_name = "ObjectPosition";
+    mObjectCoordinateUniform = mShaderProgram->GetUniform(unif_name);
 
     Projection = glm::perspective(90.0f, 4.0f / 3.0f, 0.1f, 100.0f);
     View       = glm::lookAt(
@@ -65,6 +65,9 @@ void GameScene::DrawScene() const
 
     for (GLuint i = 0; i < mObjQuantity; ++i)
     {
+        glUniform3fv(mObjectScaleUniform, 1, (GLfloat*)&mObj[i]->GetScale());
+        glUniform3fv(mObjectCoordinateUniform, 1, (GLfloat*)&mObj[i]->GetPosition());
+
         glEnableVertexAttribArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, mObj[i]->GetVertexVBO());
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);

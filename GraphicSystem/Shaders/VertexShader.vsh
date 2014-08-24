@@ -8,8 +8,6 @@ uniform vec3 ObjectPosition;
 
 out vec3 fragmentColor;
 
-mat4 ScaleMatrix;
-
 void main() {
     mat4 ScaleMatrix;
     ScaleMatrix[0].xyzw = vec4(ObjectSize.x, 0.0f, 0.0f, 0.0f);
@@ -30,7 +28,6 @@ void main() {
     TranslationMatrix[3].xyzw = vec4(0.0f, 0.0f, 0.0f, 1.0f);
 
     //gl_Position = PVM * TranslationMatrix * RotationMatrix *ScaleMatrix * vec4(VertexCoordinate, 1.0);
-    gl_Position = PVM * RotationMatrix * vec4(VertexCoordinate, 1.0);
-    //gl_Position = PVM * vec4(VertexCoordinate, 1.0);
+    gl_Position = PVM * TranslationMatrix * RotationMatrix * ScaleMatrix * vec4(VertexCoordinate, 1.0);
     fragmentColor = VertexCoordinate;
 }

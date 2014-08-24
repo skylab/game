@@ -41,6 +41,16 @@ const glm::vec3 *ObjectAbs::GetColor()
     return NULL;
 }
 
+glm::vec3 &ObjectAbs::GetScale()
+{
+    return mObjectScale;
+}
+
+glm::vec3 &ObjectAbs::GetPosition()
+{
+    return mObjectCoordinate;
+}
+
 const GLuint &ObjectAbs::GetVertexArraySize()
 {
     mVertexArraySize = mVertexQuantity * sizeof(glm::vec3);
