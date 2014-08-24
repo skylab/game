@@ -9,17 +9,20 @@ public:
     ObjectAbs() throw();
     ~ObjectAbs();
 
-    GLuint &GetVisualBufferObject();
+    GLuint &GetVertexVBO();
+    GLuint &GetColorVBO();
+
+    const GLfloat *GetVertexes();
+    const GLfloat *GetColor();
 
     const GLuint &GetVertexArraySize();
     const GLuint &GetVertexQuantity();
 
-    //operator GLvoid*();
-    operator GLfloat*();
-
 protected:
-    GLuint mVBO;
+    GLuint mVertexVBO;
+    GLuint mColorVBO;
     Vertex3f *mObjectVertexes;
+    Vertex3f *mObjectColor;
     GLuint mVertexQuantity;
     GLuint mVertexArraySize;
 };

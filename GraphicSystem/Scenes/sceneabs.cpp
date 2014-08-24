@@ -20,20 +20,15 @@ SceneAbs::SceneAbs(GLuint VAO) throw() :
     //mObj = new (std::nothrow) ObjectTriangle;
     mObj = new (std::nothrow) ObjectCube;
 
-    glGenBuffers(1, &mObj->GetVisualBufferObject());
-    glBindBuffer(GL_ARRAY_BUFFER, mObj->GetVisualBufferObject());
-    glBufferData(GL_ARRAY_BUFFER, mObj->GetVertexArraySize(), *mObj, GL_STREAM_DRAW);
+    glGenBuffers(1, &mObj->GetVertexVBO());
+    glBindBuffer(GL_ARRAY_BUFFER, mObj->GetVertexVBO());
+    glBufferData(GL_ARRAY_BUFFER, mObj->GetVertexArraySize(), mObj->GetVertexes(), GL_STREAM_DRAW);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-/*
-    const char* attr_name = "coord";
-    Attrib_vertex = mShaderProgram->GetAttribute(attr_name);
-    if(Attrib_vertex == -1)
-    {
-        setIsStarted(false);
-        return;
-    }
-*/
+    glGenBuffers(1, &mObj->GetColorVBO());
+    glBindBuffer(GL_ARRAY_BUFFER, mObj->GetColorVBO());
+    glBufferData(GL_ARRAY_BUFFER, mObj->GetVertexArraySize(), mObj->GetColor(), GL_STREAM_DRAW);
+
     const char* unif_name_pvm = "PVM";
     Unif_PVM = mShaderProgram->GetUniform(unif_name_pvm);
     if(Unif_PVM == -1)
@@ -51,71 +46,8 @@ SceneAbs::SceneAbs(GLuint VAO) throw() :
     Model      = glm::mat4(1.0f);
     PVM        = Projection * View * Model;
 
-    /*
-    const char* unif_name = "color";
-    Unif_color = mShaderProgram->GetUniform(unif_name);
-    if(Unif_color == -1)
-    {
-        setIsStarted(false);
-        return;
-    }
-    */
 
-    ////
-    ///
-    GLfloat g_color_buffer_data[] = {
-        1.0f,  0.0f,  0.0f,
-        1.0f,  0.0f,  0.0f,
-        1.0f,  0.0f,  0.0f,
 
-        0.0f,  1.0f,  0.0f,
-        0.0f,  1.0f,  0.0f,
-        0.0f,  1.0f,  0.0f,
-
-        0.0f,  0.0f,  1.0f,
-        0.0f,  0.0f,  1.0f,
-        0.0f,  0.0f,  1.0f,
-
-        0.0f,  1.0f,  0.0f,
-        0.0f,  1.0f,  0.0f,
-        0.0f,  1.0f,  0.0f,
-
-        0.0f,  0.0f,  1.0f,
-        0.0f,  0.0f,  1.0f,
-        0.0f,  0.0f,  1.0f,
-
-        1.0f,  0.0f,  0.0f,
-        1.0f,  0.0f,  0.0f,
-        1.0f,  0.0f,  0.0f,
-
-        0.0f,  0.0f,  1.0f,
-        0.0f,  0.0f,  1.0f,
-        0.0f,  0.0f,  1.0f,
-
-        0.0f,  1.0f,  0.0f,
-        0.0f,  1.0f,  0.0f,
-        0.0f,  1.0f,  0.0f,
-
-        1.0f,  0.0f,  0.0f,
-        1.0f,  0.0f,  0.0f,
-        1.0f,  0.0f,  0.0f,
-
-        0.0f,  1.0f,  0.0f,
-        0.0f,  1.0f,  0.0f,
-        0.0f,  1.0f,  0.0f,
-
-        0.0f,  0.0f,  1.0f,
-        0.0f,  0.0f,  1.0f,
-        0.0f,  0.0f,  1.0f,
-
-        1.0f,  0.0f,  0.0f,
-        1.0f,  0.0f,  0.0f,
-        1.0f,  0.0f,  0.0f,
-    };
-
-    glGenBuffers(1, &mVBO);
-    glBindBuffer(GL_ARRAY_BUFFER, mVBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(g_color_buffer_data), g_color_buffer_data, GL_STREAM_DRAW);
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
@@ -139,16 +71,18 @@ void SceneAbs::DrawScene() const throw()
     glUniformMatrix4fv(Unif_PVM, 1, false, &PVM[0][0]);
 
     glEnableVertexAttribArray(0);
-    glBindBuffer(GL_ARRAY_BUFFER, mObj->GetVisualBufferObject());
+    glBindBuffer(GL_ARRAY_BUFFER, mObj->GetVertexVBO());
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
     glEnableVertexAttribArray(1);
-    glBindBuffer(GL_ARRAY_BUFFER, mVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, mObj->GetColorVBO());
     glVertexAttribPointer(1 /*position in shader*/, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
     glDrawArrays(GL_TRIANGLES, 0, mObj->GetVertexQuantity());
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glDisableVertexAttribArray(Attrib_vertex);
+
+    glDisableVertexAttribArray(0);
+    glDisableVertexAttribArray(1);
 
     glUseProgram(0);
 
