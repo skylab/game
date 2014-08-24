@@ -1,7 +1,9 @@
 #include "objectabs.h"
 
-ObjectAbs::ObjectAbs(glm::vec3 position) throw() :
-    mVertexVBO(0), mColorVBO(0), mObjectVertexes(NULL), mObjectColor(NULL), mVertexQuantity(0), mVertexArraySize(0), mPosition(position)
+ObjectAbs::ObjectAbs(glm::vec3 position) :
+    mVertexVBO(0), mColorVBO(0), mObjectVertexes(NULL),
+    mObjectColor(NULL), mVertexQuantity(0), mVertexArraySize(0),
+    mObjectCoordinate(position)
 {
     ;
 }
@@ -52,5 +54,5 @@ const GLuint &ObjectAbs::GetVertexQuantity()
 
 glm::vec3 &ObjectAbs::Position()
 {
-    return mPosition;
+    return mObjectCoordinate;
 }

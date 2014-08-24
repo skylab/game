@@ -4,7 +4,7 @@
 
 Game *Game::mInstance = NULL;
 
-Game *Game::Instance() throw()
+Game *Game::Instance()
 {
     if (NULL == mInstance)
     {
@@ -17,13 +17,13 @@ Game *Game::Instance() throw()
     return mInstance;
 }
 
-void Game::Remove() throw()
+void Game::Remove()
 {
     delete mInstance;
     mInstance = NULL;
 }
 
-void Game::Execute() throw()
+void Game::Execute()
 {
     if (getIsStarted())
     {
@@ -35,31 +35,31 @@ void Game::Execute() throw()
     }
 }
 
-Game::Game() throw() : mGraphicSystem(NULL), mIsStarted(false)
+Game::Game() : mGraphicSystem(NULL), mIsStarted(false)
 {
    bool started = Init();
    setIsStarted(started);
 }
 
-Game::~Game() throw()
+Game::~Game()
 {
     setIsStarted(false);
 
     mGraphicSystem->Remove();
 }
 
-bool Game::Init() throw()
+bool Game::Init()
 {
     mGraphicSystem = GraphicSystem::Instance();
     return mGraphicSystem != NULL;
 }
 
-bool Game::getIsStarted() const throw()
+bool Game::getIsStarted() const
 {
     return mIsStarted;
 }
 
-void Game::setIsStarted(bool value) throw()
+void Game::setIsStarted(bool value)
 {
     mIsStarted = value;
 }

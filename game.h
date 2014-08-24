@@ -6,18 +6,18 @@
 class Game
 {
 public:
-    static Game *Instance() throw();
-    void Remove() throw();
+    static Game *Instance();
+    void Remove();
 
-    void Execute() throw();
+    void Execute();
 
-    bool getIsStarted() const throw();
-    void setIsStarted(bool value) throw();
+    bool getIsStarted() const;
+    void setIsStarted(bool value);
 
 private:
-    Game() throw();
-    ~Game() throw();
-    bool Init() throw();
+    Game();
+    ~Game();
+    bool Init();
 
 private:
     static Game *mInstance;

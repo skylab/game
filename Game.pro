@@ -16,7 +16,9 @@ SOURCES += main.cpp \
     GraphicSystem/Shaders/shaderprogram.cpp \
     GraphicSystem/Objects/objecttriangle.cpp \
     GraphicSystem/Objects/objectcube.cpp \
-    GraphicSystem/Objects/objectquad.cpp
+    GraphicSystem/Objects/objectquad.cpp \
+    GraphicSystem/Scenes/menuscene.cpp \
+    GraphicSystem/Scenes/gamescene.cpp
 
 HEADERS += \
     GraphicSystem/graphicsystem.h \
@@ -28,7 +30,9 @@ HEADERS += \
     GraphicSystem/Shaders/shaderprogram.h \
     GraphicSystem/Objects/objecttriangle.h \
     GraphicSystem/Objects/objectcube.h \
-    GraphicSystem/Objects/objectquad.h
+    GraphicSystem/Objects/objectquad.h \
+    GraphicSystem/Scenes/menuscene.h \
+    GraphicSystem/Scenes/gamescene.h
 
 OTHER_FILES += \
     GraphicSystem/Shaders/VertexShader.vsh \

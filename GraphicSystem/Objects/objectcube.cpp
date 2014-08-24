@@ -4,12 +4,6 @@ ObjectCube::ObjectCube(glm::vec3 position) : ObjectAbs(position)
 {
     FillVertexArray();
     FillColorArray();
-
-    //glm::mat4 Move = glm::translate( position.X(), position.Y(), position.Z() );
-    for (GLuint i = 0; i < mVertexQuantity; ++i)
-    {
-        //mObjectVertexes[i] = glm::vec3( Move * glm::vec4(mObjectVertexes[i], 1.0f);
-    }
 }
 
 ObjectCube::~ObjectCube()

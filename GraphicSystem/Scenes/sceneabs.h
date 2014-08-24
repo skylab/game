@@ -11,18 +11,21 @@
 class SceneAbs
 {
 public:
-    SceneAbs(GLuint VAO) throw();
-    ~SceneAbs() throw();
+    SceneAbs();
+    virtual ~SceneAbs();
 
-    void DrawScene() const throw();
+    virtual void DrawScene() const;
 
-    bool getIsStarted() const throw();
-    void setIsStarted(bool value) throw();
+    virtual void KeyBoard(unsigned char &key, int &x, int &y);
 
+    bool getIsStarted() const;
+    void setIsStarted(bool value);
 
-private:
+    void ChangeScene(SceneAbs *scene);
+    SceneAbs **GetCurrentScene() const;
+
+protected:
     ShaderProgram *mShaderProgram;
-    GLuint &mVAO;
     GLuint mVBO;
 
     GLint Attrib_vertex;

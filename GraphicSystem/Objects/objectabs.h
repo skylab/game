@@ -3,10 +3,12 @@
 
 #include "../pregraphic.h"
 
+class GraphicSystem;
+
 class ObjectAbs
 {
 public:
-    ObjectAbs(glm::vec3 position) throw();
+    ObjectAbs(glm::vec3 position);
     ~ObjectAbs();
 
     GLuint &GetVertexVBO();
@@ -33,7 +35,7 @@ protected:
 private:
     virtual void FillVertexArray() = 0;
     virtual void FillColorArray() = 0;
-    glm::vec3 mPosition;
+    glm::vec3 mObjectCoordinate;
 };
 
 #endif // OBJECTABS_H

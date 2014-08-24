@@ -8,13 +8,13 @@
 class ShaderProgram
 {
 public:
-    ShaderProgram() throw();
-    ~ShaderProgram() throw();
+    ShaderProgram();
+    ~ShaderProgram();
 
-    GLint GetAttribute(const char *attributeName) throw();
-    GLint GetUniform(const char *uniformName) throw();
+    GLint GetAttribute(const char *attributeName);
+    GLint GetUniform(const char *uniformName);
 
-    operator int() throw();
+    operator int();
 
     //TODO CHECK STATUS
 

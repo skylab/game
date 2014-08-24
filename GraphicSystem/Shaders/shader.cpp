@@ -4,18 +4,18 @@
 
 #include <string.h>
 
-Shader::Shader(GLint shaderType, const char *filename) throw(): mShaderType(shaderType), mShaderID(0), mShaderSourceCode(0)
+Shader::Shader(GLint shaderType, const char *filename): mShaderType(shaderType), mShaderID(0), mShaderSourceCode(0)
 {
     mShaderID = glCreateShader(mShaderType);
     LoadFromFile(filename);
 }
 
-Shader::~Shader() throw()
+Shader::~Shader()
 {
     glDeleteShader(mShaderID);
 }
 
-bool Shader::LoadFromFile(const char *filename) throw()
+bool Shader::LoadFromFile(const char *filename)
 {
     std::fstream shaderFile(filename, std::ios_base::in);
     if (shaderFile.is_open())
@@ -51,7 +51,7 @@ bool Shader::LoadFromFile(const char *filename) throw()
     return false;
 }
 
-bool Shader::CompileShader() throw()
+bool Shader::CompileShader()
 {
     glShaderSource(mShaderID, 1, (const char**)&mShaderSourceCode, 0);
     glCompileShader(mShaderID);

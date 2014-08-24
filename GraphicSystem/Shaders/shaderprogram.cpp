@@ -1,6 +1,6 @@
 #include "shaderprogram.h"
 
-ShaderProgram::ShaderProgram() throw() : mShaderProgramID(0), mVertexShader(NULL), mFragmentShader(NULL)
+ShaderProgram::ShaderProgram() : mShaderProgramID(0), mVertexShader(NULL), mFragmentShader(NULL)
 {
     mVertexShader = new (std::nothrow) Shader(GL_VERTEX_SHADER, "GraphicSystem/Shaders/VertexShader.vsh");
     if (NULL == mVertexShader)
@@ -43,14 +43,14 @@ ShaderProgram::ShaderProgram() throw() : mShaderProgramID(0), mVertexShader(NULL
     }
 }
 
-ShaderProgram::~ShaderProgram() throw()
+ShaderProgram::~ShaderProgram()
 {
     delete mVertexShader;
     delete mFragmentShader;
     glDeleteProgram(mShaderProgramID);
 }
 
-GLint ShaderProgram::GetUniform(const char *uniformName) throw()
+GLint ShaderProgram::GetUniform(const char *uniformName)
 {
     GLint uniformLocation = glGetUniformLocation(*this, uniformName);
     if (-1 == uniformLocation)
@@ -58,7 +58,7 @@ GLint ShaderProgram::GetUniform(const char *uniformName) throw()
     return uniformLocation;
 }
 
-GLint ShaderProgram::GetAttribute(const char *attributeName) throw()
+GLint ShaderProgram::GetAttribute(const char *attributeName)
 {
     GLint attributeLocation = glGetAttribLocation(*this, attributeName);
     if (-1 == attributeLocation)
@@ -66,7 +66,7 @@ GLint ShaderProgram::GetAttribute(const char *attributeName) throw()
     return attributeLocation;
 }
 
-ShaderProgram::operator int() throw()
+ShaderProgram::operator int()
 {
     return mShaderProgramID;
 }

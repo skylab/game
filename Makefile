@@ -54,7 +54,9 @@ SOURCES       = main.cpp \
 		GraphicSystem/Shaders/shaderprogram.cpp \
 		GraphicSystem/Objects/objecttriangle.cpp \
 		GraphicSystem/Objects/objectcube.cpp \
-		GraphicSystem/Objects/objectquad.cpp 
+		GraphicSystem/Objects/objectquad.cpp \
+		GraphicSystem/Scenes/menuscene.cpp \
+		GraphicSystem/Scenes/gamescene.cpp 
 OBJECTS       = main.o \
 		graphicsystem.o \
 		game.o \
@@ -64,7 +66,9 @@ OBJECTS       = main.o \
 		shaderprogram.o \
 		objecttriangle.o \
 		objectcube.o \
-		objectquad.o
+		objectquad.o \
+		menuscene.o \
+		gamescene.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -365,6 +369,22 @@ objectquad.o: GraphicSystem/Objects/objectquad.cpp GraphicSystem/Objects/objectq
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/pregraphic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectquad.o GraphicSystem/Objects/objectquad.cpp
+
+menuscene.o: GraphicSystem/Scenes/menuscene.cpp GraphicSystem/Scenes/menuscene.h \
+		GraphicSystem/pregraphic.h \
+		GraphicSystem/Scenes/sceneabs.h \
+		GraphicSystem/Objects/objectabs.h \
+		GraphicSystem/Shaders/shaderprogram.h \
+		GraphicSystem/Shaders/shader.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menuscene.o GraphicSystem/Scenes/menuscene.cpp
+
+gamescene.o: GraphicSystem/Scenes/gamescene.cpp GraphicSystem/Scenes/gamescene.h \
+		GraphicSystem/pregraphic.h \
+		GraphicSystem/Scenes/sceneabs.h \
+		GraphicSystem/Objects/objectabs.h \
+		GraphicSystem/Shaders/shaderprogram.h \
+		GraphicSystem/Shaders/shader.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gamescene.o GraphicSystem/Scenes/gamescene.cpp
 
 ####### Install
 

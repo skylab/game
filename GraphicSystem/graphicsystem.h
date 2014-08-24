@@ -8,21 +8,24 @@
 class GraphicSystem
 {
 public:
-    static GraphicSystem *Instance() throw();
-    void Remove() throw();
+    static GraphicSystem *Instance();
+    void Remove();
 
-    void Draw() throw();
-    void Reshape(int &width, int &height) throw();
+    void Draw();
+    void Reshape(int &width, int &height);
+    void Keyboard(unsigned char &key, int &x, int &y);
 
+
+    void ChangeScene(SceneAbs *scene);
 private:
-    GraphicSystem() throw();
-    ~GraphicSystem() throw();
+    GraphicSystem();
+    ~GraphicSystem();
 
-    bool Init(unsigned int width, unsigned int height) throw();
+    bool Init(unsigned int width, unsigned int height);
 
     friend void DrawFunction();
     friend void ReshapeFunction();
-    friend void DrawFunction();
+    friend void KeyboardFunction(unsigned char key, int x, int y);
 
 private:
     static GraphicSystem *mInstance;

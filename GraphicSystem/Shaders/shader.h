@@ -6,12 +6,12 @@
 class Shader
 {
 public:
-    Shader(GLint shaderType, const char *filename) throw();
-    ~Shader() throw();
+    Shader(GLint shaderType, const char *filename);
+    ~Shader();
 
-    bool LoadFromFile(const char *) throw();
+    bool LoadFromFile(const char *);
 
-    bool CompileShader() throw();
+    bool CompileShader();
 
     operator int();
 

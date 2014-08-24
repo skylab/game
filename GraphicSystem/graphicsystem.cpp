@@ -1,5 +1,7 @@
 #include "graphicsystem.h"
 
+#include "Scenes/menuscene.h"
+
 GraphicSystem *GraphicSystem::mInstance = NULL;
 
 void DrawFunction()
@@ -12,7 +14,12 @@ void ReshapeFunction(int width, int height)
     GraphicSystem::Instance()->Reshape(width, height);
 }
 
-GraphicSystem *GraphicSystem::Instance() throw()
+void KeyboardFunction(unsigned char key, int x, int y)
+{
+    GraphicSystem::Instance()->Keyboard(key, x, y);
+}
+
+GraphicSystem *GraphicSystem::Instance()
 {
     if (NULL == mInstance)
     {
@@ -25,38 +32,43 @@ GraphicSystem *GraphicSystem::Instance() throw()
     return mInstance;
 }
 
-void GraphicSystem::Remove() throw()
+void GraphicSystem::Remove()
 {
     delete mInstance;
     mInstance = NULL;
 }
 
-void GraphicSystem::Draw() throw()
+void GraphicSystem::Draw()
 {
     mScene->DrawScene();
     glutMainLoop();
 }
 
-void GraphicSystem::Reshape(int &width, int &height) throw()
+void GraphicSystem::Reshape(int &width, int &height)
 {
     //TODO;
     (void)width;
     (void)height;
 }
 
-GraphicSystem::GraphicSystem() throw() : mScene(NULL), mIsStarted(true)
+void GraphicSystem::Keyboard(unsigned char &key, int &x, int &y)
+{
+    mScene->KeyBoard(key, x, y);
+}
+
+GraphicSystem::GraphicSystem() : mScene(NULL), mIsStarted(true)
 {
     Init(600, 600);
 }
 
-GraphicSystem::~GraphicSystem() throw()
+GraphicSystem::~GraphicSystem()
 {
     //TODO;
     delete mScene;
     mScene = NULL;
 }
 
-bool GraphicSystem::Init(unsigned int width, unsigned int height) throw()
+bool GraphicSystem::Init(unsigned int width, unsigned int height)
 {
     int fakeArgc = 1;
     char **fakeArgv;
@@ -72,7 +84,7 @@ bool GraphicSystem::Init(unsigned int width, unsigned int height) throw()
 
     glutDisplayFunc(DrawFunction);
     glutReshapeFunc(ReshapeFunction);
-    //glutKeyboardFunc(KeyFunction);
+    glutKeyboardFunc(KeyboardFunction);
     //glutMouseFunc();
     //glutMouseWheelFunc();
 
@@ -83,6 +95,13 @@ bool GraphicSystem::Init(unsigned int width, unsigned int height) throw()
 
     glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
 
-    mScene = new (std::nothrow) SceneAbs(mVAO);
+    ChangeScene(new (std::nothrow) MenuScene());
     return true;
+}
+
+void GraphicSystem::ChangeScene(SceneAbs *scene)
+{
+    SceneAbs *oldScene = mScene;
+    mScene = scene;
+    delete oldScene;
 }
