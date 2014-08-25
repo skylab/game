@@ -11,7 +11,7 @@ public:
     MenuScene();
     ~MenuScene();
 
-    virtual void DrawScene() const;
+    virtual void DrawScene();
 
     virtual void KeyBoard(unsigned char &key, int &x, int &y);
 };

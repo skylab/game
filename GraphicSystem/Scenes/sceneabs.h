@@ -14,7 +14,7 @@ public:
     SceneAbs();
     virtual ~SceneAbs() = 0;
 
-    virtual void DrawScene() const;
+    virtual void DrawScene();
     virtual void KeyBoard(unsigned char &key, int &x, int &y);
 
     void ChangeScene(SceneAbs *scene);

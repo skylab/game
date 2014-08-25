@@ -13,7 +13,7 @@ SceneAbs::~SceneAbs()
     delete mShaderProgram;
 }
 
-void SceneAbs::DrawScene() const
+void SceneAbs::DrawScene()
 {
     ;
 }

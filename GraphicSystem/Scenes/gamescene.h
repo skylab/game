@@ -9,7 +9,7 @@ class GameScene : public SceneAbs
 public:
     GameScene();
 
-    virtual void DrawScene() const;
+    virtual void DrawScene();
     virtual void KeyBoard(unsigned char &key, int &x, int &y);
 };
 

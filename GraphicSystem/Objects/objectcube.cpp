@@ -17,8 +17,7 @@ ObjectCube::~ObjectCube()
 
 void ObjectCube::FillVertexArray()
 {
-    mObjectScale = glm::vec3(1.5f, 1.5f, 1.5f);
-    mObjectCoordinate = glm::vec3(0.0f, 0.0f, 0.0f);
+    mObjectScale = glm::vec3(1.0f, 1.0f, 1.0f);
 
     mVertexQuantity = 36;
     mObjectVertexes = new (std::nothrow) glm::vec3[mVertexQuantity];

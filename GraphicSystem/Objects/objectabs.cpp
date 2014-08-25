@@ -5,7 +5,7 @@ ObjectAbs::ObjectAbs(glm::vec3 position) :
     mObjectColor(NULL), mVertexQuantity(0), mVertexArraySize(0),
     mObjectCoordinate(position)
 {
-    ;
+    mObjectScale = glm::vec3(1.0f, 1.0f, 1.0f);
 }
 
 ObjectAbs::~ObjectAbs()

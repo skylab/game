@@ -22,12 +22,11 @@ void main() {
     RotationMatrix[3].xyzw = vec4(0.0f, 0.0f, 0.0f, 1.0f);
 
     mat4 TranslationMatrix;
-    TranslationMatrix[0].xyzw = vec4(1.0f, 0.0f, 0.0f, ObjectPosition.x);
-    TranslationMatrix[1].xyzw = vec4(0.0f, 1.0f, 0.0f, ObjectPosition.y);
-    TranslationMatrix[2].xyzw = vec4(0.0f, 0.0f, 1.0f, ObjectPosition.z);
-    TranslationMatrix[3].xyzw = vec4(0.0f, 0.0f, 0.0f, 1.0f);
+    TranslationMatrix[0].xyzw = vec4(1.0f, 0.0f, 0.0f, 0.0f);
+    TranslationMatrix[1].xyzw = vec4(0.0f, 1.0f, 0.0f, 0.0f);
+    TranslationMatrix[2].xyzw = vec4(0.0f, 0.0f, 1.0f, 0.0f);
+    TranslationMatrix[3].xyzw = vec4(ObjectPosition.x, ObjectPosition.y, ObjectPosition.z, 1.0f);
 
-    //gl_Position = PVM * TranslationMatrix * RotationMatrix *ScaleMatrix * vec4(VertexCoordinate, 1.0);
     gl_Position = PVM * TranslationMatrix * RotationMatrix * ScaleMatrix * vec4(VertexCoordinate, 1.0);
     fragmentColor = VertexCoordinate;
 }
