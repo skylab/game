@@ -6,7 +6,8 @@
 
 GameScene::GameScene() : SceneAbs()
 {
-    mShaderProgram = new (std::nothrow) ShaderProgram();
+    mShaderProgram = new (std::nothrow) ShaderProgram("GraphicSystem/Shaders/VertexShader.vsh",
+                                                      "GraphicSystem/Shaders/FragmentShader.fsh");
 
     // TODO SET SHADER CODE:
 

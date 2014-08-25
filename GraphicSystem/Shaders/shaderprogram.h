@@ -8,7 +8,7 @@
 class ShaderProgram
 {
 public:
-    ShaderProgram();
+    ShaderProgram(const char* vertexShaderName, const char* fragmentShaderName);
     ~ShaderProgram();
 
     GLint GetAttribute(const char *attributeName);

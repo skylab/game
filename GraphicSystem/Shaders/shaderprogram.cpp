@@ -1,15 +1,15 @@
 #include "shaderprogram.h"
 
-ShaderProgram::ShaderProgram() : mShaderProgramID(0), mVertexShader(NULL), mFragmentShader(NULL)
+ShaderProgram::ShaderProgram(const char *vertexShaderName, const char *fragmentShaderName) : mShaderProgramID(0), mVertexShader(NULL), mFragmentShader(NULL)
 {
-    mVertexShader = new (std::nothrow) Shader(GL_VERTEX_SHADER, "GraphicSystem/Shaders/VertexShader.vsh");
+    mVertexShader = new (std::nothrow) Shader(GL_VERTEX_SHADER, vertexShaderName);
     if (NULL == mVertexShader)
     {
         std::cerr << "Can't allocate vertex shader" << std::endl;
         return;
     }
 
-    mFragmentShader = new (std::nothrow) Shader(GL_FRAGMENT_SHADER, "GraphicSystem/Shaders/FragmentShader.fsh");
+    mFragmentShader = new (std::nothrow) Shader(GL_FRAGMENT_SHADER, fragmentShaderName);
     if (NULL == mVertexShader)
     {
         std::cerr << "Can't allocate fragment shader" << std::endl;
