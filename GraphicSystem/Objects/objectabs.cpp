@@ -6,6 +6,7 @@ ObjectAbs::ObjectAbs(glm::vec3 position) :
     mObjectCoordinate(position)
 {
     mObjectScale = glm::vec3(1.0f, 1.0f, 1.0f);
+    mObjectRotation = glm::vec3(0.0f, 0.0f, 0.0f);
 }
 
 ObjectAbs::~ObjectAbs()
@@ -51,6 +52,11 @@ glm::vec3 &ObjectAbs::GetPosition()
     return mObjectCoordinate;
 }
 
+glm::vec3 &ObjectAbs::GetRotations()
+{
+    return mObjectRotation;
+}
+
 const GLuint &ObjectAbs::GetVertexArraySize()
 {
     mVertexArraySize = mVertexQuantity * sizeof(glm::vec3);
@@ -60,9 +66,4 @@ const GLuint &ObjectAbs::GetVertexArraySize()
 const GLuint &ObjectAbs::GetVertexQuantity()
 {
     return mVertexQuantity;
-}
-
-glm::vec3 &ObjectAbs::Position()
-{
-    return mObjectCoordinate;
 }

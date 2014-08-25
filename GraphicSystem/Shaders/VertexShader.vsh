@@ -15,11 +15,23 @@ void main() {
     ScaleMatrix[2].xyzw = vec4(0.0f, 0.0f, ObjectSize.z, 0.0f);
     ScaleMatrix[3].xyzw = vec4(0.0f, 0.0f, 0.0f, 1.0f);
 
-    mat4 RotationMatrix;
-    RotationMatrix[0].xyzw = vec4(1.0f, 0.0f, 0.0f, 0.0f);
-    RotationMatrix[1].xyzw = vec4(0.0f, 1.0f, 0.0f, 0.0f);
-    RotationMatrix[2].xyzw = vec4(0.0f, 0.0f, 1.0f, 0.0f);
-    RotationMatrix[3].xyzw = vec4(0.0f, 0.0f, 0.0f, 1.0f);
+    mat4 RotationMatrixX;
+    RotationMatrixX[0].xyzw = vec4(1.0f, 0.0f, 0.0f, 0.0f);
+    RotationMatrixX[1].xyzw = vec4(0.0f, cos(ObjectRotation.x), -sin(ObjectRotation.x), 0.0f);
+    RotationMatrixX[2].xyzw = vec4(0.0f, sin(ObjectRotation.x), cos(ObjectRotation.x), 0.0f);
+    RotationMatrixX[3].xyzw = vec4(0.0f, 0.0f, 0.0f, 1.0f);
+    mat4 RotationMatrixY;
+    RotationMatrixY[0].xyzw = vec4(cos(ObjectRotation.y), 0.0f, sin(ObjectRotation.y), 0.0f);
+    RotationMatrixY[1].xyzw = vec4(0.0f, 1.0f, 0.0f, 0.0f);
+    RotationMatrixY[2].xyzw = vec4(-sin(ObjectRotation.y), 0.0f, cos(ObjectRotation.y), 0.0f);
+    RotationMatrixY[3].xyzw = vec4(0.0f, 0.0f, 0.0f, 1.0f);
+    mat4 RotationMatrixZ;
+    RotationMatrixZ[0].xyzw = vec4(cos(ObjectRotation.z), -sin(ObjectRotation.z), 0.0f, 0.0f);
+    RotationMatrixZ[1].xyzw = vec4(sin(ObjectRotation.z), cos(ObjectRotation.z), 0.0f, 0.0f);
+    RotationMatrixZ[2].xyzw = vec4(0.0f, 0.0f, 1.0f, 0.0f);
+    RotationMatrixZ[3].xyzw = vec4(0.0f, 0.0f, 0.0f, 1.0f);
+
+    mat4 RotationMatrix = RotationMatrixX * RotationMatrixY * RotationMatrixZ;
 
     mat4 TranslationMatrix;
     TranslationMatrix[0].xyzw = vec4(1.0f, 0.0f, 0.0f, 0.0f);

@@ -9,8 +9,6 @@ GameScene::GameScene() : SceneAbs()
     mShaderProgram = new (std::nothrow) ShaderProgram("GraphicSystem/Shaders/VertexShader.vsh",
                                                       "GraphicSystem/Shaders/FragmentShader.fsh");
 
-    // TODO SET SHADER CODE:
-
     if (NULL == mShaderProgram)
     {
         std::cerr << "Can't allocate ShaderProgram" << std::endl;
@@ -37,9 +35,10 @@ GameScene::GameScene() : SceneAbs()
 
     unif_name = "ObjectSize";
     mObjectScaleUniform = mShaderProgram->GetUniform(unif_name);
-
     unif_name = "ObjectPosition";
     mObjectCoordinateUniform = mShaderProgram->GetUniform(unif_name);
+    unif_name = "ObjectRotation";
+    mObjectRotationAnglesUniform = mShaderProgram->GetUniform(unif_name);
 
     Projection = glm::perspective(90.0f, 4.0f / 3.0f, 0.1f, 100.0f);
     View       = glm::lookAt(
@@ -72,6 +71,7 @@ void GameScene::DrawScene()
     {
         glUniform3fv(mObjectScaleUniform, 1, (GLfloat*)&mObj[i]->GetScale());
         glUniform3fv(mObjectCoordinateUniform, 1, (GLfloat*)&mObj[i]->GetPosition());
+        glUniform3fv(mObjectRotationAnglesUniform, 1, (GLfloat*)&mObj[i]->GetRotations());
 
         glEnableVertexAttribArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, mObj[i]->GetVertexVBO());
@@ -98,6 +98,10 @@ void GameScene::KeyBoard(unsigned char &key, int &x, int &y)
     static int _x=2;
     static int _y=2;
     static int _z=3;
+
+    static float _ox=0;
+    static float _oy=0;
+    static float _oz=0;
     switch (key)
     {
     case 'a':
@@ -118,6 +122,12 @@ void GameScene::KeyBoard(unsigned char &key, int &x, int &y)
     case 'o':
         --_z;
         break;
+    case 'l':
+        _oy -= 0.01f;
+        break;
+    case 'k':
+        _oy += 0.01f;
+        break;
     default:
         SceneAbs::KeyBoard(key, x, y);
         break;
@@ -130,11 +140,18 @@ void GameScene::KeyBoard(unsigned char &key, int &x, int &y)
     case 's':
     case 'p':
     case 'o':
+    case 'l':
+    case 'k':
         View       = glm::lookAt(
                     glm::vec3(_x,_y,_z), // Camera is at (4,3,-3), in World Space
                     glm::vec3(0,0,0), // and looks at the origin
                     glm::vec3(0,1,0)  // Head is up (set to 0,-1,0 to look upside-down)
-                    );
+                    );        
+
+        for (GLuint i = 0; i < mObjQuantity; ++i)
+        {
+            mObj[i]->GetRotations() = glm::vec3(_ox, _oy, _oz);
+        }
         break;
     }
     DrawScene();

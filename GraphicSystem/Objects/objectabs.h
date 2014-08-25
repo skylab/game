@@ -19,12 +19,11 @@ public:
 
     glm::vec3 &GetScale();
     glm::vec3 &GetPosition();
+    glm::vec3 &GetRotations();
 
 
     const GLuint &GetVertexArraySize();
     const GLuint &GetVertexQuantity();
-
-    inline glm::vec3 &Position();
 
 protected:
     GLuint mVertexVBO;
@@ -37,7 +36,7 @@ protected:
     GLuint mVertexArraySize;
 
     glm::vec3 mObjectScale;
-
+    glm::vec3 mObjectRotation;
     glm::vec3 mObjectCoordinate;
 
 private:

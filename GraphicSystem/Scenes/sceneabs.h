@@ -26,6 +26,7 @@ protected:
 
     GLint mObjectScaleUniform;
     GLint mObjectCoordinateUniform;
+    GLint mObjectRotationAnglesUniform;
 
     ObjectAbs **mObj;
     GLuint mObjQuantity;

@@ -47,8 +47,7 @@ void GraphicSystem::Draw()
 void GraphicSystem::Reshape(int &width, int &height)
 {
     //TODO;
-    (void)width;
-    (void)height;
+    glViewport(0, 0, width, height);
 }
 
 void GraphicSystem::Keyboard(unsigned char &key, int &x, int &y)
