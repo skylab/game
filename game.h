@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "GraphicSystem/graphicsystem.h"
+#include "PhysicSystem/physicsystem.h"
 
 class Game
 {
@@ -22,6 +23,7 @@ private:
 private:
     static Game *mInstance;
     GraphicSystem *mGraphicSystem;
+    PhysicSystem *mPhysicSystem;
 
     bool mIsStarted;
 };

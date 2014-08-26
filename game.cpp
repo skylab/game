@@ -35,7 +35,7 @@ void Game::Execute()
     }
 }
 
-Game::Game() : mGraphicSystem(NULL), mIsStarted(false)
+Game::Game() : mGraphicSystem(NULL), mPhysicSystem(NULL), mIsStarted(false)
 {
    bool started = Init();
    setIsStarted(started);
@@ -51,6 +51,8 @@ Game::~Game()
 bool Game::Init()
 {
     mGraphicSystem = GraphicSystem::Instance();
+    mPhysicSystem = PhysicSystem::Instance();
+
     return mGraphicSystem != NULL;
 }
 
