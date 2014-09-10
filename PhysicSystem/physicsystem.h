@@ -14,6 +14,7 @@ public:
 
 private:
     PhysicSystem();
+    ~PhysicSystem();
     void Init();
 
 private:

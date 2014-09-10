@@ -56,7 +56,144 @@ SOURCES       = main.cpp \
 		GraphicSystem/Objects/objectcube.cpp \
 		GraphicSystem/Objects/objectquad.cpp \
 		GraphicSystem/Scenes/menuscene.cpp \
-		GraphicSystem/Scenes/gamescene.cpp 
+		GraphicSystem/Scenes/gamescene.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConeTwistConstraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactConstraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btFixedConstraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGearConstraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btHinge2Constraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btHingeConstraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSliderConstraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolve2LinearConstraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.cpp \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btUniversalConstraint.cpp \
+		PhysicSystem/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.cpp \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.cpp \
+		PhysicSystem/BulletDynamics/Dynamics/btSimpleDynamicsWorld.cpp \
+		PhysicSystem/BulletDynamics/Dynamics/Bullet-C-API.cpp \
+		PhysicSystem/BulletDynamics/Vehicle/btRaycastVehicle.cpp \
+		PhysicSystem/BulletDynamics/Vehicle/btWheelInfo.cpp \
+		PhysicSystem/LinearMath/btAlignedAllocator.cpp \
+		PhysicSystem/LinearMath/btConvexHull.cpp \
+		PhysicSystem/LinearMath/btConvexHullComputer.cpp \
+		PhysicSystem/LinearMath/btGeometryUtil.cpp \
+		PhysicSystem/LinearMath/btPolarDecomposition.cpp \
+		PhysicSystem/LinearMath/btQuickprof.cpp \
+		PhysicSystem/LinearMath/btSerializer.cpp \
+		PhysicSystem/LinearMath/btVector3.cpp \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btAxisSweep3.cpp \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.cpp \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.cpp \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvtBroadphase.cpp \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.cpp \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.cpp \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.cpp \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.cpp \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btSimpleBroadphase.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btBox2dBox2dCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btBoxBoxDetector.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCompoundCompoundCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btConvex2dConvex2dAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btConvexConcaveCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btConvexConvexAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btConvexPlaneCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btEmptyCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btGhostObject.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btHashedSimplePairCache.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btInternalEdgeUtility.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSimulationIslandManager.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSphereBoxCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSphereTriangleCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/btUnionFind.cpp \
+		PhysicSystem/BulletCollision/CollisionDispatch/SphereTriangleDetector.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btBox2dShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btCapsuleShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btCompoundShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btConeShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvex2dShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexHullShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexPointCloudShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexPolyhedron.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btCylinderShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btEmptyShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btHeightfieldTerrainShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btMinkowskiSumShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btMultimaterialTriangleMeshShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btMultiSphereShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btOptimizedBvh.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btShapeHull.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btStaticPlaneShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btTetrahedronShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleBuffer.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexMaterialArray.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleMesh.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleMeshShape.cpp \
+		PhysicSystem/BulletCollision/CollisionShapes/btUniformScalingShape.cpp \
+		PhysicSystem/BulletCollision/Gimpact/btContactProcessing.cpp \
+		PhysicSystem/BulletCollision/Gimpact/btGenericPoolAllocator.cpp \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactBvh.cpp \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.cpp \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactQuantizedBvh.cpp \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactShape.cpp \
+		PhysicSystem/BulletCollision/Gimpact/btTriangleShapeEx.cpp \
+		PhysicSystem/BulletCollision/Gimpact/gim_box_set.cpp \
+		PhysicSystem/BulletCollision/Gimpact/gim_contact.cpp \
+		PhysicSystem/BulletCollision/Gimpact/gim_memory.cpp \
+		PhysicSystem/BulletCollision/Gimpact/gim_tri_collision.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpa2.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPolyhedralContactClipping.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btRaycastCallback.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.cpp \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.cpp \
+		PhysicSystem/BulletDynamics/Character/btKinematicCharacterController.cpp \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBody.cpp \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraint.cpp \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraintSolver.cpp \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.cpp \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyJointLimitConstraint.cpp \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyJointMotor.cpp \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyPoint2Point.cpp \
+		PhysicSystem/BulletDynamics/MLCPSolvers/btDantzigLCP.cpp \
+		PhysicSystem/BulletDynamics/MLCPSolvers/btMLCPSolver.cpp \
+		PhysicSystem/physicsystem.cpp \
+		GraphicSystem/Common/Image/imageloaderabs.cpp \
+		GraphicSystem/Common/Image/image.cpp \
+		GraphicSystem/Common/Image/imageloaderbmp.cpp \
+		GraphicSystem/Textures/texture.cpp 
 OBJECTS       = main.o \
 		graphicsystem.o \
 		game.o \
@@ -68,7 +205,144 @@ OBJECTS       = main.o \
 		objectcube.o \
 		objectquad.o \
 		menuscene.o \
-		gamescene.o
+		gamescene.o \
+		btConeTwistConstraint.o \
+		btContactConstraint.o \
+		btFixedConstraint.o \
+		btGearConstraint.o \
+		btGeneric6DofConstraint.o \
+		btGeneric6DofSpringConstraint.o \
+		btHinge2Constraint.o \
+		btHingeConstraint.o \
+		btPoint2PointConstraint.o \
+		btSequentialImpulseConstraintSolver.o \
+		btSliderConstraint.o \
+		btSolve2LinearConstraint.o \
+		btTypedConstraint.o \
+		btUniversalConstraint.o \
+		btDiscreteDynamicsWorld.o \
+		btRigidBody.o \
+		btSimpleDynamicsWorld.o \
+		Bullet-C-API.o \
+		btRaycastVehicle.o \
+		btWheelInfo.o \
+		btAlignedAllocator.o \
+		btConvexHull.o \
+		btConvexHullComputer.o \
+		btGeometryUtil.o \
+		btPolarDecomposition.o \
+		btQuickprof.o \
+		btSerializer.o \
+		btVector3.o \
+		btAxisSweep3.o \
+		btBroadphaseProxy.o \
+		btCollisionAlgorithm.o \
+		btDbvt.o \
+		btDbvtBroadphase.o \
+		btDispatcher.o \
+		btMultiSapBroadphase.o \
+		btOverlappingPairCache.o \
+		btQuantizedBvh.o \
+		btSimpleBroadphase.o \
+		btActivatingCollisionAlgorithm.o \
+		btBox2dBox2dCollisionAlgorithm.o \
+		btBoxBoxCollisionAlgorithm.o \
+		btBoxBoxDetector.o \
+		btCollisionDispatcher.o \
+		btCollisionObject.o \
+		btCollisionWorld.o \
+		btCompoundCollisionAlgorithm.o \
+		btCompoundCompoundCollisionAlgorithm.o \
+		btConvex2dConvex2dAlgorithm.o \
+		btConvexConcaveCollisionAlgorithm.o \
+		btConvexConvexAlgorithm.o \
+		btConvexPlaneCollisionAlgorithm.o \
+		btDefaultCollisionConfiguration.o \
+		btEmptyCollisionAlgorithm.o \
+		btGhostObject.o \
+		btHashedSimplePairCache.o \
+		btInternalEdgeUtility.o \
+		btManifoldResult.o \
+		btSimulationIslandManager.o \
+		btSphereBoxCollisionAlgorithm.o \
+		btSphereSphereCollisionAlgorithm.o \
+		btSphereTriangleCollisionAlgorithm.o \
+		btUnionFind.o \
+		SphereTriangleDetector.o \
+		btBox2dShape.o \
+		btBoxShape.o \
+		btBvhTriangleMeshShape.o \
+		btCapsuleShape.o \
+		btCollisionShape.o \
+		btCompoundShape.o \
+		btConcaveShape.o \
+		btConeShape.o \
+		btConvex2dShape.o \
+		btConvexHullShape.o \
+		btConvexInternalShape.o \
+		btConvexPointCloudShape.o \
+		btConvexPolyhedron.o \
+		btConvexShape.o \
+		btConvexTriangleMeshShape.o \
+		btCylinderShape.o \
+		btEmptyShape.o \
+		btHeightfieldTerrainShape.o \
+		btMinkowskiSumShape.o \
+		btMultimaterialTriangleMeshShape.o \
+		btMultiSphereShape.o \
+		btOptimizedBvh.o \
+		btPolyhedralConvexShape.o \
+		btScaledBvhTriangleMeshShape.o \
+		btShapeHull.o \
+		btSphereShape.o \
+		btStaticPlaneShape.o \
+		btStridingMeshInterface.o \
+		btTetrahedronShape.o \
+		btTriangleBuffer.o \
+		btTriangleCallback.o \
+		btTriangleIndexVertexArray.o \
+		btTriangleIndexVertexMaterialArray.o \
+		btTriangleMesh.o \
+		btTriangleMeshShape.o \
+		btUniformScalingShape.o \
+		btContactProcessing.o \
+		btGenericPoolAllocator.o \
+		btGImpactBvh.o \
+		btGImpactCollisionAlgorithm.o \
+		btGImpactQuantizedBvh.o \
+		btGImpactShape.o \
+		btTriangleShapeEx.o \
+		gim_box_set.o \
+		gim_contact.o \
+		gim_memory.o \
+		gim_tri_collision.o \
+		btContinuousConvexCollision.o \
+		btConvexCast.o \
+		btGjkConvexCast.o \
+		btGjkEpa2.o \
+		btGjkEpaPenetrationDepthSolver.o \
+		btGjkPairDetector.o \
+		btMinkowskiPenetrationDepthSolver.o \
+		btPersistentManifold.o \
+		btPolyhedralContactClipping.o \
+		btRaycastCallback.o \
+		btSubSimplexConvexCast.o \
+		btVoronoiSimplexSolver.o \
+		btKinematicCharacterController.o \
+		btMultiBody.o \
+		btMultiBodyConstraint.o \
+		btMultiBodyConstraintSolver.o \
+		btMultiBodyDynamicsWorld.o \
+		btMultiBodyJointLimitConstraint.o \
+		btMultiBodyJointMotor.o \
+		btMultiBodyPoint2Point.o \
+		btDantzigLCP.o \
+		btMLCPSolver.o \
+		physicsystem.o \
+		imageloaderabs.o \
+		image.o \
+		imageloaderbmp.o \
+		texture.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -309,82 +583,3238 @@ compiler_clean:
 main.o: main.cpp game.h \
 		GraphicSystem/graphicsystem.h \
 		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
-		GraphicSystem/Shaders/shader.h
+		GraphicSystem/Shaders/shader.h \
+		GraphicSystem/Textures/texture.h \
+		PhysicSystem/physicsystem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 graphicsystem.o: GraphicSystem/graphicsystem.cpp GraphicSystem/graphicsystem.h \
 		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
-		GraphicSystem/Shaders/shader.h
+		GraphicSystem/Shaders/shader.h \
+		GraphicSystem/Textures/texture.h \
+		GraphicSystem/Scenes/menuscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphicsystem.o GraphicSystem/graphicsystem.cpp
 
 game.o: game.cpp game.h \
 		GraphicSystem/graphicsystem.h \
 		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
-		GraphicSystem/Shaders/shader.h
+		GraphicSystem/Shaders/shader.h \
+		GraphicSystem/Textures/texture.h \
+		PhysicSystem/physicsystem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o game.cpp
 
 sceneabs.o: GraphicSystem/Scenes/sceneabs.cpp GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/Shaders/shader.h \
-		GraphicSystem/Objects/objecttriangle.h \
-		GraphicSystem/Objects/objectquad.h \
-		GraphicSystem/Objects/objectcube.h
+		GraphicSystem/Textures/texture.h \
+		GraphicSystem/graphicsystem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sceneabs.o GraphicSystem/Scenes/sceneabs.cpp
 
 objectabs.o: GraphicSystem/Objects/objectabs.cpp GraphicSystem/Objects/objectabs.h \
-		GraphicSystem/pregraphic.h
+		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectabs.o GraphicSystem/Objects/objectabs.cpp
 
 shader.o: GraphicSystem/Shaders/shader.cpp GraphicSystem/Shaders/shader.h \
-		GraphicSystem/pregraphic.h
+		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shader.o GraphicSystem/Shaders/shader.cpp
 
 shaderprogram.o: GraphicSystem/Shaders/shaderprogram.cpp GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Shaders/shader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shaderprogram.o GraphicSystem/Shaders/shaderprogram.cpp
 
 objecttriangle.o: GraphicSystem/Objects/objecttriangle.cpp GraphicSystem/Objects/objecttriangle.h \
 		GraphicSystem/Objects/objectabs.h \
-		GraphicSystem/pregraphic.h
+		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objecttriangle.o GraphicSystem/Objects/objecttriangle.cpp
 
 objectcube.o: GraphicSystem/Objects/objectcube.cpp GraphicSystem/Objects/objectcube.h \
 		GraphicSystem/Objects/objectabs.h \
-		GraphicSystem/pregraphic.h
+		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectcube.o GraphicSystem/Objects/objectcube.cpp
 
 objectquad.o: GraphicSystem/Objects/objectquad.cpp GraphicSystem/Objects/objectquad.h \
 		GraphicSystem/Objects/objectabs.h \
-		GraphicSystem/pregraphic.h
+		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectquad.o GraphicSystem/Objects/objectquad.cpp
 
 menuscene.o: GraphicSystem/Scenes/menuscene.cpp GraphicSystem/Scenes/menuscene.h \
 		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
-		GraphicSystem/Shaders/shader.h
+		GraphicSystem/Shaders/shader.h \
+		GraphicSystem/Textures/texture.h \
+		GraphicSystem/Scenes/gamescene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menuscene.o GraphicSystem/Scenes/menuscene.cpp
 
 gamescene.o: GraphicSystem/Scenes/gamescene.cpp GraphicSystem/Scenes/gamescene.h \
 		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
-		GraphicSystem/Shaders/shader.h
+		GraphicSystem/Shaders/shader.h \
+		GraphicSystem/Textures/texture.h \
+		GraphicSystem/Objects/objecttriangle.h \
+		GraphicSystem/Objects/objectquad.h \
+		GraphicSystem/Objects/objectcube.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gamescene.o GraphicSystem/Scenes/gamescene.cpp
+
+btConeTwistConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btConeTwistConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConeTwistConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btConeTwistConstraint.cpp
+
+btContactConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btContactConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btContactConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btContactConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btContactConstraint.cpp
+
+btFixedConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btFixedConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btFixedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btFixedConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btFixedConstraint.cpp
+
+btGearConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btGearConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btGearConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGearConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btGearConstraint.cpp
+
+btGeneric6DofConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGeneric6DofConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.cpp
+
+btGeneric6DofSpringConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGeneric6DofSpringConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.cpp
+
+btHinge2Constraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btHinge2Constraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btHinge2Constraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btHinge2Constraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btHinge2Constraint.cpp
+
+btHingeConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btHingeConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btHingeConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btHingeConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btHingeConstraint.cpp
+
+btPoint2PointConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btPoint2PointConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.cpp
+
+btSequentialImpulseConstraintSolver.o: PhysicSystem/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConstraintSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/LinearMath/btStackAlloc.h \
+		PhysicSystem/LinearMath/btQuickprof.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSequentialImpulseConstraintSolver.o PhysicSystem/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.cpp
+
+btSliderConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btSliderConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btSliderConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSliderConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btSliderConstraint.cpp
+
+btSolve2LinearConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btSolve2LinearConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btSolve2LinearConstraint.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSolve2LinearConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btSolve2LinearConstraint.cpp
+
+btTypedConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/LinearMath/btHashMap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btTypedConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.cpp
+
+btUniversalConstraint.o: PhysicSystem/BulletDynamics/ConstraintSolver/btUniversalConstraint.cpp PhysicSystem/BulletDynamics/ConstraintSolver/btUniversalConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btUniversalConstraint.o PhysicSystem/BulletDynamics/ConstraintSolver/btUniversalConstraint.cpp
+
+btDiscreteDynamicsWorld.o: PhysicSystem/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.cpp PhysicSystem/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h \
+		PhysicSystem/BulletDynamics/Dynamics/btDynamicsWorld.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSimulationIslandManager.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btUnionFind.h \
+		PhysicSystem/LinearMath/btQuickprof.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConstraintSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btHingeConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSliderConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactConstraint.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletDynamics/Dynamics/btActionInterface.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/LinearMath/btHashMap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btDiscreteDynamicsWorld.o PhysicSystem/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.cpp
+
+btRigidBody.o: PhysicSystem/BulletDynamics/Dynamics/btRigidBody.cpp PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/LinearMath/btHashMap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btRigidBody.o PhysicSystem/BulletDynamics/Dynamics/btRigidBody.cpp
+
+btSimpleDynamicsWorld.o: PhysicSystem/BulletDynamics/Dynamics/btSimpleDynamicsWorld.cpp PhysicSystem/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h \
+		PhysicSystem/BulletDynamics/Dynamics/btDynamicsWorld.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConstraintSolver.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSimpleDynamicsWorld.o PhysicSystem/BulletDynamics/Dynamics/btSimpleDynamicsWorld.cpp
+
+Bullet-C-API.o: PhysicSystem/BulletDynamics/Dynamics/Bullet-C-API.cpp PhysicSystem/Bullet-C-Api.h \
+		PhysicSystem/btBulletDynamicsCommon.h \
+		PhysicSystem/btBulletCollisionCommon.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCapsuleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCylinderShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConeShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStaticPlaneShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexHullShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleMesh.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btOptimizedBvh.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleInfoMap.h \
+		PhysicSystem/LinearMath/btHashMap.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCompoundShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTetrahedronShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btEmptyShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btMultiSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btUniformScalingShape.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionConfiguration.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btAxisSweep3.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.h \
+		PhysicSystem/LinearMath/btQuickprof.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.h \
+		PhysicSystem/LinearMath/btDefaultMotionState.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h \
+		PhysicSystem/BulletDynamics/Dynamics/btDynamicsWorld.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btHingeConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSliderConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btUniversalConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btHinge2Constraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGearConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btFixedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConstraintSolver.h \
+		PhysicSystem/BulletDynamics/Vehicle/btRaycastVehicle.h \
+		PhysicSystem/BulletDynamics/Vehicle/btVehicleRaycaster.h \
+		PhysicSystem/BulletDynamics/Vehicle/btWheelInfo.h \
+		PhysicSystem/BulletDynamics/Dynamics/btActionInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPointCollector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpa2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btMinkowskiSumShape.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Bullet-C-API.o PhysicSystem/BulletDynamics/Dynamics/Bullet-C-API.cpp
+
+btRaycastVehicle.o: PhysicSystem/BulletDynamics/Vehicle/btRaycastVehicle.cpp PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/Vehicle/btRaycastVehicle.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletDynamics/Vehicle/btVehicleRaycaster.h \
+		PhysicSystem/BulletDynamics/Vehicle/btWheelInfo.h \
+		PhysicSystem/BulletDynamics/Dynamics/btActionInterface.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolve2LinearConstraint.h \
+		PhysicSystem/BulletDynamics/Dynamics/btDynamicsWorld.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactConstraint.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btRaycastVehicle.o PhysicSystem/BulletDynamics/Vehicle/btRaycastVehicle.cpp
+
+btWheelInfo.o: PhysicSystem/BulletDynamics/Vehicle/btWheelInfo.cpp PhysicSystem/BulletDynamics/Vehicle/btWheelInfo.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btWheelInfo.o PhysicSystem/BulletDynamics/Vehicle/btWheelInfo.cpp
+
+btAlignedAllocator.o: PhysicSystem/LinearMath/btAlignedAllocator.cpp PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btScalar.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btAlignedAllocator.o PhysicSystem/LinearMath/btAlignedAllocator.cpp
+
+btConvexHull.o: PhysicSystem/LinearMath/btConvexHull.cpp PhysicSystem/LinearMath/btConvexHull.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexHull.o PhysicSystem/LinearMath/btConvexHull.cpp
+
+btConvexHullComputer.o: PhysicSystem/LinearMath/btConvexHullComputer.cpp PhysicSystem/LinearMath/btConvexHullComputer.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexHullComputer.o PhysicSystem/LinearMath/btConvexHullComputer.cpp
+
+btGeometryUtil.o: PhysicSystem/LinearMath/btGeometryUtil.cpp PhysicSystem/LinearMath/btGeometryUtil.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGeometryUtil.o PhysicSystem/LinearMath/btGeometryUtil.cpp
+
+btPolarDecomposition.o: PhysicSystem/LinearMath/btPolarDecomposition.cpp PhysicSystem/LinearMath/btPolarDecomposition.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btPolarDecomposition.o PhysicSystem/LinearMath/btPolarDecomposition.cpp
+
+btQuickprof.o: PhysicSystem/LinearMath/btQuickprof.cpp PhysicSystem/LinearMath/btQuickprof.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btQuickprof.o PhysicSystem/LinearMath/btQuickprof.cpp
+
+btSerializer.o: PhysicSystem/LinearMath/btSerializer.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSerializer.o PhysicSystem/LinearMath/btSerializer.cpp
+
+btVector3.o: PhysicSystem/LinearMath/btVector3.cpp PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btVector3.o PhysicSystem/LinearMath/btVector3.cpp
+
+btAxisSweep3.o: PhysicSystem/BulletCollision/BroadphaseCollision/btAxisSweep3.cpp PhysicSystem/BulletCollision/BroadphaseCollision/btAxisSweep3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/LinearMath/btQuickprof.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btAxisSweep3.o PhysicSystem/BulletCollision/BroadphaseCollision/btAxisSweep3.cpp
+
+btBroadphaseProxy.o: PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.cpp PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btBroadphaseProxy.o PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.cpp
+
+btCollisionAlgorithm.o: PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.cpp PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btCollisionAlgorithm.o PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.cpp
+
+btDbvt.o: PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.cpp PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btDbvt.o PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.cpp
+
+btDbvtBroadphase.o: PhysicSystem/BulletCollision/BroadphaseCollision/btDbvtBroadphase.cpp PhysicSystem/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/LinearMath/btQuickprof.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btDbvtBroadphase.o PhysicSystem/BulletCollision/BroadphaseCollision/btDbvtBroadphase.cpp
+
+btDispatcher.o: PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.cpp PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/LinearMath/btScalar.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btDispatcher.o PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.cpp
+
+btMultiSapBroadphase.o: PhysicSystem/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.cpp PhysicSystem/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMultiSapBroadphase.o PhysicSystem/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.cpp
+
+btOverlappingPairCache.o: PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.cpp PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btOverlappingPairCache.o PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.cpp
+
+btQuantizedBvh.o: PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.cpp PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/LinearMath/btHashMap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btQuantizedBvh.o PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.cpp
+
+btSimpleBroadphase.o: PhysicSystem/BulletCollision/BroadphaseCollision/btSimpleBroadphase.cpp PhysicSystem/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSimpleBroadphase.o PhysicSystem/BulletCollision/BroadphaseCollision/btSimpleBroadphase.cpp
+
+btActivatingCollisionAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btActivatingCollisionAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.cpp
+
+btBox2dBox2dCollisionAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btBox2dBox2dCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btBox2dBox2dCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btBoxBoxDetector.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBox2dShape.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btBox2dBox2dCollisionAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btBox2dBox2dCollisionAlgorithm.cpp
+
+btBoxBoxCollisionAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btBoxBoxDetector.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btBoxBoxCollisionAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.cpp
+
+btBoxBoxDetector.o: PhysicSystem/BulletCollision/CollisionDispatch/btBoxBoxDetector.cpp PhysicSystem/BulletCollision/CollisionDispatch/btBoxBoxDetector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btBoxBoxDetector.o PhysicSystem/BulletCollision/CollisionDispatch/btBoxBoxDetector.cpp
+
+btCollisionDispatcher.o: PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.cpp PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/LinearMath/btPoolAllocator.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionConfiguration.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btCollisionDispatcher.o PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.cpp
+
+btCollisionObject.o: PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.cpp PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/LinearMath/btHashMap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btCollisionObject.o PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.cpp
+
+btCollisionWorld.o: PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.cpp PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btOptimizedBvh.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleInfoMap.h \
+		PhysicSystem/LinearMath/btHashMap.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btRaycastCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCompoundShape.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.h \
+		PhysicSystem/LinearMath/btQuickprof.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexPolyhedron.h \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTetrahedronShape.h \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactQuantizedBvh.h \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactBvh.h \
+		PhysicSystem/BulletCollision/Gimpact/btBoxCollision.h \
+		PhysicSystem/BulletCollision/Gimpact/btTriangleShapeEx.h \
+		PhysicSystem/BulletCollision/Gimpact/btClipPolygon.h \
+		PhysicSystem/LinearMath/btGeometryUtil.h \
+		PhysicSystem/BulletCollision/Gimpact/btGeometryOperations.h \
+		PhysicSystem/BulletCollision/Gimpact/btQuantization.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionConfiguration.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCapsuleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConeShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCylinderShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btMultiSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStaticPlaneShape.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btCollisionWorld.o PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.cpp
+
+btCompoundCollisionAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCompoundShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btCompoundCollisionAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.cpp
+
+btCompoundCompoundCollisionAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btCompoundCompoundCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btCompoundCompoundCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btHashedSimplePairCache.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCompoundShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btCompoundCompoundCollisionAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btCompoundCompoundCollisionAlgorithm.cpp
+
+btConvex2dConvex2dAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btConvex2dConvex2dAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btConvex2dConvex2dAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCapsuleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpa2.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvex2dConvex2dAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btConvex2dConvex2dAlgorithm.cpp
+
+btConvexConcaveCollisionAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btConvexConcaveCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btConvexConcaveCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btMultiSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btRaycastCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexConcaveCollisionAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btConvexConcaveCollisionAlgorithm.cpp
+
+btConvexConvexAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btConvexConvexAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btConvexConvexAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCapsuleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpa2.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPolyhedralContactClipping.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexConvexAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btConvexConvexAlgorithm.cpp
+
+btConvexPlaneCollisionAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btConvexPlaneCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btConvexPlaneCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStaticPlaneShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexPlaneCollisionAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btConvexPlaneCollisionAlgorithm.cpp
+
+btDefaultCollisionConfiguration.o: PhysicSystem/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.cpp PhysicSystem/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionConfiguration.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btConvexConvexAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btEmptyCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btConvexConcaveCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCompoundCompoundCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btHashedSimplePairCache.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btConvexPlaneCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSphereBoxCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSphereTriangleCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.h \
+		PhysicSystem/LinearMath/btPoolAllocator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btDefaultCollisionConfiguration.o PhysicSystem/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.cpp
+
+btEmptyCollisionAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btEmptyCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btEmptyCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btEmptyCollisionAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btEmptyCollisionAlgorithm.cpp
+
+btGhostObject.o: PhysicSystem/BulletCollision/CollisionDispatch/btGhostObject.cpp PhysicSystem/BulletCollision/CollisionDispatch/btGhostObject.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGhostObject.o PhysicSystem/BulletCollision/CollisionDispatch/btGhostObject.cpp
+
+btHashedSimplePairCache.o: PhysicSystem/BulletCollision/CollisionDispatch/btHashedSimplePairCache.cpp PhysicSystem/BulletCollision/CollisionDispatch/btHashedSimplePairCache.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btHashedSimplePairCache.o PhysicSystem/BulletCollision/CollisionDispatch/btHashedSimplePairCache.cpp
+
+btInternalEdgeUtility.o: PhysicSystem/BulletCollision/CollisionDispatch/btInternalEdgeUtility.cpp PhysicSystem/BulletCollision/CollisionDispatch/btInternalEdgeUtility.h \
+		PhysicSystem/LinearMath/btHashMap.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleInfoMap.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btOptimizedBvh.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btInternalEdgeUtility.o PhysicSystem/BulletCollision/CollisionDispatch/btInternalEdgeUtility.cpp
+
+btManifoldResult.o: PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.cpp PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btManifoldResult.o PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.cpp
+
+btSimulationIslandManager.o: PhysicSystem/BulletCollision/CollisionDispatch/btSimulationIslandManager.cpp PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSimulationIslandManager.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btUnionFind.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/LinearMath/btQuickprof.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSimulationIslandManager.o PhysicSystem/BulletCollision/CollisionDispatch/btSimulationIslandManager.cpp
+
+btSphereBoxCollisionAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btSphereBoxCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btSphereBoxCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSphereBoxCollisionAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btSphereBoxCollisionAlgorithm.cpp
+
+btSphereSphereCollisionAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSphereSphereCollisionAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.cpp
+
+btSphereTriangleCollisionAlgorithm.o: PhysicSystem/BulletCollision/CollisionDispatch/btSphereTriangleCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btSphereTriangleCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/SphereTriangleDetector.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSphereTriangleCollisionAlgorithm.o PhysicSystem/BulletCollision/CollisionDispatch/btSphereTriangleCollisionAlgorithm.cpp
+
+btUnionFind.o: PhysicSystem/BulletCollision/CollisionDispatch/btUnionFind.cpp PhysicSystem/BulletCollision/CollisionDispatch/btUnionFind.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btUnionFind.o PhysicSystem/BulletCollision/CollisionDispatch/btUnionFind.cpp
+
+SphereTriangleDetector.o: PhysicSystem/BulletCollision/CollisionDispatch/SphereTriangleDetector.cpp PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/SphereTriangleDetector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o SphereTriangleDetector.o PhysicSystem/BulletCollision/CollisionDispatch/SphereTriangleDetector.cpp
+
+btBox2dShape.o: PhysicSystem/BulletCollision/CollisionShapes/btBox2dShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btBox2dShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btBox2dShape.o PhysicSystem/BulletCollision/CollisionShapes/btBox2dShape.cpp
+
+btBoxShape.o: PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btBoxShape.o PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.cpp
+
+btBvhTriangleMeshShape.o: PhysicSystem/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btOptimizedBvh.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleInfoMap.h \
+		PhysicSystem/LinearMath/btHashMap.h \
+		PhysicSystem/LinearMath/btSerializer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btBvhTriangleMeshShape.o PhysicSystem/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.cpp
+
+btCapsuleShape.o: PhysicSystem/BulletCollision/CollisionShapes/btCapsuleShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btCapsuleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btCapsuleShape.o PhysicSystem/BulletCollision/CollisionShapes/btCapsuleShape.cpp
+
+btCollisionShape.o: PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/LinearMath/btHashMap.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btCollisionShape.o PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.cpp
+
+btCompoundShape.o: PhysicSystem/BulletCollision/CollisionShapes/btCompoundShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btCompoundShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/LinearMath/btHashMap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btCompoundShape.o PhysicSystem/BulletCollision/CollisionShapes/btCompoundShape.cpp
+
+btConcaveShape.o: PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConcaveShape.o PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.cpp
+
+btConeShape.o: PhysicSystem/BulletCollision/CollisionShapes/btConeShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btConeShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConeShape.o PhysicSystem/BulletCollision/CollisionShapes/btConeShape.cpp
+
+btConvex2dShape.o: PhysicSystem/BulletCollision/CollisionShapes/btConvex2dShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btConvex2dShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvex2dShape.o PhysicSystem/BulletCollision/CollisionShapes/btConvex2dShape.cpp
+
+btConvexHullShape.o: PhysicSystem/BulletCollision/CollisionShapes/btConvexHullShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btConvexHullShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/LinearMath/btHashMap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexHullShape.o PhysicSystem/BulletCollision/CollisionShapes/btConvexHullShape.cpp
+
+btConvexInternalShape.o: PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexInternalShape.o PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.cpp
+
+btConvexPointCloudShape.o: PhysicSystem/BulletCollision/CollisionShapes/btConvexPointCloudShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btConvexPointCloudShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexPointCloudShape.o PhysicSystem/BulletCollision/CollisionShapes/btConvexPointCloudShape.cpp
+
+btConvexPolyhedron.o: PhysicSystem/BulletCollision/CollisionShapes/btConvexPolyhedron.cpp PhysicSystem/BulletCollision/CollisionShapes/btConvexPolyhedron.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btHashMap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexPolyhedron.o PhysicSystem/BulletCollision/CollisionShapes/btConvexPolyhedron.cpp
+
+btConvexShape.o: PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCylinderShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConeShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCapsuleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexHullShape.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexPointCloudShape.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexShape.o PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.cpp
+
+btConvexTriangleMeshShape.o: PhysicSystem/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexTriangleMeshShape.o PhysicSystem/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.cpp
+
+btCylinderShape.o: PhysicSystem/BulletCollision/CollisionShapes/btCylinderShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btCylinderShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btCylinderShape.o PhysicSystem/BulletCollision/CollisionShapes/btCylinderShape.cpp
+
+btEmptyShape.o: PhysicSystem/BulletCollision/CollisionShapes/btEmptyShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btEmptyShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btEmptyShape.o PhysicSystem/BulletCollision/CollisionShapes/btEmptyShape.cpp
+
+btHeightfieldTerrainShape.o: PhysicSystem/BulletCollision/CollisionShapes/btHeightfieldTerrainShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btHeightfieldTerrainShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/LinearMath/btTransformUtil.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btHeightfieldTerrainShape.o PhysicSystem/BulletCollision/CollisionShapes/btHeightfieldTerrainShape.cpp
+
+btMinkowskiSumShape.o: PhysicSystem/BulletCollision/CollisionShapes/btMinkowskiSumShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btMinkowskiSumShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMinkowskiSumShape.o PhysicSystem/BulletCollision/CollisionShapes/btMinkowskiSumShape.cpp
+
+btMultimaterialTriangleMeshShape.o: PhysicSystem/BulletCollision/CollisionShapes/btMultimaterialTriangleMeshShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btMultimaterialTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btOptimizedBvh.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleInfoMap.h \
+		PhysicSystem/LinearMath/btHashMap.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btMaterial.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexMaterialArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMultimaterialTriangleMeshShape.o PhysicSystem/BulletCollision/CollisionShapes/btMultimaterialTriangleMeshShape.cpp
+
+btMultiSphereShape.o: PhysicSystem/BulletCollision/CollisionShapes/btMultiSphereShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btMultiSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/LinearMath/btHashMap.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMultiSphereShape.o PhysicSystem/BulletCollision/CollisionShapes/btMultiSphereShape.cpp
+
+btOptimizedBvh.o: PhysicSystem/BulletCollision/CollisionShapes/btOptimizedBvh.cpp PhysicSystem/BulletCollision/CollisionShapes/btOptimizedBvh.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btOptimizedBvh.o PhysicSystem/BulletCollision/CollisionShapes/btOptimizedBvh.cpp
+
+btPolyhedralConvexShape.o: PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexPolyhedron.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btConvexHullComputer.h \
+		PhysicSystem/LinearMath/btGeometryUtil.h \
+		PhysicSystem/LinearMath/btGrahamScan2dConvexHull.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btPolyhedralConvexShape.o PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.cpp
+
+btScaledBvhTriangleMeshShape.o: PhysicSystem/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btOptimizedBvh.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleInfoMap.h \
+		PhysicSystem/LinearMath/btHashMap.h \
+		PhysicSystem/LinearMath/btSerializer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btScaledBvhTriangleMeshShape.o PhysicSystem/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.cpp
+
+btShapeHull.o: PhysicSystem/BulletCollision/CollisionShapes/btShapeHull.cpp PhysicSystem/BulletCollision/CollisionShapes/btShapeHull.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btConvexHull.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btShapeHull.o PhysicSystem/BulletCollision/CollisionShapes/btShapeHull.cpp
+
+btSphereShape.o: PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSphereShape.o PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.cpp
+
+btStaticPlaneShape.o: PhysicSystem/BulletCollision/CollisionShapes/btStaticPlaneShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btStaticPlaneShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/LinearMath/btTransformUtil.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btStaticPlaneShape.o PhysicSystem/BulletCollision/CollisionShapes/btStaticPlaneShape.cpp
+
+btStridingMeshInterface.o: PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.cpp PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/LinearMath/btHashMap.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btStridingMeshInterface.o PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.cpp
+
+btTetrahedronShape.o: PhysicSystem/BulletCollision/CollisionShapes/btTetrahedronShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btTetrahedronShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btTetrahedronShape.o PhysicSystem/BulletCollision/CollisionShapes/btTetrahedronShape.cpp
+
+btTriangleBuffer.o: PhysicSystem/BulletCollision/CollisionShapes/btTriangleBuffer.cpp PhysicSystem/BulletCollision/CollisionShapes/btTriangleBuffer.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btTriangleBuffer.o PhysicSystem/BulletCollision/CollisionShapes/btTriangleBuffer.cpp
+
+btTriangleCallback.o: PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.cpp PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btTriangleCallback.o PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.cpp
+
+btTriangleIndexVertexArray.o: PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.cpp PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btTriangleIndexVertexArray.o PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.cpp
+
+btTriangleIndexVertexMaterialArray.o: PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexMaterialArray.cpp PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexMaterialArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btTriangleIndexVertexMaterialArray.o PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexMaterialArray.cpp
+
+btTriangleMesh.o: PhysicSystem/BulletCollision/CollisionShapes/btTriangleMesh.cpp PhysicSystem/BulletCollision/CollisionShapes/btTriangleMesh.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btTriangleMesh.o PhysicSystem/BulletCollision/CollisionShapes/btTriangleMesh.cpp
+
+btTriangleMeshShape.o: PhysicSystem/BulletCollision/CollisionShapes/btTriangleMeshShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btTriangleMeshShape.o PhysicSystem/BulletCollision/CollisionShapes/btTriangleMeshShape.cpp
+
+btUniformScalingShape.o: PhysicSystem/BulletCollision/CollisionShapes/btUniformScalingShape.cpp PhysicSystem/BulletCollision/CollisionShapes/btUniformScalingShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btUniformScalingShape.o PhysicSystem/BulletCollision/CollisionShapes/btUniformScalingShape.cpp
+
+btContactProcessing.o: PhysicSystem/BulletCollision/Gimpact/btContactProcessing.cpp PhysicSystem/BulletCollision/Gimpact/btContactProcessing.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/Gimpact/btTriangleShapeEx.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/Gimpact/btBoxCollision.h \
+		PhysicSystem/BulletCollision/Gimpact/btClipPolygon.h \
+		PhysicSystem/LinearMath/btGeometryUtil.h \
+		PhysicSystem/BulletCollision/Gimpact/btGeometryOperations.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btContactProcessing.o PhysicSystem/BulletCollision/Gimpact/btContactProcessing.cpp
+
+btGenericPoolAllocator.o: PhysicSystem/BulletCollision/Gimpact/btGenericPoolAllocator.cpp PhysicSystem/BulletCollision/Gimpact/btGenericPoolAllocator.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btScalar.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGenericPoolAllocator.o PhysicSystem/BulletCollision/Gimpact/btGenericPoolAllocator.cpp
+
+btGImpactBvh.o: PhysicSystem/BulletCollision/Gimpact/btGImpactBvh.cpp PhysicSystem/BulletCollision/Gimpact/btGImpactBvh.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/Gimpact/btBoxCollision.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/Gimpact/btTriangleShapeEx.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/Gimpact/btClipPolygon.h \
+		PhysicSystem/LinearMath/btGeometryUtil.h \
+		PhysicSystem/BulletCollision/Gimpact/btGeometryOperations.h \
+		PhysicSystem/LinearMath/btQuickprof.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGImpactBvh.o PhysicSystem/BulletCollision/Gimpact/btGImpactBvh.cpp
+
+btGImpactCollisionAlgorithm.o: PhysicSystem/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.cpp PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTetrahedronShape.h \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactQuantizedBvh.h \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactBvh.h \
+		PhysicSystem/BulletCollision/Gimpact/btBoxCollision.h \
+		PhysicSystem/BulletCollision/Gimpact/btTriangleShapeEx.h \
+		PhysicSystem/BulletCollision/Gimpact/btClipPolygon.h \
+		PhysicSystem/LinearMath/btGeometryUtil.h \
+		PhysicSystem/BulletCollision/Gimpact/btGeometryOperations.h \
+		PhysicSystem/BulletCollision/Gimpact/btQuantization.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStaticPlaneShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCompoundShape.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btConvexConvexAlgorithm.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/Gimpact/btContactProcessing.h \
+		PhysicSystem/LinearMath/btQuickprof.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGImpactCollisionAlgorithm.o PhysicSystem/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.cpp
+
+btGImpactQuantizedBvh.o: PhysicSystem/BulletCollision/Gimpact/btGImpactQuantizedBvh.cpp PhysicSystem/BulletCollision/Gimpact/btGImpactQuantizedBvh.h \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactBvh.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/Gimpact/btBoxCollision.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/Gimpact/btTriangleShapeEx.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/Gimpact/btClipPolygon.h \
+		PhysicSystem/LinearMath/btGeometryUtil.h \
+		PhysicSystem/BulletCollision/Gimpact/btGeometryOperations.h \
+		PhysicSystem/BulletCollision/Gimpact/btQuantization.h \
+		PhysicSystem/LinearMath/btQuickprof.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGImpactQuantizedBvh.o PhysicSystem/BulletCollision/Gimpact/btGImpactQuantizedBvh.cpp
+
+btGImpactShape.o: PhysicSystem/BulletCollision/Gimpact/btGImpactShape.cpp PhysicSystem/BulletCollision/Gimpact/btGImpactShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTetrahedronShape.h \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactQuantizedBvh.h \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactBvh.h \
+		PhysicSystem/BulletCollision/Gimpact/btBoxCollision.h \
+		PhysicSystem/BulletCollision/Gimpact/btTriangleShapeEx.h \
+		PhysicSystem/BulletCollision/Gimpact/btClipPolygon.h \
+		PhysicSystem/LinearMath/btGeometryUtil.h \
+		PhysicSystem/BulletCollision/Gimpact/btGeometryOperations.h \
+		PhysicSystem/BulletCollision/Gimpact/btQuantization.h \
+		PhysicSystem/BulletCollision/Gimpact/btGImpactMassUtil.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGImpactShape.o PhysicSystem/BulletCollision/Gimpact/btGImpactShape.cpp
+
+btTriangleShapeEx.o: PhysicSystem/BulletCollision/Gimpact/btTriangleShapeEx.cpp PhysicSystem/BulletCollision/Gimpact/btTriangleShapeEx.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/Gimpact/btBoxCollision.h \
+		PhysicSystem/BulletCollision/Gimpact/btClipPolygon.h \
+		PhysicSystem/LinearMath/btGeometryUtil.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/Gimpact/btGeometryOperations.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btTriangleShapeEx.o PhysicSystem/BulletCollision/Gimpact/btTriangleShapeEx.cpp
+
+gim_box_set.o: PhysicSystem/BulletCollision/Gimpact/gim_box_set.cpp PhysicSystem/BulletCollision/Gimpact/gim_box_set.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_array.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_memory.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_math.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_radixsort.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_box_collision.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_basic_geometry_operations.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_linear_math.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_geom_types.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_tri_collision.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_clip_polygon.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gim_box_set.o PhysicSystem/BulletCollision/Gimpact/gim_box_set.cpp
+
+gim_contact.o: PhysicSystem/BulletCollision/Gimpact/gim_contact.cpp PhysicSystem/BulletCollision/Gimpact/gim_contact.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_geometry.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_basic_geometry_operations.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_linear_math.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_math.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_geom_types.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_clip_polygon.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_box_collision.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_tri_collision.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_radixsort.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_memory.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_array.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gim_contact.o PhysicSystem/BulletCollision/Gimpact/gim_contact.cpp
+
+gim_memory.o: PhysicSystem/BulletCollision/Gimpact/gim_memory.cpp PhysicSystem/BulletCollision/Gimpact/gim_memory.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_math.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gim_memory.o PhysicSystem/BulletCollision/Gimpact/gim_memory.cpp
+
+gim_tri_collision.o: PhysicSystem/BulletCollision/Gimpact/gim_tri_collision.cpp PhysicSystem/BulletCollision/Gimpact/gim_tri_collision.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_box_collision.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_basic_geometry_operations.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_linear_math.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_math.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_geom_types.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/Gimpact/gim_clip_polygon.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gim_tri_collision.o PhysicSystem/BulletCollision/Gimpact/gim_tri_collision.cpp
+
+btContinuousConvexCollision.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.cpp PhysicSystem/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPointCollector.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStaticPlaneShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btContinuousConvexCollision.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.cpp
+
+btConvexCast.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.cpp PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btConvexCast.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.cpp
+
+btGjkConvexCast.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.cpp PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPointCollector.h \
+		PhysicSystem/LinearMath/btTransformUtil.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGjkConvexCast.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.cpp
+
+btGjkEpa2.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpa2.cpp PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpa2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGjkEpa2.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpa2.cpp
+
+btGjkEpaPenetrationDepthSolver.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.cpp PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpa2.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGjkEpaPenetrationDepthSolver.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.cpp
+
+btGjkPairDetector.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.cpp PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexPenetrationDepthSolver.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btGjkPairDetector.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.cpp
+
+btMinkowskiPenetrationDepthSolver.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.cpp PhysicSystem/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMinkowskiPenetrationDepthSolver.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.cpp
+
+btPersistentManifold.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.cpp PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btPersistentManifold.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.cpp
+
+btPolyhedralContactClipping.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btPolyhedralContactClipping.cpp PhysicSystem/BulletCollision/NarrowPhaseCollision/btPolyhedralContactClipping.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexPolyhedron.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btPolyhedralContactClipping.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btPolyhedralContactClipping.cpp
+
+btRaycastCallback.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btRaycastCallback.cpp PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexPenetrationDepthSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btRaycastCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btRaycastCallback.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btRaycastCallback.cpp
+
+btSubSimplexConvexCast.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.cpp PhysicSystem/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btConvexCast.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btMinkowskiSumShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPointCollector.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/LinearMath/btTransformUtil.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btSubSimplexConvexCast.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.cpp
+
+btVoronoiSimplexSolver.o: PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.cpp PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btSimplexSolverInterface.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btVoronoiSimplexSolver.o PhysicSystem/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.cpp
+
+btKinematicCharacterController.o: PhysicSystem/BulletDynamics/Character/btKinematicCharacterController.cpp PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btGhostObject.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btMultiSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/LinearMath/btDefaultMotionState.h \
+		PhysicSystem/BulletDynamics/Character/btKinematicCharacterController.h \
+		PhysicSystem/BulletDynamics/Character/btCharacterControllerInterface.h \
+		PhysicSystem/BulletDynamics/Dynamics/btActionInterface.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btKinematicCharacterController.o PhysicSystem/BulletDynamics/Character/btKinematicCharacterController.cpp
+
+btMultiBody.o: PhysicSystem/BulletDynamics/Featherstone/btMultiBody.cpp PhysicSystem/BulletDynamics/Featherstone/btMultiBody.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLink.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLinkCollider.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMultiBody.o PhysicSystem/BulletDynamics/Featherstone/btMultiBody.cpp
+
+btMultiBodyConstraint.o: PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraint.cpp PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraint.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBody.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLink.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodySolverConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMultiBodyConstraint.o PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraint.cpp
+
+btMultiBodyConstraintSolver.o: PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraintSolver.cpp PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraintSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConstraintSolver.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodySolverConstraint.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraint.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBody.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLink.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLinkCollider.h \
+		PhysicSystem/LinearMath/btQuickprof.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMultiBodyConstraintSolver.o PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraintSolver.cpp
+
+btMultiBodyDynamicsWorld.o: PhysicSystem/BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.cpp PhysicSystem/BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.h \
+		PhysicSystem/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h \
+		PhysicSystem/BulletDynamics/Dynamics/btDynamicsWorld.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraintSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConstraintSolver.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodySolverConstraint.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraint.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBody.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLink.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLinkCollider.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSimulationIslandManager.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btUnionFind.h \
+		PhysicSystem/LinearMath/btQuickprof.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMultiBodyDynamicsWorld.o PhysicSystem/BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.cpp
+
+btMultiBodyJointLimitConstraint.o: PhysicSystem/BulletDynamics/Featherstone/btMultiBodyJointLimitConstraint.cpp PhysicSystem/BulletDynamics/Featherstone/btMultiBodyJointLimitConstraint.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraint.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBody.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLink.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodySolverConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLinkCollider.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMultiBodyJointLimitConstraint.o PhysicSystem/BulletDynamics/Featherstone/btMultiBodyJointLimitConstraint.cpp
+
+btMultiBodyJointMotor.o: PhysicSystem/BulletDynamics/Featherstone/btMultiBodyJointMotor.cpp PhysicSystem/BulletDynamics/Featherstone/btMultiBodyJointMotor.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraint.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBody.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLink.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodySolverConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLinkCollider.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMultiBodyJointMotor.o PhysicSystem/BulletDynamics/Featherstone/btMultiBodyJointMotor.cpp
+
+btMultiBodyPoint2Point.o: PhysicSystem/BulletDynamics/Featherstone/btMultiBodyPoint2Point.cpp PhysicSystem/BulletDynamics/Featherstone/btMultiBodyPoint2Point.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyConstraint.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBody.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLink.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodySolverConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletDynamics/Featherstone/btMultiBodyLinkCollider.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMultiBodyPoint2Point.o PhysicSystem/BulletDynamics/Featherstone/btMultiBodyPoint2Point.cpp
+
+btDantzigLCP.o: PhysicSystem/BulletDynamics/MLCPSolvers/btDantzigLCP.cpp PhysicSystem/BulletDynamics/MLCPSolvers/btDantzigLCP.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btDantzigLCP.o PhysicSystem/BulletDynamics/MLCPSolvers/btDantzigLCP.cpp
+
+btMLCPSolver.o: PhysicSystem/BulletDynamics/MLCPSolvers/btMLCPSolver.cpp PhysicSystem/BulletDynamics/MLCPSolvers/btMLCPSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConstraintSolver.h \
+		PhysicSystem/LinearMath/btMatrixX.h \
+		PhysicSystem/LinearMath/btQuickprof.h \
+		PhysicSystem/BulletDynamics/MLCPSolvers/btMLCPSolverInterface.h \
+		PhysicSystem/BulletDynamics/MLCPSolvers/btSolveProjectedGaussSeidel.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o btMLCPSolver.o PhysicSystem/BulletDynamics/MLCPSolvers/btMLCPSolver.cpp
+
+physicsystem.o: PhysicSystem/physicsystem.cpp PhysicSystem/physicsystem.h \
+		PhysicSystem/btBulletDynamicsCommon.h \
+		PhysicSystem/btBulletCollisionCommon.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionWorld.h \
+		PhysicSystem/LinearMath/btVector3.h \
+		PhysicSystem/LinearMath/btScalar.h \
+		PhysicSystem/LinearMath/btMinMax.h \
+		PhysicSystem/LinearMath/btAlignedAllocator.h \
+		PhysicSystem/LinearMath/btTransform.h \
+		PhysicSystem/LinearMath/btMatrix3x3.h \
+		PhysicSystem/LinearMath/btQuaternion.h \
+		PhysicSystem/LinearMath/btQuadWord.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObject.h \
+		PhysicSystem/LinearMath/btMotionState.h \
+		PhysicSystem/LinearMath/btAlignedObjectArray.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionDispatcher.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDispatcher.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btPersistentManifold.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btManifoldPoint.h \
+		PhysicSystem/LinearMath/btTransformUtil.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btManifoldResult.h \
+		PhysicSystem/BulletCollision/NarrowPhaseCollision/btDiscreteCollisionDetectorInterface.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionObjectWrapper.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseProxy.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionCreateFunc.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCache.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btBroadphaseInterface.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btOverlappingPairCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBoxShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btPolyhedralConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexInternalShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCollisionMargin.h \
+		PhysicSystem/LinearMath/btAabbUtil2.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCapsuleShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCylinderShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConeShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStaticPlaneShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConcaveShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleCallback.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexHullShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleMesh.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btStridingMeshInterface.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btOptimizedBvh.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btQuantizedBvh.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTriangleInfoMap.h \
+		PhysicSystem/LinearMath/btHashMap.h \
+		PhysicSystem/LinearMath/btSerializer.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btCompoundShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btTetrahedronShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btEmptyShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btMultiSphereShape.h \
+		PhysicSystem/BulletCollision/CollisionShapes/btUniformScalingShape.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h \
+		PhysicSystem/BulletCollision/CollisionDispatch/btCollisionConfiguration.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btSimpleBroadphase.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btAxisSweep3.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvtBroadphase.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btDbvt.h \
+		PhysicSystem/LinearMath/btQuickprof.h \
+		PhysicSystem/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.h \
+		PhysicSystem/LinearMath/btDefaultMotionState.h \
+		PhysicSystem/LinearMath/btIDebugDraw.h \
+		PhysicSystem/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h \
+		PhysicSystem/BulletDynamics/Dynamics/btDynamicsWorld.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btContactSolverInfo.h \
+		PhysicSystem/BulletDynamics/Dynamics/btSimpleDynamicsWorld.h \
+		PhysicSystem/BulletDynamics/Dynamics/btRigidBody.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btJacobianEntry.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btTypedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSolverBody.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btHingeConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConeTwistConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSliderConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btUniversalConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btHinge2Constraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btGearConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btFixedConstraint.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.h \
+		PhysicSystem/BulletDynamics/ConstraintSolver/btConstraintSolver.h \
+		PhysicSystem/BulletDynamics/Vehicle/btRaycastVehicle.h \
+		PhysicSystem/BulletDynamics/Vehicle/btVehicleRaycaster.h \
+		PhysicSystem/BulletDynamics/Vehicle/btWheelInfo.h \
+		PhysicSystem/BulletDynamics/Dynamics/btActionInterface.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o physicsystem.o PhysicSystem/physicsystem.cpp
+
+imageloaderabs.o: GraphicSystem/Common/Image/imageloaderabs.cpp GraphicSystem/Common/Image/imageloaderabs.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o imageloaderabs.o GraphicSystem/Common/Image/imageloaderabs.cpp
+
+image.o: GraphicSystem/Common/Image/image.cpp GraphicSystem/Common/Image/image.h \
+		GraphicSystem/Common/Image/imageloaderabs.h \
+		GraphicSystem/Common/Image/imageloaderbmp.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o image.o GraphicSystem/Common/Image/image.cpp
+
+imageloaderbmp.o: GraphicSystem/Common/Image/imageloaderbmp.cpp GraphicSystem/Common/Image/imageloaderbmp.h \
+		GraphicSystem/Common/Image/imageloaderabs.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o imageloaderbmp.o GraphicSystem/Common/Image/imageloaderbmp.cpp
+
+texture.o: GraphicSystem/Textures/texture.cpp GraphicSystem/Textures/texture.h \
+		GraphicSystem/pregraphic.h \
+		GraphicSystem/Common/Image/image.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o texture.o GraphicSystem/Textures/texture.cpp
 
 ####### Install
 

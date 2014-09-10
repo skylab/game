@@ -2,7 +2,7 @@
 
 #include <new>
 
-Game *Game::mInstance = NULL;
+Game *Game::mInstance = nullptr;
 
 Game *Game::Instance()
 {
@@ -20,7 +20,7 @@ Game *Game::Instance()
 void Game::Remove()
 {
     delete mInstance;
-    mInstance = NULL;
+    mInstance = nullptr;
 }
 
 void Game::Execute()
@@ -35,7 +35,7 @@ void Game::Execute()
     }
 }
 
-Game::Game() : mGraphicSystem(NULL), mPhysicSystem(NULL), mIsStarted(false)
+Game::Game() : mGraphicSystem(nullptr), mPhysicSystem(nullptr), mIsStarted(false)
 {
    bool started = Init();
    setIsStarted(started);
@@ -51,9 +51,9 @@ Game::~Game()
 bool Game::Init()
 {
     mGraphicSystem = GraphicSystem::Instance();
-    mPhysicSystem = PhysicSystem::Instance();
+    //mPhysicSystem = PhysicSystem::Instance();
 
-    return mGraphicSystem != NULL;
+    return (nullptr != mGraphicSystem) ;//&& (nullptr != mPhysicSystem);
 }
 
 bool Game::getIsStarted() const

@@ -10,7 +10,13 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+//FOR STD::CERR
 #include <iostream>
+
+//COMMON
+//WORK WITH IMAGES
+#include "Common/Image/image.h"
+
 
 #define _DEBUG
 
@@ -19,5 +25,6 @@
     #define DEBUG_SHADER
     #define DEBUG_SHADER_PROGRAMM
 #endif
+
 
 #endif // PREGRAPHIC_H

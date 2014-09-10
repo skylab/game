@@ -151,7 +151,11 @@ SOURCES += main.cpp \
     PhysicSystem/BulletDynamics/Featherstone/btMultiBodyPoint2Point.cpp \
     PhysicSystem/BulletDynamics/MLCPSolvers/btDantzigLCP.cpp \
     PhysicSystem/BulletDynamics/MLCPSolvers/btMLCPSolver.cpp \
-    PhysicSystem/physicsystem.cpp
+    PhysicSystem/physicsystem.cpp \
+    GraphicSystem/Common/Image/imageloaderabs.cpp \
+    GraphicSystem/Common/Image/image.cpp \
+    GraphicSystem/Common/Image/imageloaderbmp.cpp \
+    GraphicSystem/Textures/texture.cpp
 
 HEADERS += \
     GraphicSystem/graphicsystem.h \
@@ -365,9 +369,14 @@ HEADERS += \
     PhysicSystem/BulletDynamics/MLCPSolvers/btMLCPSolverInterface.h \
     PhysicSystem/BulletDynamics/MLCPSolvers/btPATHSolver.h \
     PhysicSystem/BulletDynamics/MLCPSolvers/btSolveProjectedGaussSeidel.h \
-    PhysicSystem/physicsystem.h
+    PhysicSystem/physicsystem.h \
+    GraphicSystem/Common/Image/imageloaderabs.h \
+    GraphicSystem/Common/Image/image.h \
+    GraphicSystem/Common/Image/imageloaderbmp.h \
+    GraphicSystem/Textures/texture.h
 
 OTHER_FILES += \
-    GraphicSystem/Shaders/VertexShader.vsh \
-    GraphicSystem/Shaders/FragmentShader.fsh
+    Resources/Menus/MainMenu.bmp \
+    Resources/Shaders/FragmentShader.fsh \
+    Resources/Shaders/VertexShader.vsh
 

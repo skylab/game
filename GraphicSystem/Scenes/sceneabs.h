@@ -5,8 +5,7 @@
 
 #include "../Objects/objectabs.h"
 #include "../Shaders/shaderprogram.h"
-
-#include <list>
+#include "../Textures/texture.h"
 
 class SceneAbs
 {
@@ -14,7 +13,7 @@ public:
     SceneAbs();
     virtual ~SceneAbs() = 0;
 
-    virtual void DrawScene();
+    virtual void DrawScene() = 0;
     virtual void KeyBoard(unsigned char &key, int &x, int &y);
 
     void ChangeScene(SceneAbs *scene);

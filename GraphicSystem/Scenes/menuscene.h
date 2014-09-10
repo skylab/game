@@ -14,6 +14,9 @@ public:
     virtual void DrawScene();
 
     virtual void KeyBoard(unsigned char &key, int &x, int &y);
+
+private:
+    Texture *mTexture;
 };
 
 #endif // MENUSCENE_H

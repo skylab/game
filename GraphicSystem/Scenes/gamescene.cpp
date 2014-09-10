@@ -6,8 +6,8 @@
 
 GameScene::GameScene() : SceneAbs()
 {
-    mShaderProgram = new (std::nothrow) ShaderProgram("GraphicSystem/Shaders/VertexShader.vsh",
-                                                      "GraphicSystem/Shaders/FragmentShader.fsh");
+    mShaderProgram = new (std::nothrow) ShaderProgram("Resources/Shaders/VertexShader.vsh",
+                                                      "Resources/Shaders/FragmentShader.fsh");
 
     if (NULL == mShaderProgram)
     {

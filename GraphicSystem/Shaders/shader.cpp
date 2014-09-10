@@ -27,7 +27,9 @@ bool Shader::LoadFromFile(const char *filename)
         mShaderSourceCode = new (std::nothrow) char[mShaderSourceCodeLength];
         if (NULL == mShaderSourceCode)
         {
+#ifdef DEBUG_SHADER
             std::cerr << "Can't allocate shader source code space:" << filename << std::endl;
+#endif
             return false;
         }
 
@@ -43,11 +45,15 @@ bool Shader::LoadFromFile(const char *filename)
         }
         else
         {
+#ifdef DEBUG_SHADER
             std::cerr << "Can't read shader source code fully:" << filename << std::endl;
+#endif
         }
         shaderFile.close();
     }
+#ifdef DEBUG_SHADER
     std::cerr << "Can't open shader source code:" << filename << std::endl;
+#endif
     return false;
 }
 
@@ -60,12 +66,12 @@ bool Shader::CompileShader()
     glGetShaderiv(mShaderID, GL_COMPILE_STATUS, &status);
     if (status != 1)
     {
+#ifdef DEBUG_SHADER
         if (GL_VERTEX_SHADER == mShaderType)
             std::cerr << "Vertex shader compile status " << status << std::endl;
         if (GL_FRAGMENT_SHADER == mShaderType)
             std::cerr << "Fragment shader compile status " << status << std::endl;
-
-
+#endif
     }
 
 #ifdef DEBUG_SHADER

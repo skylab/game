@@ -2,8 +2,10 @@
 
 #include "../graphicsystem.h"
 
+#define KEY_ESCAPE (27)
+
 SceneAbs::SceneAbs() :
-    mShaderProgram(NULL)
+    mShaderProgram(nullptr)
 {
     ;
 }
@@ -11,6 +13,7 @@ SceneAbs::SceneAbs() :
 SceneAbs::~SceneAbs()
 {
     delete mShaderProgram;
+    mShaderProgram = nullptr;
 }
 
 void SceneAbs::DrawScene()
@@ -24,20 +27,25 @@ void SceneAbs::KeyBoard(unsigned char &key, int &x, int &y)
     (void)y;
     switch(key)
     {
-    case 27/*Escape*/:
+    case KEY_ESCAPE:
         exit(0);
         break;
     default:
-#ifdef _DEBUG
         std::cerr << "User press: " << key << std::endl;
-#endif
         break;
     }
 }
 
 void SceneAbs::ChangeScene(SceneAbs *scene)
 {
-    GraphicSystem::Instance()->ChangeScene(scene);
-    GraphicSystem::Instance()->Draw();
+    if (nullptr != scene)
+    {
+        GraphicSystem::Instance()->ChangeScene(scene);
+        GraphicSystem::Instance()->Draw();
+    }
+    else
+    {
+        std::cerr << "SceneAbs::ChangeScene new scene is nullptr" << std::endl;
+    }
 }
 

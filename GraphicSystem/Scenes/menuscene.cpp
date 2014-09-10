@@ -2,9 +2,20 @@
 
 #include "gamescene.h"
 
-MenuScene::MenuScene() : SceneAbs()
+#define KEY_ENTER (13)
+
+MenuScene::MenuScene() : SceneAbs(), mTexture(nullptr)
 {
-    ;
+    try
+    {
+        mTexture = new Texture("Resources/Menus/MainMenu.bmp");
+    }
+    catch(std::bad_alloc &ba)
+    {
+        (void)ba;
+        std::cerr << "MenuScene::MenuScene() Can't allocate Texture" << std::endl;
+        return;
+    }
 }
 
 MenuScene::~MenuScene()
@@ -24,7 +35,7 @@ void MenuScene::KeyBoard(unsigned char &key, int &x, int &y)
 {
     switch (key)
     {
-    case 13:
+    case KEY_ENTER:
         ChangeScene(new (std::nothrow) GameScene());
         break;
     default:

@@ -2,7 +2,7 @@
 
 #include "Scenes/menuscene.h"
 
-GraphicSystem *GraphicSystem::mInstance = NULL;
+GraphicSystem *GraphicSystem::mInstance = nullptr;
 
 void DrawFunction()
 {
@@ -24,7 +24,7 @@ GraphicSystem *GraphicSystem::Instance()
     if (NULL == mInstance)
     {
         mInstance = new (std::nothrow) GraphicSystem();
-        if (NULL == mInstance)
+        if (nullptr == mInstance)
         {
             std::cerr << "Can't allocate GraphicSystem object" << std::endl;
         }
@@ -35,7 +35,7 @@ GraphicSystem *GraphicSystem::Instance()
 void GraphicSystem::Remove()
 {
     delete mInstance;
-    mInstance = NULL;
+    mInstance = nullptr;
 }
 
 void GraphicSystem::Draw()
@@ -46,7 +46,6 @@ void GraphicSystem::Draw()
 
 void GraphicSystem::Reshape(int &width, int &height)
 {
-    //TODO;
     glViewport(0, 0, width, height);
 }
 
@@ -64,7 +63,7 @@ GraphicSystem::~GraphicSystem()
 {
     //TODO;
     delete mScene;
-    mScene = NULL;
+    mScene = nullptr;
 }
 
 bool GraphicSystem::Init(unsigned int width, unsigned int height)
@@ -94,7 +93,6 @@ bool GraphicSystem::Init(unsigned int width, unsigned int height)
 
     glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
 
-
     ChangeScene(new (std::nothrow) MenuScene());
     return true;
 }
@@ -104,4 +102,5 @@ void GraphicSystem::ChangeScene(SceneAbs *scene)
     SceneAbs *oldScene = mScene;
     mScene = scene;
     delete oldScene;
+    oldScene = nullptr;
 }
