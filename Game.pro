@@ -14,9 +14,7 @@ SOURCES += main.cpp \
     GraphicSystem/Objects/objectabs.cpp \
     GraphicSystem/Shaders/shader.cpp \
     GraphicSystem/Shaders/shaderprogram.cpp \
-    GraphicSystem/Objects/objecttriangle.cpp \
     GraphicSystem/Objects/objectcube.cpp \
-    GraphicSystem/Objects/objectquad.cpp \
     GraphicSystem/Scenes/menuscene.cpp \
     GraphicSystem/Scenes/gamescene.cpp \
     PhysicSystem/BulletDynamics/ConstraintSolver/btConeTwistConstraint.cpp \
@@ -152,10 +150,13 @@ SOURCES += main.cpp \
     PhysicSystem/BulletDynamics/MLCPSolvers/btDantzigLCP.cpp \
     PhysicSystem/BulletDynamics/MLCPSolvers/btMLCPSolver.cpp \
     PhysicSystem/physicsystem.cpp \
-    GraphicSystem/Common/Image/imageloaderabs.cpp \
-    GraphicSystem/Common/Image/image.cpp \
-    GraphicSystem/Common/Image/imageloaderbmp.cpp \
-    GraphicSystem/Textures/texture.cpp
+    GraphicSystem/Textures/texture.cpp \
+    GraphicSystem/Objects/objectitem.cpp \
+    GraphicSystem/Textures/image.cpp \
+    GraphicSystem/Textures/imageloaderabs.cpp \
+    GraphicSystem/Textures/imageloaderbmp.cpp \
+    GraphicSystem/Objects/objectloader3ds.cpp \
+    GraphicSystem/Objects/objectloader.cpp
 
 HEADERS += \
     GraphicSystem/graphicsystem.h \
@@ -165,9 +166,7 @@ HEADERS += \
     GraphicSystem/Objects/objectabs.h \
     GraphicSystem/Shaders/shader.h \
     GraphicSystem/Shaders/shaderprogram.h \
-    GraphicSystem/Objects/objecttriangle.h \
     GraphicSystem/Objects/objectcube.h \
-    GraphicSystem/Objects/objectquad.h \
     GraphicSystem/Scenes/menuscene.h \
     GraphicSystem/Scenes/gamescene.h \
     PhysicSystem/btBulletDynamicsCommon.h \
@@ -370,10 +369,13 @@ HEADERS += \
     PhysicSystem/BulletDynamics/MLCPSolvers/btPATHSolver.h \
     PhysicSystem/BulletDynamics/MLCPSolvers/btSolveProjectedGaussSeidel.h \
     PhysicSystem/physicsystem.h \
-    GraphicSystem/Common/Image/imageloaderabs.h \
-    GraphicSystem/Common/Image/image.h \
-    GraphicSystem/Common/Image/imageloaderbmp.h \
-    GraphicSystem/Textures/texture.h
+    GraphicSystem/Textures/texture.h \
+    GraphicSystem/Objects/objectitem.h \
+    GraphicSystem/Textures/image.h \
+    GraphicSystem/Textures/imageloaderabs.h \
+    GraphicSystem/Textures/imageloaderbmp.h \
+    GraphicSystem/Objects/objectloader3ds.h \
+    GraphicSystem/Objects/objectloader.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

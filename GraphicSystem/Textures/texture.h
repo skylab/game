@@ -3,7 +3,7 @@
 
 #include "../pregraphic.h"
 
-#include "../Common/Image/image.h"
+#include "image.h"
 
 class Texture
 {
@@ -12,6 +12,7 @@ public:
 
 private:
     Image mImg;
+    GLuint mTextureID;
 };
 
 #endif // TEXTURE_H

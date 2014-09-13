@@ -2,20 +2,21 @@
 #define OBJECTABS_H
 
 #include "../pregraphic.h"
+#include "objectloader.h"
 
 class GraphicSystem;
 
 class ObjectAbs
 {
 public:
-    ObjectAbs(glm::vec3 position);
+    ObjectAbs(glm::vec3 position, char *modelFile = nullptr);
     ~ObjectAbs();
 
     GLuint &GetVertexVBO();
     GLuint &GetColorVBO();
 
-    const glm::vec3 *GetVertexes();
-    const glm::vec3 *GetColor();
+    glm::vec3 *GetVertexes();
+    glm::vec3 *GetColor();
 
     glm::vec3 &GetScale();
     glm::vec3 &GetPosition();
@@ -26,6 +27,8 @@ public:
     const GLuint &GetVertexQuantity();
 
 protected:
+    char *mModelFile;
+
     GLuint mVertexVBO;
     GLuint mColorVBO;
 

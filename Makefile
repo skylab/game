@@ -52,9 +52,7 @@ SOURCES       = main.cpp \
 		GraphicSystem/Objects/objectabs.cpp \
 		GraphicSystem/Shaders/shader.cpp \
 		GraphicSystem/Shaders/shaderprogram.cpp \
-		GraphicSystem/Objects/objecttriangle.cpp \
 		GraphicSystem/Objects/objectcube.cpp \
-		GraphicSystem/Objects/objectquad.cpp \
 		GraphicSystem/Scenes/menuscene.cpp \
 		GraphicSystem/Scenes/gamescene.cpp \
 		PhysicSystem/BulletDynamics/ConstraintSolver/btConeTwistConstraint.cpp \
@@ -190,10 +188,13 @@ SOURCES       = main.cpp \
 		PhysicSystem/BulletDynamics/MLCPSolvers/btDantzigLCP.cpp \
 		PhysicSystem/BulletDynamics/MLCPSolvers/btMLCPSolver.cpp \
 		PhysicSystem/physicsystem.cpp \
-		GraphicSystem/Common/Image/imageloaderabs.cpp \
-		GraphicSystem/Common/Image/image.cpp \
-		GraphicSystem/Common/Image/imageloaderbmp.cpp \
-		GraphicSystem/Textures/texture.cpp 
+		GraphicSystem/Textures/texture.cpp \
+		GraphicSystem/Objects/objectitem.cpp \
+		GraphicSystem/Textures/image.cpp \
+		GraphicSystem/Textures/imageloaderabs.cpp \
+		GraphicSystem/Textures/imageloaderbmp.cpp \
+		GraphicSystem/Objects/objectloader3ds.cpp \
+		GraphicSystem/Objects/objectloader.cpp 
 OBJECTS       = main.o \
 		graphicsystem.o \
 		game.o \
@@ -201,9 +202,7 @@ OBJECTS       = main.o \
 		objectabs.o \
 		shader.o \
 		shaderprogram.o \
-		objecttriangle.o \
 		objectcube.o \
-		objectquad.o \
 		menuscene.o \
 		gamescene.o \
 		btConeTwistConstraint.o \
@@ -339,10 +338,13 @@ OBJECTS       = main.o \
 		btDantzigLCP.o \
 		btMLCPSolver.o \
 		physicsystem.o \
-		imageloaderabs.o \
+		texture.o \
+		objectitem.o \
 		image.o \
+		imageloaderabs.o \
 		imageloaderbmp.o \
-		texture.o
+		objectloader3ds.o \
+		objectloader.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -583,103 +585,74 @@ compiler_clean:
 main.o: main.cpp game.h \
 		GraphicSystem/graphicsystem.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/Shaders/shader.h \
-		GraphicSystem/Textures/texture.h \
 		PhysicSystem/physicsystem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 graphicsystem.o: GraphicSystem/graphicsystem.cpp GraphicSystem/graphicsystem.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/Shaders/shader.h \
-		GraphicSystem/Textures/texture.h \
 		GraphicSystem/Scenes/menuscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphicsystem.o GraphicSystem/graphicsystem.cpp
 
 game.o: game.cpp game.h \
 		GraphicSystem/graphicsystem.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/Shaders/shader.h \
-		GraphicSystem/Textures/texture.h \
 		PhysicSystem/physicsystem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o game.cpp
 
 sceneabs.o: GraphicSystem/Scenes/sceneabs.cpp GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/Shaders/shader.h \
-		GraphicSystem/Textures/texture.h \
 		GraphicSystem/graphicsystem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sceneabs.o GraphicSystem/Scenes/sceneabs.cpp
 
 objectabs.o: GraphicSystem/Objects/objectabs.cpp GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h
+		GraphicSystem/Objects/objectloader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectabs.o GraphicSystem/Objects/objectabs.cpp
 
 shader.o: GraphicSystem/Shaders/shader.cpp GraphicSystem/Shaders/shader.h \
-		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h
+		GraphicSystem/pregraphic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shader.o GraphicSystem/Shaders/shader.cpp
 
 shaderprogram.o: GraphicSystem/Shaders/shaderprogram.cpp GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Shaders/shader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shaderprogram.o GraphicSystem/Shaders/shaderprogram.cpp
 
-objecttriangle.o: GraphicSystem/Objects/objecttriangle.cpp GraphicSystem/Objects/objecttriangle.h \
-		GraphicSystem/Objects/objectabs.h \
-		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objecttriangle.o GraphicSystem/Objects/objecttriangle.cpp
-
 objectcube.o: GraphicSystem/Objects/objectcube.cpp GraphicSystem/Objects/objectcube.h \
 		GraphicSystem/Objects/objectabs.h \
-		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h
+		GraphicSystem/pregraphic.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectcube.o GraphicSystem/Objects/objectcube.cpp
-
-objectquad.o: GraphicSystem/Objects/objectquad.cpp GraphicSystem/Objects/objectquad.h \
-		GraphicSystem/Objects/objectabs.h \
-		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectquad.o GraphicSystem/Objects/objectquad.cpp
 
 menuscene.o: GraphicSystem/Scenes/menuscene.cpp GraphicSystem/Scenes/menuscene.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/Shaders/shader.h \
-		GraphicSystem/Textures/texture.h \
 		GraphicSystem/Scenes/gamescene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menuscene.o GraphicSystem/Scenes/menuscene.cpp
 
 gamescene.o: GraphicSystem/Scenes/gamescene.cpp GraphicSystem/Scenes/gamescene.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h \
 		GraphicSystem/Scenes/sceneabs.h \
 		GraphicSystem/Objects/objectabs.h \
 		GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/Shaders/shader.h \
-		GraphicSystem/Textures/texture.h \
-		GraphicSystem/Objects/objecttriangle.h \
-		GraphicSystem/Objects/objectquad.h \
 		GraphicSystem/Objects/objectcube.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gamescene.o GraphicSystem/Scenes/gamescene.cpp
 
@@ -3799,22 +3772,33 @@ physicsystem.o: PhysicSystem/physicsystem.cpp PhysicSystem/physicsystem.h \
 		PhysicSystem/BulletDynamics/Dynamics/btActionInterface.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o physicsystem.o PhysicSystem/physicsystem.cpp
 
-imageloaderabs.o: GraphicSystem/Common/Image/imageloaderabs.cpp GraphicSystem/Common/Image/imageloaderabs.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o imageloaderabs.o GraphicSystem/Common/Image/imageloaderabs.cpp
-
-image.o: GraphicSystem/Common/Image/image.cpp GraphicSystem/Common/Image/image.h \
-		GraphicSystem/Common/Image/imageloaderabs.h \
-		GraphicSystem/Common/Image/imageloaderbmp.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o image.o GraphicSystem/Common/Image/image.cpp
-
-imageloaderbmp.o: GraphicSystem/Common/Image/imageloaderbmp.cpp GraphicSystem/Common/Image/imageloaderbmp.h \
-		GraphicSystem/Common/Image/imageloaderabs.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o imageloaderbmp.o GraphicSystem/Common/Image/imageloaderbmp.cpp
-
 texture.o: GraphicSystem/Textures/texture.cpp GraphicSystem/Textures/texture.h \
 		GraphicSystem/pregraphic.h \
-		GraphicSystem/Common/Image/image.h
+		GraphicSystem/Textures/image.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o texture.o GraphicSystem/Textures/texture.cpp
+
+objectitem.o: GraphicSystem/Objects/objectitem.cpp GraphicSystem/Objects/objectitem.h \
+		GraphicSystem/Objects/objectabs.h \
+		GraphicSystem/pregraphic.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectitem.o GraphicSystem/Objects/objectitem.cpp
+
+image.o: GraphicSystem/Textures/image.cpp GraphicSystem/Textures/image.h \
+		GraphicSystem/Textures/imageloaderabs.h \
+		GraphicSystem/Textures/imageloaderbmp.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o image.o GraphicSystem/Textures/image.cpp
+
+imageloaderabs.o: GraphicSystem/Textures/imageloaderabs.cpp GraphicSystem/Textures/imageloaderabs.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o imageloaderabs.o GraphicSystem/Textures/imageloaderabs.cpp
+
+imageloaderbmp.o: GraphicSystem/Textures/imageloaderbmp.cpp GraphicSystem/Textures/imageloaderbmp.h \
+		GraphicSystem/Textures/imageloaderabs.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o imageloaderbmp.o GraphicSystem/Textures/imageloaderbmp.cpp
+
+objectloader3ds.o: GraphicSystem/Objects/objectloader3ds.cpp GraphicSystem/Objects/objectloader3ds.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectloader3ds.o GraphicSystem/Objects/objectloader3ds.cpp
+
+objectloader.o: GraphicSystem/Objects/objectloader.cpp GraphicSystem/Objects/objectloader.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectloader.o GraphicSystem/Objects/objectloader.cpp
 
 ####### Install
 

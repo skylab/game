@@ -4,8 +4,9 @@
 
 #define KEY_ENTER (13)
 
-MenuScene::MenuScene() : SceneAbs(), mTexture(nullptr)
+MenuScene::MenuScene() : SceneAbs()
 {
+    /*
     try
     {
         mTexture = new Texture("Resources/Menus/MainMenu.bmp");
@@ -16,6 +17,7 @@ MenuScene::MenuScene() : SceneAbs(), mTexture(nullptr)
         std::cerr << "MenuScene::MenuScene() Can't allocate Texture" << std::endl;
         return;
     }
+    */
 }
 
 MenuScene::~MenuScene()

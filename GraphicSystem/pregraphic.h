@@ -14,9 +14,6 @@
 #include <iostream>
 
 //COMMON
-//WORK WITH IMAGES
-#include "Common/Image/image.h"
-
 
 #define _DEBUG
 

@@ -5,7 +5,6 @@
 
 #include "../Objects/objectabs.h"
 #include "../Shaders/shaderprogram.h"
-#include "../Textures/texture.h"
 
 class SceneAbs
 {

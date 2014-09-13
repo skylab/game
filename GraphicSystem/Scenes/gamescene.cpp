@@ -1,7 +1,5 @@
 #include "gamescene.h"
 
-#include "../Objects/objecttriangle.h"
-#include "../Objects/objectquad.h"
 #include "../Objects/objectcube.h"
 
 GameScene::GameScene() : SceneAbs()
