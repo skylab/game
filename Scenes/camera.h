@@ -15,6 +15,17 @@ public:
     virtual void SetCameraOrientation(glm::vec3 &orientation);
     virtual const glm::vec3 &GetCameraOrientation(void) const;
 
+    virtual void SetCameraUp(glm::vec3 &up);
+    virtual const glm::vec3 &GetCameraUp(void) const;
+
+    /*
+    virtual void SetCameraHorizontalOrientation(float &angle);
+    virtual const float &GetCameraHorizontalOrientation(void) const;
+
+    virtual void SetCameraVerticalOrientation(float &angle);
+    virtual const float &GetCameraVerticalOrientation(void) const;
+    */
+
     virtual void SetCameraViewAngle(float &angle);
     virtual const float &GetCameraViewAngle(void) const;
 
@@ -29,9 +40,19 @@ public:
 
     virtual const glm::mat4 &GetProjectionViewModelMatrix(void);
 
+    virtual void SetMouseSpeed(float &speed);
+    virtual const float &GetMouseSpeed(void) const;
+
 private:
     glm::vec3 mCameraPosition;
     glm::vec3 mCameraOrientation;
+    glm::vec3 mCameraUp;
+
+    /*
+    float mCameraHorizontalOrientation;
+    float mCameraVerticalOrientation;
+    */
+
     float mCameraViewAngle;
     float mCameraViewAspectRatio;
     float mCameraUnitFrom; // Distanses of view
@@ -40,8 +61,9 @@ private:
     glm::mat4 mProjectionMatrix;
     glm::mat4 mViewMatrix;
     glm::mat4 mModelMatrix;
-
     glm::mat4 mProjectioViewModelMatrix;
+
+    float mMouseSpeed;
 };
 
 #endif // CAMERA_H

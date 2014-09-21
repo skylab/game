@@ -12,7 +12,8 @@ ObjectRaw::ObjectRaw() :
 
 ObjectRaw::~ObjectRaw()
 {
-    delete[] mObjectName;
+    if (defaultObjectName != mObjectName)
+        delete[] mObjectName;
     mObjectName = nullptr;
 
     delete[] mObjectVertexes;

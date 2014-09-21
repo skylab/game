@@ -18,7 +18,7 @@ CXXFLAGS      = -m64 -pipe -g -std=c++0x -Wall -W -fPIE $(DEFINES)
 INCPATH       = -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I.
 LINK          = g++
 LFLAGS        = -m64
-LIBS          = $(SUBLIBS) -lGLEW -lglut -lGL 
+LIBS          = $(SUBLIBS) -lGLEW -lglut -lGL -lglfw 
 AR            = ar cqs
 RANLIB        = 
 QMAKE         = /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
@@ -320,7 +320,10 @@ compiler_clean:
 
 ####### Compile
 
-main.o: main.cpp game.h
+main.o: main.cpp game.h \
+		GraphicSystem/pregraphic.h \
+		Common/precommon.h \
+		Common/objectraw.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 game.o: game.cpp game.h \

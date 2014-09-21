@@ -67,14 +67,18 @@ void MainScene::Draw()
         glBindBuffer(GL_ARRAY_BUFFER, 0);
 
         glDisableVertexAttribArray(0);
+        glUseProgram(0);
     }
-
-    glUseProgram(0);
-
-    glutSwapBuffers();
 }
 
-void MainScene::Keyboard(unsigned char &key, int &x, int &y)
+void MainScene::Keyboard(int &key)
 {
-    Scene::Keyboard(key, x, y);
+    Scene::Keyboard(key);
+}
+
+void MainScene::MousePosition(double &xpos, double &ypos)
+{
+    //std::cerr << xpos << " " << ypos << std::endl;
+
+    Scene::MousePosition(xpos, ypos);
 }

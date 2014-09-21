@@ -10,7 +10,8 @@ public:
     ~MainScene();
 
     void Draw();
-    void Keyboard(unsigned char &key, int &x, int &y);
+    void Keyboard(int &key);
+    void MousePosition(double &xpos, double &ypos);
 };
 
 #endif // MAINSCENE_H

@@ -39,6 +39,16 @@ Scene *SceneManager::GetCurrentScene()
     return mScene;
 }
 
+void SceneManager::SetWindow(GLFWwindow *window)
+{
+    mWindow = window;
+}
+
+const GLFWwindow *SceneManager::GetWindow() const
+{
+    return mWindow;
+}
+
 void SceneManager::DrawScene() const
 {
     mScene->Draw();
@@ -49,14 +59,14 @@ void SceneManager::Reshape(int width, int height)
     mScene->Reshape(width, height);
 }
 
-void SceneManager::Keyboard(unsigned char &key, int &x, int &y)
+void SceneManager::Keyboard(int &key)
 {
-    mScene->Keyboard(key, x, y);
+    mScene->Keyboard(key);
 }
 
-void SceneManager::Mouse(int &key, int &state, int &x, int &y)
+void SceneManager::MousePosition(double &xpos, double &ypos)
 {
-    mScene->Mouse(key, state, x, y);
+    mScene->MousePosition(xpos, ypos);
 }
 
 void SceneManager::SimulateScene() const
@@ -64,7 +74,17 @@ void SceneManager::SimulateScene() const
     mScene->Simulate(1.0);
 }
 
-SceneManager::SceneManager()
+void SceneManager::SetReceivedExit(bool val)
+{
+    mbReceivedExit = val;
+}
+
+const bool &SceneManager::GetReceivedExit() const
+{
+    return mbReceivedExit;
+}
+
+SceneManager::SceneManager() : mbReceivedExit(false), mWindow(nullptr)
 {
     try
     {

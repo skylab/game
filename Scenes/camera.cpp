@@ -8,6 +8,9 @@ Camera::Camera() : mCameraPosition(0.0f, 0.0f, 0.0f), mCameraOrientation(0.0f, 0
     glm::vec3 orientation = glm::vec3(0.0f, 0.0f, 0.0f);
     SetCameraOrientation(orientation);
 
+    glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+    SetCameraUp(up);
+
     float viewAngle = 90.0f;
     SetCameraViewAngle(viewAngle);
 
@@ -19,6 +22,18 @@ Camera::Camera() : mCameraPosition(0.0f, 0.0f, 0.0f), mCameraOrientation(0.0f, 0
 
     float unitTo = 100.0f;
     SetCameraUnitTo(unitTo);
+
+    /*
+    float horizontalAngle = 3.14f;
+    SetCameraHorizontalOrientation(horizontalAngle);
+
+    float verticalAngle = 0.0f;
+    SetCameraVerticalOrientation(verticalAngle);
+    */
+
+    float speed = 3.0f;
+    SetMouseSpeed(speed);
+
 }
 
 Camera::~Camera()
@@ -46,6 +61,36 @@ const glm::vec3 &Camera::GetCameraOrientation() const
     return mCameraOrientation;
 }
 
+void Camera::SetCameraUp(glm::vec3 &up)
+{
+    mCameraUp = up;
+}
+
+const glm::vec3 &Camera::GetCameraUp() const
+{
+    return mCameraUp;
+}
+/*
+void Camera::SetCameraHorizontalOrientation(float &angle)
+{
+    mCameraHorizontalOrientation = angle;
+}
+
+const float &Camera::GetCameraHorizontalOrientation() const
+{
+    return mCameraHorizontalOrientation;
+}
+
+void Camera::SetCameraVerticalOrientation(float &angle)
+{
+    mCameraVerticalOrientation = angle;
+}
+
+const float &Camera::GetCameraVerticalOrientation() const
+{
+    return mCameraVerticalOrientation;
+}
+*/
 void Camera::SetCameraViewAngle(float &angle)
 {
     mCameraViewAngle = angle;
@@ -95,13 +140,23 @@ const glm::mat4 &Camera::GetProjectionViewModelMatrix()
 
     mViewMatrix = glm::lookAt(GetCameraPosition(),
                               GetCameraOrientation(),
-                              glm::vec3(0.0f, 1.0f, 0.0f)); // Up vector - where is up
+                              GetCameraUp()); // Up vector - where is up
 
     mModelMatrix = glm::mat4(1.0f);
 
     mProjectioViewModelMatrix = mProjectionMatrix * mModelMatrix * mViewMatrix;
 
     return mProjectioViewModelMatrix;
+}
+
+void Camera::SetMouseSpeed(float &speed)
+{
+    mMouseSpeed = speed;
+}
+
+const float &Camera::GetMouseSpeed() const
+{
+    return mMouseSpeed;
 }
 
 

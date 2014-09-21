@@ -1,5 +1,6 @@
 #include "objectloaders.h"
 
+/*
 #include <iostream>
 #include <cstring>
 
@@ -43,3 +44,4 @@ bool ObjectLoaders::LoadObject(ObjectAbs *object, const char *objectFile)
 
     return false;
 }
+*/

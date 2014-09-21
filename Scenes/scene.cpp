@@ -4,7 +4,9 @@
 
 Scene::Scene() : mSimulationSpeed(1.0f), mObjectQuantity(0)
 {
-    ;
+    mWindowsWidth = 1024;
+    mWindowsHeight = 768;
+    //glfwGetWindowSize(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), &mWindowsWidth, &mWindowsHeight);
 }
 
 Scene::~Scene()
@@ -60,17 +62,15 @@ void Scene::Reshape(int width, int height)
     glViewport(0, 0, width, height);
 }
 
-void Scene::Keyboard(unsigned char &key, int &x, int &y)
+void Scene::Keyboard(int &key)
 {
     //TODO;
     (void)key;
-    (void)x;
-    (void)y;
 
     switch(key)
     {
-    case KEY_ESCAPE:
-        exit(0);
+    case GLFW_KEY_ESCAPE:
+        SceneManager::Instance()->SetReceivedExit(true);
         break;
     default:
         std::cerr << "User press: " << key << std::endl;
@@ -78,9 +78,11 @@ void Scene::Keyboard(unsigned char &key, int &x, int &y)
     }
 }
 
-void Scene::Mouse(int &key, int &state, int &x, int &y)
+void Scene::MousePosition(double &xpos, double &ypos)
 {
-    //TODO
+    //glm::vec3 directionVector = GetSceneCamera().GetCameraOrientation() - GetSceneCamera().GetCameraPosition();
+
+    glfwSetCursorPos(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), (double)mWindowsWidth/2, (double)mWindowsHeight/2);
 }
 
 void Scene::Simulate(float speed) const

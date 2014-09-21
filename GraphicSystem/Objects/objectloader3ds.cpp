@@ -1,8 +1,8 @@
 #include "objectloader3ds.h"
 
+/*
 #include <fstream>
 
-#include "objectabs.h"
 
 const unsigned int CHUNK_MAIN = 0x4D4D;
 
@@ -56,3 +56,4 @@ bool ObjectLoader3ds::LoadObject(ObjectAbs *object, const char *objectFile)
     file.close();
     return false;
 }
+*/

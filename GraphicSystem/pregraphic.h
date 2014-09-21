@@ -5,10 +5,14 @@
 #include "../Common/objectraw.h"
 
 #include <GL/glew.h>
+
 #include <GL/gl.h>
 #include <GL/glut.h>
 #include <GL/glext.h>
-#include <GL/freeglut.h>
+
+//#include <GL/freeglut.h>
+
+#include <GLFW/glfw3.h>
 
 #define _DEBUG
 

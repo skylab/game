@@ -3,15 +3,11 @@
 
 #include "../GraphicSystem/pregraphic.h"
 
-
-#include "scenemanager.h"
-#include "camera.h"
-
 #include "SceneObject/object.h"
 #include "../GraphicSystem/Shaders/shaderprogram.h"
 
-const unsigned int KEY_ENTER(13);
-const unsigned int KEY_ESCAPE(27);
+#include "scenemanager.h"
+#include "camera.h"
 
 class Scene
 {
@@ -33,8 +29,8 @@ public:
 
     virtual void Draw(void) = 0;
     virtual void Reshape(int width, int height);
-    virtual void Keyboard(unsigned char &key, int &x, int &y);
-    virtual void Mouse(int &key, int &state, int &x, int &y);
+    virtual void Keyboard(int &key);
+    virtual void MousePosition(double &xpos, double &ypos);
 
     virtual void Simulate(float speed) const;
 
@@ -50,6 +46,10 @@ protected:
     unsigned int mObjectQuantity;
 
     Camera mCamera;
+
+private:
+    int mWindowsWidth;
+    int mWindowsHeight;
 };
 
 #endif // SCENE_H
