@@ -11,10 +11,12 @@ public:
     ShaderProgram(const char* vertexShaderName, const char* fragmentShaderName);
     ~ShaderProgram();
 
+    const GLuint &GetShaderProgrammID(void) const;
+
     GLint GetAttribute(const char *attributeName);
     GLint GetUniform(const char *uniformName);
 
-    operator int();
+    operator unsigned int();
 
     //TODO CHECK STATUS
 

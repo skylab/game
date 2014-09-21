@@ -58,6 +58,11 @@ ShaderProgram::~ShaderProgram()
     glDeleteProgram(mShaderProgramID);
 }
 
+const GLuint &ShaderProgram::GetShaderProgrammID() const
+{
+    return mShaderProgramID;
+}
+
 GLint ShaderProgram::GetUniform(const char *uniformName)
 {
     GLint uniformLocation = glGetUniformLocation(*this, uniformName);
@@ -82,7 +87,7 @@ GLint ShaderProgram::GetAttribute(const char *attributeName)
     return attributeLocation;
 }
 
-ShaderProgram::operator int()
+ShaderProgram::operator unsigned int()
 {
     return mShaderProgramID;
 }

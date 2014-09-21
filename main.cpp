@@ -4,7 +4,7 @@ int main()
 {
     Game *game = Game::Instance();
     game->Execute();
-    game->Remove();
+    game->~Game();
     return 0;
 }
 

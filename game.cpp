@@ -1,8 +1,31 @@
 #include "game.h"
 
-#include <new>
+#include "GraphicSystem/pregraphic.h"
+
+#include "Scenes/scenemanager.h"
 
 Game *Game::mInstance = nullptr;
+
+void DrawFunction()
+{
+    SceneManager::Instance()->DrawScene();
+    glutMainLoop();
+}
+
+void ReshapeFunction(int width, int height)
+{
+    SceneManager::Instance()->Reshape(width, height);
+}
+
+void KeyboardFunction(unsigned char key, int x, int y)
+{
+    SceneManager::Instance()->Keyboard(key, x, y);
+}
+
+void MouseFunction(int key, int state, int x, int y)
+{
+    SceneManager::Instance()->Mouse(key, state, x, y);
+}
 
 Game *Game::Instance()
 {
@@ -17,52 +40,44 @@ Game *Game::Instance()
     return mInstance;
 }
 
-void Game::Remove()
-{
-    delete mInstance;
-    mInstance = nullptr;
-}
-
 void Game::Execute()
 {
-    if (getIsStarted())
-    {
-        mGraphicSystem->Draw();
-    }
-    else
-    {
-        return;
-    }
+    //TODO Another thread
+    mSceneManager->SimulateScene();
+
+    mSceneManager->DrawScene();
+    glutMainLoop();
 }
 
-Game::Game() : mGraphicSystem(nullptr), mPhysicSystem(nullptr), mIsStarted(false)
+Game::Game() : mSceneManager(nullptr)
 {
-   bool started = Init();
-   setIsStarted(started);
+    int fakeArgc = 1;
+    char *fakeArgv[] = {"Game"};
+
+    glutInit(&fakeArgc, fakeArgv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
+    glutInitWindowSize(500, 500);
+    //glutInitWindowPosition();
+    glutCreateWindow("Game");
+    //glutFullScreen();
+
+    glutDisplayFunc(DrawFunction);
+    glutReshapeFunc(ReshapeFunction);
+    glutKeyboardFunc(KeyboardFunction);
+    glutMouseFunc(MouseFunction);
+    //glutMouseWheelFunc();
+
+    glewInit();
+
+    glGenVertexArrays(1, &mVisualArrayObject);
+    glBindVertexArray(mVisualArrayObject);
+
+    glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
+
+    mSceneManager = SceneManager::Instance();
 }
 
 Game::~Game()
 {
-    setIsStarted(false);
-
-    mGraphicSystem->Remove();
+    delete mSceneManager;
 }
-
-bool Game::Init()
-{
-    mGraphicSystem = GraphicSystem::Instance();
-    //mPhysicSystem = PhysicSystem::Instance();
-
-    return (nullptr != mGraphicSystem) ;//&& (nullptr != mPhysicSystem);
-}
-
-bool Game::getIsStarted() const
-{
-    return mIsStarted;
-}
-
-void Game::setIsStarted(bool value)
-{
-    mIsStarted = value;
-}
-
