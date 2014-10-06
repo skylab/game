@@ -18,7 +18,7 @@ CXXFLAGS      = -m64 -pipe -g -std=c++0x -Wall -W -fPIE $(DEFINES)
 INCPATH       = -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I.
 LINK          = g++
 LFLAGS        = -m64
-LIBS          = $(SUBLIBS) -lGLEW -lglut -lGL -lglfw 
+LIBS          = $(SUBLIBS) -lGLEW -lGL -lglfw 
 AR            = ar cqs
 RANLIB        = 
 QMAKE         = /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
@@ -423,7 +423,8 @@ loadingscene.o: Scenes/loadingscene.cpp Scenes/loadingscene.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loadingscene.o Scenes/loadingscene.cpp
 
 objectraw.o: Common/objectraw.cpp Common/objectraw.h \
-		Common/precommon.h
+		Common/precommon.h \
+		Common/objectloader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectraw.o Common/objectraw.cpp
 
 object.o: Scenes/SceneObject/object.cpp Scenes/SceneObject/object.h \
@@ -462,7 +463,10 @@ shadermanager.o: GraphicSystem/Shaders/shadermanager.cpp GraphicSystem/Shaders/s
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shadermanager.o GraphicSystem/Shaders/shadermanager.cpp
 
 objectloader.o: Common/objectloader.cpp Common/objectloader.h \
-		Common/precommon.h
+		Common/precommon.h \
+		Common/ObjectLoaders/loader3ds.h \
+		Common/ObjectLoaders/loaderabs.h \
+		Common/objectraw.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectloader.o Common/objectloader.cpp
 
 loaderabs.o: Common/ObjectLoaders/loaderabs.cpp Common/ObjectLoaders/loaderabs.h \

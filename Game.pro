@@ -5,7 +5,7 @@ CONFIG -= qt
 
 CONFIG+=c++11
 
-LIBS += -lGLEW -lglut -lGL -lglfw
+LIBS += -lGLEW -lGL -lglfw
 
 SOURCES += main.cpp \
     game.cpp \

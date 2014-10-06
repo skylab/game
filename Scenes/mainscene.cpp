@@ -3,21 +3,21 @@
 MainScene::MainScene()
 {
     Object * obj = new Object;
-    obj->FillAsCube();
+    //obj->FillAsCube();
     glm::vec3 pos = glm::vec3(0.0f, 0.0f, 0.0f);
     AddObject(obj, pos);
 
-
+/*
     obj = new Object;
-    obj->FillAsCube();
+    //obj->FillAsCube();
     pos = glm::vec3(3.0f, 0.0f, 0.0f);
     AddObject(obj, pos);
 
     obj = new Object;
-    obj->FillAsCube();
+    //obj->FillAsCube();
     pos = glm::vec3(-3.0f, 0.0f, 0.0f);
     AddObject(obj, pos);
-
+    */
 
     glm::vec3 position = glm::vec3(2.0f, 2.0f, 4.0f);
     GetSceneCamera().SetCameraPosition(position);

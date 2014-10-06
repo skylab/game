@@ -6,10 +6,6 @@ const UINT16 CHUNK_OBJECTBLOCK(0x4000); // object
 const UINT16 CHUNK_TRIMESH(0x4100); // object data start
 const UINT16 CHUNK_VERTLIST(0x4110); // object vertexes
 
-const UINT16 CHUNK_EDIT_MATRIAL(0xAFFF);
-const UINT16 CHUNK_EDIT_VIEW_P1(0x7012);
-const UINT16 CHUNK_EDIT_VIEW_P2(0x7011);
-
 Loader3ds::Loader3ds()
 {
 }
@@ -29,15 +25,31 @@ bool Loader3ds::LoadObjectFile(const char *filename, ObjectRaw *object)
         return false;
     }
 
-    size_t position = 0;
+    if (!GetChunkPosition(file, CHUNK_OBJMESH))
+        return false;
 
-    position = GetChunkPosition(file, CHUNK_MAIN);
-    position = GetChunkPosition(file, CHUNK_OBJMESH);
-    position = GetChunkPosition(file, CHUNK_OBJECTBLOCK);
-    position = GetChunkPosition(file, CHUNK_TRIMESH);
-    position = GetChunkPosition(file, CHUNK_VERTLIST);
+    GetChunkPosition(file, CHUNK_VERTLIST);
 
-    std::cerr << position << std::endl;
+    UINT16 chunkSize = 0;
+    file.read((char*)&chunkSize, sizeof(chunkSize));
+
+    UINT16 vertexQuantity = 0;
+    file.read((char*)&vertexQuantity, sizeof(vertexQuantity));
+
+    object->SetObjectVertexQuantity(vertexQuantity);
+
+    for(UINT16 i = 0; i < vertexQuantity; ++i)
+    {
+        float x, y, z;
+        file.read((char*)&x, sizeof(x));
+        file.read((char*)&z, sizeof(z));
+        file.read((char*)&y, sizeof(y));
+        glm::vec3 vec(x, y, z);
+        object->GetObjectVertexes()[i] = vec;
+    }
+
+    glm::vec3 vec;
+    std::cerr << vertexQuantity << sizeof(vec.x) << std::endl;
 
     file.close();
     return false;
@@ -48,11 +60,14 @@ size_t Loader3ds::GetChunkPosition(std::fstream &file, UINT16 ID)
     UINT16 readId = 0;
     UINT32 length = 0;
 
+    UINT32 skip = 0;
+
     while (!file.eof() && ID != readId)
     {
         if (0 != readId && !IsParent(readId))
         {
-            file.seekg(file.tellg() - sizeof(readId) - sizeof(length));
+            file.seekg(file.tellg() - sizeof(readId) - sizeof(length) - skip);
+            skip = 0;
             file.ignore(length);
         }
         file.read((char*)&readId, sizeof(readId));
@@ -65,23 +80,20 @@ size_t Loader3ds::GetChunkPosition(std::fstream &file, UINT16 ID)
             do
             {
                 file.read(&ch, 1);
-            }while ('0' != ch && !file.eof());
+                ++skip;
+            }while ('\0' != ch && !file.eof());
         }
-
-        size_t a = file.tellg();
-        std::cerr << a << std::endl;
     }
 
-    size_t a = file.tellg();
-    std::cerr << a << std::endl;
+    if (CHUNK_OBJECTBLOCK != ID && 0 != skip)
+    {
+        skip = 0;
+    }
 
-    file.seekg(file.tellg() - sizeof(readId) - sizeof(length));
+    file.seekg(file.tellg() - sizeof(readId) - sizeof(length) - skip);
 
     if (ID == readId)
-    {
-        std::cerr << std::hex << readId << std::endl;
         return file.tellg();
-    }
     else
         return 0;
 }
@@ -90,14 +102,11 @@ bool Loader3ds::IsParent(UINT16 ID)
 {
     switch(ID)
     {
+    // What blocks we need to enter.
     case CHUNK_MAIN:
     case CHUNK_OBJMESH:
     case CHUNK_OBJECTBLOCK:
     case CHUNK_TRIMESH:
-
-    case CHUNK_EDIT_MATRIAL:
-    case CHUNK_EDIT_VIEW_P1:
-    case CHUNK_EDIT_VIEW_P2:
         return true;
     default:
         return false;

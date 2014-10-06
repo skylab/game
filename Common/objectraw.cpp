@@ -11,6 +11,9 @@ ObjectRaw::ObjectRaw() :
 {
     mObjectName = (char*)defaultObjectName;
 
+    glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
+    SetObjectScale(scale);
+
     LoadObjectFromFile("Resources/Engine.3ds");
 }
 
@@ -26,8 +29,6 @@ ObjectRaw::~ObjectRaw()
 
 bool ObjectRaw::LoadObjectFromFile(const char *fileName)
 {
-    //TODO Loading mechanism;
-
     try
     {
         mObjectFile = new char [strlen(fileName) + 1];
@@ -91,7 +92,7 @@ void ObjectRaw::SetObjectVertexQuantity(unsigned long quantity)
 
     try
     {
-        GetObjectVertexes() = new glm::vec3[mObjectVertexQuantity];
+        mObjectVertexes = new glm::vec3[mObjectVertexQuantity];
     }
     catch(std::bad_alloc &ba)
     {

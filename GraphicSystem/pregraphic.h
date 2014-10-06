@@ -7,10 +7,7 @@
 #include <GL/glew.h>
 
 #include <GL/gl.h>
-#include <GL/glut.h>
 #include <GL/glext.h>
-
-//#include <GL/freeglut.h>
 
 #include <GLFW/glfw3.h>
 
@@ -19,7 +16,7 @@
 #ifdef _DEBUG
     //Shaders debug
     //#define DEBUG_SHADER
-    #define DEBUG_SHADER_PROGRAMM
+    //#define DEBUG_SHADER_PROGRAMM
 #endif
 
 
