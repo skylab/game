@@ -15,8 +15,6 @@ SOURCES += main.cpp \
     GraphicSystem/Textures/image.cpp \
     GraphicSystem/Textures/imageloaderabs.cpp \
     GraphicSystem/Textures/imageloaderbmp.cpp \
-    GraphicSystem/Objects/objectloader3ds.cpp \
-    GraphicSystem/Objects/objectloaders.cpp \
     GraphicSystem/Objects/graphicobject.cpp \
     Scenes/mainscene.cpp \
     Scenes/scene.cpp \
@@ -25,7 +23,10 @@ SOURCES += main.cpp \
     Scenes/SceneObject/object.cpp \
     Scenes/scenemanager.cpp \
     Scenes/camera.cpp \
-    GraphicSystem/Shaders/shadermanager.cpp
+    GraphicSystem/Shaders/shadermanager.cpp \
+    Common/objectloader.cpp \
+    Common/ObjectLoaders/loaderabs.cpp \
+    Common/ObjectLoaders/loader3ds.cpp
 
 HEADERS += \
     game.h \
@@ -36,8 +37,6 @@ HEADERS += \
     GraphicSystem/Textures/image.h \
     GraphicSystem/Textures/imageloaderabs.h \
     GraphicSystem/Textures/imageloaderbmp.h \
-    GraphicSystem/Objects/objectloader3ds.h \
-    GraphicSystem/Objects/objectloaders.h \
     Common/precommon.h \
     GraphicSystem/Objects/graphicobject.h \
     Scenes/mainscene.h \
@@ -47,7 +46,10 @@ HEADERS += \
     Scenes/SceneObject/object.h \
     Scenes/scenemanager.h \
     Scenes/camera.h \
-    GraphicSystem/Shaders/shadermanager.h
+    GraphicSystem/Shaders/shadermanager.h \
+    Common/objectloader.h \
+    Common/ObjectLoaders/loaderabs.h \
+    Common/ObjectLoaders/loader3ds.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

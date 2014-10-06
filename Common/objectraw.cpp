@@ -1,5 +1,7 @@
 #include "objectraw.h"
 
+#include "objectloader.h"
+
 static const char *defaultObjectName = "Unknown";
 
 ObjectRaw::ObjectRaw() :
@@ -8,6 +10,8 @@ ObjectRaw::ObjectRaw() :
     mObjectPosition(0.0f, 0.0f, 0.0f), mObjectRotation(0.0f, 0.0f, 0.0f)
 {
     mObjectName = (char*)defaultObjectName;
+
+    LoadObjectFromFile("Resources/Engine.3ds");
 }
 
 ObjectRaw::~ObjectRaw()
@@ -35,6 +39,9 @@ bool ObjectRaw::LoadObjectFromFile(const char *fileName)
     }
 
     memcpy(mObjectFile, fileName, strlen(fileName));
+
+    ObjectLoader::Instance()->LoadObjectFile(mObjectFile, this);
+
     return true;
 }
 
@@ -65,14 +72,33 @@ const char *ObjectRaw::GetObjectName() const
     return mObjectName;
 }
 
-const glm::vec3 *ObjectRaw::GetObjectVertexes() const
+glm::vec3 *&ObjectRaw::GetObjectVertexes()
 {
     return mObjectVertexes;
 }
 
 void ObjectRaw::SetObjectVertexQuantity(unsigned long quantity)
 {
+    if (0 != mObjectVertexQuantity)
+    {
+        // Remove previous data
+        delete[] GetObjectVertexes();
+        GetObjectVertexes() = nullptr;
+        mObjectVertexQuantity = 0;
+    }
+
     mObjectVertexQuantity = quantity;
+
+    try
+    {
+        GetObjectVertexes() = new glm::vec3[mObjectVertexQuantity];
+    }
+    catch(std::bad_alloc &ba)
+    {
+        // TODO
+        (void)ba;
+        mObjectVertexQuantity = 0;
+    }
 }
 
 const unsigned long &ObjectRaw::GetObjectVertexQuantity() const

@@ -14,7 +14,7 @@ public:
     virtual void SetObjectName(const char *name);
     virtual const char *GetObjectName(void) const;
 
-    virtual const glm::vec3 *GetObjectVertexes(void) const;
+    virtual glm::vec3 *&GetObjectVertexes(void);
 
     virtual void SetObjectVertexQuantity(unsigned long int quantity);
     virtual const unsigned long int &GetObjectVertexQuantity(void) const;
@@ -36,7 +36,7 @@ private:
     char * mObjectName;
 
     //FOR TESTS
-public:
+//public:
     glm::vec3 *mObjectVertexes;
 private:
 

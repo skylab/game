@@ -22,11 +22,13 @@ MainScene::MainScene()
     glm::vec3 position = glm::vec3(2.0f, 2.0f, 4.0f);
     GetSceneCamera().SetCameraPosition(position);
 
-    glm::vec3 orientation = glm::vec3(0.0f, 0.0f, 0.0f);
-    GetSceneCamera().SetCameraOrientation(orientation);
+    glm::vec3 direction = glm::vec3(0.0f, 0.0f, 0.0f);
+    GetSceneCamera().SetCameraDirection(direction);
 
     float viewAngle = 90.0f;
     GetSceneCamera().SetCameraViewAngle(viewAngle);
+
+    SetProcessCursorAsCamera(true);
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
@@ -37,7 +39,7 @@ MainScene::~MainScene()
     ;
 }
 
-void MainScene::Draw()
+void MainScene::Draw(void)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glClearColor(0.2f, 0.3f, 0.4f, 1);
@@ -78,7 +80,5 @@ void MainScene::Keyboard(int &key)
 
 void MainScene::MousePosition(double &xpos, double &ypos)
 {
-    //std::cerr << xpos << " " << ypos << std::endl;
-
     Scene::MousePosition(xpos, ypos);
 }

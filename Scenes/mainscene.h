@@ -9,9 +9,9 @@ public:
     MainScene();
     ~MainScene();
 
-    void Draw();
-    void Keyboard(int &key);
-    void MousePosition(double &xpos, double &ypos);
+    void Draw(void) override;
+    void Keyboard(int &key) override;
+    void MousePosition(double &xpos, double &ypos) override;
 };
 
 #endif // MAINSCENE_H

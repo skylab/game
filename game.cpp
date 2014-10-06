@@ -10,11 +10,18 @@ Game *Game::mInstance = nullptr;
 
 void KeyCallBackFunction(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
+    //TODO!!!
+    (void)window;
+    (void)scancode;
+    (void)action;
+    (void)mods;
     SceneManager::Instance()->Keyboard(key);
 }
 
 void CursorPositionFunction(GLFWwindow *window, double xpos, double ypos)
 {
+    //TODO
+    (void)window;
     SceneManager::Instance()->MousePosition(xpos, ypos);
 }
 
@@ -66,7 +73,7 @@ Game::Game() : mSceneManager(nullptr)
 
     // Ensure we can capture the escape key being pressed below
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
     glfwSetCursorPos(window, 1024/2, 768/2);
 
     glfwSetKeyCallback(window, KeyCallBackFunction);

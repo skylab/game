@@ -53,8 +53,6 @@ SOURCES       = main.cpp \
 		GraphicSystem/Textures/image.cpp \
 		GraphicSystem/Textures/imageloaderabs.cpp \
 		GraphicSystem/Textures/imageloaderbmp.cpp \
-		GraphicSystem/Objects/objectloader3ds.cpp \
-		GraphicSystem/Objects/objectloaders.cpp \
 		GraphicSystem/Objects/graphicobject.cpp \
 		Scenes/mainscene.cpp \
 		Scenes/scene.cpp \
@@ -63,7 +61,10 @@ SOURCES       = main.cpp \
 		Scenes/SceneObject/object.cpp \
 		Scenes/scenemanager.cpp \
 		Scenes/camera.cpp \
-		GraphicSystem/Shaders/shadermanager.cpp 
+		GraphicSystem/Shaders/shadermanager.cpp \
+		Common/objectloader.cpp \
+		Common/ObjectLoaders/loaderabs.cpp \
+		Common/ObjectLoaders/loader3ds.cpp 
 OBJECTS       = main.o \
 		game.o \
 		shader.o \
@@ -72,8 +73,6 @@ OBJECTS       = main.o \
 		image.o \
 		imageloaderabs.o \
 		imageloaderbmp.o \
-		objectloader3ds.o \
-		objectloaders.o \
 		graphicobject.o \
 		mainscene.o \
 		scene.o \
@@ -82,7 +81,10 @@ OBJECTS       = main.o \
 		object.o \
 		scenemanager.o \
 		camera.o \
-		shadermanager.o
+		shadermanager.o \
+		objectloader.o \
+		loaderabs.o \
+		loader3ds.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -330,7 +332,14 @@ game.o: game.cpp game.h \
 		GraphicSystem/pregraphic.h \
 		Common/precommon.h \
 		Common/objectraw.h \
-		Scenes/scenemanager.h
+		Scenes/scenemanager.h \
+		Scenes/loadingscene.h \
+		Scenes/scene.h \
+		Scenes/SceneObject/object.h \
+		GraphicSystem/Objects/graphicobject.h \
+		GraphicSystem/Shaders/shaderprogram.h \
+		GraphicSystem/Shaders/shader.h \
+		Scenes/camera.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o game.cpp
 
 shader.o: GraphicSystem/Shaders/shader.cpp GraphicSystem/Shaders/shader.h \
@@ -365,13 +374,6 @@ imageloaderbmp.o: GraphicSystem/Textures/imageloaderbmp.cpp GraphicSystem/Textur
 		GraphicSystem/Textures/imageloaderabs.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o imageloaderbmp.o GraphicSystem/Textures/imageloaderbmp.cpp
 
-objectloader3ds.o: GraphicSystem/Objects/objectloader3ds.cpp GraphicSystem/Objects/objectloader3ds.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectloader3ds.o GraphicSystem/Objects/objectloader3ds.cpp
-
-objectloaders.o: GraphicSystem/Objects/objectloaders.cpp GraphicSystem/Objects/objectloaders.h \
-		GraphicSystem/Objects/objectloader3ds.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectloaders.o GraphicSystem/Objects/objectloaders.cpp
-
 graphicobject.o: GraphicSystem/Objects/graphicobject.cpp GraphicSystem/Objects/graphicobject.h \
 		GraphicSystem/pregraphic.h \
 		Common/precommon.h \
@@ -386,24 +388,24 @@ mainscene.o: Scenes/mainscene.cpp Scenes/mainscene.h \
 		GraphicSystem/pregraphic.h \
 		Common/precommon.h \
 		Common/objectraw.h \
-		Scenes/scenemanager.h \
-		Scenes/camera.h \
 		Scenes/SceneObject/object.h \
 		GraphicSystem/Objects/graphicobject.h \
 		GraphicSystem/Shaders/shaderprogram.h \
-		GraphicSystem/Shaders/shader.h
+		GraphicSystem/Shaders/shader.h \
+		Scenes/scenemanager.h \
+		Scenes/camera.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainscene.o Scenes/mainscene.cpp
 
 scene.o: Scenes/scene.cpp Scenes/scene.h \
 		GraphicSystem/pregraphic.h \
 		Common/precommon.h \
 		Common/objectraw.h \
-		Scenes/scenemanager.h \
-		Scenes/camera.h \
 		Scenes/SceneObject/object.h \
 		GraphicSystem/Objects/graphicobject.h \
 		GraphicSystem/Shaders/shaderprogram.h \
-		GraphicSystem/Shaders/shader.h
+		GraphicSystem/Shaders/shader.h \
+		Scenes/scenemanager.h \
+		Scenes/camera.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scene.o Scenes/scene.cpp
 
 loadingscene.o: Scenes/loadingscene.cpp Scenes/loadingscene.h \
@@ -411,12 +413,12 @@ loadingscene.o: Scenes/loadingscene.cpp Scenes/loadingscene.h \
 		GraphicSystem/pregraphic.h \
 		Common/precommon.h \
 		Common/objectraw.h \
-		Scenes/scenemanager.h \
-		Scenes/camera.h \
 		Scenes/SceneObject/object.h \
 		GraphicSystem/Objects/graphicobject.h \
 		GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/Shaders/shader.h \
+		Scenes/scenemanager.h \
+		Scenes/camera.h \
 		Scenes/mainscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loadingscene.o Scenes/loadingscene.cpp
 
@@ -433,19 +435,22 @@ object.o: Scenes/SceneObject/object.cpp Scenes/SceneObject/object.h \
 
 scenemanager.o: Scenes/scenemanager.cpp Scenes/scenemanager.h \
 		Common/precommon.h \
-		Scenes/loadingscene.h \
-		Scenes/scene.h \
 		GraphicSystem/pregraphic.h \
 		Common/objectraw.h \
-		Scenes/camera.h \
+		Scenes/loadingscene.h \
+		Scenes/scene.h \
 		Scenes/SceneObject/object.h \
 		GraphicSystem/Objects/graphicobject.h \
 		GraphicSystem/Shaders/shaderprogram.h \
-		GraphicSystem/Shaders/shader.h
+		GraphicSystem/Shaders/shader.h \
+		Scenes/camera.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scenemanager.o Scenes/scenemanager.cpp
 
 camera.o: Scenes/camera.cpp Scenes/camera.h \
-		Common/precommon.h
+		Common/precommon.h \
+		Scenes/scenemanager.h \
+		GraphicSystem/pregraphic.h \
+		Common/objectraw.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o camera.o Scenes/camera.cpp
 
 shadermanager.o: GraphicSystem/Shaders/shadermanager.cpp GraphicSystem/Shaders/shadermanager.h \
@@ -455,6 +460,21 @@ shadermanager.o: GraphicSystem/Shaders/shadermanager.cpp GraphicSystem/Shaders/s
 		GraphicSystem/Shaders/shaderprogram.h \
 		GraphicSystem/Shaders/shader.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o shadermanager.o GraphicSystem/Shaders/shadermanager.cpp
+
+objectloader.o: Common/objectloader.cpp Common/objectloader.h \
+		Common/precommon.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectloader.o Common/objectloader.cpp
+
+loaderabs.o: Common/ObjectLoaders/loaderabs.cpp Common/ObjectLoaders/loaderabs.h \
+		Common/objectraw.h \
+		Common/precommon.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loaderabs.o Common/ObjectLoaders/loaderabs.cpp
+
+loader3ds.o: Common/ObjectLoaders/loader3ds.cpp Common/ObjectLoaders/loader3ds.h \
+		Common/ObjectLoaders/loaderabs.h \
+		Common/objectraw.h \
+		Common/precommon.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loader3ds.o Common/ObjectLoaders/loader3ds.cpp
 
 ####### Install
 

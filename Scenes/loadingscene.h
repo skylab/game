@@ -9,8 +9,8 @@ class LoadingScene : public Scene
 public:
     LoadingScene();
 
-    void Draw(void);
-    void Keyboard(int &key);
+    void Draw(void) override;
+    void Keyboard(int &key) override;
 };
 
 #endif // LOADINGSCENE_H

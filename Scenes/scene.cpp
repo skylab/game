@@ -2,11 +2,9 @@
 
 #include "SceneObject/object.h"
 
-Scene::Scene() : mSimulationSpeed(1.0f), mObjectQuantity(0)
+Scene::Scene() : mSimulationSpeed(1.0f), mObjectQuantity(0), mbProcessCursorAsCamera(false)
 {
-    mWindowsWidth = 1024;
-    mWindowsHeight = 768;
-    //glfwGetWindowSize(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), &mWindowsWidth, &mWindowsHeight);
+    ;
 }
 
 Scene::~Scene()
@@ -52,6 +50,37 @@ Camera &Scene::GetSceneCamera()
     return mCamera;
 }
 
+void Scene::SetProcessCursorAsCamera(bool val)
+{
+    if (val)
+    {
+        glfwSetInputMode(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+        glfwSetCursorPos(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), SceneManager::Instance()->GetWindowWidth()/2.0, SceneManager::Instance()->GetWindowHeight()/2.0);
+    }
+    else
+    {
+        glfwSetInputMode(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    }
+    mbProcessCursorAsCamera = val;
+}
+
+const bool &Scene::GetProcessCursorAsCamera() const
+{
+    return mbProcessCursorAsCamera;
+}
+
+const unsigned long Scene::GetSceneQuantityOfVertexes() const
+{
+    unsigned long int quantity(0);
+
+    for(const auto itr: mObjectList)
+    {
+        quantity += itr->GetObjectVertexQuantity();
+    }
+
+    return quantity;
+}
+
 void Scene::Draw()
 {
     //TODO;
@@ -64,8 +93,7 @@ void Scene::Reshape(int width, int height)
 
 void Scene::Keyboard(int &key)
 {
-    //TODO;
-    (void)key;
+    GetSceneCamera().ProcessButtonPress(key);
 
     switch(key)
     {
@@ -80,9 +108,10 @@ void Scene::Keyboard(int &key)
 
 void Scene::MousePosition(double &xpos, double &ypos)
 {
-    //glm::vec3 directionVector = GetSceneCamera().GetCameraOrientation() - GetSceneCamera().GetCameraPosition();
+    if (GetProcessCursorAsCamera())
+        GetSceneCamera().ProcessCursorPosition(xpos, ypos);
 
-    glfwSetCursorPos(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), (double)mWindowsWidth/2, (double)mWindowsHeight/2);
+    // Can process this separate from camera.
 }
 
 void Scene::Simulate(float speed) const

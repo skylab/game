@@ -1,12 +1,14 @@
 #include "camera.h"
 
-Camera::Camera() : mCameraPosition(0.0f, 0.0f, 0.0f), mCameraOrientation(0.0f, 0.0f, 0.0f)
+#include "scenemanager.h"
+
+Camera::Camera() : mCameraPosition(0.0f, 0.0f, 0.0f), mCameraDirection(0.0f, 0.0f, 0.0f)
 {
     glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
     SetCameraPosition(position);
 
-    glm::vec3 orientation = glm::vec3(0.0f, 0.0f, 0.0f);
-    SetCameraOrientation(orientation);
+    glm::vec3 direction = glm::vec3(0.0f, 0.0f, 0.0f);
+    SetCameraDirection(direction);
 
     glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
     SetCameraUp(up);
@@ -23,16 +25,10 @@ Camera::Camera() : mCameraPosition(0.0f, 0.0f, 0.0f), mCameraOrientation(0.0f, 0
     float unitTo = 100.0f;
     SetCameraUnitTo(unitTo);
 
-    /*
-    float horizontalAngle = 3.14f;
-    SetCameraHorizontalOrientation(horizontalAngle);
+    //float cameraSideSpeer = 3.0f;
+    //SetCameraSideSpeed(cameraSideSpeer);
+    //mCameraSideSpeed = 0.1f;
 
-    float verticalAngle = 0.0f;
-    SetCameraVerticalOrientation(verticalAngle);
-    */
-
-    float speed = 3.0f;
-    SetMouseSpeed(speed);
 
 }
 
@@ -51,14 +47,14 @@ const glm::vec3 &Camera::GetCameraPosition() const
     return mCameraPosition;
 }
 
-void Camera::SetCameraOrientation(glm::vec3 &orientation)
+void Camera::SetCameraDirection(glm::vec3 &direction)
 {
-    mCameraOrientation = orientation;
+    mCameraDirection = direction;
 }
 
-const glm::vec3 &Camera::GetCameraOrientation() const
+const glm::vec3 &Camera::GetCameraDirection() const
 {
-    return mCameraOrientation;
+    return mCameraDirection;
 }
 
 void Camera::SetCameraUp(glm::vec3 &up)
@@ -70,27 +66,7 @@ const glm::vec3 &Camera::GetCameraUp() const
 {
     return mCameraUp;
 }
-/*
-void Camera::SetCameraHorizontalOrientation(float &angle)
-{
-    mCameraHorizontalOrientation = angle;
-}
 
-const float &Camera::GetCameraHorizontalOrientation() const
-{
-    return mCameraHorizontalOrientation;
-}
-
-void Camera::SetCameraVerticalOrientation(float &angle)
-{
-    mCameraVerticalOrientation = angle;
-}
-
-const float &Camera::GetCameraVerticalOrientation() const
-{
-    return mCameraVerticalOrientation;
-}
-*/
 void Camera::SetCameraViewAngle(float &angle)
 {
     mCameraViewAngle = angle;
@@ -139,7 +115,7 @@ const glm::mat4 &Camera::GetProjectionViewModelMatrix()
                                          GetCameraUnitTo()); // See to distanse
 
     mViewMatrix = glm::lookAt(GetCameraPosition(),
-                              GetCameraOrientation(),
+                              GetCameraDirection(),
                               GetCameraUp()); // Up vector - where is up
 
     mModelMatrix = glm::mat4(1.0f);
@@ -149,14 +125,49 @@ const glm::mat4 &Camera::GetProjectionViewModelMatrix()
     return mProjectioViewModelMatrix;
 }
 
-void Camera::SetMouseSpeed(float &speed)
+void Camera::SetCameraSideSpeed(float &speed)
 {
-    mMouseSpeed = speed;
+    mCameraSideSpeed = speed;
 }
 
-const float &Camera::GetMouseSpeed() const
+const float &Camera::GetCameraSideSpeed() const
 {
-    return mMouseSpeed;
+    return mCameraSideSpeed;
 }
 
+void Camera::ProcessCursorPosition(double &xpos, double &ypos)
+{
+    //TODO Camera rotation
+    int sceneWidth = SceneManager::Instance()->GetWindowWidth();
+    int sceneHeight = SceneManager::Instance()->GetWindowHeight();
+
+    float offsetX = ((float)sceneWidth/2.0f) - xpos;
+    float offsetY = ((float)sceneHeight/2.0f) - ypos;
+
+    glfwSetCursorPos(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), sceneWidth/2.0, sceneHeight/2.0);
+
+    //std::cerr << offsetX << " " << offsetY << std::endl;
+
+    //Gradus to radian
+    float angleX = offsetX/180.0*3.14;
+    float angleY = offsetY/180.0*3.14;
+
+    //std::cerr << angleX << " " << angleY << std::endl;
+
+    glm::vec3 rot(GetCameraDirection().x - angleX, GetCameraDirection().y + angleY, GetCameraDirection().z);
+    SetCameraDirection(rot);
+}
+
+
+void Camera::ProcessButtonPress(int &key)
+{
+    //TODO camera moving;
+    switch(key)
+    {
+    case GLFW_KEY_W:
+        break;
+    case GLFW_KEY_S:
+        break;
+    }
+}
 

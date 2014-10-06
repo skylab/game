@@ -12,19 +12,13 @@ public:
     virtual void SetCameraPosition(glm::vec3 &position);
     virtual const glm::vec3 &GetCameraPosition(void) const;
 
-    virtual void SetCameraOrientation(glm::vec3 &orientation);
-    virtual const glm::vec3 &GetCameraOrientation(void) const;
+    virtual void SetCameraDirection(glm::vec3 &direction);
+    virtual const glm::vec3 &GetCameraDirection(void) const;
 
+    ///
     virtual void SetCameraUp(glm::vec3 &up);
     virtual const glm::vec3 &GetCameraUp(void) const;
-
-    /*
-    virtual void SetCameraHorizontalOrientation(float &angle);
-    virtual const float &GetCameraHorizontalOrientation(void) const;
-
-    virtual void SetCameraVerticalOrientation(float &angle);
-    virtual const float &GetCameraVerticalOrientation(void) const;
-    */
+    ///
 
     virtual void SetCameraViewAngle(float &angle);
     virtual const float &GetCameraViewAngle(void) const;
@@ -40,21 +34,21 @@ public:
 
     virtual const glm::mat4 &GetProjectionViewModelMatrix(void);
 
-    virtual void SetMouseSpeed(float &speed);
-    virtual const float &GetMouseSpeed(void) const;
+    virtual void SetCameraSideSpeed(float &speed);
+    virtual const float &GetCameraSideSpeed(void) const;
+
+    virtual void ProcessCursorPosition(double &xpos, double &ypos);
+    virtual void ProcessButtonPress(int &key);
 
 private:
-    glm::vec3 mCameraPosition;
-    glm::vec3 mCameraOrientation;
+    glm::vec3 mCameraPosition;    
+    glm::vec3 mCameraDirection;
     glm::vec3 mCameraUp;
 
-    /*
-    float mCameraHorizontalOrientation;
-    float mCameraVerticalOrientation;
-    */
+    float CharacterHeight;
 
-    float mCameraViewAngle;
-    float mCameraViewAspectRatio;
+    float mCameraViewAngle; // 90
+    float mCameraViewAspectRatio; // 16/9
     float mCameraUnitFrom; // Distanses of view
     float mCameraUnitTo;
 
@@ -63,7 +57,7 @@ private:
     glm::mat4 mModelMatrix;
     glm::mat4 mProjectioViewModelMatrix;
 
-    float mMouseSpeed;
+    float mCameraSideSpeed;
 };
 
 #endif // CAMERA_H

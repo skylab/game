@@ -40,56 +40,57 @@ void GraphicObject::FillAsCube()
     SetObjectScale(scale);
 
     SetObjectVertexQuantity(36);
-    mObjectVertexes = new (std::nothrow) glm::vec3[GetObjectVertexQuantity()];
 
-    mObjectVertexes[0] = glm::vec3(-1.0f, 1.0f, 1.0f); // Front
-    mObjectVertexes[1] = glm::vec3(-1.0f, -1.0f, 1.0f);
-    mObjectVertexes[2] = glm::vec3(1.0f, 1.0f, 1.0f);
+    GetObjectVertexes()[0] = glm::vec3(-1.0f, 1.0f, 1.0f); // Front
+    GetObjectVertexes()[1] = glm::vec3(-1.0f, -1.0f, 1.0f);
+    GetObjectVertexes()[2] = glm::vec3(1.0f, 1.0f, 1.0f);
 
-    mObjectVertexes[3] = glm::vec3(1.0f, 1.0f, 1.0f);
-    mObjectVertexes[4] = glm::vec3(1.0f, -1.0f, 1.0f);
-    mObjectVertexes[5] = glm::vec3(-1.0f, -1.0f, 1.0f); // End front
+    GetObjectVertexes()[3] = glm::vec3(1.0f, 1.0f, 1.0f);
+    GetObjectVertexes()[4] = glm::vec3(1.0f, -1.0f, 1.0f);
+    GetObjectVertexes()[5] = glm::vec3(-1.0f, -1.0f, 1.0f); // End front
 
-    mObjectVertexes[6] = glm::vec3(-1.0f, 1.0f, -1.0f); // back
-    mObjectVertexes[7] = glm::vec3(-1.0f, -1.0f, -1.0f);
-    mObjectVertexes[8] = glm::vec3(1.0f, 1.0f, -1.0f);
+    GetObjectVertexes()[6] = glm::vec3(-1.0f, 1.0f, -1.0f); // back
+    GetObjectVertexes()[7] = glm::vec3(-1.0f, -1.0f, -1.0f);
+    GetObjectVertexes()[8] = glm::vec3(1.0f, 1.0f, -1.0f);
 
-    mObjectVertexes[9] =  glm::vec3(1.0f, 1.0f, -1.0f);
-    mObjectVertexes[10] = glm::vec3(1.0f, -1.0f, -1.0f);
-    mObjectVertexes[11] = glm::vec3(-1.0f, -1.0f, -1.0f); // End back
+    GetObjectVertexes()[9] =  glm::vec3(1.0f, 1.0f, -1.0f);
+    GetObjectVertexes()[10] = glm::vec3(1.0f, -1.0f, -1.0f);
+    GetObjectVertexes()[11] = glm::vec3(-1.0f, -1.0f, -1.0f); // End back
 
 
-    mObjectVertexes[12] = glm::vec3(1.0f, 1.0f, -1.0f); // right
-    mObjectVertexes[13] = glm::vec3(1.0f, -1.0f, -1.0f);
-    mObjectVertexes[14] = glm::vec3(1.0f, 1.0f, 1.0f);
+    GetObjectVertexes()[12] = glm::vec3(1.0f, 1.0f, -1.0f); // right
+    GetObjectVertexes()[13] = glm::vec3(1.0f, -1.0f, -1.0f);
+    GetObjectVertexes()[14] = glm::vec3(1.0f, 1.0f, 1.0f);
 
-    mObjectVertexes[15] = glm::vec3(1.0f, 1.0f, 1.0f);
-    mObjectVertexes[16] = glm::vec3(1.0f, -1.0f, 1.0f);
-    mObjectVertexes[17] = glm::vec3(1.0f, -1.0f, -1.0f); // End right
+    GetObjectVertexes()[15] = glm::vec3(1.0f, 1.0f, 1.0f);
+    GetObjectVertexes()[16] = glm::vec3(1.0f, -1.0f, 1.0f);
+    GetObjectVertexes()[17] = glm::vec3(1.0f, -1.0f, -1.0f); // End right
 
-    mObjectVertexes[18] = glm::vec3(-1.0f, 1.0f, -1.0f); // left
-    mObjectVertexes[19] = glm::vec3(-1.0f, -1.0f, -1.0f);
-    mObjectVertexes[20] = glm::vec3(-1.0f, 1.0f, 1.0f);
+    GetObjectVertexes()[18] = glm::vec3(-1.0f, 1.0f, -1.0f); // left
+    GetObjectVertexes()[19] = glm::vec3(-1.0f, -1.0f, -1.0f);
+    GetObjectVertexes()[20] = glm::vec3(-1.0f, 1.0f, 1.0f);
 
-    mObjectVertexes[21] = glm::vec3(-1.0f, 1.0f, 1.0f);
-    mObjectVertexes[22] = glm::vec3(-1.0f, -1.0f, 1.0f);
-    mObjectVertexes[23] = glm::vec3(-1.0f, -1.0f, -1.0f); // End left
+    GetObjectVertexes()[21] = glm::vec3(-1.0f, 1.0f, 1.0f);
+    GetObjectVertexes()[22] = glm::vec3(-1.0f, -1.0f, 1.0f);
+    GetObjectVertexes()[23] = glm::vec3(-1.0f, -1.0f, -1.0f); // End left
 
-    mObjectVertexes[24] = glm::vec3(1.0f, -1.0f, -1.0f); // down
-    mObjectVertexes[25] = glm::vec3(-1.0f, -1.0f, -1.0f);
-    mObjectVertexes[26] = glm::vec3(1.0f, -1.0f, 1.0f);
+    GetObjectVertexes()[24] = glm::vec3(1.0f, -1.0f, -1.0f); // down
+    GetObjectVertexes()[25] = glm::vec3(-1.0f, -1.0f, -1.0f);
+    GetObjectVertexes()[26] = glm::vec3(1.0f, -1.0f, 1.0f);
 
-    mObjectVertexes[27] = glm::vec3(1.0f, -1.0f, 1.0f);
-    mObjectVertexes[28] = glm::vec3(-1.0f, -1.0f, 1.0f);
-    mObjectVertexes[29] = glm::vec3(-1.0f, -1.0f, -1.0f); // End down
+    GetObjectVertexes()[27] = glm::vec3(1.0f, -1.0f, 1.0f);
+    GetObjectVertexes()[28] = glm::vec3(-1.0f, -1.0f, 1.0f);
+    GetObjectVertexes()[29] = glm::vec3(-1.0f, -1.0f, -1.0f); // End down
 
-    mObjectVertexes[30] = glm::vec3(1.0f, 1.0f, -1.0f); // up
-    mObjectVertexes[31] = glm::vec3(-1.0f, 1.0f, -1.0f);
-    mObjectVertexes[32] = glm::vec3(1.0f, 1.0f, 1.0f);
+    GetObjectVertexes()[30] = glm::vec3(1.0f, 1.0f, -1.0f); // up
+    GetObjectVertexes()[31] = glm::vec3(-1.0f, 1.0f, -1.0f);
+    GetObjectVertexes()[32] = glm::vec3(1.0f, 1.0f, 1.0f);
 
-    mObjectVertexes[33] = glm::vec3(1.0f, 1.0f, 1.0f);
-    mObjectVertexes[34] = glm::vec3(-1.0f, 1.0f, 1.0f);
-    mObjectVertexes[35] = glm::vec3(-1.0f, 1.0f, -1.0f); // End up
+    GetObjectVertexes()[33] = glm::vec3(1.0f, 1.0f, 1.0f);
+    GetObjectVertexes()[34] = glm::vec3(-1.0f, 1.0f, 1.0f);
+    GetObjectVertexes()[35] = glm::vec3(-1.0f, 1.0f, -1.0f); // End up
+
+    /////////////Color
 }
 
 GraphicObject::GraphicObject() : ObjectRaw(), mVertexBufferObject(0), mShaderProgramm(nullptr)

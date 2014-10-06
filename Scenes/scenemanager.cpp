@@ -49,6 +49,16 @@ const GLFWwindow *SceneManager::GetWindow() const
     return mWindow;
 }
 
+const int &SceneManager::GetWindowWidth() const
+{
+    return mWindowWidth;
+}
+
+const int &SceneManager::GetWindowHeight() const
+{
+    return mWindowHeight;
+}
+
 void SceneManager::DrawScene() const
 {
     mScene->Draw();
@@ -86,6 +96,8 @@ const bool &SceneManager::GetReceivedExit() const
 
 SceneManager::SceneManager() : mbReceivedExit(false), mWindow(nullptr)
 {
+    mWindowWidth = 1024;
+    mWindowHeight = 768;
     try
     {
         mScene = new LoadingScene();

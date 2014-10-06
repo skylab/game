@@ -21,6 +21,9 @@ public:
     void SetWindow(GLFWwindow *window);
     const GLFWwindow *GetWindow(void) const;
 
+    const int &GetWindowWidth(void) const;
+    const int &GetWindowHeight(void) const;
+
     void DrawScene(void) const;
     void Reshape(int width, int height);
     void Keyboard(int &key);
@@ -35,10 +38,15 @@ private:
     SceneManager();
 
 private:
-    static SceneManager *mInstance;
-    Scene *mScene;
     GLFWwindow *mWindow;
+    Scene *mScene;
+
+    int mWindowWidth;
+    int mWindowHeight;
+
     bool mbReceivedExit;
+
+    static SceneManager *mInstance;
 };
 
 #endif // SCENEMANAGER_H
