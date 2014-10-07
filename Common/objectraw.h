@@ -35,16 +35,14 @@ private:
     char * mObjectFile;
     char * mObjectName;
 
-    //FOR TESTS
-//public:
     glm::vec3 *mObjectVertexes;
-private:
-
     unsigned long int mObjectVertexQuantity;
 
     glm::vec3 mObjectPosition;
     glm::vec3 mObjectRotation;
     glm::vec3 mObjectScale;
+
+    // std::mutex mObjectModifying; // Locked in case of modify object
 };
 
 #endif // OBJECTRAW_H

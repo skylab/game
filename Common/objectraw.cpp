@@ -7,13 +7,15 @@ static const char *defaultObjectName = "Unknown";
 ObjectRaw::ObjectRaw() :
     mObjectFile(nullptr), mObjectName(nullptr), mObjectVertexes(nullptr),
     mObjectVertexQuantity(0),
-    mObjectPosition(0.0f, 0.0f, 0.0f), mObjectRotation(0.0f, 0.0f, 0.0f)
+    mObjectPosition(0.0f, 0.0f, 0.0f), mObjectRotation(0.0f, 0.0f, 0.0f), mObjectScale(0.0f, 0.0f, 0.0f)
 {
     mObjectName = (char*)defaultObjectName;
 
+    // Default object scale is 1.0
     glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
     SetObjectScale(scale);
 
+    // TODO Remove this loader.
     LoadObjectFromFile("Resources/Engine.3ds");
 }
 
@@ -35,6 +37,7 @@ bool ObjectRaw::LoadObjectFromFile(const char *fileName)
     }
     catch(std::bad_alloc &ba)
     {
+        // TODO bad alloc
         (void)ba;
         return false;
     }
@@ -50,7 +53,6 @@ void ObjectRaw::SetObjectName(const char *name)
 {
     if (nullptr == name)
     {
-        //Memory error
         return;
     }
 
@@ -60,8 +62,8 @@ void ObjectRaw::SetObjectName(const char *name)
     }
     catch(std::bad_alloc &ba)
     {
+        // TODO bad alloc
         (void)ba;
-        // Handle memory error
         return;
     }
 
@@ -83,8 +85,8 @@ void ObjectRaw::SetObjectVertexQuantity(unsigned long quantity)
     if (0 != mObjectVertexQuantity)
     {
         // Remove previous data
-        delete[] GetObjectVertexes();
-        GetObjectVertexes() = nullptr;
+        delete[] mObjectVertexes;
+        mObjectVertexes = nullptr;
         mObjectVertexQuantity = 0;
     }
 
@@ -96,7 +98,7 @@ void ObjectRaw::SetObjectVertexQuantity(unsigned long quantity)
     }
     catch(std::bad_alloc &ba)
     {
-        // TODO
+        // TODO bad alloc
         (void)ba;
         mObjectVertexQuantity = 0;
     }

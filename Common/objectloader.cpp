@@ -35,6 +35,7 @@ bool ObjectLoader::LoadObjectFile(const char *filename, ObjectRaw *object)
     //3ds file
     if (strstr(filename, ".3ds"))
     {
+        // Another thread can load object separated
         Loader3ds loader;
         return loader.LoadObjectFile(filename, object);
     }
