@@ -7,18 +7,6 @@ MainScene::MainScene()
     glm::vec3 pos = glm::vec3(0.0f, 0.0f, 0.0f);
     AddObject(obj, pos);
 
-/*
-    obj = new Object;
-    //obj->FillAsCube();
-    pos = glm::vec3(3.0f, 0.0f, 0.0f);
-    AddObject(obj, pos);
-
-    obj = new Object;
-    //obj->FillAsCube();
-    pos = glm::vec3(-3.0f, 0.0f, 0.0f);
-    AddObject(obj, pos);
-    */
-
     glm::vec3 position = glm::vec3(2.0f, 2.0f, 4.0f);
     GetSceneCamera().SetCameraPosition(position);
 
@@ -75,7 +63,27 @@ void MainScene::Draw(void)
 
 void MainScene::Keyboard(int &key)
 {
-    Scene::Keyboard(key);
+    switch(key)
+    {
+    case GLFW_KEY_LEFT:
+        for (std::list<Object*>::const_iterator itr = GetObjectList().begin(); itr != GetObjectList().end(); ++itr)
+        {
+            glm::vec3 vec = (*itr)->GetObjectRotation();
+            vec.y +=0.1f;
+            (*itr)->SetObjectRotation(vec);
+        }
+        break;
+    case GLFW_KEY_RIGHT:
+        for (std::list<Object*>::const_iterator itr = GetObjectList().begin(); itr != GetObjectList().end(); ++itr)
+        {
+            glm::vec3 vec = (*itr)->GetObjectRotation();
+            vec.y -=0.1f;
+            (*itr)->SetObjectRotation(vec);
+        }
+        break;
+    default:
+        Scene::Keyboard(key);
+    }
 }
 
 void MainScene::MousePosition(double &xpos, double &ypos)

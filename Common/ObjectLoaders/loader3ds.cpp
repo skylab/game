@@ -4,7 +4,8 @@ const UINT16 CHUNK_MAIN(0x4D4D); // main chunk
 const UINT16 CHUNK_OBJMESH(0x3D3D); // all objects
 const UINT16 CHUNK_OBJECTBLOCK(0x4000); // object
 const UINT16 CHUNK_TRIMESH(0x4100); // object data start
-const UINT16 CHUNK_VERTLIST(0x4110); // object vertexes
+const UINT16 CHUNK_VERTLIST(0x4110); // object vertexes (one point - only once)
+const UINT16 CHUNK_TRI_FACELIST(0x4120); // Indexes of vertexes to object
 
 Loader3ds::Loader3ds()
 {
@@ -30,13 +31,24 @@ bool Loader3ds::LoadObjectFile(const char *filename, ObjectRaw *object)
 
     GetChunkPosition(file, CHUNK_VERTLIST);
 
-    UINT16 chunkSize = 0;
+    UINT16 chunkId = 0;
+    UINT32 chunkSize = 0;
+    file.read((char*)&chunkId, sizeof(chunkId));
     file.read((char*)&chunkSize, sizeof(chunkSize));
 
     UINT16 vertexQuantity = 0;
     file.read((char*)&vertexQuantity, sizeof(vertexQuantity));
 
-    object->SetObjectVertexQuantity(vertexQuantity);
+    glm::vec3 *vertexArray = nullptr;
+    try
+    {
+        vertexArray = new glm::vec3[vertexQuantity];
+    }
+    catch(std::bad_alloc &ba)
+    {
+        (void)ba;
+        return false;
+    }
 
     for(UINT16 i = 0; i < vertexQuantity; ++i)
     {
@@ -45,11 +57,34 @@ bool Loader3ds::LoadObjectFile(const char *filename, ObjectRaw *object)
         file.read((char*)&z, sizeof(z));
         file.read((char*)&y, sizeof(y));
         glm::vec3 vec(x, y, z);
-        object->GetObjectVertexes()[i] = vec;
+        vertexArray[i] = vec;
     }
 
-    glm::vec3 vec;
-    std::cerr << vertexQuantity << sizeof(vec.x) << std::endl;
+    GetChunkPosition(file, CHUNK_TRI_FACELIST);
+    file.read((char*)&chunkId, sizeof(chunkId));
+    file.read((char*)&chunkSize, sizeof(chunkSize));
+
+    UINT16 triangleQuantity = 0;
+    file.read((char*)&triangleQuantity, sizeof(triangleQuantity));
+
+    object->SetObjectVertexQuantity(triangleQuantity*3);
+
+    UINT16 first = 0;
+    UINT16 second = 0;
+    UINT16 third = 0;
+    UINT16 flag = 0;
+    UINT16 vertexCounter = 0;
+    for(UINT16 i = 0; i < triangleQuantity; ++i)
+    {
+        file.read((char*)&first, sizeof(first));
+        file.read((char*)&second, sizeof(second));
+        file.read((char*)&third, sizeof(third));
+        file.read((char*)&flag, sizeof(flag));
+
+        object->GetObjectVertexes()[vertexCounter++] = vertexArray[first];
+        object->GetObjectVertexes()[vertexCounter++] = vertexArray[second];
+        object->GetObjectVertexes()[vertexCounter++] = vertexArray[third];
+    }
 
     file.close();
     return false;
