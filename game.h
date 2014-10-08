@@ -23,6 +23,8 @@ private:
     GLFWwindow* window;
 
     SceneManager *mSceneManager;
+
+    bool mbStartNormal;
 };
 
 #endif // GAME_H

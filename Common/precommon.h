@@ -2,11 +2,10 @@
 #define PRECOMMON_H
 
 #include <new>
+#include <typeinfo>
 #include <list>
 #include <map>
 #include <cstring>
-
-#include <mutex>
 
 #include <iostream>
 

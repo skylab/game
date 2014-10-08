@@ -138,3 +138,30 @@ const glm::vec3 &ObjectRaw::GetObjectScale() const
 {
     return mObjectScale;
 }
+
+void ObjectRaw::AddObject(ObjectRaw *object)
+{
+    mObjectList.push_back(object);
+}
+
+void ObjectRaw::RemoveObject(ObjectRaw *object)
+{
+    if (0 != mObjectList.size())
+        mObjectList.remove(object);
+
+}
+
+void ObjectRaw::ClearObjectList()
+{
+    mObjectList.clear();
+}
+
+const std::list<ObjectRaw *> &ObjectRaw::GetObjectList() const
+{
+    return mObjectList;
+}
+
+size_t ObjectRaw::GetObjectQuantity() const
+{
+    return mObjectList.size();
+}

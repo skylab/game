@@ -1,12 +1,16 @@
 #include "scenemanager.h"
+#include "Scenes/sceneabs.h"
 
-#include "loadingscene.h"
+/// SceneList begin
+#include "Scenes/mainscene.h"
+/// SceneList end
 
 SceneManager *SceneManager::mInstance = nullptr;
 
 SceneManager::~SceneManager()
 {
     delete mScene;
+    mScene = nullptr;
 }
 
 SceneManager *SceneManager::Instance()
@@ -27,14 +31,14 @@ SceneManager *SceneManager::Instance()
     return mInstance;
 }
 
-void SceneManager::ChangeScene(Scene *scene)
+void SceneManager::Switch(Scene *scene)
 {
     delete mScene;
     mScene = scene;
     DrawScene();
 }
 
-Scene *SceneManager::GetCurrentScene()
+SceneAbs *SceneManager::GetCurrentScene()
 {
     return mScene;
 }
@@ -49,9 +53,19 @@ const GLFWwindow *SceneManager::GetWindow() const
     return mWindow;
 }
 
+void SceneManager::SetWindowWidth(size_t width)
+{
+    mWindowWidth = width;
+}
+
 const int &SceneManager::GetWindowWidth() const
 {
     return mWindowWidth;
+}
+
+void SceneManager::SetWindowHeight(size_t height) const
+{
+    mWindowHeight = height;
 }
 
 const int &SceneManager::GetWindowHeight() const
@@ -61,6 +75,7 @@ const int &SceneManager::GetWindowHeight() const
 
 void SceneManager::DrawScene() const
 {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     mScene->Draw();
 }
 
@@ -79,11 +94,6 @@ void SceneManager::MousePosition(double &xpos, double &ypos)
     mScene->MousePosition(xpos, ypos);
 }
 
-void SceneManager::SimulateScene() const
-{
-    mScene->Simulate(1.0);
-}
-
 void SceneManager::SetReceivedExit(bool val)
 {
     mbReceivedExit = val;
@@ -94,17 +104,15 @@ const bool &SceneManager::GetReceivedExit() const
     return mbReceivedExit;
 }
 
-SceneManager::SceneManager() : mbReceivedExit(false), mWindow(nullptr)
+SceneManager::SceneManager() : mbReceivedExit(false), mWindow(nullptr), mWindowWidth(512), mWindowHeight(384)
 {
-    mWindowWidth = 1024;
-    mWindowHeight = 768;
     try
     {
-        mScene = new LoadingScene();
+        mScene = new MainScene();
     }
     catch(std::bad_alloc &ba)
     {
-        //TODO
+        // TODO
         (void)ba;
     }
 }

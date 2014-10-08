@@ -28,6 +28,13 @@ public:
     virtual void SetObjectScale(glm::vec3 &scale);
     virtual const glm::vec3 &GetObjectScale(void) const;
 
+    // Depended objects
+    virtual void AddObject(ObjectRaw* object);
+    virtual void RemoveObject(ObjectRaw* object);
+    virtual void ClearObjectList(void);
+    virtual const std::list<ObjectRaw*> &GetObjectList(void) const;
+    virtual size_t GetObjectQuantity(void) const;
+
 protected:
     ObjectRaw();
 
@@ -42,7 +49,8 @@ private:
     glm::vec3 mObjectRotation;
     glm::vec3 mObjectScale;
 
-    // std::mutex mObjectModifying; // Locked in case of modify object
+    // Depended objects
+    std::list<ObjectRaw*> mObjectList;
 };
 
 #endif // OBJECTRAW_H

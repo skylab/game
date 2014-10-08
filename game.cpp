@@ -2,15 +2,16 @@
 
 #include "GraphicSystem/pregraphic.h"
 
-#include "Scenes/scenemanager.h"
-
-#include "Scenes/loadingscene.h"
+#include "Main/scenemanager.h"
 
 Game *Game::mInstance = nullptr;
 
+#define WINDOW_WIDTH 1024
+#define WINDOW_HEIGHT 768
+
 void KeyCallBackFunction(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
-    //TODO!!!
+    // TODO!!!
     (void)window;
     (void)scancode;
     (void)action;
@@ -20,7 +21,7 @@ void KeyCallBackFunction(GLFWwindow *window, int key, int scancode, int action, 
 
 void CursorPositionFunction(GLFWwindow *window, double xpos, double ypos)
 {
-    //TODO
+    // TODO
     (void)window;
     SceneManager::Instance()->MousePosition(xpos, ypos);
 }
@@ -40,59 +41,64 @@ Game *Game::Instance()
 
 void Game::Execute()
 {
-    //TODO Another thread
-    mSceneManager->SimulateScene();
+    if (true == mbStartNormal)
+    {
+        //TODO Another thread graphic
+        while (!glfwWindowShouldClose(window) && !SceneManager::Instance()->GetReceivedExit())
+        {
+            SceneManager::Instance()->DrawScene();
+            glfwSwapBuffers(window);
+            glfwPollEvents();
+        }
 
-    mSceneManager->DrawScene();
+        //TODO Another thread physic
+    }
+    else
+    {
+        std::cerr << "Initialization failed. Can't execute" << std::endl;
+    }
 }
 
-Game::Game() : mSceneManager(nullptr)
+Game::Game() : mSceneManager(nullptr), mbStartNormal(false)
 {
     if(!glfwInit())
     {
-        //TODO
+        // TODO
         return;
     }
 
-    window = glfwCreateWindow( 1024, 768, "Game", NULL, NULL);
+    window = glfwCreateWindow( WINDOW_WIDTH, WINDOW_HEIGHT, "Game", NULL, NULL);
     if (NULL == window)
     {
-        //TODO
+        // TODO
         glfwTerminate();
         return;
     }
-    glfwMakeContextCurrent(window);
-    SceneManager::Instance()->SetWindow(window);
 
     glewExperimental = true; // Needed for core profile
-
     if (glewInit() != GLEW_OK) {
-        //TODO
+        // TODO
         return;
     }
 
-    // Ensure we can capture the escape key being pressed below
+    glfwMakeContextCurrent(window);
+    mSceneManager = SceneManager::Instance()->SetWindow(window);
+    SceneManager::Instance()->SetWindowWidth(WINDOW_WIDTH);
+    SceneManager::Instance()->SetWindowHeight(WINDOW_HEIGHT);
+
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-    glfwSetCursorPos(window, 1024/2, 768/2);
+    glfwSetCursorPos(window, WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
 
     glfwSetKeyCallback(window, KeyCallBackFunction);
     glfwSetCursorPosCallback(window, CursorPositionFunction);
 
-    glClearColor(0.5f, 0.5f, 0.5f, 0.5f);
-    mSceneManager = SceneManager::Instance();
-    SceneManager::Instance()->ChangeScene(new LoadingScene());
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-    while (!glfwWindowShouldClose(window) && !SceneManager::Instance()->GetReceivedExit())
-    {
-        SceneManager::Instance()->DrawScene();
-
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
+    mbStartNormal = true;
 }
 
 Game::~Game()
 {
     delete mSceneManager;
+    mSceneManager = nullptr;
 }

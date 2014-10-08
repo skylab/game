@@ -33,7 +33,7 @@ const ShaderProgram *GraphicObject::GetShaderProgramm() const
 {
     return mShaderProgramm;
 }
-
+/*
 void GraphicObject::FillAsCube()
 {
     glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
@@ -92,6 +92,59 @@ void GraphicObject::FillAsCube()
 
     /////////////Color
 }
+*/
+void GraphicObject::Draw()
+{
+    // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    // DRAW THIS OBJECT
+    if (nullptr != GetVertexBufferObject())
+    {
+        glUseProgram( GetShaderProgramm()->GetShaderProgrammID() );
+
+        GLuint PVM = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("PVM");
+        glUniformMatrix4fv( PVM, 1, false, &((GetSceneCamera().GetProjectionViewModelMatrix())[0][0]) );
+
+        GLuint scale = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("ObjectSize");
+        glUniform3fv(scale, 1, (GLfloat*)&(GetObjectScale()));
+
+        GLuint position = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("ObjectPosition");
+        glUniform3fv(position, 1, (GLfloat*)&(GetObjectPosition()));
+
+        GLuint rotation = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("ObjectRotation");
+        glUniform3fv(rotation, 1, (GLfloat*)&(GetObjectRotation()));
+
+        glEnableVertexAttribArray(0);
+        glBindBuffer(GL_ARRAY_BUFFER, GetVertexBufferObject());
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+
+        glDrawArrays(GL_TRIANGLES, 0, GetObjectVertexQuantity());
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+        glDisableVertexAttribArray(0);
+        glUseProgram(0);
+    }
+
+    // DRAW ALL ANOTHER OBJECTS
+    foreach(GetObjectList().begin(), GetObjectList().end(), [](ObjectRaw *obj)
+    {
+        GraphicObject *object = nullptr;
+        try
+        {
+            object = dynamic_cast<GraphicObject*>(*itr);
+        }
+        catch(std::bad_cast &bc)
+        {
+            (void)bc;
+            // skip bad cast, object have not graphic part
+            continue;
+        }
+        if (nullptr != object)
+        {
+            object->Draw();
+        }
+    });
+}
 
 GraphicObject::GraphicObject() : ObjectRaw(), mVertexBufferObject(0), mShaderProgramm(nullptr)
 {
@@ -99,6 +152,5 @@ GraphicObject::GraphicObject() : ObjectRaw(), mVertexBufferObject(0), mShaderPro
     SetShaderProgramm("Resources/Shaders/VertexShader.vsh",
                       "Resources/Shaders/FragmentShader.fsh");
 
-    //
     glGenBuffers(1, &mVertexBufferObject);
 }

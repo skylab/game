@@ -1,18 +1,9 @@
 #include "camera.h"
 
-#include "scenemanager.h"
+#include "../scenemanager.h"
 
-Camera::Camera() : mCameraPosition(0.0f, 0.0f, 0.0f), mCameraDirection(0.0f, 0.0f, 0.0f)
+Camera::Camera() : mCameraPosition(0.0f, 0.0f, 0.0f), mCameraDirection(0.0f, 0.0f, 0.0f), mCameraUp(0.0f, 1.0f, 0.0f)
 {
-    glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f);
-    SetCameraPosition(position);
-
-    glm::vec3 direction = glm::vec3(0.0f, 0.0f, 0.0f);
-    SetCameraDirection(direction);
-
-    glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
-    SetCameraUp(up);
-
     float viewAngle = 90.0f;
     SetCameraViewAngle(viewAngle);
 
@@ -24,12 +15,6 @@ Camera::Camera() : mCameraPosition(0.0f, 0.0f, 0.0f), mCameraDirection(0.0f, 0.0
 
     float unitTo = 100.0f;
     SetCameraUnitTo(unitTo);
-
-    //float cameraSideSpeer = 3.0f;
-    //SetCameraSideSpeed(cameraSideSpeer);
-    //mCameraSideSpeed = 0.1f;
-
-
 }
 
 Camera::~Camera()

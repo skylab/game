@@ -19,7 +19,9 @@ public:
     virtual const ShaderProgram *GetShaderProgramm(void) const;
 
     //FOR TESTS
-    void FillAsCube();
+    //void FillAsCube();
+
+    virtual void Draw(void);
 
 protected:
     GraphicObject();

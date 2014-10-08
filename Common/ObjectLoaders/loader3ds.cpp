@@ -73,6 +73,7 @@ bool Loader3ds::LoadObjectFile(const char *filename, ObjectRaw *object)
     UINT16 second = 0;
     UINT16 third = 0;
     UINT16 flag = 0;
+
     UINT16 vertexCounter = 0;
     for(UINT16 i = 0; i < triangleQuantity; ++i)
     {

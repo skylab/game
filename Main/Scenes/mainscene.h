@@ -1,15 +1,15 @@
 #ifndef MAINSCENE_H
 #define MAINSCENE_H
 
-#include "scene.h"
+#include "sceneabs.h"
 
-class MainScene : public Scene
+class MainScene : public SceneAbs
 {
 public:
     MainScene();
-    ~MainScene();
+    ~MainScene() override;
 
-    void Draw(void) override;
+    //void Draw(void) override;
     void Keyboard(int &key) override;
     void MousePosition(double &xpos, double &ypos) override;
 };
