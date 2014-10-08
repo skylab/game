@@ -21,7 +21,8 @@ SOURCES += main.cpp \
     Main/scenemanager.cpp \
     Main/Scenes/sceneabs.cpp \
     Main/Scenes/mainscene.cpp \
-    Main/Scenes/camera.cpp
+    Main/Scenes/camera.cpp \
+    Main/Scenes/loadingscene.cpp
 
 HEADERS += \
     game.h \
@@ -40,7 +41,8 @@ HEADERS += \
     Main/Scenes/sceneabs.h \
     Main/Scenes/mainscene.h \
     Main/Scenes/camera.h \
-    Main/premain.h
+    Main/premain.h \
+    Main/Scenes/loadingscene.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

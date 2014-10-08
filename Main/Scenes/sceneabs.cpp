@@ -4,7 +4,10 @@
 
 SceneAbs::SceneAbs() : mbCursorIsCamera(false)
 {
-    ;
+    SetDrawObject(false);
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
 }
 
 void SceneAbs::SwitchScene(SceneAbs *scene)
@@ -16,12 +19,14 @@ void SceneAbs::SetCursorAsCamera(bool val)
 {
     if (val)
     {
+        // Hide cursor
         glfwSetInputMode(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
         glfwSetCursorPos(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), SceneManager::Instance()->GetWindowWidth()/2.0, SceneManager::Instance()->GetWindowHeight()/2.0);
     }
     else
     {
-       glfwSetInputMode(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        // Show cursor
+        glfwSetInputMode(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
     }
     mbCursorIsCamera = val;
 }
@@ -33,7 +38,7 @@ const bool SceneAbs::IsCursorAsCamera() const
 
 Camera &SceneAbs::GetSceneCamera()
 {
-    return mSceneCamera;
+    return mCamera;
 }
 
 void SceneAbs::Reshape(int width, int height)
@@ -62,7 +67,7 @@ void SceneAbs::MousePosition(double &xpos, double &ypos)
 
 void SceneAbs::Draw()
 {    
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Background color
+    glClearColor(0.1f, 0.2f, 0.3f, 0.0f); // Background color
     GraphicObject::Draw();
 }
 

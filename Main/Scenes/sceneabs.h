@@ -2,6 +2,7 @@
 #define SCENEABS_H
 
 #include "../gameobject.h"
+
 #include "camera.h"
 
 class SceneAbs : public GameObject

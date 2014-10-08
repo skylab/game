@@ -1,13 +1,11 @@
 #include "game.h"
 
-#include "GraphicSystem/pregraphic.h"
-
 #include "Main/scenemanager.h"
 
 Game *Game::mInstance = nullptr;
 
-#define WINDOW_WIDTH 1024
-#define WINDOW_HEIGHT 768
+#define MY_WINDOW_WIDTH 1024
+#define MY_WINDOW_HEIGHT 768
 
 void KeyCallBackFunction(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
@@ -41,6 +39,11 @@ Game *Game::Instance()
 
 void Game::Execute()
 {
+    if (!SceneManager::Instance()->StartScenes())
+    {
+        mbStartNormal = false;
+    }
+
     if (true == mbStartNormal)
     {
         //TODO Another thread graphic
@@ -67,7 +70,7 @@ Game::Game() : mSceneManager(nullptr), mbStartNormal(false)
         return;
     }
 
-    window = glfwCreateWindow( WINDOW_WIDTH, WINDOW_HEIGHT, "Game", NULL, NULL);
+    window = glfwCreateWindow( MY_WINDOW_WIDTH, MY_WINDOW_HEIGHT, "Game", NULL, NULL);
     if (NULL == window)
     {
         // TODO
@@ -75,24 +78,22 @@ Game::Game() : mSceneManager(nullptr), mbStartNormal(false)
         return;
     }
 
+    glfwMakeContextCurrent(window);
+
     glewExperimental = true; // Needed for core profile
     if (glewInit() != GLEW_OK) {
         // TODO
         return;
     }
 
-    glfwMakeContextCurrent(window);
-    mSceneManager = SceneManager::Instance()->SetWindow(window);
-    SceneManager::Instance()->SetWindowWidth(WINDOW_WIDTH);
-    SceneManager::Instance()->SetWindowHeight(WINDOW_HEIGHT);
-
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-    glfwSetCursorPos(window, WINDOW_WIDTH/2, WINDOW_HEIGHT/2);
-
     glfwSetKeyCallback(window, KeyCallBackFunction);
     glfwSetCursorPosCallback(window, CursorPositionFunction);
 
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    mSceneManager = SceneManager::Instance();
+    SceneManager::Instance()->SetWindow(window);
+    SceneManager::Instance()->SetWindowWidth(MY_WINDOW_WIDTH);
+    SceneManager::Instance()->SetWindowHeight(MY_WINDOW_HEIGHT);
 
     mbStartNormal = true;
 }

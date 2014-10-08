@@ -2,21 +2,37 @@
 
 ShaderProgram::ShaderProgram(const char *vertexShaderName, const char *fragmentShaderName) : mShaderProgramID(0), mVertexShader(NULL), mFragmentShader(NULL)
 {
-    mVertexShader = new (std::nothrow) Shader(GL_VERTEX_SHADER, vertexShaderName);
-    if (NULL == mVertexShader)
-    {        
-#ifdef DEBUG_SHADER_PROGRAMM
+    try
+    {
+        mVertexShader = new Shader(GL_VERTEX_SHADER, vertexShaderName);
+    }
+    catch(std::bad_alloc &ba)
+    {
+        (void)ba;
         std::cerr << "Can't allocate vertex shader" << std::endl;
-#endif
         return;
     }
 
-    mFragmentShader = new (std::nothrow) Shader(GL_FRAGMENT_SHADER, fragmentShaderName);
     if (NULL == mVertexShader)
-    {        
-#ifdef DEBUG_SHADER_PROGRAMM
+    {
+        std::cerr << "Can't allocate vertex shader" << std::endl;
+        return;
+    }
+
+    try
+    {
+        mFragmentShader = new Shader(GL_FRAGMENT_SHADER, fragmentShaderName);
+    }
+    catch(std::bad_alloc &ba)
+    {
+        (void)ba;
         std::cerr << "Can't allocate fragment shader" << std::endl;
-#endif
+        return;
+    }
+
+    if (NULL == mVertexShader)
+    {
+        std::cerr << "Can't allocate fragment shader" << std::endl;
         return;
     }
 
@@ -41,10 +57,8 @@ ShaderProgram::ShaderProgram(const char *vertexShaderName, const char *fragmentS
     int link_ok;
     glGetProgramiv(mShaderProgramID, GL_LINK_STATUS, &link_ok);
     if(!link_ok)
-    {        
-#ifdef DEBUG_SHADER_PROGRAMM
+    {
         std::cerr << "Can't link shaders" << std::endl;
-#endif
       return;
     }
 }
@@ -68,9 +82,7 @@ GLint ShaderProgram::GetUniform(const char *uniformName)
     GLint uniformLocation = glGetUniformLocation(*this, uniformName);
     if (-1 == uniformLocation)
     {
-#ifdef DEBUG_SHADER_PROGRAMM
         std::cerr << "Can't take uniform " << uniformName << std::endl;
-#endif
     }
     return uniformLocation;
 }
@@ -80,9 +92,7 @@ GLint ShaderProgram::GetAttribute(const char *attributeName)
     GLint attributeLocation = glGetAttribLocation(*this, attributeName);
     if (-1 == attributeLocation)
     {
-#ifdef DEBUG_SHADER_PROGRAMM
         std::cerr << "Can't take attribute " << attributeName << std::endl;
-#endif
     }
     return attributeLocation;
 }

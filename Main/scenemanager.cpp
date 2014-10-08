@@ -1,7 +1,7 @@
 #include "scenemanager.h"
-#include "Scenes/sceneabs.h"
 
 /// SceneList begin
+#include "Scenes/loadingscene.h"
 #include "Scenes/mainscene.h"
 /// SceneList end
 
@@ -31,7 +31,22 @@ SceneManager *SceneManager::Instance()
     return mInstance;
 }
 
-void SceneManager::Switch(Scene *scene)
+bool SceneManager::StartScenes()
+{
+    try
+    {
+        SwitchScene(new LoadingScene());
+    }
+    catch(std::bad_alloc &ba)
+    {
+        (void)ba;
+        std::cerr << "SceneManager can't start loading scene" << std::endl;
+        return false;
+    }
+    return true;
+}
+
+void SceneManager::SwitchScene(SceneAbs *scene)
 {
     delete mScene;
     mScene = scene;
@@ -63,7 +78,7 @@ const int &SceneManager::GetWindowWidth() const
     return mWindowWidth;
 }
 
-void SceneManager::SetWindowHeight(size_t height) const
+void SceneManager::SetWindowHeight(size_t height)
 {
     mWindowHeight = height;
 }
@@ -104,15 +119,7 @@ const bool &SceneManager::GetReceivedExit() const
     return mbReceivedExit;
 }
 
-SceneManager::SceneManager() : mbReceivedExit(false), mWindow(nullptr), mWindowWidth(512), mWindowHeight(384)
+SceneManager::SceneManager() : mScene(nullptr), mbReceivedExit(false), mWindow(nullptr), mWindowWidth(512), mWindowHeight(384)
 {
-    try
-    {
-        mScene = new MainScene();
-    }
-    catch(std::bad_alloc &ba)
-    {
-        // TODO
-        (void)ba;
-    }
+    ;
 }

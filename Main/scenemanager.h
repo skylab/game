@@ -3,7 +3,7 @@
 
 #include "../GraphicSystem/pregraphic.h"
 
-class SceneAbs;
+#include "Scenes/sceneabs.h"
 
 class SceneManager
 {
@@ -12,7 +12,8 @@ public:
 
     static SceneManager *Instance(void);
 
-    void SwitchScene(Scene *scene);
+    bool StartScenes(void);
+    void SwitchScene(SceneAbs *scene);
     SceneAbs *GetCurrentScene(void);
 
     void SetWindow(GLFWwindow *window);
@@ -20,21 +21,24 @@ public:
 
     void SetWindowWidth(size_t width);
     const int &GetWindowWidth(void) const;
-    void SetWindowHeight(size_t height) const;
+
+    void SetWindowHeight(size_t height);
     const int &GetWindowHeight(void) const;
 
+    void SetReceivedExit(bool val);
+    const bool &GetReceivedExit(void) const;
+
+    // Drawing tools
     void DrawScene(void) const;
     void Reshape(int width, int height);
     void Keyboard(int &key);
     void MousePosition(double &xpos, double &ypos);
 
-    void SetReceivedExit(bool val);
-    const bool &GetReceivedExit(void) const;
-
 private:
     SceneManager();
 
 private:
+    static SceneManager *mInstance;
     GLFWwindow *mWindow;
     SceneAbs *mScene;
 
@@ -42,6 +46,7 @@ private:
     int mWindowHeight;
 
     bool mbReceivedExit;
+};
 
 
 

@@ -110,16 +110,6 @@ const glm::mat4 &Camera::GetProjectionViewModelMatrix()
     return mProjectioViewModelMatrix;
 }
 
-void Camera::SetCameraSideSpeed(float &speed)
-{
-    mCameraSideSpeed = speed;
-}
-
-const float &Camera::GetCameraSideSpeed() const
-{
-    return mCameraSideSpeed;
-}
-
 void Camera::ProcessCursorPosition(double &xpos, double &ypos)
 {
     //TODO Camera rotation

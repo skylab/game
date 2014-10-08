@@ -2,6 +2,8 @@
 
 #include "../Shaders/shadermanager.h"
 
+#include "../../Main/scenemanager.h"
+
 GraphicObject::~GraphicObject()
 {
     glDeleteBuffers(1, &GetVertexBufferObject());
@@ -33,77 +35,17 @@ const ShaderProgram *GraphicObject::GetShaderProgramm() const
 {
     return mShaderProgramm;
 }
-/*
-void GraphicObject::FillAsCube()
-{
-    glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
-    SetObjectScale(scale);
 
-    SetObjectVertexQuantity(36);
-
-    GetObjectVertexes()[0] = glm::vec3(-1.0f, 1.0f, 1.0f); // Front
-    GetObjectVertexes()[1] = glm::vec3(-1.0f, -1.0f, 1.0f);
-    GetObjectVertexes()[2] = glm::vec3(1.0f, 1.0f, 1.0f);
-
-    GetObjectVertexes()[3] = glm::vec3(1.0f, 1.0f, 1.0f);
-    GetObjectVertexes()[4] = glm::vec3(1.0f, -1.0f, 1.0f);
-    GetObjectVertexes()[5] = glm::vec3(-1.0f, -1.0f, 1.0f); // End front
-
-    GetObjectVertexes()[6] = glm::vec3(-1.0f, 1.0f, -1.0f); // back
-    GetObjectVertexes()[7] = glm::vec3(-1.0f, -1.0f, -1.0f);
-    GetObjectVertexes()[8] = glm::vec3(1.0f, 1.0f, -1.0f);
-
-    GetObjectVertexes()[9] =  glm::vec3(1.0f, 1.0f, -1.0f);
-    GetObjectVertexes()[10] = glm::vec3(1.0f, -1.0f, -1.0f);
-    GetObjectVertexes()[11] = glm::vec3(-1.0f, -1.0f, -1.0f); // End back
-
-
-    GetObjectVertexes()[12] = glm::vec3(1.0f, 1.0f, -1.0f); // right
-    GetObjectVertexes()[13] = glm::vec3(1.0f, -1.0f, -1.0f);
-    GetObjectVertexes()[14] = glm::vec3(1.0f, 1.0f, 1.0f);
-
-    GetObjectVertexes()[15] = glm::vec3(1.0f, 1.0f, 1.0f);
-    GetObjectVertexes()[16] = glm::vec3(1.0f, -1.0f, 1.0f);
-    GetObjectVertexes()[17] = glm::vec3(1.0f, -1.0f, -1.0f); // End right
-
-    GetObjectVertexes()[18] = glm::vec3(-1.0f, 1.0f, -1.0f); // left
-    GetObjectVertexes()[19] = glm::vec3(-1.0f, -1.0f, -1.0f);
-    GetObjectVertexes()[20] = glm::vec3(-1.0f, 1.0f, 1.0f);
-
-    GetObjectVertexes()[21] = glm::vec3(-1.0f, 1.0f, 1.0f);
-    GetObjectVertexes()[22] = glm::vec3(-1.0f, -1.0f, 1.0f);
-    GetObjectVertexes()[23] = glm::vec3(-1.0f, -1.0f, -1.0f); // End left
-
-    GetObjectVertexes()[24] = glm::vec3(1.0f, -1.0f, -1.0f); // down
-    GetObjectVertexes()[25] = glm::vec3(-1.0f, -1.0f, -1.0f);
-    GetObjectVertexes()[26] = glm::vec3(1.0f, -1.0f, 1.0f);
-
-    GetObjectVertexes()[27] = glm::vec3(1.0f, -1.0f, 1.0f);
-    GetObjectVertexes()[28] = glm::vec3(-1.0f, -1.0f, 1.0f);
-    GetObjectVertexes()[29] = glm::vec3(-1.0f, -1.0f, -1.0f); // End down
-
-    GetObjectVertexes()[30] = glm::vec3(1.0f, 1.0f, -1.0f); // up
-    GetObjectVertexes()[31] = glm::vec3(-1.0f, 1.0f, -1.0f);
-    GetObjectVertexes()[32] = glm::vec3(1.0f, 1.0f, 1.0f);
-
-    GetObjectVertexes()[33] = glm::vec3(1.0f, 1.0f, 1.0f);
-    GetObjectVertexes()[34] = glm::vec3(-1.0f, 1.0f, 1.0f);
-    GetObjectVertexes()[35] = glm::vec3(-1.0f, 1.0f, -1.0f); // End up
-
-    /////////////Color
-}
-*/
 void GraphicObject::Draw()
 {
-    // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
     // DRAW THIS OBJECT
-    if (nullptr != GetVertexBufferObject())
+    if (GetDrawObject() && nullptr != GetObjectVertexes())
     {
         glUseProgram( GetShaderProgramm()->GetShaderProgrammID() );
 
         GLuint PVM = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("PVM");
-        glUniformMatrix4fv( PVM, 1, false, &((GetSceneCamera().GetProjectionViewModelMatrix())[0][0]) );
+
+        glUniformMatrix4fv( PVM, 1, false, &((SceneManager::Instance()->GetCurrentScene()->GetSceneCamera().GetProjectionViewModelMatrix())[0][0]) );
 
         GLuint scale = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("ObjectSize");
         glUniform3fv(scale, 1, (GLfloat*)&(GetObjectScale()));
@@ -126,7 +68,7 @@ void GraphicObject::Draw()
     }
 
     // DRAW ALL ANOTHER OBJECTS
-    foreach(GetObjectList().begin(), GetObjectList().end(), [](ObjectRaw *obj)
+    for (std::list<ObjectRaw*>::const_iterator itr = GetObjectList().begin(); itr != GetObjectList().end(); ++itr)
     {
         GraphicObject *object = nullptr;
         try
@@ -137,16 +79,25 @@ void GraphicObject::Draw()
         {
             (void)bc;
             // skip bad cast, object have not graphic part
-            continue;
         }
-        if (nullptr != object)
+        if (nullptr != (*itr))
         {
             object->Draw();
         }
-    });
+    }
 }
 
-GraphicObject::GraphicObject() : ObjectRaw(), mVertexBufferObject(0), mShaderProgramm(nullptr)
+void GraphicObject::SetDrawObject(bool val)
+{
+    mbDrawObject = val;
+}
+
+const bool &GraphicObject::GetDrawObject() const
+{
+    return mbDrawObject;
+}
+
+GraphicObject::GraphicObject() : ObjectRaw(), mVertexBufferObject(0), mShaderProgramm(nullptr), mbDrawObject(true)
 {
     //Set Default Shader
     SetShaderProgramm("Resources/Shaders/VertexShader.vsh",

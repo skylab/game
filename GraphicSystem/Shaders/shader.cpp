@@ -6,7 +6,15 @@
 
 Shader::Shader(GLint shaderType, const char *filename): mShaderType(shaderType), mShaderID(0), mShaderSourceCode(0)
 {
-    mShaderID = glCreateShader(mShaderType);
+    try
+    {
+        mShaderID = glCreateShader(mShaderType);
+    }
+    catch(...)
+    {
+        std::cerr << "Unknown error on Shader" << std::endl;
+    }
+
     LoadFromFile(filename);
 }
 

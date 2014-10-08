@@ -4,6 +4,7 @@
 #include "premain.h"
 
 #include "../GraphicSystem/Objects/graphicobject.h"
+// TODO And physic object
 
 class GameObject : public GraphicObject
 {

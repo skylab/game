@@ -10,6 +10,7 @@ class Game
 public:
     static Game *Instance();
     ~Game();
+
     void Execute();
 
 private:
