@@ -4,13 +4,19 @@
 #include "premain.h"
 
 #include "../GraphicSystem/Objects/graphicobject.h"
-// TODO And physic object
 
 class GameObject : public GraphicObject
 {
+protected:
+
 public:
     GameObject();
     virtual ~GameObject() override;
+
+protected:
+    // TODO some field like
+    // ID
+    // health etc.
 };
 
 #endif // GAMEOBJECT_H

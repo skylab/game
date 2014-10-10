@@ -34,6 +34,8 @@ public:
     virtual void ClearObjectList(void);
     virtual const std::list<ObjectRaw*> &GetObjectList(void) const;
     virtual size_t GetObjectQuantity(void) const;
+    virtual void SetCanHaveObjectList(bool val);
+    virtual bool GetCanHaveObjectList(void);
 
 protected:
     ObjectRaw();
@@ -51,6 +53,7 @@ private:
 
     // Depended objects
     std::list<ObjectRaw*> mObjectList;
+    bool mbCanHaveObjectList;
 };
 
 #endif // OBJECTRAW_H

@@ -45,7 +45,7 @@ void GraphicObject::Draw()
 
         GLuint PVM = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("PVM");
 
-        glUniformMatrix4fv( PVM, 1, false, &((SceneManager::Instance()->GetCurrentScene()->GetSceneCamera().GetProjectionViewModelMatrix())[0][0]) );
+        glUniformMatrix4fv( PVM, 1, false, &((SceneManager::Instance()->GetCurrentScene()->GetSceneCamera()->GetProjectionViewModelMatrix())[0][0]) );
 
         GLuint scale = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("ObjectSize");
         glUniform3fv(scale, 1, (GLfloat*)&(GetObjectScale()));

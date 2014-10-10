@@ -7,7 +7,7 @@ static const char *defaultObjectName = "Unknown";
 ObjectRaw::ObjectRaw() :
     mObjectFile(nullptr), mObjectName(nullptr), mObjectVertexes(nullptr),
     mObjectVertexQuantity(0),
-    mObjectPosition(0.0f, 0.0f, 0.0f), mObjectRotation(0.0f, 0.0f, 0.0f), mObjectScale(0.0f, 0.0f, 0.0f)
+    mObjectPosition(0.0f, 0.0f, 0.0f), mObjectRotation(0.0f, 0.0f, 0.0f), mObjectScale(0.0f, 0.0f, 0.0f), mbCanHaveObjectList(true)
 {
     mObjectName = (char*)defaultObjectName;
 
@@ -21,12 +21,15 @@ ObjectRaw::ObjectRaw() :
 
 ObjectRaw::~ObjectRaw()
 {
+    // TODO destructor
     if (defaultObjectName != mObjectName)
         delete[] mObjectName;
     mObjectName = nullptr;
 
     delete[] mObjectVertexes;
     mObjectVertexes = nullptr;
+
+    ClearObjectList();
 }
 
 bool ObjectRaw::LoadObjectFromFile(const char *fileName)
@@ -141,7 +144,10 @@ const glm::vec3 &ObjectRaw::GetObjectScale() const
 
 void ObjectRaw::AddObject(ObjectRaw *object)
 {
-    mObjectList.push_back(object);
+    if (GetCanHaveObjectList())
+        mObjectList.push_back(object);
+    else
+        std::cerr << "Object can't have objectlist" << std::endl;
 }
 
 void ObjectRaw::RemoveObject(ObjectRaw *object)
@@ -164,4 +170,14 @@ const std::list<ObjectRaw *> &ObjectRaw::GetObjectList() const
 size_t ObjectRaw::GetObjectQuantity() const
 {
     return mObjectList.size();
+}
+
+void ObjectRaw::SetCanHaveObjectList(bool val)
+{
+    mbCanHaveObjectList = val;
+}
+
+bool ObjectRaw::GetCanHaveObjectList()
+{
+    return mbCanHaveObjectList;
 }

@@ -11,10 +11,7 @@ void KeyCallBackFunction(GLFWwindow *window, int key, int scancode, int action, 
 {
     // TODO!!!
     (void)window;
-    (void)scancode;
-    (void)action;
-    (void)mods;
-    SceneManager::Instance()->Keyboard(key);
+    SceneManager::Instance()->Keyboard(key, scancode, action, mods);
 }
 
 void CursorPositionFunction(GLFWwindow *window, double xpos, double ypos)

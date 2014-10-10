@@ -57,10 +57,9 @@ SOURCES       = main.cpp \
 		Common/ObjectLoaders/loader3ds.cpp \
 		Main/gameobject.cpp \
 		Main/scenemanager.cpp \
-		Main/Scenes/sceneabs.cpp \
-		Main/Scenes/mainscene.cpp \
-		Main/Scenes/camera.cpp \
-		Main/Scenes/loadingscene.cpp 
+		Main/Objects/scenebase.cpp \
+		Main/Objects/camerabase.cpp \
+		Main/Objects/objectbase.cpp 
 OBJECTS       = main.o \
 		game.o \
 		shader.o \
@@ -73,10 +72,9 @@ OBJECTS       = main.o \
 		loader3ds.o \
 		gameobject.o \
 		scenemanager.o \
-		sceneabs.o \
-		mainscene.o \
-		camera.o \
-		loadingscene.o
+		scenebase.o \
+		camerabase.o \
+		objectbase.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -325,12 +323,10 @@ game.o: game.cpp game.h \
 		Common/precommon.h \
 		Common/objectraw.h \
 		Main/scenemanager.h \
-		Main/Scenes/loadingscene.h \
-		Main/Scenes/sceneabs.h \
+		Main/Objects/scenebase.h \
 		Main/gameobject.h \
 		Main/premain.h \
-		GraphicSystem/Objects/graphicobject.h \
-		Main/Scenes/camera.h
+		GraphicSystem/Objects/graphicobject.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o game.cpp
 
 shader.o: GraphicSystem/Shaders/shader.cpp GraphicSystem/Shaders/shader.h \
@@ -350,14 +346,13 @@ graphicobject.o: GraphicSystem/Objects/graphicobject.cpp GraphicSystem/Objects/g
 		GraphicSystem/pregraphic.h \
 		Common/precommon.h \
 		Common/objectraw.h \
-		Main/Scenes/sceneabs.h \
-		Main/gameobject.h \
-		Main/premain.h \
-		Main/Scenes/camera.h \
-		Main/scenemanager.h \
 		GraphicSystem/Shaders/shadermanager.h \
 		GraphicSystem/Shaders/shaderprogram.h \
-		GraphicSystem/Shaders/shader.h
+		GraphicSystem/Shaders/shader.h \
+		Main/scenemanager.h \
+		Main/Objects/scenebase.h \
+		Main/gameobject.h \
+		Main/premain.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphicobject.o GraphicSystem/Objects/graphicobject.cpp
 
 objectraw.o: Common/objectraw.cpp Common/objectraw.h \
@@ -403,56 +398,40 @@ scenemanager.o: Main/scenemanager.cpp Main/scenemanager.h \
 		GraphicSystem/pregraphic.h \
 		Common/precommon.h \
 		Common/objectraw.h \
-		Main/Scenes/sceneabs.h \
+		Main/Objects/scenebase.h \
 		Main/gameobject.h \
 		Main/premain.h \
-		GraphicSystem/Objects/graphicobject.h \
-		Main/Scenes/camera.h \
-		Main/Scenes/mainscene.h
+		GraphicSystem/Objects/graphicobject.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scenemanager.o Main/scenemanager.cpp
 
-sceneabs.o: Main/Scenes/sceneabs.cpp Main/Scenes/sceneabs.h \
+scenebase.o: Main/Objects/scenebase.cpp Main/Objects/scenebase.h \
 		Main/gameobject.h \
 		Main/premain.h \
 		Common/precommon.h \
 		GraphicSystem/pregraphic.h \
 		Common/objectraw.h \
 		GraphicSystem/Objects/graphicobject.h \
-		Main/Scenes/camera.h \
+		Main/Objects/camerabase.h \
 		Main/scenemanager.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sceneabs.o Main/Scenes/sceneabs.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scenebase.o Main/Objects/scenebase.cpp
 
-mainscene.o: Main/Scenes/mainscene.cpp Main/Scenes/mainscene.h \
-		Main/Scenes/sceneabs.h \
+camerabase.o: Main/Objects/camerabase.cpp Main/Objects/camerabase.h \
 		Main/gameobject.h \
 		Main/premain.h \
 		Common/precommon.h \
 		GraphicSystem/pregraphic.h \
 		Common/objectraw.h \
-		GraphicSystem/Objects/graphicobject.h \
-		Main/Scenes/camera.h \
-		Main/scenemanager.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainscene.o Main/Scenes/mainscene.cpp
+		GraphicSystem/Objects/graphicobject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o camerabase.o Main/Objects/camerabase.cpp
 
-camera.o: Main/Scenes/camera.cpp Main/Scenes/camera.h \
-		Main/premain.h \
-		Common/precommon.h \
-		GraphicSystem/pregraphic.h \
-		Common/objectraw.h \
-		Main/scenemanager.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o camera.o Main/Scenes/camera.cpp
-
-loadingscene.o: Main/Scenes/loadingscene.cpp Main/Scenes/loadingscene.h \
-		Main/Scenes/sceneabs.h \
+objectbase.o: Main/Objects/objectbase.cpp Main/Objects/objectbase.h \
 		Main/gameobject.h \
 		Main/premain.h \
 		Common/precommon.h \
 		GraphicSystem/pregraphic.h \
 		Common/objectraw.h \
-		GraphicSystem/Objects/graphicobject.h \
-		Main/Scenes/camera.h \
-		Main/scenemanager.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loadingscene.o Main/Scenes/loadingscene.cpp
+		GraphicSystem/Objects/graphicobject.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o objectbase.o Main/Objects/objectbase.cpp
 
 ####### Install
 

@@ -19,10 +19,9 @@ SOURCES += main.cpp \
     Common/ObjectLoaders/loader3ds.cpp \
     Main/gameobject.cpp \
     Main/scenemanager.cpp \
-    Main/Scenes/sceneabs.cpp \
-    Main/Scenes/mainscene.cpp \
-    Main/Scenes/camera.cpp \
-    Main/Scenes/loadingscene.cpp
+    Main/Objects/scenebase.cpp \
+    Main/Objects/camerabase.cpp \
+    Main/Objects/objectbase.cpp
 
 HEADERS += \
     game.h \
@@ -38,11 +37,10 @@ HEADERS += \
     Common/ObjectLoaders/loader3ds.h \
     Main/gameobject.h \
     Main/scenemanager.h \
-    Main/Scenes/sceneabs.h \
-    Main/Scenes/mainscene.h \
-    Main/Scenes/camera.h \
     Main/premain.h \
-    Main/Scenes/loadingscene.h
+    Main/Objects/scenebase.h \
+    Main/Objects/camerabase.h \
+    Main/Objects/objectbase.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

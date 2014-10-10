@@ -1,10 +1,5 @@
 #include "scenemanager.h"
 
-/// SceneList begin
-#include "Scenes/loadingscene.h"
-#include "Scenes/mainscene.h"
-/// SceneList end
-
 SceneManager *SceneManager::mInstance = nullptr;
 
 SceneManager::~SceneManager()
@@ -35,7 +30,7 @@ bool SceneManager::StartScenes()
 {
     try
     {
-        SwitchScene(new LoadingScene());
+        ChangeScene(new SceneBase());
     }
     catch(std::bad_alloc &ba)
     {
@@ -46,14 +41,14 @@ bool SceneManager::StartScenes()
     return true;
 }
 
-void SceneManager::SwitchScene(SceneAbs *scene)
+void SceneManager::ChangeScene(SceneBase *scene)
 {
     delete mScene;
     mScene = scene;
     DrawScene();
 }
 
-SceneAbs *SceneManager::GetCurrentScene()
+SceneBase *SceneManager::GetCurrentScene()
 {
     return mScene;
 }
@@ -90,7 +85,6 @@ const int &SceneManager::GetWindowHeight() const
 
 void SceneManager::DrawScene() const
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     mScene->Draw();
 }
 
@@ -99,9 +93,9 @@ void SceneManager::Reshape(int width, int height)
     mScene->Reshape(width, height);
 }
 
-void SceneManager::Keyboard(int &key)
+void SceneManager::Keyboard(int &key, int &scancode, int &action, int &mods)
 {
-    mScene->Keyboard(key);
+    mScene->Keyboard(key, scancode, action, mods);
 }
 
 void SceneManager::MousePosition(double &xpos, double &ypos)

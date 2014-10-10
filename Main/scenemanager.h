@@ -1,9 +1,11 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 
+// To work with GLFW
 #include "../GraphicSystem/pregraphic.h"
 
-#include "Scenes/sceneabs.h"
+#include "Objects/scenebase.h"
+#include "Objects/camerabase.h"
 
 class SceneManager
 {
@@ -13,8 +15,8 @@ public:
     static SceneManager *Instance(void);
 
     bool StartScenes(void);
-    void SwitchScene(SceneAbs *scene);
-    SceneAbs *GetCurrentScene(void);
+    void ChangeScene(SceneBase *scene);
+    SceneBase *GetCurrentScene(void);
 
     void SetWindow(GLFWwindow *window);
     const GLFWwindow *GetWindow(void) const;
@@ -31,7 +33,7 @@ public:
     // Drawing tools
     void DrawScene(void) const;
     void Reshape(int width, int height);
-    void Keyboard(int &key);
+    void Keyboard(int &key, int &scancode, int &action, int &mods);
     void MousePosition(double &xpos, double &ypos);
 
 private:
@@ -40,7 +42,7 @@ private:
 private:
     static SceneManager *mInstance;
     GLFWwindow *mWindow;
-    SceneAbs *mScene;
+    SceneBase *mScene;
 
     int mWindowWidth;
     int mWindowHeight;
