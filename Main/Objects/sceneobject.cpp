@@ -12,7 +12,7 @@ SceneObject::SceneObject()
         return;
     }
 
-    mCamera->SetObjectPosition(4.0f, 2.0f, 0.0f);
+    mCamera->SetObjectPosition(3.0f, 2.0f, 0.0f);
     mCamera->SetObjectRotation(0.0f, 0.0f, 0.0f);
 
     SetDrawObject(false);
