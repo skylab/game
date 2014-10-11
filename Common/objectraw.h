@@ -9,7 +9,7 @@ class ObjectRaw
 public:
     virtual ~ObjectRaw();
 
-    bool LoadObjectFromFile(const char *fileName);
+    virtual bool LoadObjectFromFile(const char *fileName);
 
     virtual void SetObjectName(const char *name);
     virtual const char *GetObjectName(void) const;
@@ -23,6 +23,7 @@ public:
     virtual const glm::vec3 &GetObjectPosition(void) const;
 
     virtual void SetObjectRotation(float x = 0, float y = 0, float z = 0);
+    virtual void SetObjectRotation(glm::vec3 &rotation);
     virtual const glm::vec3 &GetObjectRotation(void) const;
 
     virtual void SetObjectScale(float x = 0, float y = 0, float z = 0);

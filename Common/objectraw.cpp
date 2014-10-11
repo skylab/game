@@ -13,9 +13,6 @@ ObjectRaw::ObjectRaw() :
 
     // Default object scale is 1.0
     SetObjectScale(1.0f, 1.0f, 1.0f);
-
-    // TODO Remove this loader.
-    //LoadObjectFromFile("Resources/Engine.3ds");
 }
 
 ObjectRaw::~ObjectRaw()
@@ -124,6 +121,11 @@ const glm::vec3 &ObjectRaw::GetObjectPosition() const
 void ObjectRaw::SetObjectRotation(float x, float y, float z)
 {
     mObjectRotation = glm::vec3(x, y, z);
+}
+
+void ObjectRaw::SetObjectRotation(glm::vec3 &rotation)
+{
+    mObjectRotation = rotation;
 }
 
 const glm::vec3 &ObjectRaw::GetObjectRotation() const

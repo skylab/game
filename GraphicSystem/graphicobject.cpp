@@ -18,6 +18,12 @@ void GraphicObject::SetVertexBufferObject(GLuint &vertexBufferObject)
     mVertexBufferObject = vertexBufferObject;
 }
 
+bool GraphicObject::LoadObjectFromFile(const char *fileName)
+{
+    ObjectRaw::LoadObjectFromFile(fileName);
+    LoadObjectToGraphicMemory();
+}
+
 void GraphicObject::LoadObjectToGraphicMemory()
 {
     glBindBuffer(GL_ARRAY_BUFFER, GetVertexBufferObject());

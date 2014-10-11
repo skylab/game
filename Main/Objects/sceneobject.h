@@ -14,7 +14,7 @@ public:
     virtual void SetCursorAsCamera(bool val);
     virtual const bool IsCursorAsCamera(void) const;
 
-    virtual CameraObject &GetSceneCamera(void);
+    virtual CameraObject *&GetCameraObject(void);
 
     /// DRAW
     virtual void Draw(void);

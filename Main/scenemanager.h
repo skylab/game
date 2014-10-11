@@ -4,8 +4,10 @@
 // To work with GLFW
 #include "../GraphicSystem/pregraphic.h"
 
-#include "Objects/sceneobject.h"
 #include "Objects/cameraobject.h"
+#include "Objects/sceneobject.h"
+
+class SceneObject;
 
 class SceneManager
 {

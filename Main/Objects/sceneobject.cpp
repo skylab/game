@@ -12,12 +12,17 @@ SceneObject::SceneObject()
         return;
     }
 
+    mCamera->SetObjectPosition(4.0f, 2.0f, 0.0f);
+    mCamera->SetObjectRotation(0.0f, 0.0f, 0.0f);
+
     SetDrawObject(false);
 
     GameObject *obj = new GameObject();
     obj->LoadObjectFromFile("Resources/Engine.3ds");
     AddObject(obj, glm::vec3(0.0f, 0.0f, 0.0f));
 
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
 }
 
 SceneObject::~SceneObject()
@@ -46,20 +51,15 @@ const bool SceneObject::IsCursorAsCamera() const
     return mbCursorIsCamera;
 }
 
-void SceneObject::SetCameraObject(CameraObject *camera)
+CameraObject *&SceneObject::GetCameraObject()
 {
-    if (nullptr != mCamera)
-    {
-        std::cerr << "Camera already exist, change it" << std::endl;
-        delete mCamera;
-        mCamera = nullptr;
-    }
-    mCamera = camera;
+    return mCamera;
 }
 
 void SceneObject::Draw()
 {
-    ;
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    GraphicObject::Draw();
 }
 
 void SceneObject::Reshape(int width, int height)
@@ -81,5 +81,13 @@ void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
     default:
         std::cerr << "User press: " << key << std::endl;
         break;
+    }
+}
+
+void SceneObject::MousePosition(double &xpos, double &ypos)
+{
+    if (IsCursorAsCamera())
+    {
+        mCamera->ProcessCursorPosition(xpos, ypos);
     }
 }

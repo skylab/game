@@ -1,11 +1,16 @@
 #include "cameraobject.h"
 
+#include "../scenemanager.h"
+
 CameraObject::CameraObject() : mCameraUp(0.0f, 1.0f, 0.0f)
 {
     SetCameraViewAngle(90.0f);
     SetCameraViewAspectRatio(4.0f/3.0f);
     SetCameraUnitFrom(0.1f);
     SetCameraUnitTo(100.0f);
+
+    SetDrawObject(false);
+    SetCanHaveObjectList(false);
 }
 
 CameraObject::~CameraObject()
@@ -13,7 +18,7 @@ CameraObject::~CameraObject()
     ;
 }
 
-void CameraObject::SetCameraUp(glm::vec3 &up)
+void CameraObject::SetCameraUp(glm::vec3 up)
 {
     mCameraUp = up;
 }
@@ -23,7 +28,7 @@ const glm::vec3 &CameraObject::GetCameraUp() const
     return mCameraUp;
 }
 
-void CameraObject::SetCameraViewAngle(float &angle)
+void CameraObject::SetCameraViewAngle(float angle)
 {
     mCameraViewAngle = angle;
 }
@@ -33,7 +38,7 @@ const float &CameraObject::GetCameraViewAngle() const
     return mCameraViewAngle;
 }
 
-void CameraObject::SetCameraViewAspectRatio(float &value)
+void CameraObject::SetCameraViewAspectRatio(float value)
 {
     mCameraViewAspectRatio = value;
 }
@@ -43,7 +48,7 @@ const float &CameraObject::GetCameraViewAspectRatio(void) const
     return mCameraViewAspectRatio;
 }
 
-void CameraObject::SetCameraUnitFrom(float &from)
+void CameraObject::SetCameraUnitFrom(float from)
 {
     mCameraUnitFrom = from;
 }
@@ -53,7 +58,7 @@ const float &CameraObject::GetCameraUnitFrom() const
     return mCameraUnitFrom;
 }
 
-void CameraObject::SetCameraUnitTo(float &to)
+void CameraObject::SetCameraUnitTo(float to)
 {
     mCameraUnitTo = to;
 }
@@ -100,8 +105,8 @@ void CameraObject::ProcessCursorPosition(double &xpos, double &ypos)
 
     //std::cerr << angleX << " " << angleY << std::endl;
 
-    glm::vec3 rot(GetCameraDirection().x - angleX, GetCameraDirection().y + angleY, GetCameraDirection().z);
-    SetCameraDirection(rot);
+    glm::vec3 rot(GetObjectRotation().x - angleX, GetObjectRotation().y + angleY, GetObjectRotation().z);
+    SetObjectRotation(rot);
 }
 
 
