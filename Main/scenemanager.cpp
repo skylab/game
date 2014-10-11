@@ -30,7 +30,7 @@ bool SceneManager::StartScenes()
 {
     try
     {
-        ChangeScene(new SceneBase());
+        ChangeScene(new SceneObject());
     }
     catch(std::bad_alloc &ba)
     {
@@ -41,14 +41,14 @@ bool SceneManager::StartScenes()
     return true;
 }
 
-void SceneManager::ChangeScene(SceneBase *scene)
+void SceneManager::ChangeScene(SceneObject *scene)
 {
     delete mScene;
     mScene = scene;
     DrawScene();
 }
 
-SceneBase *SceneManager::GetCurrentScene()
+SceneObject *SceneManager::GetCurrentScene()
 {
     return mScene;
 }

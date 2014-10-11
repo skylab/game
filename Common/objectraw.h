@@ -19,18 +19,17 @@ public:
     virtual void SetObjectVertexQuantity(unsigned long int quantity);
     virtual const unsigned long int &GetObjectVertexQuantity(void) const;
 
-    virtual void SetObjectPosition(glm::vec3 &position);
     virtual void SetObjectPosition(float x = 0, float y = 0, float z = 0);
     virtual const glm::vec3 &GetObjectPosition(void) const;
 
-    virtual void SetObjectRotation(glm::vec3 &rotation);
+    virtual void SetObjectRotation(float x = 0, float y = 0, float z = 0);
     virtual const glm::vec3 &GetObjectRotation(void) const;
 
-    virtual void SetObjectScale(glm::vec3 &scale);
+    virtual void SetObjectScale(float x = 0, float y = 0, float z = 0);
     virtual const glm::vec3 &GetObjectScale(void) const;
 
     // Depended objects
-    virtual void AddObject(ObjectRaw* object);
+    virtual void AddObject(ObjectRaw* object, glm::vec3 position);
     virtual void RemoveObject(ObjectRaw* object);
     virtual void ClearObjectList(void);
     virtual const std::list<ObjectRaw*> &GetObjectList(void) const;

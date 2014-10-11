@@ -4,8 +4,8 @@
 // To work with GLFW
 #include "../GraphicSystem/pregraphic.h"
 
-#include "Objects/scenebase.h"
-#include "Objects/camerabase.h"
+#include "Objects/sceneobject.h"
+#include "Objects/cameraobject.h"
 
 class SceneManager
 {
@@ -15,8 +15,8 @@ public:
     static SceneManager *Instance(void);
 
     bool StartScenes(void);
-    void ChangeScene(SceneBase *scene);
-    SceneBase *GetCurrentScene(void);
+    void ChangeScene(SceneObject *scene);
+    SceneObject *GetCurrentScene(void);
 
     void SetWindow(GLFWwindow *window);
     const GLFWwindow *GetWindow(void) const;
@@ -42,7 +42,7 @@ private:
 private:
     static SceneManager *mInstance;
     GLFWwindow *mWindow;
-    SceneBase *mScene;
+    SceneObject *mScene;
 
     int mWindowWidth;
     int mWindowHeight;

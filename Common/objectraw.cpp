@@ -12,11 +12,10 @@ ObjectRaw::ObjectRaw() :
     mObjectName = (char*)defaultObjectName;
 
     // Default object scale is 1.0
-    glm::vec3 scale = glm::vec3(1.0f, 1.0f, 1.0f);
-    SetObjectScale(scale);
+    SetObjectScale(1.0f, 1.0f, 1.0f);
 
     // TODO Remove this loader.
-    LoadObjectFromFile("Resources/Engine.3ds");
+    //LoadObjectFromFile("Resources/Engine.3ds");
 }
 
 ObjectRaw::~ObjectRaw()
@@ -112,15 +111,9 @@ const unsigned long &ObjectRaw::GetObjectVertexQuantity() const
     return mObjectVertexQuantity;
 }
 
-void ObjectRaw::SetObjectPosition(glm::vec3 &position)
-{
-    mObjectPosition = position;
-}
-
 void ObjectRaw::SetObjectPosition(float x, float y, float z)
 {
-    glm::vec3 position(x, y, z);
-    SetObjectPosition(position);
+    mObjectPosition = glm::vec3(x, y, z);
 }
 
 const glm::vec3 &ObjectRaw::GetObjectPosition() const
@@ -128,9 +121,9 @@ const glm::vec3 &ObjectRaw::GetObjectPosition() const
     return mObjectPosition;
 }
 
-void ObjectRaw::SetObjectRotation(glm::vec3 &rotation)
+void ObjectRaw::SetObjectRotation(float x, float y, float z)
 {
-    mObjectRotation = rotation;
+    mObjectRotation = glm::vec3(x, y, z);
 }
 
 const glm::vec3 &ObjectRaw::GetObjectRotation() const
@@ -138,9 +131,9 @@ const glm::vec3 &ObjectRaw::GetObjectRotation() const
     return mObjectRotation;
 }
 
-void ObjectRaw::SetObjectScale(glm::vec3 &scale)
+void ObjectRaw::SetObjectScale(float x, float y, float z)
 {
-    mObjectScale = scale;
+    mObjectScale = glm::vec3(x, y, z);
 }
 
 const glm::vec3 &ObjectRaw::GetObjectScale() const
@@ -148,8 +141,9 @@ const glm::vec3 &ObjectRaw::GetObjectScale() const
     return mObjectScale;
 }
 
-void ObjectRaw::AddObject(ObjectRaw *object)
+void ObjectRaw::AddObject(ObjectRaw *object, glm::vec3 position)
 {
+    object->SetObjectPosition(position.x, position.y, position.z);
     if (GetCanHaveObjectList())
         mObjectList.push_back(object);
     else

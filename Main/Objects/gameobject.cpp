@@ -2,10 +2,4 @@
 
 GameObject::GameObject()
 {
-    ;
-}
-
-GameObject::~GameObject()
-{
-    ;
 }

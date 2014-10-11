@@ -11,17 +11,20 @@ SOURCES += main.cpp \
     game.cpp \
     GraphicSystem/Shaders/shader.cpp \
     GraphicSystem/Shaders/shaderprogram.cpp \
-    GraphicSystem/Objects/graphicobject.cpp \
+    GraphicSystem/graphicobject.cpp \
     Common/objectraw.cpp \
     GraphicSystem/Shaders/shadermanager.cpp \
     Common/objectloader.cpp \
     Common/ObjectLoaders/loaderabs.cpp \
     Common/ObjectLoaders/loader3ds.cpp \
-    Main/gameobject.cpp \
     Main/scenemanager.cpp \
     Main/Objects/scenebase.cpp \
     Main/Objects/camerabase.cpp \
-    Main/Objects/objectbase.cpp
+    Main/Objects/objectbase.cpp \
+    Main/Objects/gameobject.cpp \
+    Main/object.cpp \
+    Main/Objects/sceneobject.cpp \
+    Main/Objects/cameraobject.cpp
 
 HEADERS += \
     game.h \
@@ -29,18 +32,21 @@ HEADERS += \
     GraphicSystem/Shaders/shader.h \
     GraphicSystem/Shaders/shaderprogram.h \
     Common/precommon.h \
-    GraphicSystem/Objects/graphicobject.h \
+    GraphicSystem/graphicobject.h \
     Common/objectraw.h \
     GraphicSystem/Shaders/shadermanager.h \
     Common/objectloader.h \
     Common/ObjectLoaders/loaderabs.h \
     Common/ObjectLoaders/loader3ds.h \
-    Main/gameobject.h \
     Main/scenemanager.h \
     Main/premain.h \
     Main/Objects/scenebase.h \
     Main/Objects/camerabase.h \
-    Main/Objects/objectbase.h
+    Main/Objects/objectbase.h \
+    Main/Objects/gameobject.h \
+    Main/object.h \
+    Main/Objects/sceneobject.h \
+    Main/Objects/cameraobject.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

@@ -1,7 +1,7 @@
 #ifndef GRAPHICOBJECT_H
 #define GRAPHICOBJECT_H
 
-#include "../pregraphic.h"
+#include "pregraphic.h"
 
 class ShaderProgram;
 
