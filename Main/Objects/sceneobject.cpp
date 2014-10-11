@@ -16,6 +16,7 @@ SceneObject::SceneObject()
     mCamera->SetObjectRotation(0.0f, 0.0f, 0.0f);
 
     SetDrawObject(false);
+    SetCursorAsCamera(false);
 
     GameObject *obj = new GameObject();
     obj->LoadObjectFromFile("Resources/Engine.3ds");
@@ -79,7 +80,7 @@ void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
         SceneManager::Instance()->SetReceivedExit(true);
         break;
     default:
-        std::cerr << "User press: " << key << std::endl;
+        //std::cerr << "User press: " << key << std::endl;
         break;
     }
 }

@@ -7,7 +7,7 @@ static const char *defaultObjectName = "Unknown";
 ObjectRaw::ObjectRaw() :
     mObjectFile(nullptr), mObjectName(nullptr), mObjectVertexes(nullptr),
     mObjectVertexQuantity(0),
-    mObjectPosition(0.0f, 0.0f, 0.0f), mObjectRotation(0.0f, 0.0f, 0.0f), mObjectScale(0.0f, 0.0f, 0.0f), mbCanHaveObjectList(true)
+    mObjectPosition(0.0f, 0.0f, 0.0f), mObjectRotation(0.0f, 0.0f, 0.0f, 0.0f), mObjectScale(0.0f, 0.0f, 0.0f), mbCanHaveObjectList(true)
 {
     mObjectName = (char*)defaultObjectName;
 
@@ -120,15 +120,15 @@ const glm::vec3 &ObjectRaw::GetObjectPosition() const
 
 void ObjectRaw::SetObjectRotation(float x, float y, float z)
 {
-    mObjectRotation = glm::vec3(x, y, z);
+    mObjectRotation = glm::vec4(x, y, z, 0.0f);
 }
 
-void ObjectRaw::SetObjectRotation(glm::vec3 &rotation)
+void ObjectRaw::SetObjectRotation(glm::vec4 &rotation)
 {
     mObjectRotation = rotation;
 }
 
-const glm::vec3 &ObjectRaw::GetObjectRotation() const
+const glm::vec4 &ObjectRaw::GetObjectRotation()
 {
     return mObjectRotation;
 }

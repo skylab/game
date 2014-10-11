@@ -49,7 +49,6 @@ void GraphicObject::Draw()
         glUseProgram( GetShaderProgramm()->GetShaderProgrammID() );
 
         GLuint PVM = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("PVM");
-
         glUniformMatrix4fv( PVM, 1, false, &((SceneManager::Instance()->GetCurrentScene()->GetCameraObject()->GetProjectionViewModelMatrix())[0][0]) );
 
         GLuint scale = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("ObjectSize");

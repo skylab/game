@@ -23,8 +23,8 @@ public:
     virtual const glm::vec3 &GetObjectPosition(void) const;
 
     virtual void SetObjectRotation(float x = 0, float y = 0, float z = 0);
-    virtual void SetObjectRotation(glm::vec3 &rotation);
-    virtual const glm::vec3 &GetObjectRotation(void) const;
+    virtual void SetObjectRotation(glm::vec4 &rotation);
+    virtual const glm::vec4 &GetObjectRotation(void);
 
     virtual void SetObjectScale(float x = 0, float y = 0, float z = 0);
     virtual const glm::vec3 &GetObjectScale(void) const;
@@ -49,7 +49,7 @@ private:
     unsigned long int mObjectVertexQuantity;
 
     glm::vec3 mObjectPosition;
-    glm::vec3 mObjectRotation;
+    glm::vec4 mObjectRotation;
     glm::vec3 mObjectScale;
 
     // Depended objects

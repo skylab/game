@@ -9,6 +9,8 @@ public:
     CameraObject();
     virtual ~CameraObject();
 
+    virtual const glm::vec4 &GetObjectRotation(void) override;
+
     virtual void SetCameraUp(glm::vec3 up);
     virtual const glm::vec3 &GetCameraUp(void) const;
 

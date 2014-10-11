@@ -1,9 +1,11 @@
 #version 440
 layout (location = 0) in vec3 VertexCoordinate;
 layout (location = 1) in vec3 Color;
+
 uniform mat4 PVM;
+
 uniform vec3 ObjectSize;
-uniform vec3 ObjectRotation;
+uniform vec4 ObjectRotation;
 uniform vec3 ObjectPosition;
 
 out vec3 fragmentColor;
@@ -32,6 +34,8 @@ void main() {
     RotationMatrixZ[3].xyzw = vec4(0.0f, 0.0f, 0.0f, 1.0f);
 
     mat4 RotationMatrix = RotationMatrixX * RotationMatrixY * RotationMatrixZ;
+
+    // TODO quaternion rotation
 
     mat4 TranslationMatrix;
     TranslationMatrix[0].xyzw = vec4(1.0f, 0.0f, 0.0f, 0.0f);

@@ -18,6 +18,13 @@ CameraObject::~CameraObject()
     ;
 }
 
+const glm::vec4 &CameraObject::GetObjectRotation()
+{
+    //glm::vec3 rotation = glm::normalize(ObjectRaw::GetObjectRotation());
+    //ObjectRaw::SetObjectRotation(rotation);
+    return ObjectRaw::GetObjectRotation();
+}
+
 void CameraObject::SetCameraUp(glm::vec3 up)
 {
     mCameraUp = up;
@@ -75,9 +82,13 @@ const glm::mat4 &CameraObject::GetProjectionViewModelMatrix()
                                          GetCameraUnitFrom(), // See from distanse
                                          GetCameraUnitTo()); // See to distanse
 
+    /**/
+    glm::vec3 rotation(GetObjectRotation().x, GetObjectRotation().y, GetObjectRotation().z);
     mViewMatrix = glm::lookAt(GetObjectPosition(),
-                              GetObjectRotation(),
+                              rotation,
                               GetCameraUp()); // Up vector - where is up
+                              /**/
+    //mViewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-2.0f, -2.0f, -2.0f));
 
     mModelMatrix = glm::mat4(1.0f);
 
@@ -105,8 +116,8 @@ void CameraObject::ProcessCursorPosition(double &xpos, double &ypos)
 
     //std::cerr << angleX << " " << angleY << std::endl;
 
-    glm::vec3 rot(GetObjectRotation().x - angleX, GetObjectRotation().y + angleY, GetObjectRotation().z);
-    SetObjectRotation(rot);
+    //glm::vec3 rot(GetObjectRotation().x - angleX, GetObjectRotation().y + angleY, GetObjectRotation().z);
+    //SetObjectRotation(rot);
 }
 
 
