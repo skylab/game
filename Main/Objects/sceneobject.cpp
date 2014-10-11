@@ -16,7 +16,6 @@ SceneObject::SceneObject()
 
     GameObject *obj = new GameObject();
     obj->LoadObjectFromFile("Resources/Engine.3ds");
-    obj->RotateObject(1.0f, 0.0f, 0.0f, 1.0f);
     AddObject(obj, glm::vec3(0.0f, 0.0f, 0.0f));
 
     glEnable(GL_DEPTH_TEST);
@@ -74,14 +73,24 @@ void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
     (void)scancode;
     (void)action;
     (void)mods;
-    switch(key)
+
+    if (GLFW_PRESS == action || GLFW_REPEAT == action)
     {
-    case GLFW_KEY_ESCAPE:
-        SceneManager::Instance()->SetReceivedExit(true);
-        break;
-    default:
-        //std::cerr << "User press: " << key << std::endl;
-        break;
+        switch(key)
+        {
+        case GLFW_KEY_ESCAPE:
+            SceneManager::Instance()->SetReceivedExit(true);
+            break;
+        case GLFW_KEY_LEFT:
+            GetObjectList().front()->RotateObject(1.0, 0.0f, 0.0f, 0.01f);
+            break;
+        case GLFW_KEY_RIGHT:
+            GetObjectList().front()->RotateObject(1.0, 0.0f, 0.0f, -0.01f);
+            break;
+        default:
+            //std::cerr << "User press: " << key << std::endl;
+            break;
+        }
     }
 }
 

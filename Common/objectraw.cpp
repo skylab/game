@@ -7,11 +7,11 @@ static const char *defaultObjectName = "Unknown";
 ObjectRaw::ObjectRaw() :
     mObjectFile(nullptr), mObjectName(nullptr), mObjectVertexes(nullptr),
     mObjectVertexQuantity(0),
-    mObjectPosition(0.0f, 0.0f, 0.0f), mObjectRotation(0.0f, 0.0f, 0.0f, 0.0f), mObjectScale(0.0f, 0.0f, 0.0f), mbCanHaveObjectList(true)
+    mObjectPosition(0.0f, 0.0f, 0.0f), mObjectScale(0.0f, 0.0f, 0.0f), mbCanHaveObjectList(true)
 {
     mObjectName = (char*)defaultObjectName;
 
-    // Default object scale is 1.0
+    mObjectRotation = glm::quat();
     SetObjectScale(1.0f, 1.0f, 1.0f);
 }
 
@@ -120,17 +120,8 @@ const glm::vec3 &ObjectRaw::GetObjectPosition() const
 
 void ObjectRaw::RotateObject(float x, float y, float z, float angle)
 {
-    // TODO
-    //glm::vec4 rotation;
-    glm::fquat rotation;
-    rotation.x = x;
-    rotation.y = y;
-    rotation.z = z;
-    rotation.w = angle;
-
-    mObjectRotation = mObjectRotation * rotation;
-
-    std::cerr << mObjectRotation.x << " " << mObjectRotation.y << " " << mObjectRotation.z << " " << mObjectRotation.w << std::endl;
+    mObjectRotation = glm::rotate(mObjectRotation, angle, glm::vec3(x,y,z));
+    mObjectRotation = glm::normalize(mObjectRotation);
 }
 
 const glm::fquat &ObjectRaw::GetObjectRotation()

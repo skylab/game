@@ -55,7 +55,6 @@ void main() {
                                   (0.0f),
                                   (0.0f),
                                   (1.0f));
-    /**/
 
     mat4 TranslationMatrix;
     TranslationMatrix[0].xyzw = vec4(1.0f, 0.0f, 0.0f, 0.0f);
