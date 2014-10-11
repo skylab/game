@@ -117,6 +117,12 @@ void ObjectRaw::SetObjectPosition(glm::vec3 &position)
     mObjectPosition = position;
 }
 
+void ObjectRaw::SetObjectPosition(float x, float y, float z)
+{
+    glm::vec3 position(x, y, z);
+    SetObjectPosition(position);
+}
+
 const glm::vec3 &ObjectRaw::GetObjectPosition() const
 {
     return mObjectPosition;

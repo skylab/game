@@ -20,6 +20,7 @@ public:
     virtual const unsigned long int &GetObjectVertexQuantity(void) const;
 
     virtual void SetObjectPosition(glm::vec3 &position);
+    virtual void SetObjectPosition(float x = 0, float y = 0, float z = 0);
     virtual const glm::vec3 &GetObjectPosition(void) const;
 
     virtual void SetObjectRotation(glm::vec3 &rotation);

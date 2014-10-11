@@ -326,7 +326,8 @@ game.o: game.cpp game.h \
 		Main/Objects/scenebase.h \
 		Main/gameobject.h \
 		Main/premain.h \
-		GraphicSystem/Objects/graphicobject.h
+		GraphicSystem/Objects/graphicobject.h \
+		Main/Objects/camerabase.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o game.cpp
 
 shader.o: GraphicSystem/Shaders/shader.cpp GraphicSystem/Shaders/shader.h \
@@ -352,7 +353,8 @@ graphicobject.o: GraphicSystem/Objects/graphicobject.cpp GraphicSystem/Objects/g
 		Main/scenemanager.h \
 		Main/Objects/scenebase.h \
 		Main/gameobject.h \
-		Main/premain.h
+		Main/premain.h \
+		Main/Objects/camerabase.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphicobject.o GraphicSystem/Objects/graphicobject.cpp
 
 objectraw.o: Common/objectraw.cpp Common/objectraw.h \
@@ -401,7 +403,8 @@ scenemanager.o: Main/scenemanager.cpp Main/scenemanager.h \
 		Main/Objects/scenebase.h \
 		Main/gameobject.h \
 		Main/premain.h \
-		GraphicSystem/Objects/graphicobject.h
+		GraphicSystem/Objects/graphicobject.h \
+		Main/Objects/camerabase.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scenemanager.o Main/scenemanager.cpp
 
 scenebase.o: Main/Objects/scenebase.cpp Main/Objects/scenebase.h \
@@ -411,8 +414,8 @@ scenebase.o: Main/Objects/scenebase.cpp Main/Objects/scenebase.h \
 		GraphicSystem/pregraphic.h \
 		Common/objectraw.h \
 		GraphicSystem/Objects/graphicobject.h \
-		Main/Objects/camerabase.h \
-		Main/scenemanager.h
+		Main/scenemanager.h \
+		Main/Objects/camerabase.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scenebase.o Main/Objects/scenebase.cpp
 
 camerabase.o: Main/Objects/camerabase.cpp Main/Objects/camerabase.h \
@@ -421,7 +424,9 @@ camerabase.o: Main/Objects/camerabase.cpp Main/Objects/camerabase.h \
 		Common/precommon.h \
 		GraphicSystem/pregraphic.h \
 		Common/objectraw.h \
-		GraphicSystem/Objects/graphicobject.h
+		GraphicSystem/Objects/graphicobject.h \
+		Main/scenemanager.h \
+		Main/Objects/scenebase.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o camerabase.o Main/Objects/camerabase.cpp
 
 objectbase.o: Main/Objects/objectbase.cpp Main/Objects/objectbase.h \
