@@ -118,17 +118,22 @@ const glm::vec3 &ObjectRaw::GetObjectPosition() const
     return mObjectPosition;
 }
 
-void ObjectRaw::SetObjectRotation(float x, float y, float z)
+void ObjectRaw::RotateObject(float x, float y, float z, float angle)
 {
-    mObjectRotation = glm::vec4(x, y, z, 0.0f);
+    // TODO
+    //glm::vec4 rotation;
+    glm::fquat rotation;
+    rotation.x = x;
+    rotation.y = y;
+    rotation.z = z;
+    rotation.w = angle;
+
+    mObjectRotation = mObjectRotation * rotation;
+
+    std::cerr << mObjectRotation.x << " " << mObjectRotation.y << " " << mObjectRotation.z << " " << mObjectRotation.w << std::endl;
 }
 
-void ObjectRaw::SetObjectRotation(glm::vec4 &rotation)
-{
-    mObjectRotation = rotation;
-}
-
-const glm::vec4 &ObjectRaw::GetObjectRotation()
+const glm::fquat &ObjectRaw::GetObjectRotation()
 {
     return mObjectRotation;
 }

@@ -58,7 +58,7 @@ void GraphicObject::Draw()
         glUniform3fv(position, 1, (GLfloat*)&(GetObjectPosition()));
 
         GLuint rotation = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("ObjectRotation");
-        glUniform3fv(rotation, 1, (GLfloat*)&(GetObjectRotation()));
+        glUniform4fv(rotation, 1, (GLfloat*)&(GetObjectRotation()));
 
         glEnableVertexAttribArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, GetVertexBufferObject());

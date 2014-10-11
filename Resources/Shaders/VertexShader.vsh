@@ -17,6 +17,7 @@ void main() {
     ScaleMatrix[2].xyzw = vec4(0.0f, 0.0f, ObjectSize.z, 0.0f);
     ScaleMatrix[3].xyzw = vec4(0.0f, 0.0f, 0.0f, 1.0f);
 
+    /*
     mat4 RotationMatrixX;
     RotationMatrixX[0].xyzw = vec4(1.0f, 0.0f, 0.0f, 0.0f);
     RotationMatrixX[1].xyzw = vec4(0.0f, cos(ObjectRotation.x), -sin(ObjectRotation.x), 0.0f);
@@ -36,6 +37,25 @@ void main() {
     mat4 RotationMatrix = RotationMatrixX * RotationMatrixY * RotationMatrixZ;
 
     // TODO quaternion rotation
+    /**/
+    mat4 RotationMatrix;
+    RotationMatrix[0].xyzw = vec4((1.0f - 2.0f*(ObjectRotation.y*ObjectRotation.y) - 2.0f*(ObjectRotation.z*ObjectRotation.z)),
+                                  (2.0f*ObjectRotation.x*ObjectRotation.y - 2.0f*ObjectRotation.z*ObjectRotation.w),
+                                  (2.0f*ObjectRotation.x*ObjectRotation.z + 2.0f*ObjectRotation.y*ObjectRotation.w),
+                                  (0.0f));
+    RotationMatrix[1].xyzw = vec4((2.0f*ObjectRotation.x*ObjectRotation.y + 2.0f*ObjectRotation.z*ObjectRotation.w),
+                                  (1.0f - 2*(ObjectRotation.x*ObjectRotation.x) - 2*(ObjectRotation.z*ObjectRotation.z)),
+                                  (2.0f*ObjectRotation.y*ObjectRotation.z + 2.0f*ObjectRotation.x*ObjectRotation.w),
+                                  (0.0f));
+    RotationMatrix[2].xyzw = vec4((2.0f*ObjectRotation.x*ObjectRotation.z - 2.0f*ObjectRotation.y*ObjectRotation.w),
+                                  (2.0f*ObjectRotation.y*ObjectRotation.z + 2.0f*ObjectRotation.x*ObjectRotation.w),
+                                  (1.0f - 2*(ObjectRotation.x*ObjectRotation.x) - 2*(ObjectRotation.y*ObjectRotation.y)),
+                                  (0.0f));
+    RotationMatrix[3].xyzw = vec4((0.0f),
+                                  (0.0f),
+                                  (0.0f),
+                                  (1.0f));
+    /**/
 
     mat4 TranslationMatrix;
     TranslationMatrix[0].xyzw = vec4(1.0f, 0.0f, 0.0f, 0.0f);

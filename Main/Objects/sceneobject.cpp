@@ -12,18 +12,18 @@ SceneObject::SceneObject()
         return;
     }
 
-    mCamera->SetObjectPosition(3.0f, 2.0f, 0.0f);
-    mCamera->SetObjectRotation(0.0f, 0.0f, 0.0f);
-
-    SetDrawObject(false);
-    SetCursorAsCamera(false);
+    mCamera->SetObjectPosition(3.0f, 2.0f, -3.0f);
 
     GameObject *obj = new GameObject();
     obj->LoadObjectFromFile("Resources/Engine.3ds");
+    obj->RotateObject(1.0f, 0.0f, 0.0f, 1.0f);
     AddObject(obj, glm::vec3(0.0f, 0.0f, 0.0f));
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
+
+    SetDrawObject(false);
+    SetCursorAsCamera(false);
 }
 
 SceneObject::~SceneObject()
@@ -47,7 +47,7 @@ void SceneObject::SetCursorAsCamera(bool val)
     mbCursorIsCamera = val;
 }
 
-const bool SceneObject::IsCursorAsCamera() const
+bool SceneObject::IsCursorAsCamera() const
 {
     return mbCursorIsCamera;
 }

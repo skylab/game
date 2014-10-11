@@ -4,7 +4,7 @@
 
 CameraObject::CameraObject() : mCameraUp(0.0f, 1.0f, 0.0f)
 {
-    SetCameraViewAngle(90.0f);
+    SetCameraViewAngle(45.0f);
     SetCameraViewAspectRatio(4.0f/3.0f);
     SetCameraUnitFrom(0.1f);
     SetCameraUnitTo(100.0f);
@@ -18,7 +18,7 @@ CameraObject::~CameraObject()
     ;
 }
 
-const glm::vec4 &CameraObject::GetObjectRotation()
+const glm::fquat &CameraObject::GetObjectRotation()
 {
     //glm::vec3 rotation = glm::normalize(ObjectRaw::GetObjectRotation());
     //ObjectRaw::SetObjectRotation(rotation);

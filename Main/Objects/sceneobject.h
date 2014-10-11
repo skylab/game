@@ -12,7 +12,7 @@ public:
     virtual ~SceneObject();
 
     virtual void SetCursorAsCamera(bool val);
-    virtual const bool IsCursorAsCamera(void) const;
+    virtual bool IsCursorAsCamera(void) const;
 
     virtual CameraObject *&GetCameraObject(void);
 
