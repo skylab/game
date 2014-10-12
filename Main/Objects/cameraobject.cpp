@@ -10,19 +10,12 @@ CameraObject::CameraObject() : mCameraUp(0.0f, 1.0f, 0.0f)
     SetCameraUnitTo(100.0f);
 
     SetDrawObject(false);
-    SetCanHaveObjectList(false);
+    //SetCanHaveObjectList(false);
 }
 
 CameraObject::~CameraObject()
 {
     ;
-}
-
-const glm::vec3 &CameraObject::GetObjectRotation()
-{
-    //glm::vec3 rotation = glm::normalize(ObjectRaw::GetObjectRotation());
-    //ObjectRaw::SetObjectRotation(rotation);
-    return ObjectRaw::GetObjectRotation();
 }
 
 void CameraObject::SetCameraUp(glm::vec3 up)
@@ -82,13 +75,9 @@ const glm::mat4 &CameraObject::GetProjectionViewModelMatrix()
                                          GetCameraUnitFrom(), // See from distanse
                                          GetCameraUnitTo()); // See to distanse
 
-    /**/
-    glm::vec3 rotation(GetObjectRotation().x, GetObjectRotation().y, GetObjectRotation().z);
     mViewMatrix = glm::lookAt(GetObjectPosition(),
-                              rotation,
+                              glm::vec3(0.0f, 0.0f, 0.0f),
                               GetCameraUp()); // Up vector - where is up
-                              /**/
-    //mViewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(-2.0f, -2.0f, -2.0f));
 
     mModelMatrix = glm::mat4(1.0f);
 

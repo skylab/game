@@ -5,11 +5,16 @@
 ObjectRaw::ObjectRaw() :
     mObjectVertexes(nullptr),
     mObjectVertexQuantity(0),
-    mObjectPosition(0.0f, 0.0f, 0.0f),
-    mObjectScale(0.0f, 0.0f, 0.0f),
+
+    mObjectFrontDirection(0.0f, 0.0f, 1.0f, 0.0f),
+    mObjectRightDirection(1.0f, 0.0f, 0.0f, 0.0f),
+    mObjectUpDirection(0.0f, 1.0f, 0.0f, 0.0f),
+
+    mPositionRotationScaleMatrix(1.0f),
+
     mbCanHaveObjectList(true)
 {
-    SetObjectScale(1.0f, 1.0f, 1.0f);
+    SetObjectScale(glm::vec3(1.0f, 1.0f, 1.0f));
 }
 
 ObjectRaw::~ObjectRaw()
@@ -17,7 +22,7 @@ ObjectRaw::~ObjectRaw()
     delete[] mObjectVertexes;
     mObjectVertexes = nullptr;
 
-    ClearObjectList();
+    //ClearObjectList();
 }
 
 bool ObjectRaw::LoadObjectFromFile(const char *fileName)
@@ -57,79 +62,84 @@ bool ObjectRaw::SetObjectVertexQuantity(unsigned long quantity)
     return true;
 }
 
-const unsigned long &ObjectRaw::GetObjectVertexQuantity() const
+const size_t &ObjectRaw::GetObjectVertexQuantity() const
 {
     return mObjectVertexQuantity;
 }
 
-void ObjectRaw::SetObjectPosition(float x, float y, float z)
+const glm::mat4 &ObjectRaw::GetPositionRotationScaleMatrix()
 {
-    mObjectPosition = glm::vec3(x, y, z);
+    mPositionRotationScaleMatrix = glm::translate(mPositionRotationScaleMatrix, GetObjectPosition());
+    mPositionRotationScaleMatrix = GetRotationMatrix();
+    mPositionRotationScaleMatrix = glm::scale(mPositionRotationScaleMatrix, GetObjectScale());
+
+    return mPositionRotationScaleMatrix;
 }
 
-const glm::vec3 &ObjectRaw::GetObjectPosition() const
+void ObjectRaw::SetObjectPosition(glm::vec3 position)
 {
-    return mObjectPosition;
+    mObjectPosition = glm::vec4(position, 1.0f);
 }
 
-void ObjectRaw::RotateObject(float x, float y, float z, float angle)
+glm::vec3 ObjectRaw::GetObjectPosition() const
 {
-    //mObjectRotation = glm::rotate(mObjectRotation, angle, glm::vec3(x,y,z));
-    //mObjectRotation = glm::normalize(mObjectRotation);
+    return glm::vec3(mObjectPosition);
 }
 
-const glm::vec3 &ObjectRaw::GetObjectRotation()
+void ObjectRaw::RotateObject(glm::vec3 axisAngle)
 {
-    return mObjectRotation;
+    // TODO in using of quaternion;
+
+    glm::fquat currentRotation;
+
+    if (0 != axisAngle.x)
+    {
+        currentRotation.x = mObjectRightDirection.x * sin(axisAngle.x);
+        currentRotation.y = mObjectRightDirection.y * sin(axisAngle.z);
+        currentRotation.z = mObjectRightDirection.z * sin(axisAngle.z);
+    }
+    if (0 != axisAngle.y)
+    {
+        currentRotation.x = mObjectUpDirection.x * sin(axisAngle.x);
+        currentRotation.y = mObjectUpDirection.y * sin(axisAngle.y);
+        currentRotation.z = mObjectUpDirection.z * sin(axisAngle.z);
+    }
+    if (0 != axisAngle.z)
+    {
+        currentRotation.x = mObjectFrontDirection.x * sin(axisAngle.x);
+        currentRotation.y = mObjectFrontDirection.y * sin(axisAngle.y);
+        currentRotation.z = mObjectFrontDirection.z * sin(axisAngle.z);
+    }
+
+    mObjectRotation *= currentRotation;
+
+    mObjectRotation = glm::normalize(mObjectRotation);
+
+    std::cerr << mObjectRotation.x << " " << mObjectRotation.y << " " << mObjectRotation.z << std::endl;
 }
 
-void ObjectRaw::SetObjectScale(float x, float y, float z)
+void ObjectRaw::SetObjectScale(glm::vec3 scale)
 {
-    mObjectScale = glm::vec3(x, y, z);
+    mObjectScale = glm::vec4(scale, 0.0f);
 }
 
-const glm::vec3 &ObjectRaw::GetObjectScale() const
+glm::vec3 ObjectRaw::GetObjectScale() const
 {
-    return mObjectScale;
+    return glm::vec3(mObjectScale);
 }
 
-void ObjectRaw::AddObject(ObjectRaw *object, glm::vec3 position)
+const std::list<ObjectRaw *> &ObjectRaw::GetChildObjectList()
 {
-    object->SetObjectPosition(position.x, position.y, position.z);
-    if (GetCanHaveObjectList())
-        mObjectList.push_back(object);
-    else
-        std::cerr << "Object can't have objectlist" << std::endl;
+    return mChildObjectList;
 }
 
-void ObjectRaw::RemoveObject(ObjectRaw *object)
+bool ObjectRaw::AddChildObject(ObjectRaw *object, glm::vec3 position)
 {
-    if (0 != mObjectList.size())
-        mObjectList.remove(object);
-
+    object->SetObjectPosition(position);
+    mChildObjectList.push_back(object);
 }
 
-void ObjectRaw::ClearObjectList()
+glm::mat4 ObjectRaw::GetRotationMatrix()
 {
-    mObjectList.clear();
-}
-
-const std::list<ObjectRaw *> &ObjectRaw::GetObjectList() const
-{
-    return mObjectList;
-}
-
-size_t ObjectRaw::GetObjectQuantity() const
-{
-    return mObjectList.size();
-}
-
-void ObjectRaw::SetCanHaveObjectList(bool val)
-{
-    mbCanHaveObjectList = val;
-}
-
-bool ObjectRaw::GetCanHaveObjectList()
-{
-    return mbCanHaveObjectList;
+    return glm::mat4_cast(mObjectRotation);
 }

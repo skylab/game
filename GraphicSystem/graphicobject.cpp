@@ -51,11 +51,7 @@ void GraphicObject::Draw()
         GLuint PVMTRSM = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("PVMTranslationRotationScaleMatrix");
         mPVMTranslationRotationScaleMatrix =
                 SceneManager::Instance()->GetCurrentScene()->GetCameraObject()->GetProjectionViewModelMatrix() *
-                glm::translate(glm::mat4(1.0f), GetObjectPosition()) *
-                glm::rotate(glm::mat4(1.0f), GetObjectRotation().x, glm::vec3(1.0f, 0.0f, 0.0f)) *
-                glm::rotate(glm::mat4(1.0f), GetObjectRotation().y, glm::vec3(0.0f, 1.0f, 0.0f)) *
-                glm::rotate(glm::mat4(1.0f), GetObjectRotation().z, glm::vec3(0.0f, 0.0f, 1.0f)) *
-                glm::scale(glm::mat4(1.0f), GetObjectScale());
+                GetPositionRotationScaleMatrix();
         glUniformMatrix4fv( PVMTRSM, 1, false, &mPVMTranslationRotationScaleMatrix[0][0]);
 
         glEnableVertexAttribArray(0);
@@ -70,7 +66,7 @@ void GraphicObject::Draw()
     }
 
     // DRAW ALL ANOTHER OBJECTS
-    for (std::list<ObjectRaw*>::const_iterator itr = GetObjectList().begin(); itr != GetObjectList().end(); ++itr)
+    for (std::list<ObjectRaw*>::const_iterator itr = GetChildObjectList().begin(); itr != GetChildObjectList().end(); ++itr)
     {
         GraphicObject *object = nullptr;
         try

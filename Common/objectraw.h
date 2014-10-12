@@ -11,43 +11,49 @@ public:
 
     virtual bool LoadObjectFromFile(const char *fileName);
 
+    // TODO this is bad idea to use this function as is... rewrite
     virtual glm::vec3 *&GetObjectVertexes(void);
 
     virtual bool SetObjectVertexQuantity(unsigned long int quantity);
-    virtual const unsigned long int &GetObjectVertexQuantity(void) const;
+    virtual const size_t &GetObjectVertexQuantity(void) const;
 
-    virtual void SetObjectPosition(float x = 0, float y = 0, float z = 0);
-    virtual const glm::vec3 &GetObjectPosition(void) const;
+    //Object manipulation finctions
+    virtual const glm::mat4 &GetPositionRotationScaleMatrix(void);
 
-    virtual void RotateObject(float x, float y, float z, float angle = 0);
-    virtual const glm::vec3 &GetObjectRotation(void);
+    virtual void SetObjectPosition(glm::vec3 position);
+    virtual glm::vec3 GetObjectPosition(void) const;
 
-    virtual void SetObjectScale(float x = 0, float y = 0, float z = 0);
-    virtual const glm::vec3 &GetObjectScale(void) const;
+    virtual void RotateObject(glm::vec3 axisAngle);
 
-    // Depended objects
-    virtual void AddObject(ObjectRaw* object, glm::vec3 position);
-    virtual void RemoveObject(ObjectRaw* object);
-    virtual void ClearObjectList(void);
-    virtual const std::list<ObjectRaw*> &GetObjectList(void) const;
-    virtual size_t GetObjectQuantity(void) const;
+    virtual void SetObjectScale(glm::vec3 scale);
+    virtual glm::vec3 GetObjectScale(void) const;
 
-    virtual void SetCanHaveObjectList(bool val);
-    virtual bool GetCanHaveObjectList(void);
+    //Child obects functions
+    virtual const std::list<ObjectRaw *> &GetChildObjectList(void);
+    virtual bool AddChildObject(ObjectRaw *object, glm::vec3 position);
 
 protected:
     ObjectRaw();
 
 private:
-    glm::vec3 *mObjectVertexes;
-    unsigned long int mObjectVertexQuantity;
+    virtual glm::mat4 GetRotationMatrix(void);
 
-    glm::vec3 mObjectPosition;
-    glm::vec3 mObjectRotation;
-    glm::vec3 mObjectScale;
+private:
+    glm::vec3 *mObjectVertexes;
+    size_t mObjectVertexQuantity;
+
+    glm::vec4 mObjectFrontDirection;
+    glm::vec4 mObjectRightDirection;
+    glm::vec4 mObjectUpDirection;
+
+    glm::vec4 mObjectPosition;
+    glm::fquat mObjectRotation; // Rotation in object use quaternion
+    glm::vec4 mObjectScale;
+
+    glm::mat4 mPositionRotationScaleMatrix;
 
     // Depended objects
-    std::list<ObjectRaw*> mObjectList;
+    std::list<ObjectRaw*> mChildObjectList;
     bool mbCanHaveObjectList;
 };
 

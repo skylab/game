@@ -12,11 +12,11 @@ SceneObject::SceneObject()
         return;
     }
 
-    mCamera->SetObjectPosition(3.0f, 2.0f, -3.0f);
+    mCamera->SetObjectPosition(glm::vec3(2.0f, 2.0f, -2.0f));
 
     GameObject *obj = new GameObject();
     obj->LoadObjectFromFile("Resources/Engine.3ds");
-    AddObject(obj, glm::vec3(0.0f, 0.0f, 0.0f));
+    AddChildObject(obj, glm::vec3(0.0f, 0.0f, 0.0f));
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
@@ -82,10 +82,16 @@ void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
             SceneManager::Instance()->SetReceivedExit(true);
             break;
         case GLFW_KEY_LEFT:
-            GetObjectList().front()->RotateObject(1.0, 0.0f, 0.0f, 0.01f);
+            GetChildObjectList().front()->RotateObject(glm::vec3(0.01f, 0.01f, 0.0f));
             break;
         case GLFW_KEY_RIGHT:
-            GetObjectList().front()->RotateObject(1.0, 0.0f, 0.0f, -0.01f);
+            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, -0.01f, 0.0f));
+            break;
+        case GLFW_KEY_UP:
+            GetChildObjectList().front()->RotateObject(glm::vec3(0.01f, 0.0f, 0.0f));
+            break;
+        case GLFW_KEY_DOWN:
+            GetChildObjectList().front()->RotateObject(glm::vec3(-0.01f, 0.0f, 0.0f));
             break;
         default:
             //std::cerr << "User press: " << key << std::endl;
