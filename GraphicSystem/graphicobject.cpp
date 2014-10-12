@@ -48,17 +48,15 @@ void GraphicObject::Draw()
     {
         glUseProgram( GetShaderProgramm()->GetShaderProgrammID() );
 
-        GLuint PVM = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("PVM");
-        glUniformMatrix4fv( PVM, 1, false, &((SceneManager::Instance()->GetCurrentScene()->GetCameraObject()->GetProjectionViewModelMatrix())[0][0]) );
-
-        GLuint scale = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("ObjectSize");
-        glUniform3fv(scale, 1, (GLfloat*)&(GetObjectScale()));
-
-        GLuint position = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("ObjectPosition");
-        glUniform3fv(position, 1, (GLfloat*)&(GetObjectPosition()));
-
-        GLuint rotation = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("ObjectRotation");
-        glUniform4fv(rotation, 1, (GLfloat*)&(GetObjectRotation()));
+        GLuint PVMTRSM = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("PVMTranslationRotationScaleMatrix");
+        mPVMTranslationRotationScaleMatrix =
+                SceneManager::Instance()->GetCurrentScene()->GetCameraObject()->GetProjectionViewModelMatrix() *
+                glm::translate(glm::mat4(1.0f), GetObjectPosition()) *
+                glm::rotate(glm::mat4(1.0f), GetObjectRotation().x, glm::vec3(1.0f, 0.0f, 0.0f)) *
+                glm::rotate(glm::mat4(1.0f), GetObjectRotation().y, glm::vec3(0.0f, 1.0f, 0.0f)) *
+                glm::rotate(glm::mat4(1.0f), GetObjectRotation().z, glm::vec3(0.0f, 0.0f, 1.0f)) *
+                glm::scale(glm::mat4(1.0f), GetObjectScale());
+        glUniformMatrix4fv( PVMTRSM, 1, false, &mPVMTranslationRotationScaleMatrix[0][0]);
 
         glEnableVertexAttribArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, GetVertexBufferObject());

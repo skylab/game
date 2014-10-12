@@ -9,14 +9,12 @@ Game *Game::mInstance = nullptr;
 
 void KeyCallBackFunction(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
-    // TODO!!!
     (void)window;
     SceneManager::Instance()->Keyboard(key, scancode, action, mods);
 }
 
 void CursorPositionFunction(GLFWwindow *window, double xpos, double ypos)
 {
-    // TODO
     (void)window;
     SceneManager::Instance()->MousePosition(xpos, ypos);
 }
@@ -63,14 +61,14 @@ Game::Game() : mSceneManager(nullptr), mbStartNormal(false)
 {
     if(!glfwInit())
     {
-        // TODO
+        std::cerr << "Initialization failed. Can't initialize glfw" << std::endl;
         return;
     }
 
     window = glfwCreateWindow( MY_WINDOW_WIDTH, MY_WINDOW_HEIGHT, "Game", NULL, NULL);
     if (NULL == window)
     {
-        // TODO
+        std::cerr << "Initialization failed. Can't create window" << std::endl;
         glfwTerminate();
         return;
     }
@@ -78,8 +76,9 @@ Game::Game() : mSceneManager(nullptr), mbStartNormal(false)
     glfwMakeContextCurrent(window);
 
     glewExperimental = true; // Needed for core profile
-    if (glewInit() != GLEW_OK) {
-        // TODO
+    if (glewInit() != GLEW_OK)
+    {
+        std::cerr << "Initialization failed. Can't initialize glew" << std::endl;
         return;
     }
 

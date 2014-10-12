@@ -67,7 +67,10 @@ bool Loader3ds::LoadObjectFile(const char *filename, ObjectRaw *object)
     UINT16 triangleQuantity = 0;
     file.read((char*)&triangleQuantity, sizeof(triangleQuantity));
 
-    object->SetObjectVertexQuantity(triangleQuantity*3);
+    if (!object->SetObjectVertexQuantity(triangleQuantity*3))
+    {
+        return false;
+    }
 
     UINT16 first = 0;
     UINT16 second = 0;

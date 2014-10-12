@@ -11,20 +11,16 @@ public:
 
     virtual bool LoadObjectFromFile(const char *fileName);
 
-    virtual void SetObjectName(const char *name);
-    virtual const char *GetObjectName(void) const;
-
     virtual glm::vec3 *&GetObjectVertexes(void);
 
-    virtual void SetObjectVertexQuantity(unsigned long int quantity);
+    virtual bool SetObjectVertexQuantity(unsigned long int quantity);
     virtual const unsigned long int &GetObjectVertexQuantity(void) const;
 
     virtual void SetObjectPosition(float x = 0, float y = 0, float z = 0);
     virtual const glm::vec3 &GetObjectPosition(void) const;
 
     virtual void RotateObject(float x, float y, float z, float angle = 0);
-    //virtual const glm::vec4 &GetObjectRotation(void);
-    virtual const glm::fquat &GetObjectRotation(void);
+    virtual const glm::vec3 &GetObjectRotation(void);
 
     virtual void SetObjectScale(float x = 0, float y = 0, float z = 0);
     virtual const glm::vec3 &GetObjectScale(void) const;
@@ -35,6 +31,7 @@ public:
     virtual void ClearObjectList(void);
     virtual const std::list<ObjectRaw*> &GetObjectList(void) const;
     virtual size_t GetObjectQuantity(void) const;
+
     virtual void SetCanHaveObjectList(bool val);
     virtual bool GetCanHaveObjectList(void);
 
@@ -42,15 +39,11 @@ protected:
     ObjectRaw();
 
 private:
-    char * mObjectFile;
-    char * mObjectName;
-
     glm::vec3 *mObjectVertexes;
     unsigned long int mObjectVertexQuantity;
 
     glm::vec3 mObjectPosition;
-    //glm::vec4 mObjectRotation;
-    glm::fquat mObjectRotation;
+    glm::vec3 mObjectRotation;
     glm::vec3 mObjectScale;
 
     // Depended objects

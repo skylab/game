@@ -18,7 +18,7 @@ CameraObject::~CameraObject()
     ;
 }
 
-const glm::fquat &CameraObject::GetObjectRotation()
+const glm::vec3 &CameraObject::GetObjectRotation()
 {
     //glm::vec3 rotation = glm::normalize(ObjectRaw::GetObjectRotation());
     //ObjectRaw::SetObjectRotation(rotation);

@@ -2,26 +2,18 @@
 
 #include "objectloader.h"
 
-static const char *defaultObjectName = "Unknown";
-
 ObjectRaw::ObjectRaw() :
-    mObjectFile(nullptr), mObjectName(nullptr), mObjectVertexes(nullptr),
+    mObjectVertexes(nullptr),
     mObjectVertexQuantity(0),
-    mObjectPosition(0.0f, 0.0f, 0.0f), mObjectScale(0.0f, 0.0f, 0.0f), mbCanHaveObjectList(true)
+    mObjectPosition(0.0f, 0.0f, 0.0f),
+    mObjectScale(0.0f, 0.0f, 0.0f),
+    mbCanHaveObjectList(true)
 {
-    mObjectName = (char*)defaultObjectName;
-
-    mObjectRotation = glm::quat();
     SetObjectScale(1.0f, 1.0f, 1.0f);
 }
 
 ObjectRaw::~ObjectRaw()
 {
-    // TODO destructor
-    if (defaultObjectName != mObjectName)
-        delete[] mObjectName;
-    mObjectName = nullptr;
-
     delete[] mObjectVertexes;
     mObjectVertexes = nullptr;
 
@@ -30,48 +22,7 @@ ObjectRaw::~ObjectRaw()
 
 bool ObjectRaw::LoadObjectFromFile(const char *fileName)
 {
-    try
-    {
-        mObjectFile = new char [strlen(fileName) + 1];
-    }
-    catch(std::bad_alloc &ba)
-    {
-        // TODO bad alloc
-        (void)ba;
-        return false;
-    }
-
-    memcpy(mObjectFile, fileName, strlen(fileName));
-
-    ObjectLoader::Instance()->LoadObjectFile(mObjectFile, this);
-
-    return true;
-}
-
-void ObjectRaw::SetObjectName(const char *name)
-{
-    if (nullptr == name)
-    {
-        return;
-    }
-
-    try
-    {
-        mObjectName = new char [strlen(name) + 1];
-    }
-    catch(std::bad_alloc &ba)
-    {
-        // TODO bad alloc
-        (void)ba;
-        return;
-    }
-
-    memcpy(mObjectName, name, strlen(name));
-}
-
-const char *ObjectRaw::GetObjectName() const
-{
-    return mObjectName;
+    return ObjectLoader::Instance()->LoadObjectFile(fileName, this);
 }
 
 glm::vec3 *&ObjectRaw::GetObjectVertexes()
@@ -79,7 +30,7 @@ glm::vec3 *&ObjectRaw::GetObjectVertexes()
     return mObjectVertexes;
 }
 
-void ObjectRaw::SetObjectVertexQuantity(unsigned long quantity)
+bool ObjectRaw::SetObjectVertexQuantity(unsigned long quantity)
 {
     if (0 != mObjectVertexQuantity)
     {
@@ -97,10 +48,13 @@ void ObjectRaw::SetObjectVertexQuantity(unsigned long quantity)
     }
     catch(std::bad_alloc &ba)
     {
-        // TODO bad alloc
-        (void)ba;
+        std::cerr << ba.what() << " : Can't allocate ObjectVertexesArray" << std::endl;
+        mObjectVertexes = nullptr;
         mObjectVertexQuantity = 0;
+        return false;
     }
+
+    return true;
 }
 
 const unsigned long &ObjectRaw::GetObjectVertexQuantity() const
@@ -120,11 +74,11 @@ const glm::vec3 &ObjectRaw::GetObjectPosition() const
 
 void ObjectRaw::RotateObject(float x, float y, float z, float angle)
 {
-    mObjectRotation = glm::rotate(mObjectRotation, angle, glm::vec3(x,y,z));
-    mObjectRotation = glm::normalize(mObjectRotation);
+    //mObjectRotation = glm::rotate(mObjectRotation, angle, glm::vec3(x,y,z));
+    //mObjectRotation = glm::normalize(mObjectRotation);
 }
 
-const glm::fquat &ObjectRaw::GetObjectRotation()
+const glm::vec3 &ObjectRaw::GetObjectRotation()
 {
     return mObjectRotation;
 }

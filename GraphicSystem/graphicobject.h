@@ -31,6 +31,8 @@ private:
     GLuint mVertexBufferObject;
     ShaderProgram *mShaderProgramm;
 
+    glm::mat4 mPVMTranslationRotationScaleMatrix;
+
     bool mbDrawObject;
 };
 
