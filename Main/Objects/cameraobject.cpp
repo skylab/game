@@ -75,9 +75,12 @@ const glm::mat4 &CameraObject::GetProjectionViewModelMatrix()
                                          GetCameraUnitFrom(), // See from distanse
                                          GetCameraUnitTo()); // See to distanse
 
+    /*
     mViewMatrix = glm::lookAt(GetObjectPosition(),
                               glm::vec3(0.0f, 0.0f, 0.0f),
                               GetCameraUp()); // Up vector - where is up
+                              */
+    mViewMatrix = GetRotationMatrix();
 
     mModelMatrix = glm::mat4(1.0f);
 
@@ -102,6 +105,11 @@ void CameraObject::ProcessCursorPosition(double &xpos, double &ypos)
     //Gradus to radian
     float angleX = offsetX/180.0*3.14;
     float angleY = offsetY/180.0*3.14;
+
+    angleX /=10;
+    angleY /=10;
+
+    RotateObject(glm::vec3(angleY, -angleX, 0.0f));
 
     //std::cerr << angleX << " " << angleY << std::endl;
 

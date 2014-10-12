@@ -35,7 +35,7 @@ public:
 protected:
     ObjectRaw();
 
-private:
+//private:
     virtual glm::mat4 GetRotationMatrix(void);
 
 private:

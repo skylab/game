@@ -82,7 +82,7 @@ void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
             SceneManager::Instance()->SetReceivedExit(true);
             break;
         case GLFW_KEY_LEFT:
-            GetChildObjectList().front()->RotateObject(glm::vec3(0.01f, 0.01f, 0.0f));
+            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 0.01f, 0.0f));
             break;
         case GLFW_KEY_RIGHT:
             GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, -0.01f, 0.0f));
@@ -92,6 +92,9 @@ void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
             break;
         case GLFW_KEY_DOWN:
             GetChildObjectList().front()->RotateObject(glm::vec3(-0.01f, 0.0f, 0.0f));
+            break;
+        case GLFW_KEY_ENTER:
+            SetCursorAsCamera(!IsCursorAsCamera());
             break;
         default:
             //std::cerr << "User press: " << key << std::endl;

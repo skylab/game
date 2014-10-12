@@ -89,33 +89,40 @@ glm::vec3 ObjectRaw::GetObjectPosition() const
 void ObjectRaw::RotateObject(glm::vec3 axisAngle)
 {
     // TODO in using of quaternion;
-
-    glm::fquat currentRotation;
+    glm::fquat currentRotationX;
+    glm::fquat currentRotationY;
+    glm::fquat currentRotationZ;
 
     if (0 != axisAngle.x)
     {
-        currentRotation.x = mObjectRightDirection.x * sin(axisAngle.x);
-        currentRotation.y = mObjectRightDirection.y * sin(axisAngle.z);
-        currentRotation.z = mObjectRightDirection.z * sin(axisAngle.z);
+        currentRotationX.x = mObjectRightDirection.x * sin(axisAngle.x);
+        currentRotationX.y = mObjectRightDirection.y * sin(axisAngle.z);
+        currentRotationX.z = mObjectRightDirection.z * sin(axisAngle.z);
     }
     if (0 != axisAngle.y)
     {
-        currentRotation.x = mObjectUpDirection.x * sin(axisAngle.x);
-        currentRotation.y = mObjectUpDirection.y * sin(axisAngle.y);
-        currentRotation.z = mObjectUpDirection.z * sin(axisAngle.z);
+        currentRotationY.x = mObjectUpDirection.x * sin(axisAngle.x);
+        currentRotationY.y = mObjectUpDirection.y * sin(axisAngle.y);
+        currentRotationY.z = mObjectUpDirection.z * sin(axisAngle.z);
     }
     if (0 != axisAngle.z)
     {
-        currentRotation.x = mObjectFrontDirection.x * sin(axisAngle.x);
-        currentRotation.y = mObjectFrontDirection.y * sin(axisAngle.y);
-        currentRotation.z = mObjectFrontDirection.z * sin(axisAngle.z);
+        currentRotationZ.x = mObjectFrontDirection.x * sin(axisAngle.x);
+        currentRotationZ.y = mObjectFrontDirection.y * sin(axisAngle.y);
+        currentRotationZ.z = mObjectFrontDirection.z * sin(axisAngle.z);
     }
 
-    mObjectRotation *= currentRotation;
+    mObjectRotation *= (currentRotationX * currentRotationY * currentRotationZ);
 
     mObjectRotation = glm::normalize(mObjectRotation);
 
-    std::cerr << mObjectRotation.x << " " << mObjectRotation.y << " " << mObjectRotation.z << std::endl;
+    mObjectRightDirection = GetRotationMatrix() * mObjectRightDirection;
+    mObjectUpDirection = GetRotationMatrix() * mObjectUpDirection;
+    mObjectFrontDirection = GetRotationMatrix() * mObjectFrontDirection;
+
+    std::cerr << mObjectFrontDirection.x << " " << mObjectFrontDirection.y << " " << mObjectFrontDirection.z << std::endl;
+    std::cerr << mObjectRightDirection.x << " " << mObjectRightDirection.y << " " << mObjectRightDirection.z << std::endl;
+    std::cerr << mObjectUpDirection.x << " " << mObjectUpDirection.y << " " << mObjectUpDirection.z << std::endl;
 }
 
 void ObjectRaw::SetObjectScale(glm::vec3 scale)
