@@ -12,11 +12,29 @@ SceneObject::SceneObject()
         return;
     }
 
-    mCamera->SetObjectPosition(glm::vec3(2.0f, 2.0f, -2.0f));
+    mCamera->SetObjectPosition(glm::vec3(0.0f, 2.0f, 4.0f));
 
     GameObject *obj = new GameObject();
     obj->LoadObjectFromFile("Resources/Engine.3ds");
     AddChildObject(obj, glm::vec3(0.0f, 0.0f, 0.0f));
+
+    ////
+    GameObject *obj1 = new GameObject();
+    obj1->LoadObjectFromFile("Resources/Engine.3ds");
+    AddChildObject(obj1, glm::vec3(3.0f, 0.0f, 0.0f));
+
+    GameObject *obj2 = new GameObject();
+    obj2->LoadObjectFromFile("Resources/Engine.3ds");
+    AddChildObject(obj2, glm::vec3(-3.0f, 0.0f, 0.0f));
+
+    GameObject *obj3 = new GameObject();
+    obj3->LoadObjectFromFile("Resources/Engine.3ds");
+    AddChildObject(obj3, glm::vec3(3.0f, 2.0f, 0.0f));
+
+    GameObject *obj4 = new GameObject();
+    obj4->LoadObjectFromFile("Resources/Engine.3ds");
+    AddChildObject(obj4, glm::vec3(-3.0f, 2.0f, 0.0f));
+    ///
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
@@ -69,10 +87,7 @@ void SceneObject::Reshape(int width, int height)
 
 void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
 {
-    // TODO
-    (void)scancode;
-    (void)action;
-    (void)mods;
+    GetCameraObject()->ProcessButtonPress(key, scancode, action, mods);
 
     if (GLFW_PRESS == action || GLFW_REPEAT == action)
     {
@@ -82,17 +97,25 @@ void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
             SceneManager::Instance()->SetReceivedExit(true);
             break;
         case GLFW_KEY_LEFT:
-            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 0.01f, 0.0f));
+            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 10.0f, 0.0f));
             break;
         case GLFW_KEY_RIGHT:
-            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, -0.01f, 0.0f));
+            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, -10.0f, 0.0f));
             break;
         case GLFW_KEY_UP:
-            GetChildObjectList().front()->RotateObject(glm::vec3(0.01f, 0.0f, 0.0f));
+            GetChildObjectList().front()->RotateObject(glm::vec3(10.0f, 0.0f, 0.0f));
             break;
         case GLFW_KEY_DOWN:
-            GetChildObjectList().front()->RotateObject(glm::vec3(-0.01f, 0.0f, 0.0f));
+            GetChildObjectList().front()->RotateObject(glm::vec3(-10.0f, 0.0f, 0.0f));
             break;
+
+        case GLFW_KEY_E:
+            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 0.0f, 10.0f));
+            break;
+        case GLFW_KEY_Q:
+            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 0.0f, -10.0f));
+            break;
+
         case GLFW_KEY_ENTER:
             SetCursorAsCamera(!IsCursorAsCamera());
             break;

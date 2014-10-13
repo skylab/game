@@ -20,6 +20,10 @@ public:
     //Object manipulation finctions
     virtual const glm::mat4 &GetPositionRotationScaleMatrix(void);
 
+    virtual glm::vec3 GetObjectFrontDirection(void);
+    virtual glm::vec3 GetObjectUpDirection(void);
+    virtual glm::vec3 GetObjectRightDirection(void);
+
     virtual void SetObjectPosition(glm::vec3 position);
     virtual glm::vec3 GetObjectPosition(void) const;
 
@@ -27,6 +31,8 @@ public:
 
     virtual void SetObjectScale(glm::vec3 scale);
     virtual glm::vec3 GetObjectScale(void) const;
+
+    virtual void FixAxis(bool up = false, bool right = false, bool front = false);
 
     //Child obects functions
     virtual const std::list<ObjectRaw *> &GetChildObjectList(void);
@@ -47,8 +53,14 @@ private:
     glm::vec4 mObjectUpDirection;
 
     glm::vec4 mObjectPosition;
-    glm::fquat mObjectRotation; // Rotation in object use quaternion
     glm::vec4 mObjectScale;
+    glm::quat mObjectRotation; // Rotation in object use quaternion
+    struct FixAxis
+    {
+        bool Up;
+        bool Right;
+        bool Front;
+    } mFixAxis;
 
     glm::mat4 mPositionRotationScaleMatrix;
 

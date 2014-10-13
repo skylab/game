@@ -2,7 +2,7 @@
 
 #include "../scenemanager.h"
 
-CameraObject::CameraObject() : mCameraUp(0.0f, 1.0f, 0.0f)
+CameraObject::CameraObject()
 {
     SetCameraViewAngle(90.0f);
     SetCameraViewAspectRatio(4.0f/3.0f);
@@ -11,21 +11,13 @@ CameraObject::CameraObject() : mCameraUp(0.0f, 1.0f, 0.0f)
 
     SetDrawObject(false);
     //SetCanHaveObjectList(false);
+
+    //FixAxis(false, true, false);
 }
 
 CameraObject::~CameraObject()
 {
     ;
-}
-
-void CameraObject::SetCameraUp(glm::vec3 up)
-{
-    mCameraUp = up;
-}
-
-const glm::vec3 &CameraObject::GetCameraUp() const
-{
-    return mCameraUp;
 }
 
 void CameraObject::SetCameraViewAngle(float angle)
@@ -75,12 +67,10 @@ const glm::mat4 &CameraObject::GetProjectionViewModelMatrix()
                                          GetCameraUnitFrom(), // See from distanse
                                          GetCameraUnitTo()); // See to distanse
 
-    /*
+
     mViewMatrix = glm::lookAt(GetObjectPosition(),
-                              glm::vec3(0.0f, 0.0f, 0.0f),
-                              GetCameraUp()); // Up vector - where is up
-                              */
-    mViewMatrix = GetRotationMatrix();
+                              GetObjectPosition() + GetObjectFrontDirection(),
+                              GetObjectUpDirection()); // Up vector - where is up
 
     mModelMatrix = glm::mat4(1.0f);
 
@@ -103,29 +93,31 @@ void CameraObject::ProcessCursorPosition(double &xpos, double &ypos)
     //std::cerr << offsetX << " " << offsetY << std::endl;
 
     //Gradus to radian
-    float angleX = offsetX/180.0*3.14;
-    float angleY = offsetY/180.0*3.14;
+    float angleX = offsetX;
+    float angleY = offsetY;
 
-    angleX /=10;
-    angleY /=10;
+    //angleX /= 180.0*3.14;
+    //angleY /= 180.0*3.14;
+    angleX /= 10;
+    angleY /= 10;
 
-    RotateObject(glm::vec3(angleY, -angleX, 0.0f));
-
+    RotateObject(glm::vec3(angleY, angleX, 0.0f));
     //std::cerr << angleX << " " << angleY << std::endl;
-
-    //glm::vec3 rot(GetObjectRotation().x - angleX, GetObjectRotation().y + angleY, GetObjectRotation().z);
-    //SetObjectRotation(rot);
 }
 
 
-void CameraObject::ProcessButtonPress(int &key)
+void CameraObject::ProcessButtonPress(int &key, int &scancode, int &action, int &mods)
 {
-    //TODO camera moving;
-    switch(key)
+    if(GLFW_PRESS == action || GLFW_REPEAT == action)
     {
-    case GLFW_KEY_W:
-        break;
-    case GLFW_KEY_S:
-        break;
+        switch(key)
+        {
+        case GLFW_KEY_W:
+            SetObjectPosition(GetObjectPosition() + (GetObjectFrontDirection() * 0.01f));
+            break;
+        case GLFW_KEY_S:
+            SetObjectPosition(GetObjectPosition() - (GetObjectFrontDirection() * 0.01f));
+            break;
+        }
     }
 }

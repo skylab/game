@@ -9,9 +9,6 @@ public:
     CameraObject();
     virtual ~CameraObject();
 
-    virtual void SetCameraUp(glm::vec3 up);
-    virtual const glm::vec3 &GetCameraUp(void) const;
-
     virtual void SetCameraViewAngle(float angle);
     virtual const float &GetCameraViewAngle(void) const;
 
@@ -27,11 +24,9 @@ public:
     virtual const glm::mat4 &GetProjectionViewModelMatrix(void);
 
     virtual void ProcessCursorPosition(double &xpos, double &ypos);
-    virtual void ProcessButtonPress(int &key);
+    virtual void ProcessButtonPress(int &key, int &scancode, int &action, int &mods);
 
 private:
-    glm::vec3 mCameraUp;
-
     float CharacterHeight;
 
     // TODO read from config
