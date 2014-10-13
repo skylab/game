@@ -14,7 +14,7 @@ public:
     virtual ~Object() override;
 
 protected:
-    // TODO some field like
+    // TODO some game field like
     // ID
     // health etc.
 };

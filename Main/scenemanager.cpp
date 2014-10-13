@@ -1,6 +1,5 @@
 #include "scenemanager.h"
 
-
 #define MY_WINDOW_WIDTH 1024
 #define MY_WINDOW_HEIGHT 768
 

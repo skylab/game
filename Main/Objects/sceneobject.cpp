@@ -50,16 +50,16 @@ SceneObject::~SceneObject()
 
 void SceneObject::SetCursorAsCamera(bool val)
 {
+    // Camera - hide cursor
+    // Non camera - show cursor
+    SceneManager::Instance()->GetWindowManager()->SetCursorVisible(!val);
+
     if (val)
     {
-        // Hide cursor
-        glfwSetInputMode(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
-        glfwSetCursorPos(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), SceneManager::Instance()->GetWindowWidth()/2.0, SceneManager::Instance()->GetWindowHeight()/2.0);
-    }
-    else
-    {
-        // Show cursor
-        glfwSetInputMode(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        // Move to center
+        SceneManager::Instance()->GetWindowManager()->SetCursorPosition(
+                    SceneManager::Instance()->GetWindowManager()->GetWindowWidth()/2,
+                    SceneManager::Instance()->GetWindowManager()->GetWindowHeight()/2);
     }
     mbCursorIsCamera = val;
 }

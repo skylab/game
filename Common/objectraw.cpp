@@ -121,7 +121,6 @@ void ObjectRaw::RotateObject(glm::vec3 axisAngle)
     //std::cerr << "Angles" << std::endl;
     //std::cerr << x << " " << y << " " << z << std::endl;
 
-    // TODO in using of quaternion;
     glm::fquat currentRotationX;
     glm::fquat currentRotationY;
     glm::fquat currentRotationZ;

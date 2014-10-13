@@ -4,7 +4,7 @@
 
 CameraObject::CameraObject()
 {
-    SetCameraViewAngle(90.0f);
+    SetCameraViewAngle(45.0f);
     SetCameraViewAspectRatio(4.0f/3.0f);
     SetCameraUnitFrom(0.1f);
     SetCameraUnitTo(100.0f);
@@ -96,8 +96,6 @@ void CameraObject::ProcessCursorPosition(double &xpos, double &ypos)
     float angleX = offsetX;
     float angleY = offsetY;
 
-    //angleX /= 180.0*3.14;
-    //angleY /= 180.0*3.14;
     angleX /= 10;
     angleY /= 10;
 

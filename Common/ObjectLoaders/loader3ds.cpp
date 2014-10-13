@@ -15,7 +15,7 @@ bool Loader3ds::LoadObjectFile(const char *filename, ObjectRaw *object)
 {
     if (nullptr == filename || nullptr == object)
     {
-        // TODO
+        std::cerr << (nullptr == filename? "filename" : "object") << " is nullptr";
         return false;
     }
 

@@ -22,7 +22,7 @@ ShaderProgram *ShaderManager::GetShaderProgramm(const char *vertexShaderName, co
 {
     if (nullptr == vertexShaderName || nullptr == fragmentShaderName)
     {
-        // TODO
+        std::cerr << (nullptr == vertexShaderName? "Vertex" : "Fragment") << " shader is nullptr" << std::endl;
         return nullptr;
     }
 

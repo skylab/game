@@ -89,6 +89,14 @@ void WindowManager::SetCursorPosition(unsigned int width, unsigned int height)
 
 void WindowManager::SetCursorVisible(bool visible)
 {
+    if (visible)
+    {
+        glfwSetInputMode(mWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+    }
+    else
+    {
+        glfwSetInputMode(mWindow, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+    }
     mCursorVisible = visible;
 }
 
