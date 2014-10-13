@@ -11,6 +11,7 @@ public:
     // TOOD Write destructor
     static WindowManager *Instance();
     bool Createwindow(unsigned int windowWidth, unsigned int windowHeight);
+    void Terminate(void) const;
 
     const size_t &GetWindowWidth(void) const;
     const size_t &GetWindowHeight(void) const;

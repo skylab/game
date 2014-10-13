@@ -1,5 +1,7 @@
 #include "scenemanager.h"
 
+#include "Objects/sceneobject.h"
+
 #define MY_WINDOW_WIDTH 1024
 #define MY_WINDOW_HEIGHT 768
 
@@ -7,8 +9,8 @@ SceneManager *SceneManager::mInstance = nullptr;
 
 SceneManager::~SceneManager()
 {
-    delete mScene;
-    mScene = nullptr;
+    delete mWindowManager;
+    mWindowManager = nullptr;
 }
 
 SceneManager *SceneManager::Instance()
@@ -37,6 +39,11 @@ bool SceneManager::InitWindowSystem()
     }
 
     return mWindowManager->Createwindow(MY_WINDOW_WIDTH, MY_WINDOW_HEIGHT);
+}
+
+void SceneManager::StartScene()
+{
+    ChangeScene(new SceneObject());
 }
 
 void SceneManager::ChangeScene(SceneObject *scene)

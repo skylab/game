@@ -14,6 +14,7 @@ public:
     static SceneManager *Instance(void);
     bool InitWindowSystem(void);
 
+    void StartScene(void);
     void ChangeScene(SceneObject* scene);
     SceneObject *GetCurrentScene(void) const;
 

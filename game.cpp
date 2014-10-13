@@ -4,18 +4,6 @@
 
 Game *Game::mInstance = nullptr;
 
-void KeyCallBackFunction(GLFWwindow *window, int key, int scancode, int action, int mods)
-{
-    (void)window;
-    SceneManager::Instance()->Keyboard(key, scancode, action, mods);
-}
-
-void CursorPositionFunction(GLFWwindow *window, double xpos, double ypos)
-{
-    (void)window;
-    SceneManager::Instance()->MousePosition(xpos, ypos);
-}
-
 Game *Game::Instance()
 {
     if (NULL == mInstance)
@@ -36,6 +24,7 @@ void Game::Execute()
 {    
     if (true == mbStarted)
     {
+        mSceneManager->StartScene();
         //TODO Another thread graphic
         if (nullptr != mSceneManager)
             mSceneManager->GetWindowManager()->Draw();

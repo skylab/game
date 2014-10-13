@@ -8,8 +8,6 @@
 #include <GL/gl.h>
 #include <GL/glext.h>
 
-//#include <GLFW/glfw3.h>
-
 #define _DEBUG
 
 #ifdef _DEBUG

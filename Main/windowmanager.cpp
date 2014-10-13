@@ -70,6 +70,16 @@ bool WindowManager::Createwindow(unsigned int windowWidth, unsigned int windowHe
     //TODO set callbacks
     glfwSetKeyCallback(mWindow, KeyCallBackFunction);
     glfwSetCursorPosCallback(mWindow, CursorPositionFunction);
+
+    mWidth = windowWidth;
+    mHeight = windowHeight;
+
+    return true;
+}
+
+void WindowManager::Terminate() const
+{
+    glfwTerminate();
 }
 
 const size_t &WindowManager::GetWindowWidth() const
@@ -107,7 +117,7 @@ bool WindowManager::GetCursorVisible() const
 
 void WindowManager::Draw(void)
 {
-    while (!glfwWindowShouldClose(window))
+    while (!glfwWindowShouldClose(mWindow))
     {
         SceneManager::Instance()->DrawScene();
         glfwSwapBuffers(mWindow);

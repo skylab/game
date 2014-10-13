@@ -94,7 +94,7 @@ void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
         switch(key)
         {
         case GLFW_KEY_ESCAPE:
-            SceneManager::Instance()->SetReceivedExit(true);
+            SceneManager::Instance()->GetWindowManager()->Terminate();
             break;
         case GLFW_KEY_LEFT:
             GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 10.0f, 0.0f));
