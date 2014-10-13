@@ -1,9 +1,7 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 
-// To work with GLFW
-#include "../GraphicSystem/pregraphic.h"
-
+#include "windowmanager.h"
 #include "Objects/cameraobject.h"
 #include "Objects/sceneobject.h"
 
@@ -13,38 +11,26 @@ class SceneManager
 {
 public:
     ~SceneManager();
-
     static SceneManager *Instance(void);
+    bool InitWindowSystem(void);
 
-    bool StartScenes(void);
-    void ChangeScene(SceneObject *scene);
-    SceneObject *GetCurrentScene(void);
+    void ChangeScene(SceneObject* scene);
+    SceneObject *GetCurrentScene(void) const;
 
-    void SetWindow(GLFWwindow *window);
-    const GLFWwindow *GetWindow(void) const;
-
-    void SetWindowWidth(size_t width);
-    const int &GetWindowWidth(void) const;
-
-    void SetWindowHeight(size_t height);
-    const int &GetWindowHeight(void) const;
-
-    void SetReceivedExit(bool val);
-    const bool &GetReceivedExit(void) const;
+    WindowManager *GetWindowManager() const;
 
     // Drawing tools
     void DrawScene(void) const;
     void Reshape(int width, int height);
     void Keyboard(int &key, int &scancode, int &action, int &mods);
     void MousePosition(double &xpos, double &ypos);
-
 private:
     SceneManager();
 
 private:
     static SceneManager *mInstance;
-    GLFWwindow *mWindow;
-    SceneObject *mScene;
+    WindowManager *mWindowManager;
+    SceneObject *mCurrectScene;
 
     int mWindowWidth;
     int mWindowHeight;

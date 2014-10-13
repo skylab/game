@@ -3,8 +3,12 @@
 int main()
 {
     Game *game = Game::Instance();
-    game->Execute();
-    game->~Game();
+    if (nullptr != game)
+    {
+        if (game->Init())
+            game->Execute();
+        game->~Game();
+    }
     return 0;
 }
 

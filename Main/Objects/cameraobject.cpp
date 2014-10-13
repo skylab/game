@@ -100,13 +100,13 @@ const glm::mat4 &CameraObject::GetProjectionViewModelMatrix()
 void CameraObject::ProcessCursorPosition(double &xpos, double &ypos)
 {
     //TODO CameraObject rotation
-    int sceneWidth = SceneManager::Instance()->GetWindowWidth();
-    int sceneHeight = SceneManager::Instance()->GetWindowHeight();
+    int sceneWidth = SceneManager::Instance()->GetWindowManager()->GetWindowWidth();
+    int sceneHeight = SceneManager::Instance()->GetWindowManager()->GetWindowHeight();
 
     float offsetX = ((float)sceneWidth/2.0f) - xpos;
     float offsetY = ((float)sceneHeight/2.0f) - ypos;
 
-    glfwSetCursorPos(const_cast<GLFWwindow*>(SceneManager::Instance()->GetWindow()), sceneWidth/2.0, sceneHeight/2.0);
+    SceneManager::Instance()->GetWindowManager()->SetCursorPosition(sceneWidth/2, sceneHeight/2);
 
     //std::cerr << offsetX << " " << offsetY << std::endl;
 

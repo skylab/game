@@ -1,5 +1,9 @@
 #include "scenemanager.h"
 
+
+#define MY_WINDOW_WIDTH 1024
+#define MY_WINDOW_HEIGHT 768
+
 SceneManager *SceneManager::mInstance = nullptr;
 
 SceneManager::~SceneManager()
@@ -18,102 +22,89 @@ SceneManager *SceneManager::Instance()
         }
         catch(std::bad_alloc &ba)
         {
-            //TODO
-            (void)ba;
+            std::cerr << ba.what() << " : Can't create SceneManager" << std::endl;
             return nullptr;
         }
     }
     return mInstance;
 }
 
-bool SceneManager::StartScenes()
+bool SceneManager::InitWindowSystem()
 {
-    try
+    if (nullptr == mWindowManager)
     {
-        ChangeScene(new SceneObject());
-    }
-    catch(std::bad_alloc &ba)
-    {
-        (void)ba;
-        std::cerr << "SceneManager can't start loading scene" << std::endl;
+        std::cerr << "Can't create WindowManager" << std::endl;
         return false;
     }
-    return true;
+
+    return mWindowManager->Createwindow(MY_WINDOW_WIDTH, MY_WINDOW_HEIGHT);
 }
 
 void SceneManager::ChangeScene(SceneObject *scene)
 {
-    delete mScene;
-    mScene = scene;
-    DrawScene();
+    delete mCurrectScene;
+    mCurrectScene = scene;
 }
 
-SceneObject *SceneManager::GetCurrentScene()
+SceneObject *SceneManager::GetCurrentScene() const
 {
-    return mScene;
+    return mCurrectScene;
 }
 
-void SceneManager::SetWindow(GLFWwindow *window)
+WindowManager *SceneManager::GetWindowManager() const
 {
-    mWindow = window;
-}
-
-const GLFWwindow *SceneManager::GetWindow() const
-{
-    return mWindow;
-}
-
-void SceneManager::SetWindowWidth(size_t width)
-{
-    mWindowWidth = width;
-}
-
-const int &SceneManager::GetWindowWidth() const
-{
-    return mWindowWidth;
-}
-
-void SceneManager::SetWindowHeight(size_t height)
-{
-    mWindowHeight = height;
-}
-
-const int &SceneManager::GetWindowHeight() const
-{
-    return mWindowHeight;
+    return mWindowManager;
 }
 
 void SceneManager::DrawScene() const
 {
-    mScene->Draw();
+    if (nullptr != GetCurrentScene())
+    {
+        GetCurrentScene()->Draw();
+    }
+    else
+    {
+        std::cerr << "Draw. Current scene is nullptr" << std::endl;
+    }
 }
 
 void SceneManager::Reshape(int width, int height)
 {
-    mScene->Reshape(width, height);
+    if (nullptr != GetCurrentScene())
+    {
+        GetCurrentScene()->Reshape(width, height);
+    }
+    else
+    {
+        std::cerr << "Reshape. Current scene is nullptr" << std::endl;
+    }
 }
 
 void SceneManager::Keyboard(int &key, int &scancode, int &action, int &mods)
 {
-    mScene->Keyboard(key, scancode, action, mods);
+    if (nullptr != GetCurrentScene())
+    {
+        GetCurrentScene()->Keyboard(key, scancode, action, mods);
+    }
+    else
+    {
+        std::cerr << "Keyboard. Current scene is nullptr" << std::endl;
+    }
 }
 
 void SceneManager::MousePosition(double &xpos, double &ypos)
 {
-    mScene->MousePosition(xpos, ypos);
+    if (nullptr != GetCurrentScene())
+    {
+        GetCurrentScene()->MousePosition(xpos, ypos);
+    }
+    else
+    {
+        std::cerr << "MousePosition. Current scene is nullptr" << std::endl;
+    }
 }
 
-void SceneManager::SetReceivedExit(bool val)
+SceneManager::SceneManager() : mCurrectScene(nullptr)
 {
-    mbReceivedExit = val;
-}
-
-const bool &SceneManager::GetReceivedExit() const
-{
-    return mbReceivedExit;
-}
-
-SceneManager::SceneManager() : mScene(nullptr), mbReceivedExit(false), mWindow(nullptr), mWindowWidth(512), mWindowHeight(384)
-{
-    ;
+    mWindowManager = WindowManager::Instance();
 }

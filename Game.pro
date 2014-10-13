@@ -21,7 +21,8 @@ SOURCES += main.cpp \
     Main/Objects/gameobject.cpp \
     Main/object.cpp \
     Main/Objects/sceneobject.cpp \
-    Main/Objects/cameraobject.cpp
+    Main/Objects/cameraobject.cpp \
+    Main/windowmanager.cpp
 
 HEADERS += \
     game.h \
@@ -40,7 +41,8 @@ HEADERS += \
     Main/Objects/gameobject.h \
     Main/object.h \
     Main/Objects/sceneobject.h \
-    Main/Objects/cameraobject.h
+    Main/Objects/cameraobject.h \
+    Main/windowmanager.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

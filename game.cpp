@@ -4,9 +4,6 @@
 
 Game *Game::mInstance = nullptr;
 
-#define MY_WINDOW_WIDTH 1024
-#define MY_WINDOW_HEIGHT 768
-
 void KeyCallBackFunction(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
     (void)window;
@@ -23,31 +20,27 @@ Game *Game::Instance()
 {
     if (NULL == mInstance)
     {
-        mInstance = new (std::nothrow) Game();
-        if (NULL == mInstance)
+        try
         {
-            std::cerr << "Can't allocate Game object" << std::endl;
+            mInstance = new Game();
+        }
+        catch(std::bad_alloc &ba)
+        {
+            std::cerr << ba.what() << " : Can't allocate Game object" << std::endl;
         }
     }
     return mInstance;
 }
 
 void Game::Execute()
-{
-    if (!SceneManager::Instance()->StartScenes())
-    {
-        mbStartNormal = false;
-    }
-
-    if (true == mbStartNormal)
+{    
+    if (true == mbStarted)
     {
         //TODO Another thread graphic
-        while (!glfwWindowShouldClose(window) && !SceneManager::Instance()->GetReceivedExit())
-        {
-            SceneManager::Instance()->DrawScene();
-            glfwSwapBuffers(window);
-            glfwPollEvents();
-        }
+        if (nullptr != mSceneManager)
+            mSceneManager->GetWindowManager()->Draw();
+        else
+            std::cerr << "SceneManager is nullptr" << std::endl;
 
         //TODO Another thread physic
     }
@@ -57,41 +50,24 @@ void Game::Execute()
     }
 }
 
-Game::Game() : mSceneManager(nullptr), mbStartNormal(false)
+bool Game::Init()
 {
-    if(!glfwInit())
+    if (nullptr != mSceneManager)
     {
-        std::cerr << "Initialization failed. Can't initialize glfw" << std::endl;
-        return;
+        // Init window system to draw
+        mbStarted = mSceneManager->InitWindowSystem();
     }
-
-    window = glfwCreateWindow( MY_WINDOW_WIDTH, MY_WINDOW_HEIGHT, "Game", NULL, NULL);
-    if (NULL == window)
+    else
     {
-        std::cerr << "Initialization failed. Can't create window" << std::endl;
-        glfwTerminate();
-        return;
+        std::cerr << "Can't get SceneManager" << std::endl;
+        mbStarted = false;
     }
+    return mbStarted;
+}
 
-    glfwMakeContextCurrent(window);
-
-    glewExperimental = true; // Needed for core profile
-    if (glewInit() != GLEW_OK)
-    {
-        std::cerr << "Initialization failed. Can't initialize glew" << std::endl;
-        return;
-    }
-
-    glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-    glfwSetKeyCallback(window, KeyCallBackFunction);
-    glfwSetCursorPosCallback(window, CursorPositionFunction);
-
+Game::Game() : mSceneManager(nullptr), mbStarted(false)
+{
     mSceneManager = SceneManager::Instance();
-    SceneManager::Instance()->SetWindow(window);
-    SceneManager::Instance()->SetWindowWidth(MY_WINDOW_WIDTH);
-    SceneManager::Instance()->SetWindowHeight(MY_WINDOW_HEIGHT);
-
-    mbStartNormal = true;
 }
 
 Game::~Game()

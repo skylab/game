@@ -12,6 +12,7 @@ public:
     ~Game();
 
     void Execute();
+    bool Init();
 
 private:
     Game();
@@ -20,12 +21,9 @@ private:
     static Game *mInstance;
 
     unsigned int mVisualArrayObject;
-
-    GLFWwindow* window;
-
     SceneManager *mSceneManager;
 
-    bool mbStartNormal;
+    bool mbStarted;
 };
 
 #endif // GAME_H
