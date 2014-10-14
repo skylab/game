@@ -14,7 +14,9 @@ public:
     void Terminate(void) const;
 
     const size_t &GetWindowWidth(void) const;
+    void SetWindowWidth(int size);
     const size_t &GetWindowHeight(void) const;
+    void SetWindowHeight(int size);
     void SetCursorPosition(unsigned int width, unsigned int height);
     void SetCursorVisible(bool visible);
     bool GetCursorVisible(void) const;

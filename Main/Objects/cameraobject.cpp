@@ -11,7 +11,6 @@ CameraObject::CameraObject()
 
     SetDrawObject(false);
     //SetCanHaveObjectList(false);
-
     //FixAxis(false, true, false);
 }
 

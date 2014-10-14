@@ -20,8 +20,13 @@ void GraphicObject::SetVertexBufferObject(GLuint &vertexBufferObject)
 
 bool GraphicObject::LoadObjectFromFile(const char *fileName)
 {
-    ObjectRaw::LoadObjectFromFile(fileName);
+    if (!ObjectRaw::LoadObjectFromFile(fileName))
+    {
+        std::cerr << "Can't load object from file" << std::endl;
+        return false;
+    }
     LoadObjectToGraphicMemory();
+    return true;
 }
 
 void GraphicObject::LoadObjectToGraphicMemory()

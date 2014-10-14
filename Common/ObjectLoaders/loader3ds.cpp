@@ -91,7 +91,7 @@ bool Loader3ds::LoadObjectFile(const char *filename, ObjectRaw *object)
     }
 
     file.close();
-    return false;
+    return true;
 }
 
 size_t Loader3ds::GetChunkPosition(std::fstream &file, UINT16 ID)

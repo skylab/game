@@ -16,6 +16,14 @@ void CursorPositionFunction(GLFWwindow *window, double xpos, double ypos)
     SceneManager::Instance()->MousePosition(xpos, ypos);
 }
 
+void WindowResizeFunction(GLFWwindow *window, int width, int height)
+{
+    (void)window; // disable warning
+    SceneManager::Instance()->GetCurrentScene()->Reshape(width, height);
+    WindowManager::Instance()->SetWindowWidth(width);
+    WindowManager::Instance()->SetWindowHeight(height);
+}
+
 WindowManager *WindowManager::mInstance = nullptr;
 
 WindowManager *WindowManager::Instance()
@@ -70,9 +78,10 @@ bool WindowManager::Createwindow(unsigned int windowWidth, unsigned int windowHe
     //TODO set callbacks
     glfwSetKeyCallback(mWindow, KeyCallBackFunction);
     glfwSetCursorPosCallback(mWindow, CursorPositionFunction);
+    glfwSetWindowSizeCallback(mWindow, WindowResizeFunction);
 
-    mWidth = windowWidth;
-    mHeight = windowHeight;
+    SetWindowWidth(static_cast<int>(windowWidth));
+    SetWindowHeight(static_cast<int>(windowHeight));
 
     return true;
 }
@@ -87,9 +96,21 @@ const size_t &WindowManager::GetWindowWidth() const
     return mWidth;
 }
 
+void WindowManager::SetWindowWidth(int size)
+{
+    std::cerr << "Window width is changed to " << size << std::endl;
+    mWidth = static_cast<size_t>(size);
+}
+
 const size_t &WindowManager::GetWindowHeight() const
 {
     return mHeight;
+}
+
+void WindowManager::SetWindowHeight(int size)
+{
+    std::cerr << "Window height is changed to " << size << std::endl;
+    mHeight = static_cast<size_t>(size);
 }
 
 void WindowManager::SetCursorPosition(unsigned int width, unsigned int height)

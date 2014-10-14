@@ -132,6 +132,12 @@ void ObjectRaw::RotateObject(glm::vec3 axisAngle)
         currentRotationX.z = mObjectRightDirection.z * sin(x/2.0f);
         currentRotationX.w = cos(x/2.0f);
         currentRotationX = glm::normalize(currentRotationX);
+
+        /*
+        mObjectUpDirection = currentRotationX * mObjectUpDirection;
+        mObjectRightDirection = currentRotationX * mObjectRightDirection;
+        mObjectFrontDirection = currentRotationX * mObjectFrontDirection;
+        */
     }
     if (0 != y)
     {
@@ -140,6 +146,12 @@ void ObjectRaw::RotateObject(glm::vec3 axisAngle)
         currentRotationY.z = mObjectUpDirection.z * sin(y/2.0f);
         currentRotationY.w = cos(y/2.0f);
         currentRotationY = glm::normalize(currentRotationY);
+
+        /*
+        mObjectUpDirection = currentRotationY * mObjectUpDirection;
+        mObjectRightDirection = currentRotationY * mObjectRightDirection;
+        mObjectFrontDirection = currentRotationY * mObjectFrontDirection;
+        */
     }
     if (0 != z)
     {
@@ -148,6 +160,12 @@ void ObjectRaw::RotateObject(glm::vec3 axisAngle)
         currentRotationZ.z = mObjectFrontDirection.z * sin(z/2.0f);
         currentRotationZ.w = cos(z/2.0f);
         currentRotationZ = glm::normalize(currentRotationZ);
+
+        /*
+        mObjectUpDirection = currentRotationZ * mObjectUpDirection;
+        mObjectRightDirection = currentRotationZ * mObjectRightDirection;
+        mObjectFrontDirection = currentRotationZ * mObjectFrontDirection;
+        */
     }
 
     mObjectRotation = mObjectRotation *currentRotationX * currentRotationY * currentRotationZ;
@@ -157,7 +175,7 @@ void ObjectRaw::RotateObject(glm::vec3 axisAngle)
     {
         //std::cerr << "Up" << std::endl;
         //std::cerr << mObjectUpDirection.x << " " << mObjectUpDirection.y << " " << mObjectUpDirection.z << std::endl;
-        mObjectUpDirection = glm::mat4_cast(currentRotationX * currentRotationY * currentRotationZ) * mObjectUpDirection;
+        mObjectUpDirection = (currentRotationX * currentRotationY * currentRotationZ) * mObjectUpDirection;
         mObjectUpDirection = glm::normalize(mObjectUpDirection);
         //std::cerr << mObjectUpDirection.x << " " << mObjectUpDirection.y << " " << mObjectUpDirection.z << std::endl;
     }
@@ -165,7 +183,7 @@ void ObjectRaw::RotateObject(glm::vec3 axisAngle)
     {
         //std::cerr << "Right" << std::endl;
         //std::cerr << mObjectRightDirection.x << " " << mObjectRightDirection.y << " " << mObjectRightDirection.z << std::endl;
-        mObjectRightDirection = glm::mat4_cast(currentRotationX * currentRotationY * currentRotationZ) * mObjectRightDirection;
+        mObjectRightDirection = (currentRotationX * currentRotationY * currentRotationZ) * mObjectRightDirection;
         mObjectRightDirection = glm::normalize(mObjectRightDirection);
         //std::cerr << mObjectRightDirection.x << " " << mObjectRightDirection.y << " " << mObjectRightDirection.z << std::endl;
     }
@@ -173,7 +191,7 @@ void ObjectRaw::RotateObject(glm::vec3 axisAngle)
     {
         //std::cerr << "Front" << std::endl;
         //std::cerr << mObjectFrontDirection.x << " " << mObjectFrontDirection.y << " " << mObjectFrontDirection.z << std::endl;
-        mObjectFrontDirection = glm::mat4_cast(currentRotationX * currentRotationY * currentRotationZ) * mObjectFrontDirection;
+        mObjectFrontDirection = (currentRotationX * currentRotationY * currentRotationZ) * mObjectFrontDirection;
         mObjectFrontDirection = glm::normalize(mObjectFrontDirection);
         //std::cerr << mObjectFrontDirection.x << " " << mObjectFrontDirection.y << " " << mObjectFrontDirection.z << std::endl;
     }
