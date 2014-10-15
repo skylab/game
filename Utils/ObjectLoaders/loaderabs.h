@@ -1,7 +1,7 @@
 #ifndef LOADERABS_H
 #define LOADERABS_H
 
-#include "../objectraw.h"
+#include "../../Common/objectraw.h"
 #include <fstream>
 
 class LoaderAbs

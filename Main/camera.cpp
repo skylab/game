@@ -9,6 +9,8 @@ Camera::Camera()
     SetCameraUnitFrom(0.1f);
     SetCameraUnitTo(100.0f);
 
+    SetObjectPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+
     SetCanBeChild(false);
     SetDrawObject(false);
     SetSupportChildList(false);
@@ -63,8 +65,8 @@ const glm::mat4 &Camera::GetProjectionViewModelMatrix()
 {
     // mProjectioViewModelMatrix = Projection * View * Model
     // Model matrix is glm::mat4(1.0f) and can be skipped, because has no affect to use it
-    mProjectioViewModelMatrix = glm::perspective(GetCameraViewAngle(), GetCameraViewAspectRatio(), GetCameraUnitFrom(), GetCameraUnitTo()) *
-                                glm::lookAt(GetObjectPosition(), GetObjectPosition() + GetObjectFrontDirection(), GetObjectUpDirection());
+   mProjectioViewModelMatrix = glm::perspective(GetCameraViewAngle(), GetCameraViewAspectRatio(), GetCameraUnitFrom(), GetCameraUnitTo()) *
+                               glm::lookAt(GetObjectPosition(), GetObjectPosition() + GetObjectFrontDirection(), GetObjectUpDirection());
 
     return mProjectioViewModelMatrix;
 }
@@ -89,7 +91,9 @@ void Camera::ProcessCursorPosition(double &xpos, double &ypos)
     angleX /= 10;
     angleY /= 10;
 
-    RotateObject(glm::vec3(angleY, angleX, 0.0f));
+    RotateHeading(angleY);
+    RotatePitch(angleX);
+
     //std::cerr << angleX << " " << angleY << std::endl;
 }
 
@@ -101,10 +105,16 @@ void Camera::ProcessButtonPress(int &key, int &scancode, int &action, int &mods)
         switch(key)
         {
         case GLFW_KEY_W:
-            SetObjectPosition(GetObjectPosition() + (GetObjectFrontDirection() * 0.01f));
+            MoveObject(FORWARD);
             break;
         case GLFW_KEY_S:
-            SetObjectPosition(GetObjectPosition() - (GetObjectFrontDirection() * 0.01f));
+            MoveObject(BACK);
+            break;
+        case GLFW_KEY_1:
+            MoveObject(UP);
+            break;
+        case GLFW_KEY_2:
+            MoveObject(DOWN);
             break;
         }
     }

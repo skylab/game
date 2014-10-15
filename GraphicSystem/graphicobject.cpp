@@ -22,7 +22,7 @@ bool GraphicObject::LoadObjectFromFile(const char *fileName)
 {
     if (!ObjectRaw::LoadObjectFromFile(fileName))
     {
-        std::cerr << "Can't load object from file" << std::endl;
+        std::cerr << "Can't load object from file: " << fileName << std::endl;
         return false;
     }
     LoadObjectToGraphicMemory();

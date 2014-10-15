@@ -7,7 +7,7 @@
 #include "scene.h"
 #include "object.h"
 
-class SceneObject;
+class Scene;
 
 class SceneManager
 {

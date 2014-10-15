@@ -98,23 +98,23 @@ void Scene::Keyboard(int &key, int &scancode, int &action, int &mods)
             std::exit(0);
             break;
         case GLFW_KEY_LEFT:
-            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 10.0f, 0.0f));
+            //GetChildObjectList().front()->RotatePitch(10.0f);
             break;
         case GLFW_KEY_RIGHT:
-            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, -10.0f, 0.0f));
+            //GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, -10.0f, 0.0f));
             break;
-        case GLFW_KEY_UP:
-            GetChildObjectList().front()->RotateObject(glm::vec3(10.0f, 0.0f, 0.0f));
+        case GLFW_KEY_W:
+            //GetChildObjectList().front()->RotateObject(glm::vec3(10.0f, 0.0f, 0.0f));
             break;
-        case GLFW_KEY_DOWN:
-            GetChildObjectList().front()->RotateObject(glm::vec3(-10.0f, 0.0f, 0.0f));
+        case GLFW_KEY_S:
+            //GetChildObjectList().front()->RotateObject(glm::vec3(-10.0f, 0.0f, 0.0f));
             break;
 
         case GLFW_KEY_E:
-            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 0.0f, 10.0f));
+            //GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 0.0f, 10.0f));
             break;
         case GLFW_KEY_Q:
-            GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 0.0f, -10.0f));
+            //GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 0.0f, -10.0f));
             break;
 
         case GLFW_KEY_ENTER:

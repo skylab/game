@@ -5,72 +5,82 @@
 
 class Command;
 
+enum MoveDirection
+{
+    FORWARD,
+    BACK,
+    LEFT,
+    RIGHT,
+    UP,
+    DOWN
+};
+
 // Basic class to Object, needed to connection between graphic/physic and another system
 class ObjectRaw
 {
 public:
     virtual ~ObjectRaw();
-
     virtual bool LoadObjectFromFile(const char *fileName);
 
+    bool SetObjectVertexQuantity(unsigned long int quantity);
+    const size_t &GetObjectVertexQuantity(void) const;
     // TODO this is bad idea to use this function as is... rewrite
-    virtual glm::vec3 *&GetObjectVertexes(void);
-
-    virtual bool SetObjectVertexQuantity(unsigned long int quantity);
-    virtual const size_t &GetObjectVertexQuantity(void) const;
+    glm::vec3 *&GetObjectVertexes(void);
 
     //Object manipulation finctions
-    virtual const glm::mat4 &GetPositionRotationScaleMatrix(void);
+    void MoveObject(enum MoveDirection direction);
 
-    virtual const glm::vec3 &GetObjectFrontDirection(void);
-    virtual const glm::vec3 &GetObjectUpDirection(void);
-    virtual const glm::vec3 &GetObjectRightDirection(void);
+    glm::vec3 GetObjectFrontDirection(void);
+    glm::vec3 GetObjectUpDirection(void);
+    //glm::vec3 GetObjectRightDirection(void);
 
-    virtual void SetObjectPosition(glm::vec3 position);
-    virtual glm::vec3 GetObjectPosition(void) const;
+    void SetObjectPosition(glm::vec3 position);
+    glm::vec3 GetObjectPosition(void) const;
 
-    //Change the pitch (up, down) for the free camera
-    virtual void ChangePitch(float degrees);
-    //Change heading (left, right) for the free camera
-    virtual void ChangeHeading(float degrees);
-    //Change the heading and pitch of the camera based on the 2d movement of the mouse
-    virtual void Move2D(int x, int y);
+    void SetObjectMoveSpeed(float speed);
+    float GetObjectMoveSpeed(void) const;
 
-    virtual void SetObjectScale(glm::vec3 scale);
-    virtual glm::vec3 GetObjectScale(void) const;
+    // Change the pitch (up, down) for the free camera
+    void RotatePitch(float degrees);
+    // Change heading (left, right) for the free camera
+    void RotateHeading(float degrees);
 
-    //Child obects functions
-    virtual void SetSupportChildList(bool val);
-    virtual bool GetSupportChildList(void) const;
+    void SetObjectScale(glm::vec3 scale);
+    glm::vec3 GetObjectScale(void) const;
 
+    // Final of calculation
+    const glm::mat4 &GetPositionRotationScaleMatrix(void);
+
+    // Child obects functions
     void SetCanBeChild(bool val);
     bool GetCanBeChild(void) const;
-    virtual const std::list<ObjectRaw *> &GetChildObjectList(void);
-    virtual bool AddChildObject(ObjectRaw *object, glm::vec3 position);
+    void SetSupportChildList(bool val);
+    bool GetSupportChildList(void) const;
+    const std::list<ObjectRaw *> &GetChildObjectList(void);
+    bool AddChildObject(ObjectRaw *object, glm::vec3 position);
     void RemoveChilds(void);
 
-    //To work with commands
+    // To work with commands
     virtual void Accept(Command *command);
 
 protected:
     ObjectRaw();
 
-//private:
-    virtual glm::mat4 GetRotationMatrix(void);
-
 private:
+    glm::mat4 GetRotationMatrix(void);
+
     glm::vec3 *mObjectVertexes;
     size_t mObjectVertexQuantity;
 
     float mObjectPitch;
     float mObjectHeading;
+    float mObjectMoveSpeed;
 
-    glm::vec4 mObjectFrontDirection;
-    glm::vec4 mObjectRightDirection;
-    glm::vec4 mObjectUpDirection;
+    glm::vec3 mObjectFrontDirection;
+    glm::vec3 mObjectUpDirection;
 
-    glm::vec4 mObjectPosition;
-    glm::vec4 mObjectScale;
+    glm::vec3 mObjectPosition;
+    glm::vec3 mObjectScale;
     glm::quat mObjectRotation; // Rotation in object use quaternion
 
     glm::mat4 mPositionRotationScaleMatrix;
