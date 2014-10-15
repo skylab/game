@@ -83,6 +83,7 @@ void SceneObject::Draw()
 void SceneObject::Reshape(int width, int height)
 {
     glViewport(0, 0, width, height);
+    SetCameraViewAspectRatio(static_cast<float>(width)/static_cast<float>(height));
 }
 
 void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
