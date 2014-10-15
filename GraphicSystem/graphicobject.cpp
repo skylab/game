@@ -70,22 +70,25 @@ void GraphicObject::Draw()
         glUseProgram(0);
     }
 
-    // DRAW ALL ANOTHER OBJECTS
-    for (std::list<ObjectRaw*>::const_iterator itr = GetChildObjectList().begin(); itr != GetChildObjectList().end(); ++itr)
+    if (GetSupportChildList())
     {
-        GraphicObject *object = nullptr;
-        try
+        // DRAW ALL ANOTHER OBJECTS
+        for (std::list<ObjectRaw*>::const_iterator itr = GetChildObjectList().begin(); itr != GetChildObjectList().end(); ++itr)
         {
-            object = dynamic_cast<GraphicObject*>(*itr);
-        }
-        catch(std::bad_cast &bc)
-        {
-            (void)bc;
-            // skip bad cast, object have not graphic part
-        }
-        if (nullptr != (*itr))
-        {
-            object->Draw();
+            GraphicObject *object = nullptr;
+            try
+            {
+                object = dynamic_cast<GraphicObject*>(*itr);
+            }
+            catch(std::bad_cast &bc)
+            {
+                (void)bc;
+                // skip bad cast, object have not graphic part
+            }
+            if (nullptr != (*itr))
+            {
+                object->Draw();
+            }
         }
     }
 }

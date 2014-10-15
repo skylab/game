@@ -1,13 +1,13 @@
-#ifndef CAMERAOBJECT_H
-#define CAMERAOBJECT_H
+#ifndef CAMERA_H
+#define CAMERA_H
 
-#include "../object.h"
+#include "../GraphicSystem/graphicobject.h"
 
-class CameraObject : public Object
+class Camera : public GraphicObject
 {
 public:
-    CameraObject();
-    virtual ~CameraObject();
+    Camera();
+    virtual ~Camera();
 
     virtual void SetCameraViewAngle(float angle);
     virtual const float &GetCameraViewAngle(void) const;
@@ -35,10 +35,7 @@ private:
     float mCameraUnitFrom; // Distanses of view
     float mCameraUnitTo; // Distanses of view
 
-    glm::mat4 mProjectionMatrix;
-    glm::mat4 mViewMatrix;
-    glm::mat4 mModelMatrix;
     glm::mat4 mProjectioViewModelMatrix;
 };
 
-#endif // CAMERAOBJECT_H
+#endif // CAMERA_H

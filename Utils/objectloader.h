@@ -1,7 +1,7 @@
 #ifndef OBJECTLOADER_H
 #define OBJECTLOADER_H
 
-#include "precommon.h"
+//#include "precommon.h"
 
 class ObjectRaw;
 

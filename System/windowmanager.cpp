@@ -2,7 +2,7 @@
 
 #include <GLFW/glfw3.h>
 
-#include "scenemanager.h"
+#include "../Main/scenemanager.h"
 
 void KeyCallBackFunction(GLFWwindow *window, int key, int scancode, int action, int mods)
 {

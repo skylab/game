@@ -1,7 +1,5 @@
 #include "scenemanager.h"
 
-#include "Objects/sceneobject.h"
-
 #define MY_WINDOW_WIDTH 1024
 #define MY_WINDOW_HEIGHT 768
 
@@ -43,16 +41,16 @@ bool SceneManager::InitWindowSystem()
 
 void SceneManager::StartScene()
 {
-    ChangeScene(new SceneObject());
+    ChangeScene(new Scene());
 }
 
-void SceneManager::ChangeScene(SceneObject *scene)
+void SceneManager::ChangeScene(Scene *scene)
 {
     delete mCurrectScene;
     mCurrectScene = scene;
 }
 
-SceneObject *SceneManager::GetCurrentScene() const
+Scene *SceneManager::GetCurrentScene() const
 {
     return mCurrectScene;
 }
@@ -65,7 +63,7 @@ WindowManager *SceneManager::GetWindowManager() const
 void SceneManager::DrawScene() const
 {
     if (nullptr != GetCurrentScene())
-    {
+    {        
         GetCurrentScene()->Draw();
     }
     else
@@ -78,6 +76,7 @@ void SceneManager::Reshape(int width, int height)
 {
     if (nullptr != GetCurrentScene())
     {
+        glViewport(0, 0, width, height);
         GetCurrentScene()->Reshape(width, height);
     }
     else

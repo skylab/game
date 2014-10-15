@@ -12,41 +12,42 @@ SOURCES += main.cpp \
     GraphicSystem/Shaders/shader.cpp \
     GraphicSystem/Shaders/shaderprogram.cpp \
     GraphicSystem/graphicobject.cpp \
-    Common/objectraw.cpp \
     GraphicSystem/Shaders/shadermanager.cpp \
-    Common/objectloader.cpp \
-    Common/ObjectLoaders/loaderabs.cpp \
-    Common/ObjectLoaders/loader3ds.cpp \
     Main/scenemanager.cpp \
-    Main/Objects/gameobject.cpp \
     Main/object.cpp \
-    Main/Objects/sceneobject.cpp \
-    Main/Objects/cameraobject.cpp \
-    Main/windowmanager.cpp
+    Common/objectraw.cpp \
+    Utils/objectloader.cpp \
+    Utils/ObjectLoaders/loader3ds.cpp \
+    Utils/ObjectLoaders/loaderabs.cpp \
+    System/windowmanager.cpp \
+    Main/scene.cpp \
+    Main/camera.cpp \
+    Main/Commands/command.cpp
 
 HEADERS += \
     game.h \
+    Common/precommon.h \
     GraphicSystem/pregraphic.h \
     GraphicSystem/Shaders/shader.h \
     GraphicSystem/Shaders/shaderprogram.h \
-    Common/precommon.h \
     GraphicSystem/graphicobject.h \
-    Common/objectraw.h \
     GraphicSystem/Shaders/shadermanager.h \
-    Common/objectloader.h \
-    Common/ObjectLoaders/loaderabs.h \
-    Common/ObjectLoaders/loader3ds.h \
     Main/scenemanager.h \
     Main/premain.h \
-    Main/Objects/gameobject.h \
     Main/object.h \
-    Main/Objects/sceneobject.h \
-    Main/Objects/cameraobject.h \
-    Main/windowmanager.h
+    Common/objectraw.h \
+    Utils/objectloader.h \
+    Utils/ObjectLoaders/loader3ds.h \
+    Utils/ObjectLoaders/loaderabs.h \
+    System/windowmanager.h \
+    Main/scene.h \
+    Main/camera.h \
+    Main/Commands/command.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \
     Resources/Shaders/FragmentShader.fsh \
     Resources/Shaders/VertexShader.vsh \
-    Resources/Engine.3ds
+    Resources/Engine.3ds \
+    Config.txt
 

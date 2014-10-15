@@ -1,6 +1,7 @@
 #include "objectraw.h"
 
-#include "objectloader.h"
+#include "../Utils/objectloader.h"
+#include "../Main/Commands/command.h"
 
 ObjectRaw::ObjectRaw() :
     mObjectVertexes(nullptr),
@@ -9,15 +10,12 @@ ObjectRaw::ObjectRaw() :
     mObjectFrontDirection(0.0f, 0.0f, -1.0f, 0.0f),
     mObjectRightDirection(1.0f, 0.0f, 0.0f, 0.0f),
     mObjectUpDirection(0.0f, 1.0f, 0.0f, 0.0f),
-
-    mPositionRotationScaleMatrix(1.0f),
-
-    mbCanHaveObjectList(true)
+    mPositionRotationScaleMatrix(1.0f)
 {
+    SetCanBeChild(true);
+    SetSupportChildList(true);
     SetObjectScale(glm::vec3(1.0f, 1.0f, 1.0f));
     mObjectRotation = glm::quat();
-
-    FixAxis(false, false, false);
 }
 
 ObjectRaw::~ObjectRaw()
@@ -78,17 +76,17 @@ const glm::mat4 &ObjectRaw::GetPositionRotationScaleMatrix()
     return mPositionRotationScaleMatrix;
 }
 
-glm::vec3 ObjectRaw::GetObjectFrontDirection(void)
+const glm::vec3 &ObjectRaw::GetObjectFrontDirection(void)
 {
     return glm::vec3(mObjectFrontDirection);
 }
 
-glm::vec3 ObjectRaw::GetObjectUpDirection()
+const glm::vec3 &ObjectRaw::GetObjectUpDirection()
 {
     return glm::vec3(mObjectUpDirection);
 }
 
-glm::vec3 ObjectRaw::GetObjectRightDirection()
+const glm::vec3 &ObjectRaw::GetObjectRightDirection()
 {
     return glm::vec3(mObjectRightDirection);
 }
@@ -103,98 +101,16 @@ glm::vec3 ObjectRaw::GetObjectPosition() const
     return glm::vec3(mObjectPosition);
 }
 
-void ObjectRaw::RotateObject(glm::vec3 axisAngle)
+void ObjectRaw::ChangePitch(float degrees)
 {
-    float x = 0.0f;
-    float y = 0.0f;
-    float z = 0.0f;
+    mObjectPitch += degrees;
+    mObjectPitch %= 360.0f;
+}
 
-    if (axisAngle.x)
-        x = axisAngle.x * 3.14f / 180.0f;
-
-    if (axisAngle.y)
-        y = axisAngle.y * 3.14f / 180.0f;
-
-    if (axisAngle.z)
-        z = axisAngle.z * 3.14f / 180.0f;
-
-    //std::cerr << "Angles" << std::endl;
-    //std::cerr << x << " " << y << " " << z << std::endl;
-
-    glm::fquat currentRotationX;
-    glm::fquat currentRotationY;
-    glm::fquat currentRotationZ;
-
-    if (0 != x)
-    {
-        currentRotationX.x = mObjectRightDirection.x * sin(x/2.0f);
-        currentRotationX.y = mObjectRightDirection.y * sin(x/2.0f);
-        currentRotationX.z = mObjectRightDirection.z * sin(x/2.0f);
-        currentRotationX.w = cos(x/2.0f);
-        currentRotationX = glm::normalize(currentRotationX);
-
-        /*
-        mObjectUpDirection = currentRotationX * mObjectUpDirection;
-        mObjectRightDirection = currentRotationX * mObjectRightDirection;
-        mObjectFrontDirection = currentRotationX * mObjectFrontDirection;
-        */
-    }
-    if (0 != y)
-    {
-        currentRotationY.x = mObjectUpDirection.x * sin(y/2.0f);
-        currentRotationY.y = mObjectUpDirection.y * sin(y/2.0f);
-        currentRotationY.z = mObjectUpDirection.z * sin(y/2.0f);
-        currentRotationY.w = cos(y/2.0f);
-        currentRotationY = glm::normalize(currentRotationY);
-
-        /*
-        mObjectUpDirection = currentRotationY * mObjectUpDirection;
-        mObjectRightDirection = currentRotationY * mObjectRightDirection;
-        mObjectFrontDirection = currentRotationY * mObjectFrontDirection;
-        */
-    }
-    if (0 != z)
-    {
-        currentRotationZ.x = mObjectFrontDirection.x * sin(z/2.0f);
-        currentRotationZ.y = mObjectFrontDirection.y * sin(z/2.0f);
-        currentRotationZ.z = mObjectFrontDirection.z * sin(z/2.0f);
-        currentRotationZ.w = cos(z/2.0f);
-        currentRotationZ = glm::normalize(currentRotationZ);
-
-        /*
-        mObjectUpDirection = currentRotationZ * mObjectUpDirection;
-        mObjectRightDirection = currentRotationZ * mObjectRightDirection;
-        mObjectFrontDirection = currentRotationZ * mObjectFrontDirection;
-        */
-    }
-
-    mObjectRotation = mObjectRotation *currentRotationX * currentRotationY * currentRotationZ;
-    mObjectRotation = glm::normalize(mObjectRotation);
-
-    if (!mFixAxis.Up)
-    {
-        //std::cerr << "Up" << std::endl;
-        //std::cerr << mObjectUpDirection.x << " " << mObjectUpDirection.y << " " << mObjectUpDirection.z << std::endl;
-        mObjectUpDirection = (currentRotationX * currentRotationY * currentRotationZ) * mObjectUpDirection;
-        mObjectUpDirection = glm::normalize(mObjectUpDirection);
-        //std::cerr << mObjectUpDirection.x << " " << mObjectUpDirection.y << " " << mObjectUpDirection.z << std::endl;
-    }
-    if (!mFixAxis.Right)
-    {
-        //std::cerr << "Right" << std::endl;
-        //std::cerr << mObjectRightDirection.x << " " << mObjectRightDirection.y << " " << mObjectRightDirection.z << std::endl;
-        mObjectRightDirection = (currentRotationX * currentRotationY * currentRotationZ) * mObjectRightDirection;
-        mObjectRightDirection = glm::normalize(mObjectRightDirection);
-        //std::cerr << mObjectRightDirection.x << " " << mObjectRightDirection.y << " " << mObjectRightDirection.z << std::endl;
-    }
-    if (!mFixAxis.Front)
-    {
-        //std::cerr << "Front" << std::endl;
-        //std::cerr << mObjectFrontDirection.x << " " << mObjectFrontDirection.y << " " << mObjectFrontDirection.z << std::endl;
-        mObjectFrontDirection = (currentRotationX * currentRotationY * currentRotationZ) * mObjectFrontDirection;
-        mObjectFrontDirection = glm::normalize(mObjectFrontDirection);
-        //std::cerr << mObjectFrontDirection.x << " " << mObjectFrontDirection.y << " " << mObjectFrontDirection.z << std::endl;
-    }
+void ObjectRaw::ChangeHeading(float degrees)
+{
+    mObjectHeading += degrees;
+    mObjectHeading %= 360.0f;
 }
 
 void ObjectRaw::SetObjectScale(glm::vec3 scale)
@@ -205,6 +121,26 @@ void ObjectRaw::SetObjectScale(glm::vec3 scale)
 glm::vec3 ObjectRaw::GetObjectScale() const
 {
     return glm::vec3(mObjectScale);
+}
+
+void ObjectRaw::SetSupportChildList(bool val)
+{
+    mbSupportChildList = val;
+}
+
+bool ObjectRaw::GetSupportChildList() const
+{
+    return mbSupportChildList;
+}
+
+void ObjectRaw::SetCanBeChild(bool val)
+{
+    mbCanBeChild = val;
+}
+
+bool ObjectRaw::GetCanBeChild() const
+{
+    return mbCanBeChild;
 }
 
 void ObjectRaw::FixAxis(bool up, bool right, bool front)
@@ -221,8 +157,31 @@ const std::list<ObjectRaw *> &ObjectRaw::GetChildObjectList()
 
 bool ObjectRaw::AddChildObject(ObjectRaw *object, glm::vec3 position)
 {
-    object->SetObjectPosition(position);
-    mChildObjectList.push_back(object);
+    if (nullptr == object)
+    {
+        std::cerr << "AddChildObject object is nullptr" << std::endl;
+        return false;
+    }
+
+    if(object->GetCanBeChild())
+    {
+        object->SetObjectPosition(position);
+        mChildObjectList.push_back(object);
+    }
+    else
+    {
+        std::cerr << "AddChildObject object can't be a child" << std::endl;
+    }
+}
+
+void ObjectRaw::RemoveChilds()
+{
+    mChildObjectList.clear();
+}
+
+void ObjectRaw::Accept(Command *command)
+{
+    command->Visit(this);
 }
 
 glm::mat4 ObjectRaw::GetRotationMatrix()

@@ -1,20 +1,20 @@
-#ifndef SCENEOBJECT_H
-#define SCENEOBJECT_H
+#ifndef SCENE_H
+#define SCENE_H
 
-#include "gameobject.h"
-#include "cameraobject.h"
-#include "../scenemanager.h"
+#include "scenemanager.h"
 
-class SceneObject : public Object
+class Console;
+
+class Scene : public GraphicObject
 {
 public:
-    SceneObject();
-    virtual ~SceneObject();
+    Scene();
+    virtual ~Scene();
 
     virtual void SetCursorAsCamera(bool val);
     virtual bool IsCursorAsCamera(void) const;
 
-    virtual CameraObject *&GetCameraObject(void);
+    virtual Camera *&GetCameraObject(void);
 
     /// DRAW
     virtual void Draw(void);
@@ -23,8 +23,10 @@ public:
     virtual void MousePosition(double &xpos, double &ypos);
 
 protected:
-    CameraObject *mCamera;
+    Camera *mCamera;
     bool mbCursorIsCamera;
+
+    //Console *mConsole;
 };
 
-#endif // SCENEOBJECT_H
+#endif // SCENE_H

@@ -1,10 +1,10 @@
-#include "sceneobject.h"
+#include "scene.h"
 
-SceneObject::SceneObject()
+Scene::Scene()
 {
     try
     {
-        mCamera = new CameraObject();
+        mCamera = new Camera();
     }
     catch(std::bad_alloc &ba)
     {
@@ -14,24 +14,24 @@ SceneObject::SceneObject()
 
     mCamera->SetObjectPosition(glm::vec3(0.0f, 2.0f, 4.0f));
 
-    GameObject *obj = new GameObject();
+    Object *obj = new Object();
     obj->LoadObjectFromFile("Resources/Engine.3ds");
     AddChildObject(obj, glm::vec3(0.0f, 0.0f, 0.0f));
 
     ////
-    GameObject *obj1 = new GameObject();
+    Object *obj1 = new Object();
     obj1->LoadObjectFromFile("Resources/Engine.3ds");
     AddChildObject(obj1, glm::vec3(3.0f, 0.0f, 0.0f));
 
-    GameObject *obj2 = new GameObject();
+    Object *obj2 = new Object();
     obj2->LoadObjectFromFile("Resources/Engine.3ds");
     AddChildObject(obj2, glm::vec3(-3.0f, 0.0f, 0.0f));
 
-    GameObject *obj3 = new GameObject();
+    Object *obj3 = new Object();
     obj3->LoadObjectFromFile("Resources/Engine.3ds");
     AddChildObject(obj3, glm::vec3(3.0f, 2.0f, 0.0f));
 
-    GameObject *obj4 = new GameObject();
+    Object *obj4 = new Object();
     obj4->LoadObjectFromFile("Resources/Engine.3ds");
     AddChildObject(obj4, glm::vec3(-3.0f, 2.0f, 0.0f));
     ///
@@ -43,12 +43,12 @@ SceneObject::SceneObject()
     SetCursorAsCamera(false);
 }
 
-SceneObject::~SceneObject()
+Scene::~Scene()
 {
     ;
 }
 
-void SceneObject::SetCursorAsCamera(bool val)
+void Scene::SetCursorAsCamera(bool val)
 {
     // Camera - hide cursor
     // Non camera - show cursor
@@ -64,29 +64,28 @@ void SceneObject::SetCursorAsCamera(bool val)
     mbCursorIsCamera = val;
 }
 
-bool SceneObject::IsCursorAsCamera() const
+bool Scene::IsCursorAsCamera() const
 {
     return mbCursorIsCamera;
 }
 
-CameraObject *&SceneObject::GetCameraObject()
+Camera *&Scene::GetCameraObject()
 {
     return mCamera;
 }
 
-void SceneObject::Draw()
-{
+void Scene::Draw()
+{    
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     GraphicObject::Draw();
 }
 
-void SceneObject::Reshape(int width, int height)
-{
-    glViewport(0, 0, width, height);
-    SetCameraViewAspectRatio(static_cast<float>(width)/static_cast<float>(height));
+void Scene::Reshape(int width, int height)
+{    
+    mCamera->SetCameraViewAspectRatio(static_cast<float>(width)/static_cast<float>(height));
 }
 
-void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
+void Scene::Keyboard(int &key, int &scancode, int &action, int &mods)
 {
     GetCameraObject()->ProcessButtonPress(key, scancode, action, mods);
 
@@ -128,7 +127,7 @@ void SceneObject::Keyboard(int &key, int &scancode, int &action, int &mods)
     }
 }
 
-void SceneObject::MousePosition(double &xpos, double &ypos)
+void Scene::MousePosition(double &xpos, double &ypos)
 {
     if (IsCursorAsCamera())
     {

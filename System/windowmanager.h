@@ -1,7 +1,7 @@
 #ifndef WINDOWMANAGER_H
 #define WINDOWMANAGER_H
 
-#include "Common/precommon.h"
+#include "../Common/precommon.h"
 
 class GLFWwindow;
 

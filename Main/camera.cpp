@@ -1,86 +1,77 @@
-#include "cameraobject.h"
+#include "camera.h"
 
-#include "../scenemanager.h"
+#include "../Main/scenemanager.h"
 
-CameraObject::CameraObject()
+Camera::Camera()
 {
     SetCameraViewAngle(45.0f);
     SetCameraViewAspectRatio(4.0f/3.0f);
     SetCameraUnitFrom(0.1f);
     SetCameraUnitTo(100.0f);
 
+    SetCanBeChild(false);
     SetDrawObject(false);
-    //SetCanHaveObjectList(false);
-    //FixAxis(false, true, false);
+    SetSupportChildList(false);
 }
 
-CameraObject::~CameraObject()
+Camera::~Camera()
 {
     ;
 }
 
-void CameraObject::SetCameraViewAngle(float angle)
+void Camera::SetCameraViewAngle(float angle)
 {
     mCameraViewAngle = angle;
 }
 
-const float &CameraObject::GetCameraViewAngle() const
+const float &Camera::GetCameraViewAngle() const
 {
     return mCameraViewAngle;
 }
 
-void CameraObject::SetCameraViewAspectRatio(float value)
+void Camera::SetCameraViewAspectRatio(float value)
 {
     mCameraViewAspectRatio = value;
 }
 
-const float &CameraObject::GetCameraViewAspectRatio(void) const
+const float &Camera::GetCameraViewAspectRatio(void) const
 {
     return mCameraViewAspectRatio;
 }
 
-void CameraObject::SetCameraUnitFrom(float from)
+void Camera::SetCameraUnitFrom(float from)
 {
     mCameraUnitFrom = from;
 }
 
-const float &CameraObject::GetCameraUnitFrom() const
+const float &Camera::GetCameraUnitFrom() const
 {
     return mCameraUnitFrom;
 }
 
-void CameraObject::SetCameraUnitTo(float to)
+void Camera::SetCameraUnitTo(float to)
 {
     mCameraUnitTo = to;
 }
 
-const float &CameraObject::GetCameraUnitTo() const
+const float &Camera::GetCameraUnitTo() const
 {
     return mCameraUnitTo;
 }
 
-const glm::mat4 &CameraObject::GetProjectionViewModelMatrix()
+const glm::mat4 &Camera::GetProjectionViewModelMatrix()
 {
-    mProjectionMatrix = glm::perspective(GetCameraViewAngle(),
-                                         GetCameraViewAspectRatio(),
-                                         GetCameraUnitFrom(), // See from distanse
-                                         GetCameraUnitTo()); // See to distanse
-
-
-    mViewMatrix = glm::lookAt(GetObjectPosition(),
-                              GetObjectPosition() + GetObjectFrontDirection(),
-                              GetObjectUpDirection()); // Up vector - where is up
-
-    mModelMatrix = glm::mat4(1.0f);
-
-    mProjectioViewModelMatrix = mProjectionMatrix * mModelMatrix * mViewMatrix;
+    // mProjectioViewModelMatrix = Projection * View * Model
+    // Model matrix is glm::mat4(1.0f) and can be skipped, because has no affect to use it
+    mProjectioViewModelMatrix = glm::perspective(GetCameraViewAngle(), GetCameraViewAspectRatio(), GetCameraUnitFrom(), GetCameraUnitTo()) *
+                                glm::lookAt(GetObjectPosition(), GetObjectPosition() + GetObjectFrontDirection(), GetObjectUpDirection());
 
     return mProjectioViewModelMatrix;
 }
 
-void CameraObject::ProcessCursorPosition(double &xpos, double &ypos)
+void Camera::ProcessCursorPosition(double &xpos, double &ypos)
 {
-    //TODO CameraObject rotation
+    //TODO Camera rotation
     int sceneWidth = SceneManager::Instance()->GetWindowManager()->GetWindowWidth();
     int sceneHeight = SceneManager::Instance()->GetWindowManager()->GetWindowHeight();
 
@@ -103,7 +94,7 @@ void CameraObject::ProcessCursorPosition(double &xpos, double &ypos)
 }
 
 
-void CameraObject::ProcessButtonPress(int &key, int &scancode, int &action, int &mods)
+void Camera::ProcessButtonPress(int &key, int &scancode, int &action, int &mods)
 {
     if(GLFW_PRESS == action || GLFW_REPEAT == action)
     {

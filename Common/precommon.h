@@ -14,7 +14,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/quaternion.hpp>
 
-//To graphic level
+//To graphic level, should be included before gl.h
 #include <GL/glew.h>
 
 typedef unsigned char      UINT8;

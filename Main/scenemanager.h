@@ -1,9 +1,11 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 
-#include "windowmanager.h"
-#include "Objects/cameraobject.h"
-#include "Objects/sceneobject.h"
+#include "../System/windowmanager.h"
+
+#include "camera.h"
+#include "scene.h"
+#include "object.h"
 
 class SceneObject;
 
@@ -15,8 +17,8 @@ public:
     bool InitWindowSystem(void);
 
     void StartScene(void);
-    void ChangeScene(SceneObject* scene);
-    SceneObject *GetCurrentScene(void) const;
+    void ChangeScene(Scene* scene);
+    Scene *GetCurrentScene(void) const;
 
     WindowManager *GetWindowManager() const;
 
@@ -31,7 +33,7 @@ private:
 private:
     static SceneManager *mInstance;
     WindowManager *mWindowManager;
-    SceneObject *mCurrectScene;
+    Scene *mCurrectScene;
 
     int mWindowWidth;
     int mWindowHeight;
