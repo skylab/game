@@ -41,8 +41,11 @@ bool Shader::LoadFromFile(const char *filename)
             return false;
         }
 
+        memset(mShaderSourceCode, 0, mShaderSourceCodeLength);
+
         shaderFile.read(mShaderSourceCode, mShaderSourceCodeLength);
-        if (shaderFile.gcount() == mShaderSourceCodeLength)
+        int readed = shaderFile.gcount();
+        if (readed == mShaderSourceCodeLength)
         {
             mShaderSourceCode[mShaderSourceCodeLength-1] = '\0';
 #ifdef DEBUG_SHADER
@@ -55,6 +58,10 @@ bool Shader::LoadFromFile(const char *filename)
         {
 #ifdef DEBUG_SHADER
             std::cerr << "Can't read shader source code fully:" << filename << std::endl;
+
+            // TODO WHY on windows this sheet.
+            shaderFile.close();
+            return true;
 #endif
         }
         shaderFile.close();

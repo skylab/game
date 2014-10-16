@@ -7,11 +7,9 @@ ObjectRaw::ObjectRaw() :
     mObjectVertexes(nullptr),
     mObjectVertexQuantity(0),
 
-    mObjectMoveSpeed(0.1f),
-
     mObjectFrontDirection(0.0f, 0.0f, -1.0f),
-    //mObjectRightDirection(1.0f, 0.0f, 0.0f, 0.0f),
     mObjectUpDirection(0.0f, 1.0f, 0.0f),
+
     mPositionRotationScaleMatrix(1.0f)
 {
     SetCanBeChild(true);
@@ -83,16 +81,16 @@ void ObjectRaw::MoveObject(MoveDirection direction)
     switch(direction)
     {
     case FORWARD:
-        SetObjectPosition(GetObjectPosition() + (GetObjectFrontDirection() * GetObjectMoveSpeed()));
+        SetObjectPosition(GetObjectPosition() + GetObjectFrontDirection());
         break;
     case BACK:
-        SetObjectPosition(GetObjectPosition() - (GetObjectFrontDirection() * GetObjectMoveSpeed()));
+        SetObjectPosition(GetObjectPosition() - GetObjectFrontDirection());
         break;
     case UP:
-        SetObjectPosition(GetObjectPosition() + (GetObjectUpDirection() * GetObjectMoveSpeed()));
+        SetObjectPosition(GetObjectPosition() + GetObjectUpDirection());
         break;
     case DOWN:
-        SetObjectPosition(GetObjectPosition() - (GetObjectUpDirection() * GetObjectMoveSpeed()));
+        SetObjectPosition(GetObjectPosition() - GetObjectUpDirection());
         break;
     }
 }
@@ -109,7 +107,7 @@ glm::vec3 ObjectRaw::GetObjectUpDirection()
 
 void ObjectRaw::SetObjectPosition(glm::vec3 position)
 {
-    mObjectPosition = glm::vec4(position, 1.0f);
+    mObjectPosition = position;
 }
 
 glm::vec3 ObjectRaw::GetObjectPosition() const
@@ -117,53 +115,27 @@ glm::vec3 ObjectRaw::GetObjectPosition() const
     return glm::vec3(mObjectPosition);
 }
 
-void ObjectRaw::SetObjectMoveSpeed(float speed)
-{
-    mObjectMoveSpeed = speed;
-}
-
-float ObjectRaw::GetObjectMoveSpeed() const
-{
-    return mObjectMoveSpeed;
-}
-
 void ObjectRaw::RotatePitch(float degrees)
 {
-    mObjectPitch += degrees;
-    if (mObjectPitch > 360)
-    {
-        mObjectPitch -= 360.0;
-    }
-    if (mObjectPitch < -360)
-    {
-        mObjectPitch += 360.0;
-    }
+     glm::quat rot = glm::angleAxis(degrees, glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()));
+
+
+
+     mObjectRotation = rot * mObjectRotation;
 }
 
 void ObjectRaw::RotateHeading(float degrees)
 {
-    if (mObjectPitch > 90 && mObjectPitch < 270 || mObjectPitch < -90 && mObjectPitch > -270)
-    {
-        mObjectHeading -= degrees;
-    }
-    else
-    {
-        mObjectHeading += degrees;
-    }
+    glm::quat rot = glm::angleAxis(degrees, GetObjectUpDirection());
 
-    if (mObjectHeading > 360)
-    {
-        mObjectHeading -= 360.0;
-    }
-    if (mObjectHeading < -360)
-    {
-        mObjectHeading += 360.0;
-    }
+    //mObjectFrontDirection = glm::rotate(rot, mObjectFrontDirection);
+
+    mObjectRotation = rot * mObjectRotation;
 }
 
 void ObjectRaw::SetObjectScale(glm::vec3 scale)
 {
-    mObjectScale = glm::vec4(scale, 0.0f);
+    mObjectScale = scale;
 }
 
 glm::vec3 ObjectRaw::GetObjectScale() const

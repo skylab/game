@@ -32,19 +32,14 @@ public:
 
     glm::vec3 GetObjectFrontDirection(void);
     glm::vec3 GetObjectUpDirection(void);
-    //glm::vec3 GetObjectRightDirection(void);
+
+    void RotatePitch(float degrees);
+    void RotateHeading(float degrees);
+
+
 
     void SetObjectPosition(glm::vec3 position);
     glm::vec3 GetObjectPosition(void) const;
-
-    void SetObjectMoveSpeed(float speed);
-    float GetObjectMoveSpeed(void) const;
-
-    // Change the pitch (up, down) for the free camera
-    void RotatePitch(float degrees);
-    // Change heading (left, right) for the free camera
-    void RotateHeading(float degrees);
-
     void SetObjectScale(glm::vec3 scale);
     glm::vec3 GetObjectScale(void) const;
 
@@ -74,7 +69,6 @@ private:
 
     float mObjectPitch;
     float mObjectHeading;
-    float mObjectMoveSpeed;
 
     glm::vec3 mObjectFrontDirection;
     glm::vec3 mObjectUpDirection;

@@ -15,7 +15,11 @@
 #include <glm/gtc/quaternion.hpp>
 
 //To graphic level, should be included before gl.h
-#include <GL/glew.h>
+#define GLEW_STATIC
+//#include <GL/glew.h>
+#include "System/glew/glew.h"
+
+#define GLFW_DLL
 
 typedef unsigned char      UINT8;
 typedef unsigned short     UINT16;

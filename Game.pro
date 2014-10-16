@@ -3,9 +3,17 @@ TEMPLATE = app
 CONFIG -= app_bundle
 CONFIG -= qt
 
+QT += opengl
+
 CONFIG+=c++11
 
-LIBS += -lGLEW -lGL -lglfw
+#Linux
+#LIBS += -lGLEW -lGL -lglfw
+
+# Windows
+LIBS += -lglew32s
+LIBS += -lopengl32
+LIBS += -lglfw3
 
 SOURCES += main.cpp \
     game.cpp \
@@ -22,7 +30,8 @@ SOURCES += main.cpp \
     System/windowmanager.cpp \
     Main/scene.cpp \
     Main/camera.cpp \
-    Main/Commands/command.cpp
+    Main/Commands/command.cpp \
+    System/glew/glew.c
 
 HEADERS += \
     game.h \
@@ -42,12 +51,14 @@ HEADERS += \
     System/windowmanager.h \
     Main/scene.h \
     Main/camera.h \
-    Main/Commands/command.h
+    Main/Commands/command.h \
+    System/glew/glew.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \
     Resources/Shaders/FragmentShader.fsh \
     Resources/Shaders/VertexShader.vsh \
     Resources/Engine.3ds \
-    Config.txt
+    Config.txt \
+    Resources/Fonts/Arial.bmp
 
