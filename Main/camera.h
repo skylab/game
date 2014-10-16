@@ -23,6 +23,9 @@ public:
 
     virtual const glm::mat4 &GetProjectionViewModelMatrix(void);
 
+    void RotatePitch(float degrees) override;
+    void RotateHeading(float degrees) override;
+
     virtual void ProcessCursorPosition(double &xpos, double &ypos);
     virtual void ProcessButtonPress(int &key, int &scancode, int &action, int &mods);
 

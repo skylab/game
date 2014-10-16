@@ -68,7 +68,33 @@ const glm::mat4 &Camera::GetProjectionViewModelMatrix()
    mProjectioViewModelMatrix = glm::perspective(GetCameraViewAngle(), GetCameraViewAspectRatio(), GetCameraUnitFrom(), GetCameraUnitTo()) *
                                glm::lookAt(GetObjectPosition(), GetObjectPosition() + GetObjectFrontDirection(), GetObjectUpDirection());
 
-    return mProjectioViewModelMatrix;
+   return mProjectioViewModelMatrix;
+}
+
+void Camera::RotatePitch(float degrees)
+{
+    glm::quat rot;
+    rot.x = glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()).x * sin(degrees/2);
+    rot.y = glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()).y * sin(degrees/2);
+    rot.z = glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()).z * sin(degrees/2);
+    rot.w = cos(degrees/2);
+
+    SetObjectFrontDirection(rot * GetObjectFrontDirection());
+
+    mObjectRotation = rot * mObjectRotation;
+}
+
+void Camera::RotateHeading(float degrees)
+{
+    glm::quat rot;
+    rot.x = GetObjectUpDirection().x * sin(degrees/2);
+    rot.y = GetObjectUpDirection().y * sin(degrees/2);
+    rot.z = GetObjectUpDirection().z * sin(degrees/2);
+    rot.w = cos(degrees/2);
+
+    SetObjectFrontDirection(rot * GetObjectFrontDirection());
+
+    mObjectRotation = rot * mObjectRotation;
 }
 
 void Camera::ProcessCursorPosition(double &xpos, double &ypos)
@@ -82,17 +108,8 @@ void Camera::ProcessCursorPosition(double &xpos, double &ypos)
 
     SceneManager::Instance()->GetWindowManager()->SetCursorPosition(sceneWidth/2, sceneHeight/2);
 
-    //std::cerr << offsetX << " " << offsetY << std::endl;
-
-    //Gradus to radian
-    float angleX = offsetX;
-    float angleY = offsetY;
-
-    angleX /= 50;
-    angleY /= 50;
-
-    RotateHeading(-angleX);
-    RotatePitch(angleY);
+    RotateHeading(offsetX / 1000.0f);
+    RotatePitch(offsetY / 1000.0f);
 
     //std::cerr << angleX << " " << angleY << std::endl;
 }
@@ -109,6 +126,7 @@ void Camera::ProcessButtonPress(int &key, int &scancode, int &action, int &mods)
             break;
         case GLFW_KEY_S:
             MoveObject(BACK);
+            break;
         case GLFW_KEY_A:
             MoveObject(LEFT);
             break;

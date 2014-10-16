@@ -1,0 +1,5 @@
+# TODO detect OS type
+
+CXX = g++
+CXXFLAGS = -Wall
+

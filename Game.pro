@@ -8,12 +8,12 @@ QT += opengl
 CONFIG+=c++11
 
 #Linux
-#LIBS += -lGLEW -lGL -lglfw
+LIBS += -lGLEW -lGL -lglfw
 
 # Windows
-LIBS += -lglew32s
-LIBS += -lopengl32
-LIBS += -lglfw3
+#LIBS += -lglew32s -lopengl32 -lglfw3
+#SOURCES += System/glew/glew.h
+#HEADERS += System/glew/glew.c
 
 SOURCES += main.cpp \
     game.cpp \
@@ -30,8 +30,7 @@ SOURCES += main.cpp \
     System/windowmanager.cpp \
     Main/scene.cpp \
     Main/camera.cpp \
-    Main/Commands/command.cpp \
-    System/glew/glew.c
+    Main/Commands/command.cpp
 
 HEADERS += \
     game.h \
@@ -51,8 +50,7 @@ HEADERS += \
     System/windowmanager.h \
     Main/scene.h \
     Main/camera.h \
-    Main/Commands/command.h \
-    System/glew/glew.h
+    Main/Commands/command.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \
@@ -60,5 +58,5 @@ OTHER_FILES += \
     Resources/Shaders/VertexShader.vsh \
     Resources/Engine.3ds \
     Config.txt \
-    Resources/Fonts/Arial.bmp
-
+    Resources/Fonts/Arial.bmp \
+    MyMakefile

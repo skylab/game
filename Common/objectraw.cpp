@@ -113,9 +113,19 @@ float ObjectRaw::GetObjectMoveSpeed() const
     return mObjectMoveSpeed;
 }
 
+void ObjectRaw::SetObjectFrontDirection(glm::vec3 direction)
+{
+    mObjectFrontDirection = direction;
+}
+
 glm::vec3 ObjectRaw::GetObjectFrontDirection(void)
 {
     return glm::vec3(mObjectFrontDirection);
+}
+
+void ObjectRaw::SetObjectUpDirection(glm::vec3 direction)
+{
+    mObjectUpDirection = direction;
 }
 
 glm::vec3 ObjectRaw::GetObjectUpDirection()
@@ -142,8 +152,9 @@ void ObjectRaw::RotatePitch(float degrees)
     rot.w = cos(degrees/2);
 
     mObjectFrontDirection = rot * mObjectFrontDirection;
+    mObjectUpDirection = rot * mObjectUpDirection;
 
-     mObjectRotation = rot * mObjectRotation;
+    mObjectRotation = rot * mObjectRotation;
 }
 
 void ObjectRaw::RotateHeading(float degrees)
@@ -154,7 +165,8 @@ void ObjectRaw::RotateHeading(float degrees)
     rot.z = GetObjectUpDirection().z * sin(degrees/2);
     rot.w = cos(degrees/2);
 
-    mObjectFrontDirection = mObjectFrontDirection * rot;
+    mObjectFrontDirection = rot * mObjectFrontDirection;
+    mObjectUpDirection = rot * mObjectUpDirection;
 
     mObjectRotation = rot * mObjectRotation;
 }

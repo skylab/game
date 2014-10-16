@@ -33,11 +33,13 @@ public:
     void SetObjectMoveSpeed(float speed);
     float GetObjectMoveSpeed(void) const;
 
+    void SetObjectFrontDirection(glm::vec3 direction);
     glm::vec3 GetObjectFrontDirection(void);
+    void SetObjectUpDirection(glm::vec3 direction);
     glm::vec3 GetObjectUpDirection(void);
 
-    void RotatePitch(float degrees);
-    void RotateHeading(float degrees);
+    virtual void RotatePitch(float degrees);
+    virtual void RotateHeading(float degrees);
 
 
     void SetObjectPosition(glm::vec3 position);
@@ -63,6 +65,10 @@ public:
 protected:
     ObjectRaw();
 
+protected:
+    glm::quat mObjectRotation; // Rotation in object use quaternion
+
+
 private:
     glm::mat4 GetRotationMatrix(void);
 
@@ -78,7 +84,6 @@ private:
 
     glm::vec3 mObjectPosition;
     glm::vec3 mObjectScale;
-    glm::quat mObjectRotation; // Rotation in object use quaternion
 
     glm::mat4 mPositionRotationScaleMatrix;
 
