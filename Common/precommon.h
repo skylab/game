@@ -1,6 +1,9 @@
 #ifndef PRECOMMON_H
 #define PRECOMMON_H
 
+//#define _LINUX
+#define _WINDOWS
+
 #include <new>
 #include <typeinfo>
 #include <list>
@@ -15,11 +18,15 @@
 #include <glm/gtc/quaternion.hpp>
 
 //To graphic level, should be included before gl.h
-#define GLEW_STATIC
-//#include <GL/glew.h>
-#include "System/glew/glew.h"
+#ifdef _WINDOWS
+    #define GLEW_STATIC
+    #include "System/glew/glew.h"
+    #define GLFW_DLL
+#endif
 
-#define GLFW_DLL
+#ifdef _LINUX
+    #include <GL/glew.h>
+#endif
 
 typedef unsigned char      UINT8;
 typedef unsigned short     UINT16;

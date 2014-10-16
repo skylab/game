@@ -12,8 +12,8 @@
 
 #ifdef _DEBUG
     //Shaders debug
-    #define DEBUG_SHADER
-    #define DEBUG_SHADER_PROGRAMM
+    //#define DEBUG_SHADER
+    //#define DEBUG_SHADER_PROGRAMM
 #endif
 
 

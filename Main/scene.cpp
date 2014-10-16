@@ -82,6 +82,7 @@ void Scene::Draw()
 
 void Scene::Reshape(int width, int height)
 {    
+    glViewport(0, 0, width, height);
     mCamera->SetCameraViewAspectRatio(static_cast<float>(width)/static_cast<float>(height));
 }
 

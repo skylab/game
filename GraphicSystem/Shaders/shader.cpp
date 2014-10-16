@@ -35,40 +35,45 @@ bool Shader::LoadFromFile(const char *filename)
         mShaderSourceCode = new (std::nothrow) char[mShaderSourceCodeLength];
         if (NULL == mShaderSourceCode)
         {
-#ifdef DEBUG_SHADER
-            std::cerr << "Can't allocate shader source code space:" << filename << std::endl;
-#endif
+            #ifdef DEBUG_SHADER
+                std::cerr << "Can't allocate shader source code space:" << filename << std::endl;
+            #endif
             return false;
         }
 
         memset(mShaderSourceCode, 0, mShaderSourceCodeLength);
 
         shaderFile.read(mShaderSourceCode, mShaderSourceCodeLength);
+
         int readed = shaderFile.gcount();
+        #ifdef _WINDOWS
+                readed = mShaderSourceCodeLength;
+        #endif
+
         if (readed == mShaderSourceCodeLength)
         {
             mShaderSourceCode[mShaderSourceCodeLength-1] = '\0';
-#ifdef DEBUG_SHADER
-            std::cerr << mShaderSourceCode << std::endl;
-#endif
+
+            #ifdef DEBUG_SHADER
+                std::cerr << mShaderSourceCode << std::endl;
+            #endif
+
             shaderFile.close();
             return true;
         }
         else
         {
-#ifdef DEBUG_SHADER
-            std::cerr << "Can't read shader source code fully:" << filename << std::endl;
-
-            // TODO WHY on windows this sheet.
-            shaderFile.close();
-            return true;
-#endif
+            #ifdef DEBUG_SHADER
+                    std::cerr << "Can't read shader source code fully:" << filename << std::endl;
+            #endif
         }
         shaderFile.close();
     }
-#ifdef DEBUG_SHADER
-    std::cerr << "Can't open shader source code:" << filename << std::endl;
-#endif
+
+    #ifdef DEBUG_SHADER
+        std::cerr << "Can't open shader source code:" << filename << std::endl;
+    #endif
+
     return false;
 }
 

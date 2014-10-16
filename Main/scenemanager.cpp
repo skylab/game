@@ -75,8 +75,7 @@ void SceneManager::DrawScene() const
 void SceneManager::Reshape(int width, int height)
 {
     if (nullptr != GetCurrentScene())
-    {
-        glViewport(0, 0, width, height);
+    {        
         GetCurrentScene()->Reshape(width, height);
     }
     else
