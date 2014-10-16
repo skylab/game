@@ -88,11 +88,11 @@ void Camera::ProcessCursorPosition(double &xpos, double &ypos)
     float angleX = offsetX;
     float angleY = offsetY;
 
-    angleX /= 10;
-    angleY /= 10;
+    angleX /= 50;
+    angleY /= 50;
 
-    RotateHeading(angleY);
-    RotatePitch(angleX);
+    RotateHeading(-angleX);
+    RotatePitch(angleY);
 
     //std::cerr << angleX << " " << angleY << std::endl;
 }
@@ -109,6 +109,11 @@ void Camera::ProcessButtonPress(int &key, int &scancode, int &action, int &mods)
             break;
         case GLFW_KEY_S:
             MoveObject(BACK);
+        case GLFW_KEY_A:
+            MoveObject(LEFT);
+            break;
+        case GLFW_KEY_D:
+            MoveObject(RIGHT);
             break;
         case GLFW_KEY_1:
             MoveObject(UP);

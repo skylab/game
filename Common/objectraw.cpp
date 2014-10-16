@@ -7,6 +7,8 @@ ObjectRaw::ObjectRaw() :
     mObjectVertexes(nullptr),
     mObjectVertexQuantity(0),
 
+    mObjectMoveSpeed(0.1f),
+
     mObjectFrontDirection(0.0f, 0.0f, -1.0f),
     mObjectUpDirection(0.0f, 1.0f, 0.0f),
 
@@ -81,18 +83,34 @@ void ObjectRaw::MoveObject(MoveDirection direction)
     switch(direction)
     {
     case FORWARD:
-        SetObjectPosition(GetObjectPosition() + GetObjectFrontDirection());
+        SetObjectPosition(GetObjectPosition() + GetObjectFrontDirection() * GetObjectMoveSpeed());
         break;
     case BACK:
-        SetObjectPosition(GetObjectPosition() - GetObjectFrontDirection());
+        SetObjectPosition(GetObjectPosition() - GetObjectFrontDirection() * GetObjectMoveSpeed());
+        break;
+    case LEFT:
+        SetObjectPosition(GetObjectPosition() - glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()) * GetObjectMoveSpeed());
+        break;
+    case RIGHT:
+        SetObjectPosition(GetObjectPosition() + glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()) * GetObjectMoveSpeed());
         break;
     case UP:
-        SetObjectPosition(GetObjectPosition() + GetObjectUpDirection());
+        SetObjectPosition(GetObjectPosition() + GetObjectUpDirection() * GetObjectMoveSpeed());
         break;
     case DOWN:
-        SetObjectPosition(GetObjectPosition() - GetObjectUpDirection());
+        SetObjectPosition(GetObjectPosition() - GetObjectUpDirection() * GetObjectMoveSpeed());
         break;
     }
+}
+
+void ObjectRaw::SetObjectMoveSpeed(float speed)
+{
+    mObjectMoveSpeed = speed;
+}
+
+float ObjectRaw::GetObjectMoveSpeed() const
+{
+    return mObjectMoveSpeed;
 }
 
 glm::vec3 ObjectRaw::GetObjectFrontDirection(void)
@@ -117,18 +135,26 @@ glm::vec3 ObjectRaw::GetObjectPosition() const
 
 void ObjectRaw::RotatePitch(float degrees)
 {
-     glm::quat rot = glm::angleAxis(degrees, glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()));
+    glm::quat rot;
+    rot.x = glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()).x * sin(degrees/2);
+    rot.y = glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()).y * sin(degrees/2);
+    rot.z = glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()).z * sin(degrees/2);
+    rot.w = cos(degrees/2);
 
-
+    mObjectFrontDirection = rot * mObjectFrontDirection;
 
      mObjectRotation = rot * mObjectRotation;
 }
 
 void ObjectRaw::RotateHeading(float degrees)
 {
-    glm::quat rot = glm::angleAxis(degrees, GetObjectUpDirection());
+    glm::quat rot;
+    rot.x = GetObjectUpDirection().x * sin(degrees/2);
+    rot.y = GetObjectUpDirection().y * sin(degrees/2);
+    rot.z = GetObjectUpDirection().z * sin(degrees/2);
+    rot.w = cos(degrees/2);
 
-    //mObjectFrontDirection = glm::rotate(rot, mObjectFrontDirection);
+    mObjectFrontDirection = mObjectFrontDirection * rot;
 
     mObjectRotation = rot * mObjectRotation;
 }

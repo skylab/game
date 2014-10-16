@@ -30,12 +30,14 @@ public:
     //Object manipulation finctions
     void MoveObject(enum MoveDirection direction);
 
+    void SetObjectMoveSpeed(float speed);
+    float GetObjectMoveSpeed(void) const;
+
     glm::vec3 GetObjectFrontDirection(void);
     glm::vec3 GetObjectUpDirection(void);
 
     void RotatePitch(float degrees);
     void RotateHeading(float degrees);
-
 
 
     void SetObjectPosition(glm::vec3 position);
@@ -69,6 +71,7 @@ private:
 
     float mObjectPitch;
     float mObjectHeading;
+    float mObjectMoveSpeed;
 
     glm::vec3 mObjectFrontDirection;
     glm::vec3 mObjectUpDirection;

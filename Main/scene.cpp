@@ -99,10 +99,10 @@ void Scene::Keyboard(int &key, int &scancode, int &action, int &mods)
             std::exit(0);
             break;
         case GLFW_KEY_LEFT:
-            //GetChildObjectList().front()->RotatePitch(10.0f);
+            GetChildObjectList().front()->RotateHeading(0.01f);
             break;
         case GLFW_KEY_RIGHT:
-            //GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, -10.0f, 0.0f));
+            GetChildObjectList().front()->RotateHeading(-0.01f);
             break;
         case GLFW_KEY_W:
             //GetChildObjectList().front()->RotateObject(glm::vec3(10.0f, 0.0f, 0.0f));
