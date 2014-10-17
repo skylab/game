@@ -1,5 +1,10 @@
 #include "scene.h"
 
+#include "object.h"
+#include "camera.h"
+
+#include "scenemanager.h"
+
 Scene::Scene()
 {
     try
@@ -12,34 +17,33 @@ Scene::Scene()
         return;
     }
 
-    mCamera->SetObjectPosition(glm::vec3(0.0f, 2.0f, 4.0f));
+    mCamera->SetPosition(glm::vec3(0.0f, 2.0f, 4.0f));
 
     Object *obj = new Object();
     obj->LoadObjectFromFile("Resources/Engine.3ds");
-    AddChildObject(obj, glm::vec3(0.0f, 0.0f, 0.0f));
+    AddObjectToList(obj, glm::vec3(0.0f, 0.0f, 0.0f));
 
     ////
     Object *obj1 = new Object();
     obj1->LoadObjectFromFile("Resources/Engine.3ds");
-    AddChildObject(obj1, glm::vec3(3.0f, 0.0f, 0.0f));
+    AddObjectToList(obj1, glm::vec3(3.0f, 0.0f, 0.0f));
 
     Object *obj2 = new Object();
     obj2->LoadObjectFromFile("Resources/Engine.3ds");
-    AddChildObject(obj2, glm::vec3(-3.0f, 0.0f, 0.0f));
+    AddObjectToList(obj2, glm::vec3(-3.0f, 0.0f, 0.0f));
 
     Object *obj3 = new Object();
     obj3->LoadObjectFromFile("Resources/Engine.3ds");
-    AddChildObject(obj3, glm::vec3(3.0f, 2.0f, 0.0f));
+    AddObjectToList(obj3, glm::vec3(3.0f, 2.0f, 0.0f));
 
     Object *obj4 = new Object();
     obj4->LoadObjectFromFile("Resources/Engine.3ds");
-    AddChildObject(obj4, glm::vec3(-3.0f, 2.0f, 0.0f));
+    AddObjectToList(obj4, glm::vec3(-3.0f, 2.0f, 0.0f));
     ///
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
 
-    SetDrawObject(false);
     SetCursorAsCamera(false);
 }
 
@@ -74,10 +78,27 @@ Camera *&Scene::GetCameraObject()
     return mCamera;
 }
 
+const std::list<Object *> &Scene::GetObjectList() const
+{
+    return mObjectList;
+}
+
+void Scene::AddObjectToList(Object *obj, glm::vec3 position)
+{
+    obj->SetObjectPosition(position);
+    mObjectList.push_back(obj);
+}
+
 void Scene::Draw()
 {    
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    GraphicObject::Draw();
+
+    // Draw all elements on the scene
+    for(auto itr : mObjectList)
+    {
+        if (nullptr != itr)
+            itr->Draw();
+    }
 }
 
 void Scene::Reshape(int width, int height)
@@ -99,16 +120,16 @@ void Scene::Keyboard(int &key, int &scancode, int &action, int &mods)
             std::exit(0);
             break;
         case GLFW_KEY_LEFT:
-            GetChildObjectList().front()->RotateHeading(0.01f);
+            GetObjectList().front()->RotateHeading(0.01f);
             break;
         case GLFW_KEY_RIGHT:
-            GetChildObjectList().front()->RotateHeading(-0.01f);
+            GetObjectList().front()->RotateHeading(-0.01f);
             break;
         case GLFW_KEY_UP:
-            GetChildObjectList().front()->RotatePitch(0.01f);
+            GetObjectList().front()->RotatePitch(0.01f);
             break;
         case GLFW_KEY_DOWN:
-            GetChildObjectList().front()->RotatePitch(-0.01f);
+            GetObjectList().front()->RotatePitch(-0.01f);
             break;
 
         case GLFW_KEY_E:
@@ -117,7 +138,7 @@ void Scene::Keyboard(int &key, int &scancode, int &action, int &mods)
         case GLFW_KEY_Q:
             //GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 0.0f, -10.0f));
             break;
-
+        case GLFW_KEY_KP_ENTER:
         case GLFW_KEY_ENTER:
             SetCursorAsCamera(!IsCursorAsCamera());
             break;

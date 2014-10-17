@@ -183,25 +183,25 @@ glm::vec3 ObjectRaw::GetObjectScale() const
 
 void ObjectRaw::SetSupportChildList(bool val)
 {
-    mbSupportChildList = val;
+    mObjectMerit.mbSupportChildList = val;
 }
 
 bool ObjectRaw::GetSupportChildList() const
 {
-    return mbSupportChildList;
+    return mObjectMerit.mbSupportChildList;
 }
 
 void ObjectRaw::SetCanBeChild(bool val)
 {
-    mbCanBeChild = val;
+    mObjectMerit.mbCanBeChild = val;
 }
 
 bool ObjectRaw::GetCanBeChild() const
 {
-    return mbCanBeChild;
+    return mObjectMerit.mbCanBeChild;
 }
 
-const std::list<ObjectRaw *> &ObjectRaw::GetChildObjectList()
+const std::list<ObjectRaw *> &ObjectRaw::GetChildObjectList() const
 {
     return mChildObjectList;
 }
@@ -218,11 +218,13 @@ bool ObjectRaw::AddChildObject(ObjectRaw *object, glm::vec3 position)
     {
         object->SetObjectPosition(position);
         mChildObjectList.push_back(object);
+        return true;
     }
     else
     {
         std::cerr << "AddChildObject object can't be a child" << std::endl;
     }
+    return true;
 }
 
 void ObjectRaw::RemoveChilds()

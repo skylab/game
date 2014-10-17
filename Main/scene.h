@@ -1,32 +1,36 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include "scenemanager.h"
+#include "../Common/precommon.h"
 
-class Console;
+class Object;
+class Camera;
 
-class Scene : public GraphicObject
+class Scene //: public GraphicObject
 {
 public:
     Scene();
     virtual ~Scene();
 
-    virtual void SetCursorAsCamera(bool val);
-    virtual bool IsCursorAsCamera(void) const;
+    void SetCursorAsCamera(bool val);
+    bool IsCursorAsCamera(void) const;
 
-    virtual Camera *&GetCameraObject(void);
+    Camera *&GetCameraObject(void);
+
+    void AddObjectToList(Object *obj, glm::vec3 position);
+    const std::list<Object*> &GetObjectList(void) const;
 
     /// DRAW
-    virtual void Draw(void);
-    virtual void Reshape(int width, int height);
-    virtual void Keyboard(int &key, int &scancode, int &action, int &mods);
-    virtual void MousePosition(double &xpos, double &ypos);
+    void Draw(void);
+    void Reshape(int width, int height);
+    void Keyboard(int &key, int &scancode, int &action, int &mods);
+    void MousePosition(double &xpos, double &ypos);
 
 protected:
     Camera *mCamera;
     bool mbCursorIsCamera;
 
-    //Console *mConsole;
+    std::list<Object*> mObjectList;
 };
 
 #endif // SCENE_H

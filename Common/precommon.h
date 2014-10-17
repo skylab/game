@@ -39,6 +39,16 @@ const glm::vec3 WORLD_AXIS_X = glm::vec3(1.0f, 0.0f, 0.0f);
 const glm::vec3 WORLD_AXIS_Y = glm::vec3(0.0f, 1.0f, 0.0f);
 const glm::vec3 WORLD_AXIS_Z = glm::vec3(0.0f, 0.0f, 1.0f);
 
+enum MoveDirection
+{
+    FORWARD,
+    BACK,
+    LEFT,
+    RIGHT,
+    UP,
+    DOWN
+};
+
 // TODO add key binds
 
 /* The unknown key */

@@ -1,42 +1,58 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "../GraphicSystem/graphicobject.h"
+//#include "../GraphicSystem/graphicobject.h"
+#include "../Common/precommon.h"
 
-class Camera : public GraphicObject
+class Camera //: public GraphicObject
 {
 public:
     Camera();
-    virtual ~Camera();
+    ~Camera();
 
-    virtual void SetCameraViewAngle(float angle);
-    virtual const float &GetCameraViewAngle(void) const;
+    void SetCameraViewAngle(float angle);
+    const float &GetCameraViewAngle(void) const;
+    void SetCameraViewAspectRatio(float aspectRatio);
+    const float &GetCameraViewAspectRatio(void) const;
+    void SetCameraUnitFrom(float from);
+    const float &GetCameraUnitFrom(void) const;
+    void SetCameraUnitTo(float to);
+    const float &GetCameraUnitTo(void) const;
 
-    virtual void SetCameraViewAspectRatio(float aspectRatio);
-    virtual const float &GetCameraViewAspectRatio(void) const;
+    void SetCameraMoveSpeed(float speed);
+    const float &GetCameraMoveSpeed(void) const;
 
-    virtual void SetCameraUnitFrom(float from);
-    virtual const float &GetCameraUnitFrom(void) const;
+    const glm::mat4 &GetProjectionViewModelMatrix(void);
 
-    virtual void SetCameraUnitTo(float to);
-    virtual const float &GetCameraUnitTo(void) const;
+    void SetPosition(glm::vec3 position);
+    const glm::vec3 &GetPosition(void) const;
+    void SetCameraDirection(glm::vec3 direction);
+    const glm::vec3 &GetCameraDirection(void) const;
+    void SetCameraUp(glm::vec3 up);
+    const glm::vec3 &GetCameraUp(void) const;
+    void MoveToDirectin(enum MoveDirection direction);
+    void RotatePitch(float degrees);
+    void RotateHeading(float degrees);
 
-    virtual const glm::mat4 &GetProjectionViewModelMatrix(void);
-
-    void RotatePitch(float degrees) override;
-    void RotateHeading(float degrees) override;
-
-    virtual void ProcessCursorPosition(double &xpos, double &ypos);
-    virtual void ProcessButtonPress(int &key, int &scancode, int &action, int &mods);
+    void ProcessCursorPosition(double &xpos, double &ypos);
+    void ProcessButtonPress(int &key, int &scancode, int &action, int &mods);
 
 private:
     float CharacterHeight;
+    float mCameraMoveSpeed;
+    //float mCameraRotationSpeed;
 
     // TODO read from config
-    float mCameraViewAngle; // 90
+    float mCameraViewAngle; // 45
     float mCameraViewAspectRatio; // 16/9
     float mCameraUnitFrom; // Distanses of view
     float mCameraUnitTo; // Distanses of view
+
+    glm::vec3 mCameraDirection;
+    glm::vec3 mCameraUp;
+
+    glm::vec3 mCameraPosition;
+    glm::quat mCameraRotation;
 
     glm::mat4 mProjectioViewModelMatrix;
 };

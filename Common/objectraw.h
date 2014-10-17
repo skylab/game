@@ -5,16 +5,6 @@
 
 class Command;
 
-enum MoveDirection
-{
-    FORWARD,
-    BACK,
-    LEFT,
-    RIGHT,
-    UP,
-    DOWN
-};
-
 // Basic class to Object, needed to connection between graphic/physic and another system
 class ObjectRaw
 {
@@ -55,7 +45,8 @@ public:
     bool GetCanBeChild(void) const;
     void SetSupportChildList(bool val);
     bool GetSupportChildList(void) const;
-    const std::list<ObjectRaw *> &GetChildObjectList(void);
+
+    const std::list<ObjectRaw *> &GetChildObjectList(void) const;
     bool AddChildObject(ObjectRaw *object, glm::vec3 position);
     void RemoveChilds(void);
 
@@ -75,8 +66,6 @@ private:
     glm::vec3 *mObjectVertexes;
     size_t mObjectVertexQuantity;
 
-    float mObjectPitch;
-    float mObjectHeading;
     float mObjectMoveSpeed;
 
     glm::vec3 mObjectFrontDirection;
@@ -88,8 +77,12 @@ private:
     glm::mat4 mPositionRotationScaleMatrix;
 
     // Depended objects
-    bool mbCanBeChild;
-    bool mbSupportChildList;
+    struct
+    {
+        unsigned mbCanBeChild : 1;
+        unsigned mbSupportChildList : 1;
+    } mObjectMerit;
+
     std::list<ObjectRaw*> mChildObjectList;
 };
 
