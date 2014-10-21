@@ -21,7 +21,7 @@
 #ifdef _WINDOWS
     #define GLEW_STATIC
     #include "System/glew/glew.h"
-    #define GLFW_DLL
+    //#define GLFW_DLL
 #endif
 
 #ifdef _LINUX

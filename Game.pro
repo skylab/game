@@ -12,6 +12,7 @@ CONFIG+=c++11
 
 # Windows
 LIBS += -lglew32s -lopengl32 -lglfw3
+
 HEADERS += System/glew/glew.h
 SOURCES += System/glew/glew.c
 
@@ -30,7 +31,26 @@ SOURCES += main.cpp \
     System/windowmanager.cpp \
     Main/scene.cpp \
     Main/camera.cpp \
-    Main/Commands/command.cpp
+    Main/Commands/command.cpp \
+    Utils/ObjectLoaders/3ds/lib3ds_atmosphere.c \
+    Utils/ObjectLoaders/3ds/lib3ds_background.c \
+    Utils/ObjectLoaders/3ds/lib3ds_camera.c \
+    Utils/ObjectLoaders/3ds/lib3ds_chunk.c \
+    Utils/ObjectLoaders/3ds/lib3ds_chunktable.c \
+    Utils/ObjectLoaders/3ds/lib3ds_file.c \
+    Utils/ObjectLoaders/3ds/lib3ds_io.c \
+    Utils/ObjectLoaders/3ds/lib3ds_light.c \
+    Utils/ObjectLoaders/3ds/lib3ds_material.c \
+    Utils/ObjectLoaders/3ds/lib3ds_math.c \
+    Utils/ObjectLoaders/3ds/lib3ds_matrix.c \
+    Utils/ObjectLoaders/3ds/lib3ds_mesh.c \
+    Utils/ObjectLoaders/3ds/lib3ds_node.c \
+    Utils/ObjectLoaders/3ds/lib3ds_quat.c \
+    Utils/ObjectLoaders/3ds/lib3ds_shadow.c \
+    Utils/ObjectLoaders/3ds/lib3ds_track.c \
+    Utils/ObjectLoaders/3ds/lib3ds_util.c \
+    Utils/ObjectLoaders/3ds/lib3ds_vector.c \
+    Utils/ObjectLoaders/3ds/lib3ds_viewport.c
 
 HEADERS += \
     game.h \
@@ -50,7 +70,9 @@ HEADERS += \
     System/windowmanager.h \
     Main/scene.h \
     Main/camera.h \
-    Main/Commands/command.h
+    Main/Commands/command.h \
+    Utils/ObjectLoaders/3ds/lib3ds.h \
+    Utils/ObjectLoaders/3ds/lib3ds_impl.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \
