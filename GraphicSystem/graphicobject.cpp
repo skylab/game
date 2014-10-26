@@ -103,7 +103,7 @@ const bool &GraphicObject::GetDrawObject() const
     return mbDrawObject;
 }
 
-GraphicObject::GraphicObject() : ObjectRaw(), mVertexBufferObject(0), mShaderProgramm(nullptr), mbDrawObject(true)
+GraphicObject::GraphicObject() : ObjectRaw(), mVertexBufferObject(0), mShaderProgramm(nullptr), mTexture(nullptr), mbDrawObject(true)
 {
     //Set Default Shader
     SetShaderProgramm("Resources/Shaders/VertexShader.vsh",

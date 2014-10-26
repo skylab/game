@@ -6,7 +6,7 @@
 class Object;
 class Camera;
 
-class Scene //: public GraphicObject
+class Scene
 {
 public:
     Scene();

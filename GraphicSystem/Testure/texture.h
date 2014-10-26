@@ -10,6 +10,8 @@ public:
 
     bool LoadFromFile(const char *filename);
 
+    operator unsigned int();
+
 private:
     GLuint mTextureID;
 };

@@ -2,6 +2,7 @@
 #define GRAPHICOBJECT_H
 
 #include "pregraphic.h"
+#include "Testure/texture.h"
 
 class ShaderProgram;
 
@@ -32,6 +33,8 @@ private:
     ShaderProgram *mShaderProgramm;
 
     glm::mat4 mPVMTranslationRotationScaleMatrix;
+
+    Texture *mTexture;
 
     bool mbDrawObject;
 };

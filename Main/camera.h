@@ -1,10 +1,9 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-//#include "../GraphicSystem/graphicobject.h"
 #include "../Common/precommon.h"
 
-class Camera //: public GraphicObject
+class Camera
 {
 public:
     Camera();
