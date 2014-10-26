@@ -142,6 +142,8 @@ void WindowManager::Draw(void)
     {
         SceneManager::Instance()->DrawScene();
         glfwSwapBuffers(mWindow);
+
+        // Process external (button/mouse) events
         glfwPollEvents();
     }
 }

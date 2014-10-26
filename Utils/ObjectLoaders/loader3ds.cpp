@@ -33,6 +33,7 @@ bool Loader3ds::LoadObjectFile(const char *filename, ObjectRaw *object)
         {
             Lib3dsFace face = model->faces[faceCnt];
 
+            // Each face have 3 vertexes. Each vertex have 3 point (x,y,z)
             for (unsigned int facePointCnt = 0; facePointCnt < 3; ++facePointCnt)
             {
                 float x = model->vertices[face.index[facePointCnt]][0];
@@ -43,5 +44,6 @@ bool Loader3ds::LoadObjectFile(const char *filename, ObjectRaw *object)
             }
         }
     }
+    lib3ds_file_free(file);
     return true;
 }

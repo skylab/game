@@ -13,8 +13,8 @@ Shader::Shader(GLint shaderType, const char *filename): mShaderType(shaderType),
     catch(...)
     {
         std::cerr << "Unknown error on Shader" << std::endl;
+        return;
     }
-
     LoadFromFile(filename);
 }
 

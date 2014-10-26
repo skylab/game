@@ -50,7 +50,10 @@ SOURCES += main.cpp \
     Utils/ObjectLoaders/3ds/lib3ds_track.c \
     Utils/ObjectLoaders/3ds/lib3ds_util.c \
     Utils/ObjectLoaders/3ds/lib3ds_vector.c \
-    Utils/ObjectLoaders/3ds/lib3ds_viewport.c
+    Utils/ObjectLoaders/3ds/lib3ds_viewport.c \
+    GraphicSystem/Testure/texture.cpp \
+    Utils/imageloader.cpp \
+    Utils/ImageLoaders/imageloaderabs.cpp
 
 HEADERS += \
     game.h \
@@ -72,7 +75,10 @@ HEADERS += \
     Main/camera.h \
     Main/Commands/command.h \
     Utils/ObjectLoaders/3ds/lib3ds.h \
-    Utils/ObjectLoaders/3ds/lib3ds_impl.h
+    Utils/ObjectLoaders/3ds/lib3ds_impl.h \
+    GraphicSystem/Testure/texture.h \
+    Utils/imageloader.h \
+    Utils/ImageLoaders/imageloaderabs.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

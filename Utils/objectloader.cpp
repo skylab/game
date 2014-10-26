@@ -16,8 +16,7 @@ ObjectLoader *ObjectLoader::Instance()
         }
         catch(std::bad_alloc &ba)
         {
-            //TODO;
-            (void)ba;
+            std::cerr << ba.what() << " : Can't allocate ObjectLoader" << std::endl;
             mInstance = nullptr;
         }
     }
@@ -35,7 +34,7 @@ bool ObjectLoader::LoadObjectFile(const char *filename, ObjectRaw *object)
     //3ds file
     if (strstr(filename, ".3ds"))
     {
-        // Another thread can load object separated
+        // Another thread can load object separated because object in the stack.
         Loader3ds loader;
         return loader.LoadObjectFile(filename, object);
     }
