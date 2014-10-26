@@ -1,153 +1,47 @@
 #include "loader3ds.h"
 
-const UINT16 CHUNK_MAIN(0x4D4D); // main chunk
-const UINT16 CHUNK_OBJMESH(0x3D3D); // all objects
-const UINT16 CHUNK_OBJECTBLOCK(0x4000); // object
-const UINT16 CHUNK_TRIMESH(0x4100); // object data start
-const UINT16 CHUNK_VERTLIST(0x4110); // object vertexes (one point - only once)
-const UINT16 CHUNK_TRI_FACELIST(0x4120); // Indexes of vertexes to object
+#include "3ds/lib3ds.h"
 
 Loader3ds::Loader3ds()
 {
+    ;
 }
 
 bool Loader3ds::LoadObjectFile(const char *filename, ObjectRaw *object)
 {
-    if (nullptr == filename || nullptr == object)
+    Lib3dsFile *file = lib3ds_file_open(filename);
+    if (nullptr == file)
     {
-        std::cerr << (nullptr == filename? "filename" : "object") << " is nullptr";
+        std::cerr << "Can't open file: " << filename << std::endl;
         return false;
     }
 
-    std::fstream file(filename, std::ios_base::in|std::ios_base::binary);
-    if (!file.is_open())
+    Lib3dsMesh * model = nullptr;
+
+    for (unsigned int meshCnt = 0; meshCnt < 1 /*file->nmeshes*/; ++meshCnt)
     {
-        // TODO
-        return false;
-    }
+        model = file->meshes[meshCnt];
 
-    if (!GetChunkPosition(file, CHUNK_OBJMESH))
-        return false;
+        // Count vertex in curent obect
+        unsigned int vertexCounter = 0;
 
-    GetChunkPosition(file, CHUNK_VERTLIST);
+        // Face is triangle. We have 3 indev from vertex array about triangle
+        object->SetObjectVertexQuantity(model->nfaces * 3);
 
-    UINT16 chunkId = 0;
-    UINT32 chunkSize = 0;
-    file.read((char*)&chunkId, sizeof(chunkId));
-    file.read((char*)&chunkSize, sizeof(chunkSize));
-
-    UINT16 vertexQuantity = 0;
-    file.read((char*)&vertexQuantity, sizeof(vertexQuantity));
-
-    glm::vec3 *vertexArray = nullptr;
-    try
-    {
-        vertexArray = new glm::vec3[vertexQuantity];
-    }
-    catch(std::bad_alloc &ba)
-    {
-        (void)ba;
-        return false;
-    }
-
-    for(UINT16 i = 0; i < vertexQuantity; ++i)
-    {
-        float x, y, z;
-        file.read((char*)&x, sizeof(x));
-        file.read((char*)&z, sizeof(z));
-        file.read((char*)&y, sizeof(y));
-        glm::vec3 vec(x, y, z);
-        vertexArray[i] = vec;
-    }
-
-    GetChunkPosition(file, CHUNK_TRI_FACELIST);
-    file.read((char*)&chunkId, sizeof(chunkId));
-    file.read((char*)&chunkSize, sizeof(chunkSize));
-
-    UINT16 triangleQuantity = 0;
-    file.read((char*)&triangleQuantity, sizeof(triangleQuantity));
-
-    if (!object->SetObjectVertexQuantity(triangleQuantity*3))
-    {
-        return false;
-    }
-
-    UINT16 first = 0;
-    UINT16 second = 0;
-    UINT16 third = 0;
-    UINT16 flag = 0;
-
-    UINT16 vertexCounter = 0;
-    for(UINT16 i = 0; i < triangleQuantity; ++i)
-    {
-        file.read((char*)&first, sizeof(first));
-        file.read((char*)&second, sizeof(second));
-        file.read((char*)&third, sizeof(third));
-        file.read((char*)&flag, sizeof(flag));
-
-        object->GetObjectVertexes()[vertexCounter++] = vertexArray[first];
-        object->GetObjectVertexes()[vertexCounter++] = vertexArray[second];
-        object->GetObjectVertexes()[vertexCounter++] = vertexArray[third];
-    }
-
-    file.close();
-    return true;
-}
-
-size_t Loader3ds::GetChunkPosition(std::fstream &file, UINT16 ID)
-{
-    UINT16 readId = 0;
-    UINT32 length = 0;
-
-    UINT32 skip = 0;
-
-    while (!file.eof() && ID != readId)
-    {
-        if (0 != readId && !IsParent(readId))
+        // Load all triangles
+        for (unsigned int faceCnt = 0; faceCnt < model->nfaces; ++faceCnt)
         {
-            file.seekg(file.tellg() - sizeof(readId) - sizeof(length) - skip);
-            skip = 0;
-            file.ignore(length);
-        }
-        file.read((char*)&readId, sizeof(readId));
-        file.read((char*)&length, sizeof(length));
+            Lib3dsFace face = model->faces[faceCnt];
 
-        // Skip object name
-        if (CHUNK_OBJECTBLOCK == readId)
-        {
-            char ch;
-            do
+            for (unsigned int facePointCnt = 0; facePointCnt < 3; ++facePointCnt)
             {
-                file.read(&ch, 1);
-                ++skip;
-            }while ('\0' != ch && !file.eof());
+                float x = model->vertices[face.index[facePointCnt]][0];
+                float y = model->vertices[face.index[facePointCnt]][2]; // In the 3ds file "Y" and "Z" axis is swapped
+                float z = model->vertices[face.index[facePointCnt]][1];
+
+                object->GetObjectVertexes()[vertexCounter++] = glm::vec3(x, y, z);
+            }
         }
     }
-
-    if (CHUNK_OBJECTBLOCK != ID && 0 != skip)
-    {
-        skip = 0;
-    }
-
-    file.seekg(file.tellg() - sizeof(readId) - sizeof(length) - skip);
-
-    if (ID == readId)
-        return file.tellg();
-    else
-        return 0;
-}
-
-bool Loader3ds::IsParent(UINT16 ID)
-{
-    switch(ID)
-    {
-    // What blocks we need to enter.
-    case CHUNK_MAIN:
-    case CHUNK_OBJMESH:
-    case CHUNK_OBJECTBLOCK:
-    case CHUNK_TRIMESH:
-        return true;
-    default:
-        return false;
-    }
+    return true;
 }
