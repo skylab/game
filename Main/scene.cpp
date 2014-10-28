@@ -20,25 +20,25 @@ Scene::Scene()
     mCamera->SetPosition(glm::vec3(0.0f, 2.0f, 4.0f));
 
     Object *obj = new Object();
-    obj->LoadObjectFromFile("Resources/Engine.3ds");
-    //obj->LoadTexureFromFile();
+    obj->LoadObjectFromFile("Resources/Models/Car.3ds");
+    obj->LoadTexureFromFile("Resources/Models/Diskette/brushed_metal.jpg");
     AddObjectToList(obj, glm::vec3(0.0f, 0.0f, 0.0f));
 
     ////
     Object *obj1 = new Object();
-    obj1->LoadObjectFromFile("Resources/Engine.3ds");
+    obj1->LoadObjectFromFile("Resources/Models/Car.3ds");
     AddObjectToList(obj1, glm::vec3(3.0f, 0.0f, 0.0f));
 
     Object *obj2 = new Object();
-    obj2->LoadObjectFromFile("Resources/Engine.3ds");
+    obj2->LoadObjectFromFile("Resources/Models/Car.3ds");
     AddObjectToList(obj2, glm::vec3(-3.0f, 0.0f, 0.0f));
 
     Object *obj3 = new Object();
-    obj3->LoadObjectFromFile("Resources/Engine.3ds");
+    obj3->LoadObjectFromFile("Resources/Models/Car.3ds");
     AddObjectToList(obj3, glm::vec3(3.0f, 2.0f, 0.0f));
 
     Object *obj4 = new Object();
-    obj4->LoadObjectFromFile("Resources/Engine.3ds");
+    obj4->LoadObjectFromFile("Resources/Models/Car.3ds");
     AddObjectToList(obj4, glm::vec3(-3.0f, 2.0f, 0.0f));
     ///
 

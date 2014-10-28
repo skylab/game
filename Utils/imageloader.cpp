@@ -33,7 +33,7 @@ bool ImageLoader::LoadImageFile(const char *filename, Texture *texture)
     }
     if (nullptr == texture)
     {
-        std::cerr << "LoadImageFile. Texture is nullptr" << std::endl;
+        std::cerr << "ImageLoader::LoadImageFile. Texture is nullptr" << std::endl;
         return false;
     }
 

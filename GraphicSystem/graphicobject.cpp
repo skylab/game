@@ -115,4 +115,13 @@ GraphicObject::GraphicObject() : ObjectRaw(), mVertexBufferObject(0), mShaderPro
                       "Resources/Shaders/FragmentShader.fsh");
 
     glGenBuffers(1, &mVertexBufferObject);
+
+    try
+    {
+        mTexture = new Texture();
+    }
+    catch(std::bad_alloc &ba)
+    {
+        std::cerr << ba.what() << " : Can't allocate texture" << std::endl;
+    }
 }
