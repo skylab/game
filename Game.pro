@@ -7,13 +7,13 @@ CONFIG -= qt
 
 CONFIG+=c++11
 
-#Linux
-#LIBS += -lGLEW -lGL -lglfw
+Linux
+LIBS += -lGLEW -lGL -lglfw
 
 #Windows
-LIBS += -lglew32s -lopengl32 -lglfw3
-HEADERS += System/glew/glew.h
-SOURCES += System/glew/glew.c
+#LIBS += -lglew32s -lopengl32 -lglfw3
+#HEADERS += System/glew/glew.h
+#SOURCES += System/glew/glew.c
 
 SOURCES += main.cpp \
     game.cpp \
