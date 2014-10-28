@@ -7,13 +7,13 @@ CONFIG -= qt
 
 CONFIG+=c++11
 
-Linux
-LIBS += -lGLEW -lGL -lglfw
+#Linux
+#LIBS += -lGLEW -lGL -lglfw
 
 #Windows
-#LIBS += -lglew32s -lopengl32 -lglfw3
-#HEADERS += System/glew/glew.h
-#SOURCES += System/glew/glew.c
+LIBS += -lglew32s -lopengl32 -lglfw3
+HEADERS += System/glew/glew.h
+SOURCES += System/glew/glew.c
 
 SOURCES += main.cpp \
     game.cpp \
@@ -52,7 +52,11 @@ SOURCES += main.cpp \
     Utils/ObjectLoaders/3ds/lib3ds_viewport.c \
     GraphicSystem/Testure/texture.cpp \
     Utils/imageloader.cpp \
-    Utils/ImageLoaders/imageloaderabs.cpp
+    Utils/ImageLoaders/imageloaderabs.cpp \
+    Utils/ImageLoaders/soil/image_DXT.c \
+    Utils/ImageLoaders/soil/image_helper.c \
+    Utils/ImageLoaders/soil/SOIL.c \
+    Utils/ImageLoaders/soil/stb_image_aug.c
 
 HEADERS += \
     game.h \
@@ -77,7 +81,13 @@ HEADERS += \
     Utils/ObjectLoaders/3ds/lib3ds_impl.h \
     GraphicSystem/Testure/texture.h \
     Utils/imageloader.h \
-    Utils/ImageLoaders/imageloaderabs.h
+    Utils/ImageLoaders/imageloaderabs.h \
+    Utils/ImageLoaders/soil/image_DXT.h \
+    Utils/ImageLoaders/soil/image_helper.h \
+    Utils/ImageLoaders/soil/SOIL.h \
+    Utils/ImageLoaders/soil/stb_image_aug.h \
+    Utils/ImageLoaders/soil/stbi_DDS_aug.h \
+    Utils/ImageLoaders/soil/stbi_DDS_aug_c.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \
@@ -85,5 +95,4 @@ OTHER_FILES += \
     Resources/Shaders/VertexShader.vsh \
     Resources/Engine.3ds \
     Config.txt \
-    Resources/Fonts/Arial.bmp \
-    MyMakefile
+    Resources/Fonts/Arial.bmp
