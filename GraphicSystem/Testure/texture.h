@@ -10,6 +10,8 @@ public:
 
     bool LoadFromFile(const char *filename);
 
+    void SetTextureID(unsigned int ID);
+
     operator unsigned int();
 
 private:

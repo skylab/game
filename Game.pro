@@ -12,8 +12,10 @@ CONFIG+=c++11
 
 #Windows
 LIBS += -lglew32s -lopengl32 -lglfw3
-HEADERS += System/glew/glew.h
-SOURCES += System/glew/glew.c
+HEADERS += System/glew/glew.h \
+    Utils/ImageLoaders/loaderjpeg.h
+SOURCES += System/glew/glew.c \
+    Utils/ImageLoaders/loaderjpeg.cpp
 
 SOURCES += main.cpp \
     game.cpp \

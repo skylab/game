@@ -15,6 +15,7 @@ public:
     virtual void SetVertexBufferObject(GLuint &vertexBufferObject);
 
     virtual bool LoadObjectFromFile(const char *fileName) override;
+    virtual bool LoadTexureFromFile(const char *fileName);
     virtual void LoadObjectToGraphicMemory(void);
 
     virtual void SetShaderProgramm(const char *vertexShader, const char *fragmenShader);

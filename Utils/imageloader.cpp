@@ -2,6 +2,9 @@
 
 #include "../GraphicSystem/Testure/texture.h"
 
+///LoaderList
+#include "ImageLoaders/loaderjpeg.h"
+
 ImageLoader *ImageLoader::mInstance = nullptr;
 
 ImageLoader *ImageLoader::Instance()
@@ -33,6 +36,14 @@ bool ImageLoader::LoadImageFile(const char *filename, Texture *texture)
         std::cerr << "LoadImageFile. Texture is nullptr" << std::endl;
         return false;
     }
+
+    if (strstr(filename, ".jpeg") || strstr(filename, ".jpg"))
+    {
+        LoaderJPEG loader;
+        return loader.LoadImageFile(filename, texture);
+    }
+
+    return false;
 }
 
 ImageLoader::ImageLoader()

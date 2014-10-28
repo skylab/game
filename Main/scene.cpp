@@ -21,6 +21,7 @@ Scene::Scene()
 
     Object *obj = new Object();
     obj->LoadObjectFromFile("Resources/Engine.3ds");
+    //obj->LoadTexureFromFile();
     AddObjectToList(obj, glm::vec3(0.0f, 0.0f, 0.0f));
 
     ////

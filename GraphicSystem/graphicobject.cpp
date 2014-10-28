@@ -29,6 +29,11 @@ bool GraphicObject::LoadObjectFromFile(const char *fileName)
     return true;
 }
 
+bool GraphicObject::LoadTexureFromFile(const char *fileName)
+{
+    return mTexture->LoadFromFile(fileName);
+}
+
 void GraphicObject::LoadObjectToGraphicMemory()
 {
     glBindBuffer(GL_ARRAY_BUFFER, GetVertexBufferObject());
