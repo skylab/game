@@ -18,7 +18,7 @@ bool LoaderJPEG::LoadImageFile(const char *filename, Texture *texture)
         std::cerr << "ImageLoaderJPEG::LoadImageFile. texture is nullptr" << std::endl;
         return false;
     }
-    unsigned int id = SOIL_load_OGL_texture(filename, SOIL_LOAD_AUTO, (unsigned int)texture, SOIL_FLAG_INVERT_Y);
+    unsigned int id = SOIL_load_OGL_texture(filename, SOIL_LOAD_AUTO, (unsigned int)*texture, SOIL_FLAG_INVERT_Y);
     if (0 == id)
     {
         std::cerr << "Failed to load " << filename << std::endl;
