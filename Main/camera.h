@@ -2,8 +2,9 @@
 #define CAMERA_H
 
 #include "../Common/precommon.h"
+#include "keylistener.h"
 
-class Camera
+class Camera : public KeyListener
 {
 public:
     Camera();

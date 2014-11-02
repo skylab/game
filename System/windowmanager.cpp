@@ -88,6 +88,7 @@ bool WindowManager::Createwindow(unsigned int windowWidth, unsigned int windowHe
 
 bool WindowManager::InitKeyBoard(KeyBoardManager *manager)
 {
+    /*
     manager->AssignKey(Key::PRESS, GLFW_PRESS);
     manager->AssignKey(Key::RELEASE, GLFW_RELEASE);
     manager->AssignKey(Key::REPEAT, GLFW_REPEAT);
@@ -104,6 +105,7 @@ bool WindowManager::InitKeyBoard(KeyBoardManager *manager)
     manager->AssignKey(Key::A, GLFW_KEY_A);
     manager->AssignKey(Key::S, GLFW_KEY_S);
     manager->AssignKey(Key::D, GLFW_KEY_D);
+    */
 
     return true;
 }

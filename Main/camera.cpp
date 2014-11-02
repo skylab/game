@@ -181,20 +181,20 @@ void Camera::ProcessCursorPosition(double &xpos, double &ypos)
 
     RotateHeading(offsetX / 1000.0f);
     RotatePitch(offsetY / 1000.0f);
-
-    //std::cerr << angleX << " " << angleY << std::endl;
 }
 
 
 void Camera::ProcessButtonPress(int &key, int &scancode, int &action, int &mods)
 {
+    /*
     std::cerr << "Addr2 " << &Key::PRESS << std::endl;
     std::cerr << (int)Key::Instance()->PRESS << " " << (int)Key::PRESS << " " << key << std::endl;
 
     if (Key::PRESS == action || Key::REPEAT == action)
     {
-        if (Key::W == key)
+        if (Key::Press(Key::W))
             MoveToDirectin(FORWARD);
+            if (Key::W == key)
         if (Key::S == key)
             MoveToDirectin(BACK);
         if (Key::A == key)
@@ -211,6 +211,6 @@ void Camera::ProcessButtonPress(int &key, int &scancode, int &action, int &mods)
             MoveToDirectin(DOWN);
             break;
         }
-        */
     }
+        */
 }

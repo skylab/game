@@ -58,7 +58,8 @@ SOURCES += main.cpp \
     Utils/ImageLoaders/soil/image_helper.c \
     Utils/ImageLoaders/soil/SOIL.c \
     Utils/ImageLoaders/soil/stb_image_aug.c \
-    System/keyboardmanager.cpp
+    System/keyboardmanager.cpp \
+    Main/keylistener.cpp
 
 HEADERS += \
     game.h \
@@ -91,7 +92,8 @@ HEADERS += \
     Utils/ImageLoaders/soil/stb_image_aug.h \
     Utils/ImageLoaders/soil/stbi_DDS_aug.h \
     Utils/ImageLoaders/soil/stbi_DDS_aug_c.h \
-    System/keyboardmanager.h
+    System/keyboardmanager.h \
+    Main/keylistener.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

@@ -46,6 +46,7 @@ Scene::Scene()
     glDepthFunc(GL_LESS);
 
     SetCursorAsCamera(false);
+    SetKeyListenerEnable(true);
 }
 
 Scene::~Scene()
@@ -110,6 +111,7 @@ void Scene::Reshape(int width, int height)
 
 void Scene::Keyboard(int &key, int &scancode, int &action, int &mods)
 {
+    /*
     GetCameraObject()->ProcessButtonPress(key, scancode, action, mods);
 
     if (Key::PRESS == action || Key::REPEAT == action)
@@ -132,6 +134,7 @@ void Scene::Keyboard(int &key, int &scancode, int &action, int &mods)
         if (Key::ENTER == key)
             SetCursorAsCamera(!IsCursorAsCamera());
     }
+    */
 }
 
 void Scene::MousePosition(double &xpos, double &ypos)

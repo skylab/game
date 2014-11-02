@@ -86,6 +86,11 @@ WindowManager *SceneManager::GetWindowManager() const
     return mWindowManager;
 }
 
+KeyBoardManager *SceneManager::GetKeyBoartManager() const
+{
+    return mKeyBoardManager;
+}
+
 void SceneManager::DrawScene() const
 {
     if (nullptr != GetCurrentScene())
@@ -112,13 +117,13 @@ void SceneManager::Reshape(int width, int height)
 
 void SceneManager::Keyboard(int &key, int &scancode, int &action, int &mods)
 {
-    if (nullptr != GetCurrentScene())
+    if (nullptr != mKeyBoardManager)
     {
-        GetCurrentScene()->Keyboard(key, scancode, action, mods);
+        mKeyBoardManager->ProcessKey(key, scancode, action, mods);
     }
     else
     {
-        std::cerr << "Keyboard. Current scene is nullptr" << std::endl;
+        std::cerr << "Keyboard. mKeyBoardManager is nullptr" << std::endl;
     }
 }
 

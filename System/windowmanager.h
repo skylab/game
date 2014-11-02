@@ -12,8 +12,9 @@ public:
     // TOOD Write destructor
     static WindowManager *Instance();
     bool Createwindow(unsigned int windowWidth, unsigned int windowHeight);
-    bool InitKeyBoard(KeyBoardManager *manager);
     void Terminate(void) const;
+
+    bool InitKeyBoard(KeyBoardManager *manager);
 
     const size_t &GetWindowWidth(void) const;
     void SetWindowWidth(int size);

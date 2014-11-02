@@ -3,29 +3,31 @@
 
 #include "../Common/precommon.h"
 
-//class KeyBoardManager;
-class __Key
+#include "../Main/keylistener.h"
+class KeyListener;
+
+class Key
 {
     friend class KeyBoardManager;
 public:
-    __Key()
-    {
-        ;
-    }
-
     operator int()
     {
-        return mValue;
+        return mCode;
     }
 
-    operator const char *()
+    operator const char*()
     {
         return mName;
     }
 
 private:
-    int mValue;
-    const char *mName;
+    Key(int code, const char* name) : mCode(code), mName(name)
+    {
+        ;
+    }
+
+    int mCode;
+    const char* mName;
 };
 
 class KeyBoardManager
@@ -33,31 +35,17 @@ class KeyBoardManager
 public:
     static KeyBoardManager *Instance(void);
 
-    void AssignKey(__Key &key, int value);
+    void AddKeyListener(KeyListener *listener);
+    bool AddKey(int code, const char*name);
 
-// Keylist
-    static __Key PRESS;
-    static __Key REPEAT;
-    static __Key RELEASE;
-
-    static __Key ENTER;
-    static __Key ESCAPE;
-
-    static __Key UP;
-    static __Key DOWN;
-    static __Key LEFT;
-    static __Key RIGHT;
-
-    static __Key W;
-    static __Key A;
-    static __Key S;
-    static __Key D;
+    void ProcessKey(int &key, int &scancode, int &action, int &mods);
 
 private:
     KeyBoardManager();
     static KeyBoardManager *mInstance;
-};
 
-typedef KeyBoardManager Key;
+    std::list<KeyListener*> mKeyListeners;
+    std::map<int,Key*> mKeyList;
+};
 
 #endif // KEYBOARDMANAGER_H

@@ -23,6 +23,7 @@ public:
     Scene *GetCurrentScene(void) const;
 
     WindowManager *GetWindowManager() const;
+    KeyBoardManager *GetKeyBoartManager() const;
 
     // Drawing tools
     void DrawScene(void) const;

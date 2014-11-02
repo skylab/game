@@ -1,22 +1,5 @@
 #include "keyboardmanager.h"
 
-__Key KeyBoardManager::PRESS;
-__Key KeyBoardManager::REPEAT;
-__Key KeyBoardManager::RELEASE;
-
-__Key KeyBoardManager::ENTER;
-__Key KeyBoardManager::ESCAPE;
-
-__Key KeyBoardManager::UP;
-__Key KeyBoardManager::DOWN;
-__Key KeyBoardManager::LEFT;
-__Key KeyBoardManager::RIGHT;
-
-__Key KeyBoardManager::W;
-__Key KeyBoardManager::A;
-__Key KeyBoardManager::S;
-__Key KeyBoardManager::D;
-
 KeyBoardManager *KeyBoardManager::mInstance = nullptr;
 
 KeyBoardManager *KeyBoardManager::Instance()
@@ -36,29 +19,47 @@ KeyBoardManager *KeyBoardManager::Instance()
     return mInstance;
 }
 
-void KeyBoardManager::AssignKey(__Key &key, int value)
+void KeyBoardManager::AddKeyListener(KeyListener *listener)
 {
-    key.mValue = value;
-    std::cerr << "Key: " << (const char*)key << " set: " << (int)key << std::endl;
+    mKeyListeners.push_back(listener);
 }
 
-#define SET_KEY_NAME(name) name.mName = #name;
+bool KeyBoardManager::AddKey(int code, const char *name)
+{
+    Key *key = nullptr;
+    try
+    {
+        key = new Key(code, name);
+    }
+    catch(std::bad_alloc &ba)
+    {
+        std::cerr << ba.what() << " : Can't create key" << std::endl;
+        key = nullptr;
+    }
+
+    if (nullptr != key)
+    {
+        mKeyList[code] = key;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void KeyBoardManager::ProcessKey(int &key, int &scancode, int &action, int &mods)
+{
+    // Filter key and action.
+    // Send key and action to object in according to filter options.
+
+    for(std::list<KeyListener*>::iterator i = mKeyListeners.begin(); i != mKeyListeners.end(); ++i)
+    {
+        (*i)->NotifyKey(mKeyList[key], action, mods);
+    }
+}
+
 KeyBoardManager::KeyBoardManager()
 {
-    SET_KEY_NAME(PRESS);
-    SET_KEY_NAME(REPEAT);
-    SET_KEY_NAME(RELEASE);
-
-    SET_KEY_NAME(ENTER);
-    SET_KEY_NAME(ESCAPE);
-
-    SET_KEY_NAME(UP);
-    SET_KEY_NAME(DOWN);
-    SET_KEY_NAME(LEFT);
-    SET_KEY_NAME(RIGHT);
-
-    SET_KEY_NAME(W);
-    SET_KEY_NAME(A);
-    SET_KEY_NAME(S);
-    SET_KEY_NAME(D);
+    ;
 }

@@ -3,10 +3,12 @@
 
 #include "../Common/precommon.h"
 
+#include "keylistener.h"
+
 class Object;
 class Camera;
 
-class Scene
+class Scene : public KeyListener
 {
 public:
     Scene();
