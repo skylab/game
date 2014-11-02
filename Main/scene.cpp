@@ -112,41 +112,25 @@ void Scene::Keyboard(int &key, int &scancode, int &action, int &mods)
 {
     GetCameraObject()->ProcessButtonPress(key, scancode, action, mods);
 
-    if (GLFW_PRESS == action || GLFW_REPEAT == action)
+    if (Key::PRESS == action || Key::REPEAT == action)
     {
-        switch(key)
+        if (Key::ESCAPE == key)
         {
-        case GLFW_KEY_ESCAPE:
             SceneManager::Instance()->GetWindowManager()->Terminate();
             std::exit(0);
-            break;
-        case GLFW_KEY_LEFT:
-            GetObjectList().front()->RotateHeading(0.01f);
-            break;
-        case GLFW_KEY_RIGHT:
-            GetObjectList().front()->RotateHeading(-0.01f);
-            break;
-        case GLFW_KEY_UP:
-            GetObjectList().front()->RotatePitch(0.01f);
-            break;
-        case GLFW_KEY_DOWN:
-            GetObjectList().front()->RotatePitch(-0.01f);
-            break;
-
-        case GLFW_KEY_E:
-            //GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 0.0f, 10.0f));
-            break;
-        case GLFW_KEY_Q:
-            //GetChildObjectList().front()->RotateObject(glm::vec3(0.0f, 0.0f, -10.0f));
-            break;
-        case GLFW_KEY_KP_ENTER:
-        case GLFW_KEY_ENTER:
-            SetCursorAsCamera(!IsCursorAsCamera());
-            break;
-        default:
-            //std::cerr << "User press: " << key << std::endl;
-            break;
         }
+
+        if (Key::LEFT == key)
+            GetObjectList().front()->RotateHeading(0.01f);
+        if (Key::RIGHT == key)
+            GetObjectList().front()->RotateHeading(-0.01f);
+        if (Key::UP == key)
+            GetObjectList().front()->RotatePitch(0.01f);
+        if (Key::DOWN == key)
+            GetObjectList().front()->RotatePitch(-0.01f);
+
+        if (Key::ENTER == key)
+            SetCursorAsCamera(!IsCursorAsCamera());
     }
 }
 

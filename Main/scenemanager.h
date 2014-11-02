@@ -2,6 +2,7 @@
 #define SCENEMANAGER_H
 
 #include "../System/windowmanager.h"
+#include "../System/keyboardmanager.h"
 
 #include "camera.h"
 #include "scene.h"
@@ -15,6 +16,7 @@ public:
     ~SceneManager();
     static SceneManager *Instance(void);
     bool InitWindowSystem(void);
+    bool InitKeyBoardSystem(void);
 
     void StartScene(void);
     void ChangeScene(Scene* scene);
@@ -33,6 +35,8 @@ private:
 private:
     static SceneManager *mInstance;
     WindowManager *mWindowManager;
+    bool mWindowManagerStarted;
+    KeyBoardManager *mKeyBoardManager;
     Scene *mCurrectScene;
 
     int mWindowWidth;

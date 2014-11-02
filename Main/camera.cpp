@@ -188,21 +188,21 @@ void Camera::ProcessCursorPosition(double &xpos, double &ypos)
 
 void Camera::ProcessButtonPress(int &key, int &scancode, int &action, int &mods)
 {
-    if(GLFW_PRESS == action || GLFW_REPEAT == action)
+    std::cerr << "Addr2 " << &Key::PRESS << std::endl;
+    std::cerr << (int)Key::Instance()->PRESS << " " << (int)Key::PRESS << " " << key << std::endl;
+
+    if (Key::PRESS == action || Key::REPEAT == action)
     {
-        switch(key)
-        {
-        case GLFW_KEY_W:
+        if (Key::W == key)
             MoveToDirectin(FORWARD);
-            break;
-        case GLFW_KEY_S:
+        if (Key::S == key)
             MoveToDirectin(BACK);
-            break;
-        case GLFW_KEY_A:
+        if (Key::A == key)
             MoveToDirectin(LEFT);
-            break;
-        case GLFW_KEY_D:
+        if (Key::D == key)
             MoveToDirectin(RIGHT);
+
+        /*
             break;
         case GLFW_KEY_1:
             MoveToDirectin(UP);
@@ -211,5 +211,6 @@ void Camera::ProcessButtonPress(int &key, int &scancode, int &action, int &mods)
             MoveToDirectin(DOWN);
             break;
         }
+        */
     }
 }

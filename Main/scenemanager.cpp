@@ -32,11 +32,37 @@ bool SceneManager::InitWindowSystem()
 {
     if (nullptr == mWindowManager)
     {
-        std::cerr << "Can't create WindowManager" << std::endl;
+        std::cerr << "mWindowManager is nullptr" << std::endl;
         return false;
     }
 
-    return mWindowManager->Createwindow(MY_WINDOW_WIDTH, MY_WINDOW_HEIGHT);
+    mWindowManagerStarted = mWindowManager->Createwindow(MY_WINDOW_WIDTH, MY_WINDOW_HEIGHT);
+    return mWindowManagerStarted;
+}
+
+bool SceneManager::InitKeyBoardSystem()
+{
+    if (!mWindowManagerStarted)
+    {
+        if (!InitWindowSystem())
+        {
+            std::cerr << "InitKeyBoardSystem. mWindowManager can't init window system" << std::endl;
+            return false;
+        }
+    }
+
+    if (nullptr == mKeyBoardManager)
+    {
+        std::cerr << "InitKeyBoardSystem. mKeyBoardManager is nullptr" << std::endl;
+        return false;
+    }
+    if (nullptr == mWindowManager)
+    {
+        std::cerr << "InitKeyBoardSystem. mWindowManager is nullptr" << std::endl;
+        return false;
+    }
+
+    return mWindowManager->InitKeyBoard(mKeyBoardManager);
 }
 
 void SceneManager::StartScene()
@@ -111,4 +137,5 @@ void SceneManager::MousePosition(double &xpos, double &ypos)
 SceneManager::SceneManager() : mCurrectScene(nullptr)
 {
     mWindowManager = WindowManager::Instance();
+    mKeyBoardManager = KeyBoardManager::Instance();
 }

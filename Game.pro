@@ -8,14 +8,12 @@ CONFIG -= qt
 CONFIG+=c++11
 
 #Linux
-#LIBS += -lGLEW -lGL -lglfw
+LIBS += -lGLEW -lGL -lglfw
 
 #Windows
-LIBS += -lglew32s -lopengl32 -lglfw3
-HEADERS += System/glew/glew.h \
-    Utils/ImageLoaders/loaderjpeg.h
-SOURCES += System/glew/glew.c \
-    Utils/ImageLoaders/loaderjpeg.cpp
+#LIBS += -lglew32s -lopengl32 -lglfw3
+#HEADERS += System/glew/glew.h
+#SOURCES += System/glew/glew.c
 
 SOURCES += main.cpp \
     game.cpp \
@@ -55,10 +53,12 @@ SOURCES += main.cpp \
     GraphicSystem/Testure/texture.cpp \
     Utils/imageloader.cpp \
     Utils/ImageLoaders/imageloaderabs.cpp \
+    Utils/ImageLoaders/loaderjpeg.cpp \
     Utils/ImageLoaders/soil/image_DXT.c \
     Utils/ImageLoaders/soil/image_helper.c \
     Utils/ImageLoaders/soil/SOIL.c \
-    Utils/ImageLoaders/soil/stb_image_aug.c
+    Utils/ImageLoaders/soil/stb_image_aug.c \
+    System/keyboardmanager.cpp
 
 HEADERS += \
     game.h \
@@ -84,12 +84,14 @@ HEADERS += \
     GraphicSystem/Testure/texture.h \
     Utils/imageloader.h \
     Utils/ImageLoaders/imageloaderabs.h \
+    Utils/ImageLoaders/loaderjpeg.h \
     Utils/ImageLoaders/soil/image_DXT.h \
     Utils/ImageLoaders/soil/image_helper.h \
     Utils/ImageLoaders/soil/SOIL.h \
     Utils/ImageLoaders/soil/stb_image_aug.h \
     Utils/ImageLoaders/soil/stbi_DDS_aug.h \
-    Utils/ImageLoaders/soil/stbi_DDS_aug_c.h
+    Utils/ImageLoaders/soil/stbi_DDS_aug_c.h \
+    System/keyboardmanager.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

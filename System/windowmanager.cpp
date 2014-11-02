@@ -86,6 +86,28 @@ bool WindowManager::Createwindow(unsigned int windowWidth, unsigned int windowHe
     return true;
 }
 
+bool WindowManager::InitKeyBoard(KeyBoardManager *manager)
+{
+    manager->AssignKey(Key::PRESS, GLFW_PRESS);
+    manager->AssignKey(Key::RELEASE, GLFW_RELEASE);
+    manager->AssignKey(Key::REPEAT, GLFW_REPEAT);
+
+    manager->AssignKey(Key::ENTER, GLFW_KEY_ENTER);
+    manager->AssignKey(Key::ESCAPE, GLFW_KEY_ESCAPE);
+
+    manager->AssignKey(Key::UP, GLFW_KEY_UP);
+    manager->AssignKey(Key::DOWN, GLFW_KEY_DOWN);
+    manager->AssignKey(Key::LEFT, GLFW_KEY_LEFT);
+    manager->AssignKey(Key::RIGHT, GLFW_KEY_RIGHT);
+
+    manager->AssignKey(Key::W, GLFW_KEY_W);
+    manager->AssignKey(Key::A, GLFW_KEY_A);
+    manager->AssignKey(Key::S, GLFW_KEY_S);
+    manager->AssignKey(Key::D, GLFW_KEY_D);
+
+    return true;
+}
+
 void WindowManager::Terminate() const
 {
     glfwTerminate();
@@ -150,5 +172,5 @@ void WindowManager::Draw(void)
 
 WindowManager::WindowManager() : mWindow(nullptr), mWidth(0), mHeight(0), mCursorVisible(true)
 {
-    ;
+    KeyBoardManager::Instance();
 }

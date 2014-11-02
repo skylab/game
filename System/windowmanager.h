@@ -4,6 +4,7 @@
 #include "../Common/precommon.h"
 
 class GLFWwindow;
+class KeyBoardManager;
 
 class WindowManager
 {
@@ -11,6 +12,7 @@ public:
     // TOOD Write destructor
     static WindowManager *Instance();
     bool Createwindow(unsigned int windowWidth, unsigned int windowHeight);
+    bool InitKeyBoard(KeyBoardManager *manager);
     void Terminate(void) const;
 
     const size_t &GetWindowWidth(void) const;

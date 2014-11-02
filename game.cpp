@@ -45,6 +45,7 @@ bool Game::Init()
     {
         // Init window system to draw
         mbStarted = mSceneManager->InitWindowSystem();
+        mbStarted &= mSceneManager->InitKeyBoardSystem();
     }
     else
     {
