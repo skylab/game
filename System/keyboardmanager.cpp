@@ -57,8 +57,6 @@ void KeyBoardManager::AssignActionInfo(ActionInfo &action, int code, const char 
     action.mCode = code;
     action.mName = name;
     mActionList[code] = &action;
-
-    //std::cerr << "KeyBoardManager::AssignActionInfo: " << action.mName << " " << action.mCode << std::endl;
 }
 
 void KeyBoardManager::ProcessKey(int &key, int &scancode, int &action, int &mods)

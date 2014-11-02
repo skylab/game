@@ -31,7 +31,6 @@ public:
     virtual void RotatePitch(float degrees);
     virtual void RotateHeading(float degrees);
 
-
     void SetObjectPosition(glm::vec3 position);
     glm::vec3 GetObjectPosition(void) const;
     void SetObjectScale(glm::vec3 scale);
