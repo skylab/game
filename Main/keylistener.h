@@ -2,7 +2,8 @@
 #define KEYLISTENER_H
 
 #include "../System/keyboardmanager.h"
-class Key;
+class KeyInfo;
+class ActionInfo;
 
 class KeyListener
 {
@@ -13,7 +14,7 @@ public:
     void SetKeyListenerEnable(bool val);
     bool GetKeyListenerEnable(void) const;
 
-    virtual void NotifyKey(Key *key, int &action, int &mods);
+    virtual void NotifyKey(KeyInfo *key, ActionInfo *action, int &mods);
 
 private:
     bool mbEnabled;

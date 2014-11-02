@@ -15,6 +15,9 @@ public:
     void Terminate(void) const;
 
     bool InitKeyBoard(KeyBoardManager *manager);
+    bool CheckPress(int key);
+    bool CheckRelease(int key);
+    bool CheckRepeat(int key);
 
     const size_t &GetWindowWidth(void) const;
     void SetWindowWidth(int size);

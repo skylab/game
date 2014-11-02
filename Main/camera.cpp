@@ -184,33 +184,24 @@ void Camera::ProcessCursorPosition(double &xpos, double &ypos)
 }
 
 
-void Camera::ProcessButtonPress(int &key, int &scancode, int &action, int &mods)
+void Camera::NotifyKey(KeyInfo *key, ActionInfo *action, int &mods)
 {
-    /*
-    std::cerr << "Addr2 " << &Key::PRESS << std::endl;
-    std::cerr << (int)Key::Instance()->PRESS << " " << (int)Key::PRESS << " " << key << std::endl;
+    std::cerr << "Camera receive: " << (const char*)*key << std::endl;
 
-    if (Key::PRESS == action || Key::REPEAT == action)
+    if (Key::W.Press() || Key::W.Repeat())
     {
-        if (Key::Press(Key::W))
-            MoveToDirectin(FORWARD);
-            if (Key::W == key)
-        if (Key::S == key)
-            MoveToDirectin(BACK);
-        if (Key::A == key)
-            MoveToDirectin(LEFT);
-        if (Key::D == key)
-            MoveToDirectin(RIGHT);
-
-        /*
-            break;
-        case GLFW_KEY_1:
-            MoveToDirectin(UP);
-            break;
-        case GLFW_KEY_2:
-            MoveToDirectin(DOWN);
-            break;
-        }
+        MoveToDirectin(FORWARD);
     }
-        */
+    if (Key::S.Press() || Key::S.Repeat())
+    {
+        MoveToDirectin(BACK);
+    }
+    if (Key::A.Press() || Key::A.Repeat())
+    {
+        MoveToDirectin(LEFT);
+    }
+    if (Key::D.Press() || Key::D.Repeat())
+    {
+        MoveToDirectin(RIGHT);
+    }
 }

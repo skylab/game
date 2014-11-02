@@ -109,32 +109,20 @@ void Scene::Reshape(int width, int height)
     mCamera->SetCameraViewAspectRatio(static_cast<float>(width)/static_cast<float>(height));
 }
 
-void Scene::Keyboard(int &key, int &scancode, int &action, int &mods)
+void Scene::NotifyKey(KeyInfo *key, ActionInfo *action, int &mods)
 {
-    /*
-    GetCameraObject()->ProcessButtonPress(key, scancode, action, mods);
-
-    if (Key::PRESS == action || Key::REPEAT == action)
+    //std::cerr << "Scene receive: " << (const char*)*key << std::endl;
+    if (Key::ESCAPE == *key)
     {
-        if (Key::ESCAPE == key)
-        {
-            SceneManager::Instance()->GetWindowManager()->Terminate();
-            std::exit(0);
-        }
-
-        if (Key::LEFT == key)
-            GetObjectList().front()->RotateHeading(0.01f);
-        if (Key::RIGHT == key)
-            GetObjectList().front()->RotateHeading(-0.01f);
-        if (Key::UP == key)
-            GetObjectList().front()->RotatePitch(0.01f);
-        if (Key::DOWN == key)
-            GetObjectList().front()->RotatePitch(-0.01f);
-
-        if (Key::ENTER == key)
-            SetCursorAsCamera(!IsCursorAsCamera());
+        std::cerr << "Received: " << (const char*)*key << std::endl;
+        SceneManager::Instance()->GetWindowManager()->Terminate();
+        exit(0);
     }
-    */
+    if (Key::ENTER == *key && Action::PRESS == *action)
+    {
+        mCamera->SetKeyListenerEnable(true);
+        SetCursorAsCamera(true);
+    }
 }
 
 void Scene::MousePosition(double &xpos, double &ypos)

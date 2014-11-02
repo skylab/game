@@ -25,7 +25,9 @@ public:
     /// DRAW
     void Draw(void);
     void Reshape(int width, int height);
-    void Keyboard(int &key, int &scancode, int &action, int &mods);
+
+    void NotifyKey(KeyInfo *key, ActionInfo *action, int &mods) override;
+
     void MousePosition(double &xpos, double &ypos);
 
 protected:

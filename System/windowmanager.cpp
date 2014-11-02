@@ -88,26 +88,45 @@ bool WindowManager::Createwindow(unsigned int windowWidth, unsigned int windowHe
 
 bool WindowManager::InitKeyBoard(KeyBoardManager *manager)
 {
-    /*
-    manager->AssignKey(Key::PRESS, GLFW_PRESS);
-    manager->AssignKey(Key::RELEASE, GLFW_RELEASE);
-    manager->AssignKey(Key::REPEAT, GLFW_REPEAT);
+#define ASSIGN_KEY(name) manager->AssignKeyInfo(Key::name, GLFW_KEY_##name, #name);
 
-    manager->AssignKey(Key::ENTER, GLFW_KEY_ENTER);
-    manager->AssignKey(Key::ESCAPE, GLFW_KEY_ESCAPE);
+    ASSIGN_KEY(ENTER);
+    ASSIGN_KEY(ESCAPE);
 
-    manager->AssignKey(Key::UP, GLFW_KEY_UP);
-    manager->AssignKey(Key::DOWN, GLFW_KEY_DOWN);
-    manager->AssignKey(Key::LEFT, GLFW_KEY_LEFT);
-    manager->AssignKey(Key::RIGHT, GLFW_KEY_RIGHT);
+    ASSIGN_KEY(W);
+    ASSIGN_KEY(A);
+    ASSIGN_KEY(S);
+    ASSIGN_KEY(D);
 
-    manager->AssignKey(Key::W, GLFW_KEY_W);
-    manager->AssignKey(Key::A, GLFW_KEY_A);
-    manager->AssignKey(Key::S, GLFW_KEY_S);
-    manager->AssignKey(Key::D, GLFW_KEY_D);
-    */
+    ASSIGN_KEY(UP);
+    ASSIGN_KEY(DOWN);
+    ASSIGN_KEY(LEFT);
+    ASSIGN_KEY(RIGHT);
+
+#define ASSIGN_ACTION(name) manager->AssignActionInfo(Action::name, GLFW_##name, #name);
+    ASSIGN_ACTION(PRESS);
+    ASSIGN_ACTION(REPEAT);
+    ASSIGN_ACTION(RELEASE);
 
     return true;
+}
+
+bool WindowManager::CheckPress(int key)
+{
+    std::cerr << "Press: " << (glfwGetKey(mWindow, key) == GLFW_PRESS) << std::endl;
+    return glfwGetKey(mWindow, key) == GLFW_PRESS;
+}
+
+bool WindowManager::CheckRelease(int key)
+{
+    std::cerr << "Release: " << (glfwGetKey(mWindow, key) == GLFW_RELEASE) << std::endl;
+    return glfwGetKey(mWindow, key) == GLFW_RELEASE;
+}
+
+bool WindowManager::CheckRepeat(int key)
+{
+    std::cerr << "Repeat: " << (glfwGetKey(mWindow, key) == GLFW_REPEAT) << std::endl;
+    return glfwGetKey(mWindow, key) == GLFW_REPEAT;
 }
 
 void WindowManager::Terminate() const

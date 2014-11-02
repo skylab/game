@@ -35,7 +35,7 @@ public:
     void RotateHeading(float degrees);
 
     void ProcessCursorPosition(double &xpos, double &ypos);
-    void ProcessButtonPress(int &key, int &scancode, int &action, int &mods);
+    void NotifyKey(KeyInfo *key, ActionInfo *action, int &mods) override;
 
 private:
     float CharacterHeight;

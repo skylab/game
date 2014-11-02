@@ -6,7 +6,9 @@
 #include "../Main/keylistener.h"
 class KeyListener;
 
-class Key
+#include "windowmanager.h"
+
+class KeyInfo
 {
     friend class KeyBoardManager;
 public:
@@ -20,14 +22,80 @@ public:
         return mName;
     }
 
-private:
-    Key(int code, const char* name) : mCode(code), mName(name)
+    bool operator ==(const KeyInfo &info)
+    {
+        return (info.mCode == mCode);
+    }
+
+    KeyInfo()
     {
         ;
     }
 
+    bool Press(void);
+    bool Release(void);
+    bool Repeat(void);
+
+private:
+    KeyInfo(const KeyInfo&) {}
+
     int mCode;
     const char* mName;
+};
+
+class Key
+{
+public:
+    static KeyInfo ENTER;
+    static KeyInfo ESCAPE;
+
+    static KeyInfo W;
+    static KeyInfo A;
+    static KeyInfo S;
+    static KeyInfo D;
+
+    static KeyInfo UP;
+    static KeyInfo DOWN;
+    static KeyInfo LEFT;
+    static KeyInfo RIGHT;
+};
+
+class ActionInfo
+{
+    friend class KeyBoardManager;
+public:
+    operator int()
+    {
+        return mCode;
+    }
+
+    operator const char*()
+    {
+        return mName;
+    }
+
+    bool operator ==(const ActionInfo &info)
+    {
+        return (info.mCode == mCode);
+    }
+
+    ActionInfo()
+    {
+        ;
+    }
+
+private:
+    ActionInfo(const ActionInfo&) {}
+    int mCode;
+    const char* mName;
+};
+
+class Action
+{
+public:
+    static ActionInfo PRESS;
+    static ActionInfo REPEAT;
+    static ActionInfo RELEASE;
 };
 
 class KeyBoardManager
@@ -36,7 +104,9 @@ public:
     static KeyBoardManager *Instance(void);
 
     void AddKeyListener(KeyListener *listener);
-    bool AddKey(int code, const char*name);
+
+    void AssignKeyInfo(KeyInfo &key, int code, const char *name);
+    void AssignActionInfo(ActionInfo &action, int code, const char *name);
 
     void ProcessKey(int &key, int &scancode, int &action, int &mods);
 
@@ -45,7 +115,9 @@ private:
     static KeyBoardManager *mInstance;
 
     std::list<KeyListener*> mKeyListeners;
-    std::map<int,Key*> mKeyList;
+
+    std::map<int,KeyInfo*> mKeyList;
+    std::map<int,ActionInfo*> mActionList;
 };
 
 #endif // KEYBOARDMANAGER_H

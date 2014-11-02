@@ -22,7 +22,7 @@ bool KeyListener::GetKeyListenerEnable() const
     return mbEnabled;
 }
 
-void KeyListener::NotifyKey(Key *key, int &action, int &mods)
+void KeyListener::NotifyKey(KeyInfo *key, ActionInfo *action, int &mods)
 {
     std::cerr << "KeyListener::NotifyKey key: " << (const char*)*key << std::endl;
 }
