@@ -1,8 +1,8 @@
 #ifndef PRECOMMON_H
 #define PRECOMMON_H
 
-#define _LINUX
-//#define _WINDOWS
+//#define _LINUX
+#define _WINDOWS
 
 #include <new>
 #include <typeinfo>

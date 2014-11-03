@@ -113,19 +113,19 @@ bool WindowManager::InitKeyBoard(KeyBoardManager *manager)
 
 bool WindowManager::CheckPress(int key)
 {
-    std::cerr << "Press: " << (glfwGetKey(mWindow, key) == GLFW_PRESS) << std::endl;
+    //std::cerr << "Press: " << (glfwGetKey(mWindow, key) == GLFW_PRESS) << std::endl;
     return glfwGetKey(mWindow, key) == GLFW_PRESS;
 }
 
 bool WindowManager::CheckRelease(int key)
 {
-    std::cerr << "Release: " << (glfwGetKey(mWindow, key) == GLFW_RELEASE) << std::endl;
+    //std::cerr << "Release: " << (glfwGetKey(mWindow, key) == GLFW_RELEASE) << std::endl;
     return glfwGetKey(mWindow, key) == GLFW_RELEASE;
 }
 
 bool WindowManager::CheckRepeat(int key)
 {
-    std::cerr << "Repeat: " << (glfwGetKey(mWindow, key) == GLFW_REPEAT) << std::endl;
+    //std::cerr << "Repeat: " << (glfwGetKey(mWindow, key) == GLFW_REPEAT) << std::endl;
     return glfwGetKey(mWindow, key) == GLFW_REPEAT;
 }
 

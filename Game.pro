@@ -8,12 +8,18 @@ CONFIG -= qt
 CONFIG+=c++11
 
 #Linux
-LIBS += -lGLEW -lGL -lglfw
+#LIBS += -lGLEW -lGL -lglfw
 
 #Windows
-#LIBS += -lglew32s -lopengl32 -lglfw3
-#HEADERS += System/glew/glew.h
-#SOURCES += System/glew/glew.c
+LIBS += -lglew32s -lopengl32 -lglfw3
+HEADERS += System/glew/glew.h \
+    Infra/singleton.h \
+    Infra/timer.h \
+    Infra/timermanager.h
+SOURCES += System/glew/glew.c \
+    Infra/singleton.cpp \
+    Infra/timer.cpp \
+    Infra/timermanager.cpp
 
 SOURCES += main.cpp \
     game.cpp \
