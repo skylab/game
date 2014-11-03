@@ -123,6 +123,26 @@ void Scene::NotifyKey(KeyInfo *key, ActionInfo *action, int &mods)
         mCamera->SetKeyListenerEnable(true);
         SetCursorAsCamera(true);
     }
+    if (Key::UP == *key && Action::PRESS == *action)
+    {
+        Object *obj = *(mObjectList.begin());
+        obj->RotatePitch(-0.01f);
+    }
+    if (Key::DOWN == *key && Action::PRESS == *action)
+    {
+        Object *obj = *(mObjectList.begin());
+        obj->RotatePitch(0.01f);
+    }
+    if (Key::LEFT == *key && Action::PRESS == *action)
+    {
+        Object *obj = *(mObjectList.begin());
+        obj->RotateHeading(0.01f);
+    }
+    if (Key::RIGHT == *key && Action::PRESS == *action)
+    {
+        Object *obj = *(mObjectList.begin());
+        obj->RotateHeading(-0.01f);
+    }
 }
 
 void Scene::MousePosition(double &xpos, double &ypos)

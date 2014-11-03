@@ -155,6 +155,7 @@ void ObjectRaw::RotatePitch(float degrees)
     mObjectUpDirection = rot * mObjectUpDirection;
 
     mObjectRotation = rot * mObjectRotation;
+    mObjectRotation = glm::normalize(mObjectRotation);
 }
 
 void ObjectRaw::RotateHeading(float degrees)
@@ -169,6 +170,7 @@ void ObjectRaw::RotateHeading(float degrees)
     mObjectUpDirection = rot * mObjectUpDirection;
 
     mObjectRotation = rot * mObjectRotation;
+    mObjectRotation = glm::normalize(mObjectRotation);
 }
 
 void ObjectRaw::SetObjectScale(glm::vec3 scale)

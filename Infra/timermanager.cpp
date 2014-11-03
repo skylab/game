@@ -4,7 +4,7 @@
 
 std::mutex TimerManager::mInsertDeletionMutex;
 std::list<Timer*> TimerManager::mTimerList;
-clock_t TimerManager::mLastTickTime = 0;
+std::chrono::steady_clock::time_point TimerManager::mLastWakeUpTime;
 bool TimerManager::mbStarted = false;
 
 void TimerManagerExecute(void)
@@ -47,65 +47,61 @@ void TimerManager::RemoveTimer(Timer *timer)
 
 void TimerManager::Execute()
 {
-    // Loop over list
+    // Infinity loop. Should work in all time of work programm after start
     while(1)
     {
-        // if list empty - sleep 1 second
-        if (mTimerList.empty())
+        // If list has timers - handle it
+        while(!mTimerList.empty())
         {
-            std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        }
-        else
-        {
-            // Start Processing timers.
-            while(!mTimerList.empty())
+            mInsertDeletionMutex.lock();
+            unsigned int millToSleep = 1;
+            unsigned int timeGone = 0;
+            for (std::list<Timer*>::iterator i = mTimerList.begin(); i != mTimerList.end(); ++i)
             {
-                mInsertDeletionMutex.lock();
-
-                // time to sleep;
-                clock_t minSleepTime = 0;
-
-                for (std::list<Timer*>::iterator i = mTimerList.begin(); i != mTimerList.end(); ++i)
+                Timer *timer = *i;
+                if (nullptr == timer)
                 {
-                    Timer *timer = (*i);
-                    if (nullptr == timer)
-                    {
-                        continue;
-                    }
-
-                    clock_t currentTime = clock();
-                    int timeLeft = (int)currentTime - (int)mLastTickTime;
-
-                    timer->MilisecondsGone(timeLeft);
-
-                    // If time if gone need call Alarm
-                    if (timer->GetMilisecondsLeft() <= 0)
-                    {
-                        timer->Alarm();
-
-                        // If timer cyclic - start again.
-                        if (timer->Cyclical())
-                        {
-                            timer->StartCycle();
-                        }
-                        else
-                        {
-                            RemoveTimer(*i);
-                            continue;
-                        }
-                    }
-
-                    if (timer->GetMilisecondsLeft() < minSleepTime)
-                        minSleepTime = timer->GetMilisecondsLeft();
+                    mTimerList.remove(timer);
+                    continue;
+                }
+                if (mTimerList.begin() == i)
+                {
+                    millToSleep = timer->GetMilisecondsLeft();
                 }
 
-                // get current time
-                mLastTickTime = clock();
+                // Handle time difference
+                std::chrono::steady_clock::time_point timeNow = std::chrono::steady_clock::now();
 
-                std::this_thread::sleep_for(std::chrono::milliseconds(minSleepTime));
+                std::chrono::duration<unsigned int, std::ratio<1,1000> > time_span = std::chrono::duration_cast<std::chrono::milliseconds>(timeNow - mLastWakeUpTime);
+                timeGone = time_span.count();
+                //std::cerr << "Gone: " << timeGone << std::endl;
 
-                mInsertDeletionMutex.unlock();
+                timer->MilisecondsGone(timeGone);
+
+                if (timer->GetMilisecondsLeft() <= 0)
+                {
+                    timer->Alarm();
+
+                    if (timer->Cyclical())
+                        timer->StartCycle();
+                    else
+                        RemoveTimer(timer);
+                }
+
+                if (timer->GetMilisecondsLeft() > 0 && timer->GetMilisecondsLeft() < millToSleep)
+                    millToSleep = timer->GetMilisecondsLeft();
             }
+            mInsertDeletionMutex.unlock();
+
+            mLastWakeUpTime = std::chrono::steady_clock::now();
+
+            //std::cerr << "Sleep: " << millToSleep << std::endl;
+            std::this_thread::sleep_for(std::chrono::milliseconds(millToSleep));
         }
+
+        // In case of empty list - sleep 1 second
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+        mLastWakeUpTime = std::chrono::steady_clock::now();
     }
 }

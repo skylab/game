@@ -3,6 +3,8 @@
 
 #include "../Common/precommon.h"
 
+#include "../Infra/timer.h"
+
 #include "../Main/keylistener.h"
 class KeyListener;
 
@@ -98,17 +100,19 @@ public:
     static ActionInfo RELEASE;
 };
 
-class KeyBoardManager
+class KeyBoardManager : public Timer
 {
 public:
     static KeyBoardManager *Instance(void);
 
-    void AddKeyListener(KeyListener *listener);
-
     void AssignKeyInfo(KeyInfo &key, int code, const char *name);
     void AssignActionInfo(ActionInfo &action, int code, const char *name);
 
-    void ProcessKey(int &key, int &scancode, int &action, int &mods);
+    void AddKeyListener(KeyListener *listener);
+
+    //void ProcessKey(int &key, int &scancode, int &action, int &mods);
+
+    void Alarm(void) override;
 
 private:
     KeyBoardManager();

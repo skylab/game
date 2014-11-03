@@ -1,8 +1,8 @@
 #ifndef PRECOMMON_H
 #define PRECOMMON_H
 
-//#define _LINUX
-#define _WINDOWS
+#define _LINUX
+//#define _WINDOWS
 
 #include <new>
 #include <typeinfo>
@@ -18,13 +18,11 @@
 #include <glm/gtc/quaternion.hpp>
 
 //To graphic level, should be included before gl.h
-#ifdef _WINDOWS
+#ifdef __linux__
+    #include <GL/glew.h>
+#else
     #define GLEW_STATIC
     #include "System/glew/glew.h"
-#endif
-
-#ifdef _LINUX
-    #include <GL/glew.h>
 #endif
 
 const float PI = atan(1)*4;

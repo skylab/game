@@ -1,6 +1,5 @@
 #include "keyboardmanager.h"
 
-#include "../Infra/timer.h"
 
 class KeyTimer : public Timer
 {
@@ -16,7 +15,7 @@ class KeyTimer1 : public Timer
 public:
     void Alarm(void) override
     {
-        std::cout << "Hello 1" << std::endl;
+        //std::cout << "Hello 1" << std::endl;
     }
 };
 
@@ -49,13 +48,16 @@ KeyBoardManager *KeyBoardManager::Instance()
         {
             mInstance = new KeyBoardManager();
 
+            /*
             // TODO : Place in correct place
-            //KeyTimer *timer = new KeyTimer();
-            //timer->Start(1000, true);
             KeyTimer *timer = new KeyTimer();
             timer->Start(1000, true);
             KeyTimer1 *timer1 = new KeyTimer1();
-            timer1->Start(3000, true);
+            timer1->Start(2000, true);
+            */
+
+            // TODO : Move KeyManager to separate thread in case when standart timer has not time to process button;
+            mInstance->Start(15, true);
         }
         catch(std::bad_alloc &ba)
         {
@@ -88,6 +90,7 @@ void KeyBoardManager::AssignActionInfo(ActionInfo &action, int code, const char 
     mActionList[code] = &action;
 }
 
+/*
 void KeyBoardManager::ProcessKey(int &key, int &scancode, int &action, int &mods)
 {
     for(std::list<KeyListener*>::iterator i = mKeyListeners.begin(); i != mKeyListeners.end(); ++i)
@@ -102,6 +105,32 @@ void KeyBoardManager::ProcessKey(int &key, int &scancode, int &action, int &mods
         else
         {
             std::cout << "Unknown key or action" << std::endl;
+        }
+    }
+}
+*/
+
+void KeyBoardManager::Alarm()
+{
+    // Go over all keys and check for press
+    // Got over all mods
+    for(std::map<int, KeyInfo*>::iterator i = mKeyList.begin(); i != mKeyList.end(); ++i)
+    {
+        if (WindowManager::Instance()->CheckPress(i->first))
+        {
+            for(std::list<KeyListener*>::iterator kl = mKeyListeners.begin(); kl != mKeyListeners.end(); ++kl)
+            {
+                if (mKeyList.find(i->first) != mKeyList.end())
+                {
+                    KeyListener *listener = *kl;
+                    int a = 0;
+                    listener->NotifyKey(i->second, &Action::PRESS, a);
+                }
+                else
+                {
+                    std::cout << "Unknown key" << std::endl;
+                }
+            }
         }
     }
 }

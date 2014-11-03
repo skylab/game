@@ -27,7 +27,7 @@ private:
     static std::mutex mInsertDeletionMutex;
     static std::list<Timer*> mTimerList;
 
-    static clock_t mLastTickTime;
+    static std::chrono::steady_clock::time_point mLastWakeUpTime;
 
     static bool mbStarted;
 

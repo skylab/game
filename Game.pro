@@ -9,17 +9,17 @@ CONFIG+=c++11
 
 #Linux
 #LIBS += -lGLEW -lGL -lglfw
-
 #Windows
-LIBS += -lglew32s -lopengl32 -lglfw3
-HEADERS += System/glew/glew.h \
-    Infra/singleton.h \
-    Infra/timer.h \
-    Infra/timermanager.h
-SOURCES += System/glew/glew.c \
-    Infra/singleton.cpp \
-    Infra/timer.cpp \
-    Infra/timermanager.cpp
+#LIBS += -lglew32s -lopengl32 -lglfw3
+#HEADERS += System/glew/glew.h
+#SOURCES += System/glew/glew.c
+
+unix:LIBS += -lGLEW -lGL -lglfw
+
+win32:LIBS += -lglew32s -lopengl32 -lglfw3
+win32:HEADERS += System/glew/glew.h
+win32:SOURCES += System/glew/glew.c
+
 
 SOURCES += main.cpp \
     game.cpp \
@@ -65,7 +65,10 @@ SOURCES += main.cpp \
     Utils/ImageLoaders/soil/SOIL.c \
     Utils/ImageLoaders/soil/stb_image_aug.c \
     System/keyboardmanager.cpp \
-    Main/keylistener.cpp
+    Main/keylistener.cpp \
+    Infra/singleton.cpp \
+    Infra/timer.cpp \
+    Infra/timermanager.cpp
 
 HEADERS += \
     game.h \
@@ -99,7 +102,10 @@ HEADERS += \
     Utils/ImageLoaders/soil/stbi_DDS_aug.h \
     Utils/ImageLoaders/soil/stbi_DDS_aug_c.h \
     System/keyboardmanager.h \
-    Main/keylistener.h
+    Main/keylistener.h \
+    Infra/singleton.h \
+    Infra/timer.h \
+    Infra/timermanager.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

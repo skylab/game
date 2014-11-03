@@ -7,7 +7,7 @@
 void KeyCallBackFunction(GLFWwindow *window, int key, int scancode, int action, int mods)
 {
     (void)window; // disable warning
-    SceneManager::Instance()->Keyboard(key, scancode, action, mods);
+    //SceneManager::Instance()->Keyboard(key, scancode, action, mods);
 }
 
 void CursorPositionFunction(GLFWwindow *window, double xpos, double ypos)
