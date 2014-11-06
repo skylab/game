@@ -48,6 +48,10 @@ protected:
     glm::quat mObjectRotation; // Rotation in object use quaternion
     bool mLockedUp;
 
+    // TODO : move to private
+    // m/s
+    float mMoveSpeed;
+
 private:
     glm::mat4 GetRotationMatrix(void);
 
@@ -60,8 +64,6 @@ private:
     glm::vec3 mObjectPosition;
     glm::vec3 mObjectScale;
 
-    // m/s
-    float mMoveSpeed;
 
     glm::mat4 mPositionRotationScaleMatrix;
 };

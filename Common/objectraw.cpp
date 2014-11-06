@@ -182,8 +182,8 @@ void ObjectRaw::MoveToDirection(MoveDirection direction)
 
 void ObjectRaw::MoveToDirection(glm::vec3 direction)
 {
-    glm::vec3 dir = glm::normalize(direction);
-    mObjectPosition = mObjectPosition + (dir * mMoveSpeed);
+    //glm::vec3 dir = glm::normalize(direction);
+    mObjectPosition = mObjectPosition + direction;
 }
 
 glm::mat4 ObjectRaw::GetRotationMatrix()

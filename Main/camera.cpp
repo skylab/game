@@ -66,10 +66,10 @@ const glm::mat4 &Camera::GetProjectionViewModelMatrix()
 
     // mProjectioViewModelMatrix = Projection * View * Model
     // Model matrix is glm::mat4(1.0f) and can be skipped, because has no affect to use it
-   mProjectioViewModelMatrix = glm::perspective(GetCameraViewAngle(), GetCameraViewAspectRatio(), GetCameraUnitFrom(), GetCameraUnitTo()) *
-                               glm::lookAt(eyePosition, GetObjectPosition() + GetObjectFrontDirection(), GetObjectUpDirection());
+    mProjectioViewModelMatrix = glm::perspective(GetCameraViewAngle(), GetCameraViewAspectRatio(), GetCameraUnitFrom(), GetCameraUnitTo()) *
+            glm::lookAt(eyePosition, GetObjectPosition() + GetObjectFrontDirection(), GetObjectUpDirection());
 
-   return mProjectioViewModelMatrix;
+    return mProjectioViewModelMatrix;
 }
 
 void Camera::ProcessCursorPosition(double &xpos, double &ypos)
@@ -92,32 +92,44 @@ void Camera::NotifyKey(KeyInfo *key, ActionInfo *action, int &mods)
 {
     std::cerr << "Camera receive: " << (const char*)*key << std::endl;
 
-    //glm::vec3 dir(0.0f, 0.0f, 0.0f);
+    glm::vec3 dir;
+    //dir.x = 0.0f;
+    //dir.y = 0.0f;
+    //dir.z = 0.0f;
 
     if (Key::W.Press() || Key::W.Repeat())
     {
-        MoveToDirection(FORWARD);
-        //dir.z -= 1.0f;
+        dir += GetObjectFrontDirection();
     }
     if (Key::S.Press() || Key::S.Repeat())
     {
-        MoveToDirection(BACK);
-        //dir.z += 1.0f;
+        dir -= GetObjectFrontDirection();
     }
     if (Key::A.Press() || Key::A.Repeat())
     {
-        MoveToDirection(LEFT);
-        //dir.x -= 1.0f;
+        dir -= glm::normalize(glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()));
     }
     if (Key::D.Press() || Key::D.Repeat())
     {
-        MoveToDirection(RIGHT);
-        //dir.x += 1.0f;
+        dir += glm::normalize(glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()));
     }
     if (Key::SPACE.Press() || Key::SPACE.Repeat())
     {
-        MoveToDirection(UP);
-        //dir.y += 1.0f;
+        dir += GetObjectUpDirection();
     }
-    //MoveToDirection(dir);
+
+    if (dir.x != 0.0f ||
+            dir.y != 0.0f ||
+            dir.z != 0.0f)
+    {
+        std::cerr << "Move to dir: " << dir.x << ":" << dir.y << ":" << dir.z << std::endl;
+
+        dir = glm::normalize(dir);
+
+        dir *= mMoveSpeed;
+
+        std::cerr << "Move1 to dir: " << dir.x << ":" << dir.y << ":" << dir.z << std::endl;
+
+        MoveToDirection(dir);
+    }
 }
