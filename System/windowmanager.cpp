@@ -4,12 +4,6 @@
 
 #include "../Main/scenemanager.h"
 
-void KeyCallBackFunction(GLFWwindow *window, int key, int scancode, int action, int mods)
-{
-    (void)window; // disable warning
-    //SceneManager::Instance()->Keyboard(key, scancode, action, mods);
-}
-
 void CursorPositionFunction(GLFWwindow *window, double xpos, double ypos)
 {
     (void)window; // disable warning
@@ -76,7 +70,6 @@ bool WindowManager::Createwindow(unsigned int windowWidth, unsigned int windowHe
     glfwSetInputMode(mWindow, GLFW_STICKY_KEYS, GL_TRUE);
 
     //TODO set callbacks
-    glfwSetKeyCallback(mWindow, KeyCallBackFunction);
     glfwSetCursorPosCallback(mWindow, CursorPositionFunction);
     glfwSetWindowSizeCallback(mWindow, WindowResizeFunction);
 
@@ -88,10 +81,12 @@ bool WindowManager::Createwindow(unsigned int windowWidth, unsigned int windowHe
 
 bool WindowManager::InitKeyBoard(KeyBoardManager *manager)
 {
+    (void)manager; // To disable warning message about unused variable
 #define ASSIGN_KEY(name) manager->AssignKeyInfo(Key::name, GLFW_KEY_##name, #name);
 
     ASSIGN_KEY(ENTER);
     ASSIGN_KEY(ESCAPE);
+    ASSIGN_KEY(SPACE);
 
     ASSIGN_KEY(W);
     ASSIGN_KEY(A);
@@ -113,19 +108,16 @@ bool WindowManager::InitKeyBoard(KeyBoardManager *manager)
 
 bool WindowManager::CheckPress(int key)
 {
-    //std::cerr << "Press: " << (glfwGetKey(mWindow, key) == GLFW_PRESS) << std::endl;
     return glfwGetKey(mWindow, key) == GLFW_PRESS;
 }
 
 bool WindowManager::CheckRelease(int key)
 {
-    //std::cerr << "Release: " << (glfwGetKey(mWindow, key) == GLFW_RELEASE) << std::endl;
     return glfwGetKey(mWindow, key) == GLFW_RELEASE;
 }
 
 bool WindowManager::CheckRepeat(int key)
 {
-    //std::cerr << "Repeat: " << (glfwGetKey(mWindow, key) == GLFW_REPEAT) << std::endl;
     return glfwGetKey(mWindow, key) == GLFW_REPEAT;
 }
 

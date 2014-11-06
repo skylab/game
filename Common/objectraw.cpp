@@ -4,18 +4,16 @@
 #include "../Main/Commands/command.h"
 
 ObjectRaw::ObjectRaw() :
+    mLockedUp(false),
     mObjectVertexes(nullptr),
     mObjectVertexQuantity(0),
 
-    mObjectMoveSpeed(0.1f),
-
     mObjectFrontDirection(0.0f, 0.0f, -1.0f),
     mObjectUpDirection(0.0f, 1.0f, 0.0f),
+    mMoveSpeed(0.2777f),
 
     mPositionRotationScaleMatrix(1.0f)
 {
-    SetCanBeChild(true);
-    SetSupportChildList(true);
     SetObjectScale(glm::vec3(1.0f, 1.0f, 1.0f));
     mObjectRotation = glm::quat();
 }
@@ -24,13 +22,6 @@ ObjectRaw::~ObjectRaw()
 {
     delete[] mObjectVertexes;
     mObjectVertexes = nullptr;
-
-    mChildObjectList.clear();
-}
-
-bool ObjectRaw::LoadObjectFromFile(const char *fileName)
-{
-    return ObjectLoader::Instance()->LoadObjectFile(fileName, this);
 }
 
 glm::vec3 *&ObjectRaw::GetObjectVertexes()
@@ -78,44 +69,10 @@ const glm::mat4 &ObjectRaw::GetPositionRotationScaleMatrix()
     return mPositionRotationScaleMatrix;
 }
 
-void ObjectRaw::MoveObject(MoveDirection direction)
-{
-    switch(direction)
-    {
-    case FORWARD:
-        SetObjectPosition(GetObjectPosition() + GetObjectFrontDirection() * GetObjectMoveSpeed());
-        break;
-    case BACK:
-        SetObjectPosition(GetObjectPosition() - GetObjectFrontDirection() * GetObjectMoveSpeed());
-        break;
-    case LEFT:
-        SetObjectPosition(GetObjectPosition() - glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()) * GetObjectMoveSpeed());
-        break;
-    case RIGHT:
-        SetObjectPosition(GetObjectPosition() + glm::cross(GetObjectFrontDirection(), GetObjectUpDirection()) * GetObjectMoveSpeed());
-        break;
-    case UP:
-        SetObjectPosition(GetObjectPosition() + GetObjectUpDirection() * GetObjectMoveSpeed());
-        break;
-    case DOWN:
-        SetObjectPosition(GetObjectPosition() - GetObjectUpDirection() * GetObjectMoveSpeed());
-        break;
-    }
-}
-
-void ObjectRaw::SetObjectMoveSpeed(float speed)
-{
-    mObjectMoveSpeed = speed;
-}
-
-float ObjectRaw::GetObjectMoveSpeed() const
-{
-    return mObjectMoveSpeed;
-}
-
 void ObjectRaw::SetObjectFrontDirection(glm::vec3 direction)
 {
     mObjectFrontDirection = direction;
+    mObjectFrontDirection = glm::normalize(mObjectFrontDirection);
 }
 
 glm::vec3 ObjectRaw::GetObjectFrontDirection(void)
@@ -126,11 +83,22 @@ glm::vec3 ObjectRaw::GetObjectFrontDirection(void)
 void ObjectRaw::SetObjectUpDirection(glm::vec3 direction)
 {
     mObjectUpDirection = direction;
+    mObjectUpDirection = glm::normalize(mObjectUpDirection);
 }
 
 glm::vec3 ObjectRaw::GetObjectUpDirection()
 {
     return glm::vec3(mObjectUpDirection);
+}
+
+void ObjectRaw::LockUpDirection(bool val)
+{
+    mLockedUp = val;
+}
+
+bool ObjectRaw::GetLockUpDirection() const
+{
+    return mLockedUp;
 }
 
 void ObjectRaw::SetObjectPosition(glm::vec3 position)
@@ -152,7 +120,9 @@ void ObjectRaw::RotatePitch(float degrees)
     rot.w = cos(degrees/2);
 
     mObjectFrontDirection = rot * mObjectFrontDirection;
-    mObjectUpDirection = rot * mObjectUpDirection;
+
+    if (!GetLockUpDirection())
+        mObjectUpDirection = rot * mObjectUpDirection;
 
     mObjectRotation = rot * mObjectRotation;
     mObjectRotation = glm::normalize(mObjectRotation);
@@ -167,7 +137,9 @@ void ObjectRaw::RotateHeading(float degrees)
     rot.w = cos(degrees/2);
 
     mObjectFrontDirection = rot * mObjectFrontDirection;
-    mObjectUpDirection = rot * mObjectUpDirection;
+
+    if (!GetLockUpDirection())
+        mObjectUpDirection = rot * mObjectUpDirection;
 
     mObjectRotation = rot * mObjectRotation;
     mObjectRotation = glm::normalize(mObjectRotation);
@@ -183,60 +155,35 @@ glm::vec3 ObjectRaw::GetObjectScale() const
     return glm::vec3(mObjectScale);
 }
 
-void ObjectRaw::SetSupportChildList(bool val)
+void ObjectRaw::MoveToDirection(MoveDirection direction)
 {
-    mObjectMerit.mbSupportChildList = val;
-}
-
-bool ObjectRaw::GetSupportChildList() const
-{
-    return mObjectMerit.mbSupportChildList;
-}
-
-void ObjectRaw::SetCanBeChild(bool val)
-{
-    mObjectMerit.mbCanBeChild = val;
-}
-
-bool ObjectRaw::GetCanBeChild() const
-{
-    return mObjectMerit.mbCanBeChild;
-}
-
-const std::list<ObjectRaw *> &ObjectRaw::GetChildObjectList() const
-{
-    return mChildObjectList;
-}
-
-bool ObjectRaw::AddChildObject(ObjectRaw *object, glm::vec3 position)
-{
-    if (nullptr == object)
+    switch(direction)
     {
-        std::cerr << "AddChildObject object is nullptr" << std::endl;
-        return false;
+    case FORWARD:
+        mObjectPosition = mObjectPosition + (mObjectFrontDirection * mMoveSpeed);
+        break;
+    case BACK:
+        mObjectPosition = mObjectPosition - (mObjectFrontDirection * mMoveSpeed);
+        break;
+    case LEFT:
+        mObjectPosition = mObjectPosition - (glm::cross(mObjectFrontDirection, mObjectUpDirection) * mMoveSpeed);
+        break;
+    case RIGHT:
+        mObjectPosition = mObjectPosition + (glm::cross(mObjectFrontDirection, mObjectUpDirection) * mMoveSpeed);
+        break;
+    case UP:
+        mObjectPosition = mObjectPosition + (mObjectUpDirection * mMoveSpeed);
+        break;
+    case DOWN:
+        mObjectPosition = mObjectPosition - (mObjectUpDirection * mMoveSpeed);
+        break;
     }
-
-    if(object->GetCanBeChild())
-    {
-        object->SetObjectPosition(position);
-        mChildObjectList.push_back(object);
-        return true;
-    }
-    else
-    {
-        std::cerr << "AddChildObject object can't be a child" << std::endl;
-    }
-    return true;
 }
 
-void ObjectRaw::RemoveChilds()
+void ObjectRaw::MoveToDirection(glm::vec3 direction)
 {
-    mChildObjectList.clear();
-}
-
-void ObjectRaw::Accept(Command *command)
-{
-    command->Visit(this);
+    glm::vec3 dir = glm::normalize(direction);
+    mObjectPosition = mObjectPosition + (dir * mMoveSpeed);
 }
 
 glm::mat4 ObjectRaw::GetRotationMatrix()

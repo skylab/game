@@ -17,28 +17,28 @@ Scene::Scene()
         return;
     }
 
-    mCamera->SetPosition(glm::vec3(0.0f, 2.0f, 4.0f));
+    mCamera->SetObjectPosition(glm::vec3(0.0f, 2.0f, 4.0f));
 
     Object *obj = new Object();
-    obj->LoadObjectFromFile("Resources/Models/Car.3ds");
-    obj->LoadTexureFromFile("Resources/Models/Diskette/brushed_metal.jpg");
+    obj->LoadObjectMesh("Resources/Models/Car.3ds");
+    //obj->LoadTexureFromFile("Resources/Models/Diskette/brushed_metal.jpg");
     AddObjectToList(obj, glm::vec3(0.0f, 0.0f, 0.0f));
 
     ////
     Object *obj1 = new Object();
-    obj1->LoadObjectFromFile("Resources/Models/Car.3ds");
+    obj1->LoadObjectMesh("Resources/Models/Car.3ds");
     AddObjectToList(obj1, glm::vec3(3.0f, 0.0f, 0.0f));
 
     Object *obj2 = new Object();
-    obj2->LoadObjectFromFile("Resources/Models/Car.3ds");
+    obj2->LoadObjectMesh("Resources/Models/Car.3ds");
     AddObjectToList(obj2, glm::vec3(-3.0f, 0.0f, 0.0f));
 
     Object *obj3 = new Object();
-    obj3->LoadObjectFromFile("Resources/Models/Car.3ds");
+    obj3->LoadObjectMesh("Resources/Models/Car.3ds");
     AddObjectToList(obj3, glm::vec3(3.0f, 2.0f, 0.0f));
 
     Object *obj4 = new Object();
-    obj4->LoadObjectFromFile("Resources/Models/Car.3ds");
+    obj4->LoadObjectMesh("Resources/Models/Car.3ds");
     AddObjectToList(obj4, glm::vec3(-3.0f, 2.0f, 0.0f));
     ///
 
@@ -98,8 +98,9 @@ void Scene::Draw()
     // Draw all elements on the scene
     for(auto itr : mObjectList)
     {
-        if (nullptr != itr)
-            itr->Draw();
+        Object *obj = itr;
+        if (nullptr != obj)
+            obj->Draw();
     }
 }
 

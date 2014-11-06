@@ -18,6 +18,7 @@ void GraphicObject::SetVertexBufferObject(GLuint &vertexBufferObject)
     mVertexBufferObject = vertexBufferObject;
 }
 
+/*
 bool GraphicObject::LoadObjectFromFile(const char *fileName)
 {
     if (!ObjectRaw::LoadObjectFromFile(fileName))
@@ -33,6 +34,7 @@ bool GraphicObject::LoadTexureFromFile(const char *fileName)
 {
     return mTexture->LoadFromFile(fileName);
 }
+*/
 
 void GraphicObject::LoadObjectToGraphicMemory()
 {
@@ -54,7 +56,7 @@ const ShaderProgram *GraphicObject::GetShaderProgramm() const
 void GraphicObject::Draw()
 {
     // DRAW THIS OBJECT
-    if (GetDrawObject() && nullptr != GetObjectVertexes())
+    if (nullptr != GetObjectVertexes())
     {
         glUseProgram( GetShaderProgramm()->GetShaderProgrammID() );
 
@@ -73,28 +75,6 @@ void GraphicObject::Draw()
 
         glDisableVertexAttribArray(0);
         glUseProgram(0);
-    }
-
-    if (GetSupportChildList())
-    {
-        // DRAW ALL ANOTHER OBJECTS
-        for (std::list<ObjectRaw*>::const_iterator itr = GetChildObjectList().begin(); itr != GetChildObjectList().end(); ++itr)
-        {
-            GraphicObject *object = nullptr;
-            try
-            {
-                object = dynamic_cast<GraphicObject*>(*itr);
-            }
-            catch(std::bad_cast &bc)
-            {
-                (void)bc;
-                // skip bad cast, object have not graphic part
-            }
-            if (nullptr != (*itr))
-            {
-                object->Draw();
-            }
-        }
     }
 }
 

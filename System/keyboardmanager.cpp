@@ -22,6 +22,7 @@ public:
 
 KeyInfo Key::ENTER;
 KeyInfo Key::ESCAPE;
+KeyInfo Key::SPACE;
 
 KeyInfo Key::W;
 KeyInfo Key::A;

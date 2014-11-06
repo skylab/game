@@ -10,7 +10,6 @@ class ObjectRaw
 {
 public:
     virtual ~ObjectRaw();
-    virtual bool LoadObjectFromFile(const char *fileName);
 
     bool SetObjectVertexQuantity(unsigned long int quantity);
     const size_t &GetObjectVertexQuantity(void) const;
@@ -18,46 +17,36 @@ public:
     glm::vec3 *&GetObjectVertexes(void);
 
     //Object manipulation finctions
-    void MoveObject(enum MoveDirection direction);
+    //void MoveObject(enum MoveDirection direction); // Move to Object
 
-    void SetObjectMoveSpeed(float speed);
-    float GetObjectMoveSpeed(void) const;
-
-    void SetObjectFrontDirection(glm::vec3 direction);
+    void SetObjectFrontDirection(glm::vec3 direction); // Move to protected
     glm::vec3 GetObjectFrontDirection(void);
     void SetObjectUpDirection(glm::vec3 direction);
     glm::vec3 GetObjectUpDirection(void);
 
-    virtual void RotatePitch(float degrees);
-    virtual void RotateHeading(float degrees);
+    void LockUpDirection(bool val);
+    bool GetLockUpDirection(void) const;
+
+    void RotatePitch(float degrees);
+    void RotateHeading(float degrees);
 
     void SetObjectPosition(glm::vec3 position);
     glm::vec3 GetObjectPosition(void) const;
     void SetObjectScale(glm::vec3 scale);
     glm::vec3 GetObjectScale(void) const;
 
+    void MoveToDirection(enum MoveDirection direction);
+    void MoveToDirection(glm::vec3 direction);
+
     // Final of calculation
-    const glm::mat4 &GetPositionRotationScaleMatrix(void);
-
-    // Child obects functions
-    void SetCanBeChild(bool val);
-    bool GetCanBeChild(void) const;
-    void SetSupportChildList(bool val);
-    bool GetSupportChildList(void) const;
-
-    const std::list<ObjectRaw *> &GetChildObjectList(void) const;
-    bool AddChildObject(ObjectRaw *object, glm::vec3 position);
-    void RemoveChilds(void);
-
-    // To work with commands
-    virtual void Accept(Command *command);
+    const glm::mat4 &GetPositionRotationScaleMatrix(void); // Move to private
 
 protected:
     ObjectRaw();
 
 protected:
     glm::quat mObjectRotation; // Rotation in object use quaternion
-
+    bool mLockedUp;
 
 private:
     glm::mat4 GetRotationMatrix(void);
@@ -65,24 +54,16 @@ private:
     glm::vec3 *mObjectVertexes;
     size_t mObjectVertexQuantity;
 
-    float mObjectMoveSpeed;
-
     glm::vec3 mObjectFrontDirection;
     glm::vec3 mObjectUpDirection;
 
     glm::vec3 mObjectPosition;
     glm::vec3 mObjectScale;
 
+    // m/s
+    float mMoveSpeed;
+
     glm::mat4 mPositionRotationScaleMatrix;
-
-    // Depended objects
-    struct
-    {
-        unsigned mbCanBeChild : 1;
-        unsigned mbSupportChildList : 1;
-    } mObjectMerit;
-
-    std::list<ObjectRaw*> mChildObjectList;
 };
 
 #endif // OBJECTRAW_H

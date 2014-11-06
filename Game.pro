@@ -1,18 +1,7 @@
 TEMPLATE = app
-#CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
-
-#QT += opengl
-
 CONFIG+=c++11
-
-#Linux
-#LIBS += -lGLEW -lGL -lglfw
-#Windows
-#LIBS += -lglew32s -lopengl32 -lglfw3
-#HEADERS += System/glew/glew.h
-#SOURCES += System/glew/glew.c
 
 unix:LIBS += -lGLEW -lGL -lglfw
 

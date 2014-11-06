@@ -50,6 +50,7 @@ class Key
 public:
     static KeyInfo ENTER;
     static KeyInfo ESCAPE;
+    static KeyInfo SPACE;
 
     static KeyInfo W;
     static KeyInfo A;
