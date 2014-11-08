@@ -19,10 +19,17 @@ Scene::Scene()
 
     mCamera->SetObjectPosition(glm::vec3(0.0f, 2.0f, 4.0f));
 
+
+    /*
+    Object *ground = new Object();
+    FillAsGround(ground);
+    AddObjectToList(ground, glm::vec3(0.0f, 0.0f, 0.0f));
+    */
+
     Object *obj = new Object();
     obj->LoadObjectMesh("Resources/Models/Car.3ds");
-    //obj->LoadTexureFromFile("Resources/Models/Diskette/brushed_metal.jpg");
-    obj->SetObjectScale(glm::vec3(2.0f, 2.0f, 2.0f));
+    //obj->LoadObjectTexture("Resources/Models/Diskette/brushed_metal.jpg");
+    obj->SetObjectScale(glm::vec3(1.0f, 1.0f, 1.0f));
     AddObjectToList(obj, glm::vec3(0.0f, 0.0f, 0.0f));
 
     ////
@@ -115,7 +122,7 @@ void Scene::NotifyKeyEvent(void)
 {
     if (Key::ESCAPE.Press())
     {
-        std::cerr << "Received: " << (const char*)Key::ESCAPE << std::endl;
+        std::cerr << __PRETTY_FUNCTION__ << ": Received: " << (const char*)Key::ESCAPE << std::endl;
         SceneManager::Instance()->GetWindowManager()->Terminate();
         exit(0);
     }
@@ -154,4 +161,31 @@ void Scene::MousePosition(double &xpos, double &ypos)
     {
         mCamera->ProcessCursorPosition(xpos, ypos);
     }
+}
+
+void Scene::FillAsGround(Object *obj)
+{
+    // TODO : Write loader.
+    /*
+    const int cubeQuantity = 4;
+    const int triangleQuantity = cubeQuantity * 2;
+    const int vertexQuantity = triangleQuantity * 3;
+
+    obj->SetObjectVertexQuantity(vertexQuantity);
+
+    unsigned int vertexCounter = 0;
+    for(unsigned int i = 0; i < cubeQuantity / 2; ++i)
+    {
+        for(unsigned int j = 0; j < cubeQuantity / 2; ++j)
+        {
+            obj->GetObjectVertexes()[vertexCounter].x = j;
+            obj->GetObjectVertexes()[vertexCounter].y = 0;
+            obj->GetObjectVertexes()[vertexCounter].z = -i;
+            ++vertexCounter;
+        }
+    }
+
+    obj->LoadObjectToGraphicMemory();
+
+    */
 }

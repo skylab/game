@@ -23,7 +23,7 @@ ObjectLoader *ObjectLoader::Instance()
     return mInstance;
 }
 
-bool ObjectLoader::LoadObjectFile(const char *filename, ObjectRaw *object)
+bool ObjectLoader::LoadObjectFile(const char *filename, Object *object)
 {
     if (nullptr == filename || nullptr == object)
     {

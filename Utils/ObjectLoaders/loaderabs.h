@@ -1,7 +1,7 @@
 #ifndef LOADERABS_H
 #define LOADERABS_H
 
-#include "../../Common/objectraw.h"
+#include "../../Main/object.h"
 #include <fstream>
 
 class LoaderAbs
@@ -9,7 +9,7 @@ class LoaderAbs
 public:
     virtual ~LoaderAbs();
 
-    virtual bool LoadObjectFile(const char *filename, ObjectRaw *object) = 0;
+    virtual bool LoadObjectFile(const char *filename, Object *object) = 0;
 
 protected:
     LoaderAbs();

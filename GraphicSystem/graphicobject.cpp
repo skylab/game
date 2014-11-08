@@ -35,6 +35,11 @@ const ShaderProgram *GraphicObject::GetShaderProgramm() const
     return mShaderProgramm;
 }
 
+Texture *GraphicObject::GetObjectTexture() const
+{
+    return mTexture;
+}
+
 void GraphicObject::Draw()
 {
     // DRAW THIS OBJECT
@@ -52,7 +57,7 @@ void GraphicObject::Draw()
         glBindBuffer(GL_ARRAY_BUFFER, GetVertexBufferObject());
         glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
 
-        glDrawArrays(GL_TRIANGLES, 0, GetObjectVertexQuantity());
+        glDrawArrays(GetDrawByPrimitive(), 0, GetObjectVertexQuantity());
         glBindBuffer(GL_ARRAY_BUFFER, 0);
 
         glDisableVertexAttribArray(0);
@@ -70,7 +75,17 @@ const bool &GraphicObject::GetDrawObject() const
     return mbDrawObject;
 }
 
-GraphicObject::GraphicObject() : ObjectRaw(), mVertexBufferObject(0), mShaderProgramm(nullptr), mTexture(nullptr), mbDrawObject(true)
+void GraphicObject::SetDrawByPrimitive(int type)
+{
+    mDrawByPrimitive = type;
+}
+
+int GraphicObject::GetDrawByPrimitive() const
+{
+    return mDrawByPrimitive;
+}
+
+GraphicObject::GraphicObject() : ObjectRaw(), mVertexBufferObject(0), mShaderProgramm(nullptr), mDrawByPrimitive(GL_TRIANGLES), mTexture(nullptr), mbDrawObject(true)
 {
     //Set Default Shader
     SetShaderProgramm("Resources/Shaders/VertexShader.vsh",

@@ -1,16 +1,14 @@
 #ifndef OBJECTLOADER_H
 #define OBJECTLOADER_H
 
-//#include "precommon.h"
-
-class ObjectRaw;
+class Object;
 
 class ObjectLoader
 {
 public:
     static ObjectLoader *Instance(void);
 
-    bool LoadObjectFile(const char *filename, ObjectRaw *object);
+    bool LoadObjectFile(const char *filename, Object *object);
 
 private:
     ObjectLoader();

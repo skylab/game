@@ -11,7 +11,7 @@ LoaderAbs::~LoaderAbs()
     ;
 }
 
-bool LoaderAbs::LoadObjectFile(const char *filename, ObjectRaw *object)
+bool LoaderAbs::LoadObjectFile(const char *filename, Object *object)
 {
     (void)filename;
     (void)object;

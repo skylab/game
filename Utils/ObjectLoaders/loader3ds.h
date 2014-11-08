@@ -7,7 +7,7 @@ class Loader3ds : public LoaderAbs
 {
 public:
     Loader3ds();
-    bool LoadObjectFile(const char *filename, ObjectRaw *object) override;
+    bool LoadObjectFile(const char *filename, Object *object) override;
 };
 
 #endif // LOADER3DS_H

@@ -14,23 +14,26 @@ public:
     virtual GLuint &GetVertexBufferObject(void);
     virtual void SetVertexBufferObject(GLuint &vertexBufferObject);
 
-    //virtual bool LoadObjectFromFile(const char *fileName);
-    //virtual bool LoadTexureFromFile(const char *fileName);
-    virtual void LoadObjectToGraphicMemory(void);
-
     virtual void SetShaderProgramm(const char *vertexShader, const char *fragmenShader);
     virtual const ShaderProgram *GetShaderProgramm(void) const;
+
+    Texture *GetObjectTexture(void) const;
 
     virtual void Draw(void);
 
     void SetDrawObject(bool val);
     const bool &GetDrawObject(void) const;
 
+    void SetDrawByPrimitive(int type);
+    int GetDrawByPrimitive(void) const;
+
+    virtual void LoadObjectToGraphicMemory(void);
 protected:
     GraphicObject();
 
 private:
     GLuint mVertexBufferObject;
+    int mDrawByPrimitive;
     ShaderProgram *mShaderProgramm;
 
     glm::mat4 mPVMTranslationRotationScaleMatrix;

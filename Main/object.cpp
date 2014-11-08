@@ -1,6 +1,7 @@
 #include "object.h"
 
 #include "../Utils/objectloader.h"
+#include "../Utils/imageloader.h"
 
 Object::Object() : mMoveSpeed(0.2777f)
 {
@@ -20,6 +21,7 @@ bool Object::LoadObjectMesh(const char *filename)
         if (loaded)
         {
             LoadObjectToGraphicMemory();
+            return true;
         }
         else
         {
@@ -39,7 +41,7 @@ bool Object::LoadObjectTexture(const char *filename)
     if (nullptr != filename)
     {
         // TODO : Add loading texture
-        return false;
+        return ImageLoader::Instance()->LoadImageFile(filename, GetObjectTexture());
     }
     else
     {

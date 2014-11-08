@@ -7,7 +7,7 @@ Loader3ds::Loader3ds()
     ;
 }
 
-bool Loader3ds::LoadObjectFile(const char *filename, ObjectRaw *object)
+bool Loader3ds::LoadObjectFile(const char *filename, Object *object)
 {
     Lib3dsFile *file = lib3ds_file_open(filename);
     if (nullptr == file)

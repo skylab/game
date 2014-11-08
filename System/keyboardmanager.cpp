@@ -1,25 +1,5 @@
 #include "keyboardmanager.h"
 
-
-class KeyTimer : public Timer
-{
-public:
-    void Alarm(void) override
-    {
-        std::cout << "Hello" << std::endl;
-    }
-};
-
-class KeyTimer1 : public Timer
-{
-public:
-    void Alarm(void) override
-    {
-        //std::cout << "Hello 1" << std::endl;
-    }
-};
-
-
 KeyInfo Key::ENTER;
 KeyInfo Key::ESCAPE;
 KeyInfo Key::SPACE;
@@ -35,7 +15,6 @@ KeyInfo Key::DOWN;
 KeyInfo Key::LEFT;
 KeyInfo Key::RIGHT;
 
-/////////
 ActionInfo Action::PRESS;
 ActionInfo Action::REPEAT;
 ActionInfo Action::RELEASE;
@@ -50,15 +29,7 @@ KeyBoardManager *KeyBoardManager::Instance()
         {
             mInstance = new KeyBoardManager();
 
-            /*
             // TODO : Place in correct place
-            KeyTimer *timer = new KeyTimer();
-            timer->Start(1000, true);
-            KeyTimer1 *timer1 = new KeyTimer1();
-            timer1->Start(2000, true);
-            */
-
-            // TODO : Move KeyManager to separate thread in case when standart timer has not time to process button;
             mInstance->Start(15, true);
         }
         catch(std::bad_alloc &ba)
@@ -100,12 +71,10 @@ void KeyBoardManager::Alarm()
     }
 }
 
-
 KeyBoardManager::KeyBoardManager()
 {
     ;
 }
-
 
 bool KeyInfo::Press()
 {
