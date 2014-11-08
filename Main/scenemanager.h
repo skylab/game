@@ -30,6 +30,7 @@ public:
     void Reshape(int width, int height);
     void Keyboard(int &key, int &scancode, int &action, int &mods);
     void MousePosition(double &xpos, double &ypos);
+
 private:
     SceneManager();
 

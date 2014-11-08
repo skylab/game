@@ -26,7 +26,7 @@ public:
     void Draw(void);
     void Reshape(int width, int height);
 
-    void NotifyKey(KeyInfo *key, ActionInfo *action, int &mods) override;
+    void NotifyKeyEvent(void) override;
 
     void MousePosition(double &xpos, double &ypos);
 

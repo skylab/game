@@ -51,6 +51,7 @@ public:
     static KeyInfo ENTER;
     static KeyInfo ESCAPE;
     static KeyInfo SPACE;
+    static KeyInfo LEFT_CONTROL;
 
     static KeyInfo W;
     static KeyInfo A;

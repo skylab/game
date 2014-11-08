@@ -12,6 +12,8 @@ Camera::Camera() : CharacterHeight(0.0f)
     SetObjectUpDirection(glm::vec3(0.0f, 1.0f, 0.0f));
     SetObjectFrontDirection(glm::vec3(0.0f, 0.0f, -1.0f));
     SetObjectPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+
+    mMoveSpeed = 0.2777f / 2.0f;
 }
 
 Camera::~Camera()
@@ -88,14 +90,9 @@ void Camera::ProcessCursorPosition(double &xpos, double &ypos)
 }
 
 
-void Camera::NotifyKey(KeyInfo *key, ActionInfo *action, int &mods)
+void Camera::NotifyKeyEvent(void)
 {
-    std::cerr << "Camera receive: " << (const char*)*key << std::endl;
-
     glm::vec3 dir;
-    //dir.x = 0.0f;
-    //dir.y = 0.0f;
-    //dir.z = 0.0f;
 
     if (Key::W.Press() || Key::W.Repeat())
     {
@@ -117,19 +114,17 @@ void Camera::NotifyKey(KeyInfo *key, ActionInfo *action, int &mods)
     {
         dir += GetObjectUpDirection();
     }
+    if (Key::LEFT_CONTROL.Press() || Key::LEFT_CONTROL.Repeat())
+    {
+        dir -= GetObjectUpDirection();
+    }
 
     if (dir.x != 0.0f ||
             dir.y != 0.0f ||
             dir.z != 0.0f)
     {
-        std::cerr << "Move to dir: " << dir.x << ":" << dir.y << ":" << dir.z << std::endl;
-
         dir = glm::normalize(dir);
-
         dir *= mMoveSpeed;
-
-        std::cerr << "Move1 to dir: " << dir.x << ":" << dir.y << ":" << dir.z << std::endl;
-
         MoveToDirection(dir);
     }
 }

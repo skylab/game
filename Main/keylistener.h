@@ -14,7 +14,7 @@ public:
     void SetKeyListenerEnable(bool val);
     bool GetKeyListenerEnable(void) const;
 
-    virtual void NotifyKey(KeyInfo *key, ActionInfo *action, int &mods);
+    virtual void NotifyKeyEvent(void);
 
 private:
     bool mbEnabled;

@@ -115,20 +115,6 @@ void SceneManager::Reshape(int width, int height)
     }
 }
 
-/*
-void SceneManager::Keyboard(int &key, int &scancode, int &action, int &mods)
-{
-    if (nullptr != mKeyBoardManager)
-    {
-        mKeyBoardManager->ProcessKey(key, scancode, action, mods);
-    }
-    else
-    {
-        std::cerr << "Keyboard. mKeyBoardManager is nullptr" << std::endl;
-    }
-}
-*/
-
 void SceneManager::MousePosition(double &xpos, double &ypos)
 {
     if (nullptr != GetCurrentScene())

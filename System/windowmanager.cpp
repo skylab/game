@@ -51,7 +51,7 @@ bool WindowManager::Createwindow(unsigned int windowWidth, unsigned int windowHe
         return false;
     }
 
-    mWindow = glfwCreateWindow( windowWidth, windowHeight, "Game", NULL, NULL);
+    mWindow = glfwCreateWindow( windowWidth, windowHeight, "Game", NULL /*glfwGetPrimaryMonitor()*/, NULL);
     if (nullptr == mWindow)
     {
         std::cerr << "Initialization failed. Can't create window" << std::endl;
@@ -87,6 +87,7 @@ bool WindowManager::InitKeyBoard(KeyBoardManager *manager)
     ASSIGN_KEY(ENTER);
     ASSIGN_KEY(ESCAPE);
     ASSIGN_KEY(SPACE);
+    ASSIGN_KEY(LEFT_CONTROL);
 
     ASSIGN_KEY(W);
     ASSIGN_KEY(A);

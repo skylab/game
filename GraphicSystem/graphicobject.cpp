@@ -18,24 +18,6 @@ void GraphicObject::SetVertexBufferObject(GLuint &vertexBufferObject)
     mVertexBufferObject = vertexBufferObject;
 }
 
-/*
-bool GraphicObject::LoadObjectFromFile(const char *fileName)
-{
-    if (!ObjectRaw::LoadObjectFromFile(fileName))
-    {
-        std::cerr << "Can't load object from file: " << fileName << std::endl;
-        return false;
-    }
-    LoadObjectToGraphicMemory();
-    return true;
-}
-
-bool GraphicObject::LoadTexureFromFile(const char *fileName)
-{
-    return mTexture->LoadFromFile(fileName);
-}
-*/
-
 void GraphicObject::LoadObjectToGraphicMemory()
 {
     glBindBuffer(GL_ARRAY_BUFFER, GetVertexBufferObject());

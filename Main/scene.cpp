@@ -22,6 +22,7 @@ Scene::Scene()
     Object *obj = new Object();
     obj->LoadObjectMesh("Resources/Models/Car.3ds");
     //obj->LoadTexureFromFile("Resources/Models/Diskette/brushed_metal.jpg");
+    obj->SetObjectScale(glm::vec3(2.0f, 2.0f, 2.0f));
     AddObjectToList(obj, glm::vec3(0.0f, 0.0f, 0.0f));
 
     ////
@@ -110,40 +111,41 @@ void Scene::Reshape(int width, int height)
     mCamera->SetCameraViewAspectRatio(static_cast<float>(width)/static_cast<float>(height));
 }
 
-void Scene::NotifyKey(KeyInfo *key, ActionInfo *action, int &mods)
+void Scene::NotifyKeyEvent(void)
 {
-    //std::cerr << "Scene receive: " << (const char*)*key << std::endl;
-    if (Key::ESCAPE == *key)
+    if (Key::ESCAPE.Press())
     {
-        std::cerr << "Received: " << (const char*)*key << std::endl;
+        std::cerr << "Received: " << (const char*)Key::ESCAPE << std::endl;
         SceneManager::Instance()->GetWindowManager()->Terminate();
         exit(0);
     }
-    if (Key::ENTER == *key && Action::PRESS == *action)
+    if (Key::ENTER.Press())
     {
         mCamera->SetKeyListenerEnable(true);
         SetCursorAsCamera(true);
     }
-    if (Key::UP == *key && Action::PRESS == *action)
+    if (Key::UP.Press())
     {
         Object *obj = *(mObjectList.begin());
         obj->RotatePitch(-0.01f);
     }
-    if (Key::DOWN == *key && Action::PRESS == *action)
+    if (Key::DOWN.Press())
     {
         Object *obj = *(mObjectList.begin());
         obj->RotatePitch(0.01f);
     }
-    if (Key::LEFT == *key && Action::PRESS == *action)
+    if (Key::LEFT.Press())
     {
         Object *obj = *(mObjectList.begin());
         obj->RotateHeading(0.01f);
     }
-    if (Key::RIGHT == *key && Action::PRESS == *action)
+    if (Key::RIGHT.Press())
     {
         Object *obj = *(mObjectList.begin());
         obj->RotateHeading(-0.01f);
     }
+
+    //std::cerr << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void Scene::MousePosition(double &xpos, double &ypos)

@@ -24,7 +24,7 @@ public:
     const glm::mat4 &GetProjectionViewModelMatrix(void);
 
     void ProcessCursorPosition(double &xpos, double &ypos);
-    void NotifyKey(KeyInfo *key, ActionInfo *action, int &mods) override;
+    void NotifyKeyEvent(void) override;
 
 private:
     float CharacterHeight;

@@ -23,6 +23,7 @@ public:
 KeyInfo Key::ENTER;
 KeyInfo Key::ESCAPE;
 KeyInfo Key::SPACE;
+KeyInfo Key::LEFT_CONTROL;
 
 KeyInfo Key::W;
 KeyInfo Key::A;
@@ -80,8 +81,6 @@ void KeyBoardManager::AssignKeyInfo(KeyInfo &key, int code, const char *name)
     key.mName = name;
 
     mKeyList[code] = &key;
-
-    //std::cerr << "KeyBoardManager::AssignKeyInfo: " << key.mName << " " << key.mCode << std::endl;
 }
 
 void KeyBoardManager::AssignActionInfo(ActionInfo &action, int code, const char *name)
@@ -91,48 +90,13 @@ void KeyBoardManager::AssignActionInfo(ActionInfo &action, int code, const char 
     mActionList[code] = &action;
 }
 
-/*
-void KeyBoardManager::ProcessKey(int &key, int &scancode, int &action, int &mods)
-{
-    for(std::list<KeyListener*>::iterator i = mKeyListeners.begin(); i != mKeyListeners.end(); ++i)
-    {
-        if (mKeyList.find(key) != mKeyList.end() && mActionList.find(action) != mActionList.end())
-        {
-            if ((*i)->GetKeyListenerEnable())
-            {
-                (*i)->NotifyKey(mKeyList[key], mActionList[action], mods);
-            }
-        }
-        else
-        {
-            std::cout << "Unknown key or action" << std::endl;
-        }
-    }
-}
-*/
-
 void KeyBoardManager::Alarm()
 {
-    // Go over all keys and check for press
-    // Got over all mods
-    for(std::map<int, KeyInfo*>::iterator i = mKeyList.begin(); i != mKeyList.end(); ++i)
+    // Checking of keys will be implemented in the listener.
+    for (auto itr : mKeyListeners)
     {
-        if (WindowManager::Instance()->CheckPress(i->first))
-        {
-            for(std::list<KeyListener*>::iterator kl = mKeyListeners.begin(); kl != mKeyListeners.end(); ++kl)
-            {
-                if (mKeyList.find(i->first) != mKeyList.end())
-                {
-                    KeyListener *listener = *kl;
-                    int a = 0;
-                    listener->NotifyKey(i->second, &Action::PRESS, a);
-                }
-                else
-                {
-                    std::cout << "Unknown key" << std::endl;
-                }
-            }
-        }
+        KeyListener *listener = itr;
+        listener->NotifyKeyEvent();
     }
 }
 
