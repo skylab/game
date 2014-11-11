@@ -16,9 +16,13 @@ bool Loader3ds::LoadObjectFile(const char *filename, Object *object)
         return false;
     }
 
+    Object *parent = object;
+
     Lib3dsMesh * model = nullptr;
 
-    for (unsigned int meshCnt = 0; meshCnt < 1 /*file->nmeshes*/; ++meshCnt)
+    //std::cerr << "Mesh count: " << file->nmeshes << std::endl;
+
+    for (unsigned int meshCnt = 0; meshCnt < file->nmeshes; ++meshCnt)
     {
         model = file->meshes[meshCnt];
 
@@ -42,6 +46,22 @@ bool Loader3ds::LoadObjectFile(const char *filename, Object *object)
 
                 object->GetObjectVertexes()[vertexCounter++] = glm::vec3(x, y, z);
             }
+        }
+
+        // In case when file contain more than 1 mesh - add derived object
+        if ((meshCnt + 1) < file->nmeshes)
+        {
+            try
+            {
+                object = new Object();
+            }
+            catch(std::bad_alloc &ba)
+            {
+                std::cerr << __PRETTY_FUNCTION__ << " : " << ba.what() << " : Can't allocate derived object" << std::endl;
+                break;
+            }
+            // Assign new object to parent.
+            parent->AddDerivedObject(object);
         }
     }
     lib3ds_file_free(file);

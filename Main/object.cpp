@@ -17,9 +17,9 @@ bool Object::LoadObjectMesh(const char *filename)
 {
     if (nullptr != filename)
     {
-        bool loaded = ObjectLoader::Instance()->LoadObjectFile(filename, this);
-        if (loaded)
+        if (ObjectLoader::Instance()->LoadObjectFile(filename, this))
         {
+            // Load parent object and all derived
             LoadObjectToGraphicMemory();
             return true;
         }
@@ -60,7 +60,7 @@ float Object::GetObjectMoveSpeed() const
     return mMoveSpeed;
 }
 
-void Object::AddDerivedObject(Object *object, glm::vec3 detivedPosition, glm::quat derivedRotation)
+void Object::AddDerivedObject(Object *object)
 {
     // TODO : Set deriving information
     mDerivedObjects.push_back(object);
@@ -69,6 +69,41 @@ void Object::AddDerivedObject(Object *object, glm::vec3 detivedPosition, glm::qu
 void Object::RemoveDerivedObject(Object *object)
 {
     mDerivedObjects.remove(object);
+}
+
+void Object::LoadObjectToGraphicMemory()
+{
+    GraphicObject::LoadObjectToGraphicMemory();
+    for(auto itr : mDerivedObjects)
+    {
+        Object* obj = itr;
+        if (nullptr != obj)
+        {
+            // Load all derived objects
+            obj->LoadObjectToGraphicMemory();
+        }
+    }
+}
+
+void Object::SetObjectPosition(glm::vec3 position)
+{
+    ObjectRaw::SetObjectPosition(position);
+    for(auto itr : mDerivedObjects)
+        itr->SetObjectPosition(position);
+}
+
+void Object::RotatePitch(float degrees)
+{
+    ObjectRaw::RotatePitch(degrees);
+    for(auto itr : mDerivedObjects)
+        itr->RotatePitch(degrees);
+}
+
+void Object::RotateHeading(float degrees)
+{
+    ObjectRaw::RotateHeading(degrees);
+    for(auto itr : mDerivedObjects)
+        itr->RotateHeading(degrees);
 }
 
 void Object::Draw()

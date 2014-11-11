@@ -27,10 +27,10 @@ public:
     void LockUpDirection(bool val);
     bool GetLockUpDirection(void) const;
 
-    void RotatePitch(float degrees);
-    void RotateHeading(float degrees);
+    virtual void RotatePitch(float degrees);
+    virtual void RotateHeading(float degrees);
 
-    void SetObjectPosition(glm::vec3 position);
+    virtual void SetObjectPosition(glm::vec3 position);
     glm::vec3 GetObjectPosition(void) const;
     void SetObjectScale(glm::vec3 scale);
     glm::vec3 GetObjectScale(void) const;

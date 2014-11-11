@@ -22,8 +22,15 @@ public:
     void SetObjectMoveSpeed(float speed);
     float GetObjectMoveSpeed(void) const;
 
-    void AddDerivedObject(Object *object, glm::vec3 detivedPosition, glm::quat derivedRotation);
+    void AddDerivedObject(Object *object);
     void RemoveDerivedObject(Object *object);
+
+    void LoadObjectToGraphicMemory(void) override;
+
+    virtual void SetObjectPosition(glm::vec3 position) override;
+
+    virtual void RotatePitch(float degrees) override;
+    virtual void RotateHeading(float degrees) override;
 
     void Draw(void);
 
