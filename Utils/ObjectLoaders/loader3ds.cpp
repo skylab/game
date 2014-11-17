@@ -17,10 +17,9 @@ bool Loader3ds::LoadObjectFile(const char *filename, Object *object)
     }
 
     Object *parent = object;
-
     Lib3dsMesh * model = nullptr;
 
-    //std::cerr << "Mesh count: " << file->nmeshes << std::endl;
+    //std::cerr << file->materials[0]->texture1_map.name << std::endl;
 
     for (unsigned int meshCnt = 0; meshCnt < file->nmeshes; ++meshCnt)
     {
@@ -35,14 +34,16 @@ bool Loader3ds::LoadObjectFile(const char *filename, Object *object)
         // Load all triangles
         for (unsigned int faceCnt = 0; faceCnt < model->nfaces; ++faceCnt)
         {
-            Lib3dsFace face = model->faces[faceCnt];
+            Lib3dsFace *face = &(model->faces[faceCnt]);
+
+            //Lib3dsMaterial *material = nullptr;
 
             // Each face have 3 vertexes. Each vertex have 3 point (x,y,z)
             for (unsigned int facePointCnt = 0; facePointCnt < 3; ++facePointCnt)
             {
-                float x = model->vertices[face.index[facePointCnt]][0];
-                float y = model->vertices[face.index[facePointCnt]][2]; // In the 3ds file "Y" and "Z" axis is swapped
-                float z = model->vertices[face.index[facePointCnt]][1];
+                float x = model->vertices[face->index[facePointCnt]][0];
+                float y = model->vertices[face->index[facePointCnt]][2]; // In the 3ds file "Y" and "Z" axis is swapped
+                float z = model->vertices[face->index[facePointCnt]][1];
 
                 object->GetObjectVertexes()[vertexCounter++] = glm::vec3(x, y, z);
             }

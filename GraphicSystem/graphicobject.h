@@ -17,6 +17,7 @@ public:
     virtual void SetShaderProgramm(const char *vertexShader, const char *fragmenShader);
     virtual const ShaderProgram *GetShaderProgramm(void) const;
 
+    void SetObjectTextureName(const char *name);
     Texture *GetObjectTexture(void) const;
 
     virtual void Draw(void);
@@ -35,12 +36,10 @@ private:
     GLuint mVertexBufferObject;
     int mDrawByPrimitive;
     ShaderProgram *mShaderProgramm;
-
     glm::mat4 mPVMTranslationRotationScaleMatrix;
-
     Texture *mTexture;
-
     bool mbDrawObject;
+    char *mTextureName;
 };
 
 #endif // GRAPHICOBJECT_H

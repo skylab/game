@@ -35,6 +35,25 @@ const ShaderProgram *GraphicObject::GetShaderProgramm() const
     return mShaderProgramm;
 }
 
+void GraphicObject::SetObjectTextureName(const char *name)
+{
+    if (nullptr != name)
+    {
+        try
+        {
+            mTextureName = new char[strlen(name)+1];
+        }
+        catch(std::bad_alloc &ba)
+        {
+            std::cerr << __PRETTY_FUNCTION__ << " : " << ba.what() << std::endl;
+            mTextureName = nullptr;
+            return;
+        }
+        memset(mTextureName, 0, strlen(name)+1);
+        memcpy(mTextureName, name, strlen(name));
+    }
+}
+
 Texture *GraphicObject::GetObjectTexture() const
 {
     return mTexture;
@@ -45,7 +64,7 @@ void GraphicObject::Draw()
     // DRAW THIS OBJECT
     if (nullptr != GetObjectVertexes())
     {
-        glUseProgram( GetShaderProgramm()->GetShaderProgrammID() );
+        glUseProgram(GetShaderProgramm()->GetShaderProgrammID());
 
         GLuint PVMTRSM = const_cast<ShaderProgram*>(GetShaderProgramm())->GetUniform("PVMTranslationRotationScaleMatrix");
         mPVMTranslationRotationScaleMatrix =
@@ -85,7 +104,9 @@ int GraphicObject::GetDrawByPrimitive() const
     return mDrawByPrimitive;
 }
 
-GraphicObject::GraphicObject() : ObjectRaw(), mVertexBufferObject(0), mShaderProgramm(nullptr), mDrawByPrimitive(GL_TRIANGLES), mTexture(nullptr), mbDrawObject(true)
+GraphicObject::GraphicObject() :
+    ObjectRaw(), mVertexBufferObject(0), mShaderProgramm(nullptr),
+    mDrawByPrimitive(GL_TRIANGLES), mTexture(nullptr), mbDrawObject(true), mTextureName(nullptr)
 {
     //Set Default Shader
     SetShaderProgramm("Resources/Shaders/VertexShader.vsh",
