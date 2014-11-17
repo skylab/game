@@ -41,13 +41,13 @@ bool Object::LoadObjectTexture(const char *filename)
     if (nullptr != filename)
     {
         // TODO : Add loading texture
-        return ImageLoader::Instance()->LoadImageFile(filename, GetObjectTexture());
+        //return ImageLoader::Instance()->LoadImageFile(filename, GetObjectTexture());
     }
     else
     {
         std::cerr << __PRETTY_FUNCTION__ << ": filename is nullptr" << std::endl;
-        return false;
     }
+    return false;
 }
 
 void Object::SetObjectMoveSpeed(float speed)

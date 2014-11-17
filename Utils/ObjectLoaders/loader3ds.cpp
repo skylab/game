@@ -36,7 +36,7 @@ bool Loader3ds::LoadObjectFile(const char *filename, Object *object)
         {
             Lib3dsFace *face = &(model->faces[faceCnt]);
 
-            //Lib3dsMaterial *material = nullptr;
+            //object->SetObjectTextureName(file->materials[face->material]->texture1_map.name);
 
             // Each face have 3 vertexes. Each vertex have 3 point (x,y,z)
             for (unsigned int facePointCnt = 0; facePointCnt < 3; ++facePointCnt)

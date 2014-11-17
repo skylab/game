@@ -54,10 +54,12 @@ void GraphicObject::SetObjectTextureName(const char *name)
     }
 }
 
+/*
 Texture *GraphicObject::GetObjectTexture() const
 {
     return mTexture;
 }
+*/
 
 void GraphicObject::Draw()
 {
@@ -106,7 +108,7 @@ int GraphicObject::GetDrawByPrimitive() const
 
 GraphicObject::GraphicObject() :
     ObjectRaw(), mVertexBufferObject(0), mShaderProgramm(nullptr),
-    mDrawByPrimitive(GL_TRIANGLES), mTexture(nullptr), mbDrawObject(true), mTextureName(nullptr)
+    mDrawByPrimitive(GL_TRIANGLES), /*mTexture(nullptr),*/ mbDrawObject(true), mTextureName(nullptr)
 {
     //Set Default Shader
     SetShaderProgramm("Resources/Shaders/VertexShader.vsh",
@@ -114,6 +116,7 @@ GraphicObject::GraphicObject() :
 
     glGenBuffers(1, &mVertexBufferObject);
 
+    /*
     try
     {
         mTexture = new Texture();
@@ -122,4 +125,5 @@ GraphicObject::GraphicObject() :
     {
         std::cerr << ba.what() << " : Can't allocate texture" << std::endl;
     }
+    */
 }

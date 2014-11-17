@@ -37,7 +37,7 @@ private:
     int mDrawByPrimitive;
     ShaderProgram *mShaderProgramm;
     glm::mat4 mPVMTranslationRotationScaleMatrix;
-    Texture *mTexture;
+    //Texture *mTexture;
     bool mbDrawObject;
     char *mTextureName;
 };
