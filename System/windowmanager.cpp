@@ -1,6 +1,6 @@
 #include "windowmanager.h"
 
-#include <GLFW/glfw3.h>
+#include "System/GLFW/glfw3.h"
 
 #include "../Main/scenemanager.h"
 

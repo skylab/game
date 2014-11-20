@@ -2,6 +2,7 @@ TEMPLATE = app
 CONFIG -= app_bundle
 CONFIG -= qt
 CONFIG+=c++11
+CONFIG += -static-libgcc
 
 unix:LIBS += -lGLEW -lGL -lglfw
 
@@ -57,7 +58,9 @@ SOURCES += main.cpp \
     Main/keylistener.cpp \
     Infra/singleton.cpp \
     Infra/timer.cpp \
-    Infra/timermanager.cpp
+    Infra/timermanager.cpp \
+    System/glm/detail/dummy.cpp \
+    System/glm/detail/glm.cpp
 
 HEADERS += \
     game.h \
@@ -94,7 +97,155 @@ HEADERS += \
     Main/keylistener.h \
     Infra/singleton.h \
     Infra/timer.h \
-    Infra/timermanager.h
+    Infra/timermanager.h \
+    System/glew/wglew.h \
+    System/glm/detail/_features.hpp \
+    System/glm/detail/_fixes.hpp \
+    System/glm/detail/_literals.hpp \
+    System/glm/detail/_noise.hpp \
+    System/glm/detail/_swizzle.hpp \
+    System/glm/detail/_swizzle_func.hpp \
+    System/glm/detail/_vectorize.hpp \
+    System/glm/detail/func_common.hpp \
+    System/glm/detail/func_exponential.hpp \
+    System/glm/detail/func_geometric.hpp \
+    System/glm/detail/func_integer.hpp \
+    System/glm/detail/func_matrix.hpp \
+    System/glm/detail/func_noise.hpp \
+    System/glm/detail/func_packing.hpp \
+    System/glm/detail/func_trigonometric.hpp \
+    System/glm/detail/func_vector_relational.hpp \
+    System/glm/detail/hint.hpp \
+    System/glm/detail/intrinsic_common.hpp \
+    System/glm/detail/intrinsic_exponential.hpp \
+    System/glm/detail/intrinsic_geometric.hpp \
+    System/glm/detail/intrinsic_integer.hpp \
+    System/glm/detail/intrinsic_matrix.hpp \
+    System/glm/detail/intrinsic_trigonometric.hpp \
+    System/glm/detail/intrinsic_vector_relational.hpp \
+    System/glm/detail/precision.hpp \
+    System/glm/detail/setup.hpp \
+    System/glm/detail/type_float.hpp \
+    System/glm/detail/type_gentype.hpp \
+    System/glm/detail/type_half.hpp \
+    System/glm/detail/type_int.hpp \
+    System/glm/detail/type_mat.hpp \
+    System/glm/detail/type_mat2x2.hpp \
+    System/glm/detail/type_mat2x3.hpp \
+    System/glm/detail/type_mat2x4.hpp \
+    System/glm/detail/type_mat3x2.hpp \
+    System/glm/detail/type_mat3x3.hpp \
+    System/glm/detail/type_mat3x4.hpp \
+    System/glm/detail/type_mat4x2.hpp \
+    System/glm/detail/type_mat4x3.hpp \
+    System/glm/detail/type_mat4x4.hpp \
+    System/glm/detail/type_vec.hpp \
+    System/glm/detail/type_vec1.hpp \
+    System/glm/detail/type_vec2.hpp \
+    System/glm/detail/type_vec3.hpp \
+    System/glm/detail/type_vec4.hpp \
+    System/glm/gtc/constants.hpp \
+    System/glm/gtc/epsilon.hpp \
+    System/glm/gtc/matrix_access.hpp \
+    System/glm/gtc/matrix_integer.hpp \
+    System/glm/gtc/matrix_inverse.hpp \
+    System/glm/gtc/matrix_transform.hpp \
+    System/glm/gtc/noise.hpp \
+    System/glm/gtc/packing.hpp \
+    System/glm/gtc/quaternion.hpp \
+    System/glm/gtc/random.hpp \
+    System/glm/gtc/reciprocal.hpp \
+    System/glm/gtc/type_precision.hpp \
+    System/glm/gtc/type_ptr.hpp \
+    System/glm/gtc/ulp.hpp \
+    System/glm/gtx/associated_min_max.hpp \
+    System/glm/gtx/bit.hpp \
+    System/glm/gtx/closest_point.hpp \
+    System/glm/gtx/color_space.hpp \
+    System/glm/gtx/color_space_YCoCg.hpp \
+    System/glm/gtx/compatibility.hpp \
+    System/glm/gtx/component_wise.hpp \
+    System/glm/gtx/constants.hpp \
+    System/glm/gtx/dual_quaternion.hpp \
+    System/glm/gtx/epsilon.hpp \
+    System/glm/gtx/euler_angles.hpp \
+    System/glm/gtx/extend.hpp \
+    System/glm/gtx/extented_min_max.hpp \
+    System/glm/gtx/fast_exponential.hpp \
+    System/glm/gtx/fast_square_root.hpp \
+    System/glm/gtx/fast_trigonometry.hpp \
+    System/glm/gtx/gradient_paint.hpp \
+    System/glm/gtx/handed_coordinate_space.hpp \
+    System/glm/gtx/inertia.hpp \
+    System/glm/gtx/int_10_10_10_2.hpp \
+    System/glm/gtx/integer.hpp \
+    System/glm/gtx/intersect.hpp \
+    System/glm/gtx/io.hpp \
+    System/glm/gtx/log_base.hpp \
+    System/glm/gtx/matrix_cross_product.hpp \
+    System/glm/gtx/matrix_interpolation.hpp \
+    System/glm/gtx/matrix_major_storage.hpp \
+    System/glm/gtx/matrix_operation.hpp \
+    System/glm/gtx/matrix_query.hpp \
+    System/glm/gtx/matrix_transform_2d.hpp \
+    System/glm/gtx/mixed_product.hpp \
+    System/glm/gtx/multiple.hpp \
+    System/glm/gtx/noise.hpp \
+    System/glm/gtx/norm.hpp \
+    System/glm/gtx/normal.hpp \
+    System/glm/gtx/normalize_dot.hpp \
+    System/glm/gtx/number_precision.hpp \
+    System/glm/gtx/optimum_pow.hpp \
+    System/glm/gtx/orthonormalize.hpp \
+    System/glm/gtx/perpendicular.hpp \
+    System/glm/gtx/polar_coordinates.hpp \
+    System/glm/gtx/projection.hpp \
+    System/glm/gtx/quaternion.hpp \
+    System/glm/gtx/random.hpp \
+    System/glm/gtx/raw_data.hpp \
+    System/glm/gtx/reciprocal.hpp \
+    System/glm/gtx/rotate_normalized_axis.hpp \
+    System/glm/gtx/rotate_vector.hpp \
+    System/glm/gtx/scalar_relational.hpp \
+    System/glm/gtx/simd_mat4.hpp \
+    System/glm/gtx/simd_quat.hpp \
+    System/glm/gtx/simd_vec4.hpp \
+    System/glm/gtx/spline.hpp \
+    System/glm/gtx/std_based_type.hpp \
+    System/glm/gtx/string_cast.hpp \
+    System/glm/gtx/transform.hpp \
+    System/glm/gtx/transform2.hpp \
+    System/glm/gtx/ulp.hpp \
+    System/glm/gtx/unsigned_int.hpp \
+    System/glm/gtx/vec1.hpp \
+    System/glm/gtx/vector_angle.hpp \
+    System/glm/gtx/vector_query.hpp \
+    System/glm/gtx/wrap.hpp \
+    System/glm/common.hpp \
+    System/glm/exponential.hpp \
+    System/glm/ext.hpp \
+    System/glm/fwd.hpp \
+    System/glm/geometric.hpp \
+    System/glm/glm.hpp \
+    System/glm/integer.hpp \
+    System/glm/mat2x2.hpp \
+    System/glm/mat2x3.hpp \
+    System/glm/mat2x4.hpp \
+    System/glm/mat3x2.hpp \
+    System/glm/mat3x3.hpp \
+    System/glm/mat3x4.hpp \
+    System/glm/mat4x2.hpp \
+    System/glm/mat4x3.hpp \
+    System/glm/mat4x4.hpp \
+    System/glm/matrix.hpp \
+    System/glm/packing.hpp \
+    System/glm/trigonometric.hpp \
+    System/glm/vec2.hpp \
+    System/glm/vec3.hpp \
+    System/glm/vec4.hpp \
+    System/glm/vector_relational.hpp \
+    System/GLFW/glfw3.h \
+    System/GLFW/glfw3native.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

@@ -4,7 +4,7 @@
 #include "../Common/precommon.h"
 #include "../Common/objectraw.h"
 
-#include <GL/glew.h>
+#include "System/glew/glew.h"
 #include <GL/gl.h>
 #include <GL/glext.h>
 
