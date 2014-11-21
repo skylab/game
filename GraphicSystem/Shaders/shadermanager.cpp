@@ -1,23 +1,5 @@
 #include "shadermanager.h"
 
-ShaderManager *ShaderManager::mInstance = nullptr;
-
-ShaderManager *ShaderManager::Instance()
-{
-    if (nullptr == mInstance)
-    {
-        try
-        {
-            mInstance = new ShaderManager();
-        }
-        catch(std::bad_alloc &ba)
-        {
-            (void)ba;
-        }
-    }
-    return mInstance;
-}
-
 ShaderProgram *ShaderManager::GetShaderProgramm(const char *vertexShaderName, const char *fragmentShaderName)
 {
     if (nullptr == vertexShaderName || nullptr == fragmentShaderName)

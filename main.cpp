@@ -1,14 +1,11 @@
 #include "game.h"
 
 int main()
-{
-    Game *game = Game::Instance();
-    if (nullptr != game)
-    {
-        if (game->Init())
-            game->Execute();
-        game->~Game();
-    }
+{    
+    volatile Game game;
+
+    // To disable warning about unused variable
+    (void)game;
     return 0;
 }
 

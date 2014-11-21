@@ -102,24 +102,18 @@ public:
     static ActionInfo RELEASE;
 };
 
-class KeyBoardManager : public Timer
+class KeyBoardManager : public Singleton<KeyBoardManager>, public Timer
 {
 public:
-    static KeyBoardManager *Instance(void);
+    KeyBoardManager();
 
     void AssignKeyInfo(KeyInfo &key, int code, const char *name);
     void AssignActionInfo(ActionInfo &action, int code, const char *name);
 
     void AddKeyListener(KeyListener *listener);
 
-    //void ProcessKey(int &key, int &scancode, int &action, int &mods);
-
     void Alarm(void) override;
-
 private:
-    KeyBoardManager();
-    static KeyBoardManager *mInstance;
-
     std::list<KeyListener*> mKeyListeners;
 
     std::map<int,KeyInfo*> mKeyList;

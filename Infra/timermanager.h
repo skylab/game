@@ -13,7 +13,7 @@
 
 class Timer;
 
-class TimerManager : public Singleton
+class TimerManager : public Singleton<TimerManager>
 {
     friend void TimerManagerExecute(void);
 public:

@@ -1,6 +1,8 @@
 #ifndef SCENEMANAGER_H
 #define SCENEMANAGER_H
 
+#include "Infra/singleton.h"
+
 #include "../System/windowmanager.h"
 #include "../System/keyboardmanager.h"
 
@@ -10,11 +12,11 @@
 
 class Scene;
 
-class SceneManager
+class SceneManager : public Singleton<SceneManager>
 {
 public:
+    SceneManager();
     ~SceneManager();
-    static SceneManager *Instance(void);
     bool InitWindowSystem(void);
     bool InitKeyBoardSystem(void);
 
@@ -32,10 +34,6 @@ public:
     void MousePosition(double &xpos, double &ypos);
 
 private:
-    SceneManager();
-
-private:
-    static SceneManager *mInstance;
     WindowManager *mWindowManager;
     bool mWindowManagerStarted;
     KeyBoardManager *mKeyBoardManager;

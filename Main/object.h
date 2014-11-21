@@ -4,8 +4,9 @@
 #include "premain.h"
 
 #include "../GraphicSystem/graphicobject.h"
+#include "../PhysicSystem/physicobject.h"
 
-class Object : public GraphicObject
+class Object : public GraphicObject, public PhysicObject
 {
 protected:
 

@@ -2,19 +2,15 @@
 #define IMAGELOADER_H
 
 #include "../Common/precommon.h"
+#include "../Infra/singleton.h"
 
 class Texture;
 
-class ImageLoader
+class ImageLoader : public Singleton<ImageLoader>
 {
 public:
-    static ImageLoader *Instance(void);
-
-    bool LoadImageFile(const char *filename, Texture *texture);
-
-private:
     ImageLoader();
-    static ImageLoader *mInstance;
+    bool LoadImageFile(const char *filename, Texture *texture);
 };
 
 #endif // IMAGELOADER_H

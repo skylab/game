@@ -19,28 +19,6 @@ ActionInfo Action::PRESS;
 ActionInfo Action::REPEAT;
 ActionInfo Action::RELEASE;
 
-KeyBoardManager *KeyBoardManager::mInstance = nullptr;
-
-KeyBoardManager *KeyBoardManager::Instance()
-{
-    if (nullptr == mInstance)
-    {
-        try
-        {
-            mInstance = new KeyBoardManager();
-
-            // TODO : Place in correct place
-            mInstance->Start(15, true);
-        }
-        catch(std::bad_alloc &ba)
-        {
-            std::cerr << ba.what() << " : Can't allcate KeyBoardManager" << std::endl;
-            mInstance = nullptr;
-        }
-    }
-    return mInstance;
-}
-
 void KeyBoardManager::AddKeyListener(KeyListener *listener)
 {
     mKeyListeners.push_back(listener);
@@ -73,7 +51,7 @@ void KeyBoardManager::Alarm()
 
 KeyBoardManager::KeyBoardManager()
 {
-    ;
+    Start(15, true);
 }
 
 bool KeyInfo::Press()

@@ -18,25 +18,6 @@ void WindowResizeFunction(GLFWwindow *window, int width, int height)
     WindowManager::Instance()->SetWindowHeight(height);
 }
 
-WindowManager *WindowManager::mInstance = nullptr;
-
-WindowManager *WindowManager::Instance()
-{
-    if (nullptr == mInstance)
-    {
-        try
-        {
-            mInstance = new WindowManager();
-        }
-        catch(std::bad_alloc &ba)
-        {
-            std::cerr << ba.what() << " : Can't create window manager" << std::endl;
-            mInstance = nullptr;
-        }
-    }
-    return mInstance;
-}
-
 bool WindowManager::Createwindow(unsigned int windowWidth, unsigned int windowHeight)
 {
     if (nullptr != mWindow)

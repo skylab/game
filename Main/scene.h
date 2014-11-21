@@ -29,8 +29,6 @@ public:
     void NotifyKeyEvent(void) override;
     void MousePosition(double &xpos, double &ypos);
 
-    void FillAsGround(Object *obj);
-
 protected:
     Camera *mCamera;
     bool mbCursorIsCamera;

@@ -26,7 +26,6 @@ SOURCES += main.cpp \
     System/windowmanager.cpp \
     Main/scene.cpp \
     Main/camera.cpp \
-    Main/Commands/command.cpp \
     Utils/ObjectLoaders/3ds/lib3ds_atmosphere.c \
     Utils/ObjectLoaders/3ds/lib3ds_background.c \
     Utils/ObjectLoaders/3ds/lib3ds_camera.c \
@@ -56,11 +55,13 @@ SOURCES += main.cpp \
     Utils/ImageLoaders/soil/stb_image_aug.c \
     System/keyboardmanager.cpp \
     Main/keylistener.cpp \
-    Infra/singleton.cpp \
     Infra/timer.cpp \
     Infra/timermanager.cpp \
     System/glm/detail/dummy.cpp \
-    System/glm/detail/glm.cpp
+    System/glm/detail/glm.cpp \
+    Infra/singletonmanager.cpp \
+    Infra/singletonabs.cpp \
+    PhysicSystem/physicobject.cpp
 
 HEADERS += \
     game.h \
@@ -80,7 +81,6 @@ HEADERS += \
     System/windowmanager.h \
     Main/scene.h \
     Main/camera.h \
-    Main/Commands/command.h \
     Utils/ObjectLoaders/3ds/lib3ds.h \
     Utils/ObjectLoaders/3ds/lib3ds_impl.h \
     GraphicSystem/Testure/texture.h \
@@ -245,7 +245,10 @@ HEADERS += \
     System/glm/vec4.hpp \
     System/glm/vector_relational.hpp \
     System/GLFW/glfw3.h \
-    System/GLFW/glfw3native.h
+    System/GLFW/glfw3native.h \
+    Infra/singletonmanager.h \
+    Infra/singletonabs.h \
+    PhysicSystem/physicobject.h
 
 OTHER_FILES += \
     Resources/Menus/MainMenu.bmp \

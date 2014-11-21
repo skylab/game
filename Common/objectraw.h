@@ -3,8 +3,6 @@
 
 #include "precommon.h"
 
-class Command;
-
 // Basic class to Object, needed to connection between graphic/physic and another system
 class ObjectRaw
 {
@@ -13,6 +11,7 @@ public:
 
     bool SetObjectVertexQuantity(unsigned long int quantity);
     const size_t &GetObjectVertexQuantity(void) const;
+
     // TODO this is bad idea to use this function as is... rewrite
     glm::vec3 *&GetObjectVertexes(void);
 

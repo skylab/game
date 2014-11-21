@@ -3,14 +3,17 @@
 
 #include "../Common/precommon.h"
 
+#include "Infra/singleton.h"
+
 class GLFWwindow;
 class KeyBoardManager;
 
-class WindowManager
+class WindowManager : public Singleton<WindowManager>
 {
 public:
     // TOOD Write destructor
-    static WindowManager *Instance();
+    WindowManager();
+
     bool Createwindow(unsigned int windowWidth, unsigned int windowHeight);
     void Terminate(void) const;
 
@@ -29,10 +32,6 @@ public:
 
     void Draw(void);
 private:
-    WindowManager();
-
-private:
-    static WindowManager *mInstance;
     GLFWwindow* mWindow;
     size_t mWidth;
     size_t mHeight;

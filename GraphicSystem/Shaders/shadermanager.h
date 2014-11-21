@@ -4,23 +4,19 @@
 #include "../../Common/precommon.h"
 #include "../pregraphic.h"
 
+#include "../../Infra/singleton.h"
+
 #include "shaderprogram.h"
 
 #include <map>
 
-class ShaderManager
+class ShaderManager : public Singleton<ShaderManager>
 {
 public:
-    static ShaderManager *Instance();
-
+    ShaderManager();
     ShaderProgram *GetShaderProgramm(const char *vertexShaderName, const char *fragmentShaderName);
 
 private:
-    ShaderManager();
-
-private:
-    static ShaderManager *mInstance;
-
     std::map<std::pair<const char*, const char*>, ShaderProgram*> mShaderProgrammList;
 };
 

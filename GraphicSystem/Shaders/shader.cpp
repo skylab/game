@@ -46,7 +46,7 @@ bool Shader::LoadFromFile(const char *filename)
         shaderFile.read(mShaderSourceCode, mShaderSourceCodeLength);
 
         int readed = shaderFile.gcount();
-        #ifdef _WINDOWS
+        #ifndef __linux__
                 readed = mShaderSourceCodeLength;
         #endif
 

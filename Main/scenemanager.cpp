@@ -3,29 +3,10 @@
 #define MY_WINDOW_WIDTH 1024
 #define MY_WINDOW_HEIGHT 768
 
-SceneManager *SceneManager::mInstance = nullptr;
-
 SceneManager::~SceneManager()
 {
     delete mWindowManager;
     mWindowManager = nullptr;
-}
-
-SceneManager *SceneManager::Instance()
-{
-    if (nullptr == mInstance)
-    {
-        try
-        {
-            mInstance = new SceneManager();
-        }
-        catch(std::bad_alloc &ba)
-        {
-            std::cerr << ba.what() << " : Can't create SceneManager" << std::endl;
-            return nullptr;
-        }
-    }
-    return mInstance;
 }
 
 bool SceneManager::InitWindowSystem()
@@ -46,7 +27,7 @@ bool SceneManager::InitKeyBoardSystem()
     {
         if (!InitWindowSystem())
         {
-            std::cerr << "InitKeyBoardSystem. mWindowManager can't init window system" << std::endl;
+            std::cerr << __PRETTY_FUNCTION__ << " : mWindowManager can't init window system" << std::endl;
             return false;
         }
     }

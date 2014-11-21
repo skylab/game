@@ -1,46 +1,23 @@
 #include "game.h"
 
+#include "GraphicSystem/pregraphic.h"
 #include "Main/scenemanager.h"
+#include "Infra/singletonmanager.h"
 
-Game *Game::mInstance = nullptr;
-
-Game *Game::Instance()
+Game::Game() : mSceneManager(nullptr), mbStarted(false)
 {
-    if (NULL == mInstance)
-    {
-        try
-        {
-            mInstance = new Game();
-        }
-        catch(std::bad_alloc &ba)
-        {
-            std::cerr << ba.what() << " : Can't allocate Game object" << std::endl;
-        }
-    }
-    return mInstance;
+    if (true == Init())
+        Execute();
 }
 
-void Game::Execute()
-{    
-    if (true == mbStarted)
-    {
-        mSceneManager->StartScene();
-        //TODO Another thread graphic
-        if (nullptr != mSceneManager)
-            mSceneManager->GetWindowManager()->Draw();
-        else
-            std::cerr << "SceneManager is nullptr" << std::endl;
-
-        //TODO Another thread physic
-    }
-    else
-    {
-        std::cerr << "Initialization failed. Can't execute" << std::endl;
-    }
+Game::~Game()
+{
+    SingletonManager::Stop();
 }
 
 bool Game::Init()
 {
+    mSceneManager = SceneManager::Instance();
     if (nullptr != mSceneManager)
     {
         // Init window system to draw
@@ -49,19 +26,28 @@ bool Game::Init()
     }
     else
     {
-        std::cerr << "Can't get SceneManager" << std::endl;
+        std::cerr << __PRETTY_FUNCTION__ << " : Can't get SceneManager" << std::endl;
         mbStarted = false;
     }
     return mbStarted;
 }
 
-Game::Game() : mSceneManager(nullptr), mbStarted(false)
+void Game::Execute()
 {
-    mSceneManager = SceneManager::Instance();
-}
+    if (true == mbStarted)
+    {
+        mSceneManager->StartScene();
 
-Game::~Game()
-{
-    delete mSceneManager;
-    mSceneManager = nullptr;
+        //TODO Another thread graphic
+        if (nullptr != mSceneManager)
+            mSceneManager->GetWindowManager()->Draw();
+        else
+            std::cerr << __PRETTY_FUNCTION__ << " : SceneManager is nullptr" << std::endl;
+
+        //TODO Another thread physic
+    }
+    else
+    {
+        std::cerr << __PRETTY_FUNCTION__ << " : Initialization failed. Can't execute" << std::endl;
+    }
 }

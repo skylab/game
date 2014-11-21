@@ -151,8 +151,6 @@ void Scene::NotifyKeyEvent(void)
         Object *obj = *(mObjectList.begin());
         obj->RotateHeading(-0.01f);
     }
-
-    //std::cerr << __PRETTY_FUNCTION__ << std::endl;
 }
 
 void Scene::MousePosition(double &xpos, double &ypos)
@@ -161,31 +159,4 @@ void Scene::MousePosition(double &xpos, double &ypos)
     {
         mCamera->ProcessCursorPosition(xpos, ypos);
     }
-}
-
-void Scene::FillAsGround(Object *obj)
-{
-    // TODO : Write loader.
-    /*
-    const int cubeQuantity = 4;
-    const int triangleQuantity = cubeQuantity * 2;
-    const int vertexQuantity = triangleQuantity * 3;
-
-    obj->SetObjectVertexQuantity(vertexQuantity);
-
-    unsigned int vertexCounter = 0;
-    for(unsigned int i = 0; i < cubeQuantity / 2; ++i)
-    {
-        for(unsigned int j = 0; j < cubeQuantity / 2; ++j)
-        {
-            obj->GetObjectVertexes()[vertexCounter].x = j;
-            obj->GetObjectVertexes()[vertexCounter].y = 0;
-            obj->GetObjectVertexes()[vertexCounter].z = -i;
-            ++vertexCounter;
-        }
-    }
-
-    obj->LoadObjectToGraphicMemory();
-
-    */
 }
