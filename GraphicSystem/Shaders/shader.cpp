@@ -1,8 +1,38 @@
 #include "shader.h"
 
 #include <fstream>
-
 #include <string.h>
+
+static const char* defaultVertexShader =
+        "#version 330\n"
+        "layout (location = 0) in vec3 VertexCoordinate;\n"
+        "layout (location = 1) in vec3 Color;\n"
+        "layout (location = 2) in vec2 vertexUV;\n"
+        "\n"
+        "uniform mat4 PVMTranslationRotationScaleMatrix;\n"
+        "out vec3 fragmentColor;\n"
+        "out vec2 UV;\n"
+        "\n"
+        "void main() {\n"
+            "gl_Position = PVMTranslationRotationScaleMatrix * vec4(VertexCoordinate, 1.0f);\n"
+            "fragmentColor = VertexCoordinate;\n"
+            "UV = vertexUV;\n"
+        "}\n";
+
+static const char* defaultFragmentShader =
+        "#version 330 core\n"
+        "in vec3 fragmentColor;\n"
+        "in vec2 UV;\n"
+        "out vec3 color;\n"
+        "uniform sampler2D textureSampler;\n"
+        "void main()\n"
+        "{\n"
+            "if (UV.x == 0 && UV.y == 0)\n"
+                "color = fragmentColor;\n"
+            "else\n"
+                "color = texture2D(textureSampler, UV).rgb;\n"
+        "}\n";
+
 
 Shader::Shader(GLint shaderType, const char *filename): mShaderType(shaderType), mShaderID(0), mShaderSourceCode(0)
 {
@@ -45,7 +75,7 @@ bool Shader::LoadFromFile(const char *filename)
 
         shaderFile.read(mShaderSourceCode, mShaderSourceCodeLength);
 
-        int readed = shaderFile.gcount();
+        unsigned int readed = shaderFile.gcount();
         #ifndef __linux__
                 readed = mShaderSourceCodeLength;
         #endif
@@ -69,11 +99,27 @@ bool Shader::LoadFromFile(const char *filename)
         }
         shaderFile.close();
     }
+    else
+    {
+        std::cerr << strerror(errno) << ": " << filename << std::endl;
 
-    #ifdef DEBUG_SHADER
-        std::cerr << "Can't open shader source code:" << filename << std::endl;
-    #endif
-
+        std::cerr << "Loading default: " << (mShaderType == GL_VERTEX_SHADER? "VERTEX" : "FRAGMENT") << " shader" << std::endl;
+        switch(mShaderType)
+        {
+        case GL_VERTEX_SHADER:
+            mShaderSourceCode = const_cast<char*>(defaultVertexShader);
+            return true;
+            break;
+        case GL_FRAGMENT_SHADER:
+            mShaderSourceCode = const_cast<char*>(defaultFragmentShader);
+            return true;
+            break;
+        default:
+            std::cerr << "Unknown shader type: " << mShaderType << std::endl;
+            return false;
+            break;
+        }
+    }
     return false;
 }
 

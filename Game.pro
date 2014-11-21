@@ -244,8 +244,8 @@ HEADERS += \
     System/glm/vec3.hpp \
     System/glm/vec4.hpp \
     System/glm/vector_relational.hpp \
-    System/GLFW/glfw3.h \
-    System/GLFW/glfw3native.h \
+    System/glfw/glfw3.h \
+    System/glfw/glfw3native.h \
     Infra/singletonmanager.h \
     Infra/singletonabs.h \
     PhysicSystem/physicobject.h
@@ -256,4 +256,6 @@ OTHER_FILES += \
     Resources/Shaders/VertexShader.vsh \
     Resources/Engine.3ds \
     Config.txt \
-    Resources/Fonts/Arial.bmp
+    Resources/Fonts/Arial.bmp \
+    System/glfw/glfw3.a \
+    System/glfw/glfw3.dll

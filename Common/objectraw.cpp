@@ -1,7 +1,6 @@
 #include "objectraw.h"
 
 #include "../Utils/objectloader.h"
-#include "../Main/Commands/command.h"
 
 ObjectRaw::ObjectRaw() :
     mLockedUp(false),
