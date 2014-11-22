@@ -1,0 +1,6 @@
+#ifndef OPENCLCONFIG_H
+#define OPENCLCONFIG_H
+
+#define B3_USE_CLEW
+
+#endif // OPENCLCONFIG_H
