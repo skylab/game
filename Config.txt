@@ -1,3 +1,0 @@
-# This file describe config of the game
-WindowWidth 1024
-WindowHeight 768
