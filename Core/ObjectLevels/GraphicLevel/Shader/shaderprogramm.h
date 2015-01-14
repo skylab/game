@@ -10,6 +10,7 @@ public:
     ~ShaderProgramm();
 
     operator int();
+    int &ID(void);
 
     int GetUniform(const char *uniformName);
 

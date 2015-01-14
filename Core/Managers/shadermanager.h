@@ -13,6 +13,8 @@ public:
     ShaderManager();
     virtual ~ShaderManager();
 
+    const char *GetName(void) const override;
+
     ShaderProgramm *GetShaderProgramm(const char *vertex, const char *fragment);
 
 private:

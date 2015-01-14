@@ -1,0 +1,6 @@
+*.[ao]
+*.Debug
+*.Release
+Debug
+Makefile
+*.pro.user

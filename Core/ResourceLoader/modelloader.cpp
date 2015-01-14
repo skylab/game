@@ -11,6 +11,11 @@ ModelLoader::~ModelLoader()
     ;
 }
 
+const char *ModelLoader::GetName() const
+{
+    return __PRETTY_FUNCTION__;
+}
+
 bool ModelLoader::LoadModelFile(const char *filename, Object *object)
 {
     if (nullptr == filename)

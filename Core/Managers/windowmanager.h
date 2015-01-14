@@ -12,6 +12,8 @@ public:
     WindowManager();
     virtual ~WindowManager() override;
 
+    const char *GetName(void) const override;
+
     GLFWwindow *GetWindow(void);
 
     void SetWindowWindthHeight(unsigned int width, unsigned int height);
@@ -19,6 +21,10 @@ public:
 
     int GetWindowWidth(void) const;
     int GetWindowHeight(void) const;
+
+    void SetCursorPosition(int x, int y);
+    void SetCursorVisible(bool val);
+    bool GetCorsorVisible(void) const;
 
     void Draw(void);
     void Terminate(void);
@@ -31,7 +37,7 @@ private:
 
     bool mbTerminate;
 
-    bool mCursorVisible;
+    bool mbCursorVisible;
 };
 
 #endif // WINDOWMANAGER_H

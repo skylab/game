@@ -12,7 +12,13 @@ SceneManager::~SceneManager()
     if (nullptr != mCurrentScene)
     {
         delete mCurrentScene;
+        mCurrentScene = nullptr;
     }
+}
+
+const char *SceneManager::GetName() const
+{
+    return __PRETTY_FUNCTION__;
 }
 
 bool SceneManager::LoadFirstScene()
@@ -47,10 +53,4 @@ void SceneManager::DrawScene()
 {
     if (nullptr != mCurrentScene)
         mCurrentScene->Draw();
-}
-
-void SceneManager::Reshape(int &width, int &height)
-{
-    if (nullptr != mCurrentScene)
-        glViewport(0, 0, width, height);
 }

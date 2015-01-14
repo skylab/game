@@ -3,7 +3,7 @@
 #include "singletonabs.h"
 
 SingletonManager *SingletonManager::mInstance = nullptr;
-std::mutex SingletonManager::mCreatinMutex;
+std::mutex SingletonManager::mCreationMutex;
 
 SingletonManager::SingletonManager()
 {
@@ -17,7 +17,7 @@ SingletonManager::~SingletonManager()
 
 SingletonManager *SingletonManager::Instance(void)
 {
-    mCreatinMutex.lock();
+    mCreationMutex.lock();
     if (nullptr == mInstance)
     {
         try
@@ -30,35 +30,30 @@ SingletonManager *SingletonManager::Instance(void)
             mInstance = nullptr;
         }
     }
-    mCreatinMutex.unlock();
+    mCreationMutex.unlock();
     return mInstance;
 }
 
 void SingletonManager::AddSingleton(SingletonAbs* sng)
 {
-    mListOperationMutex.lock();
     mSingletonsList.push_back(sng);
-    sng->mbInSingletonList = true;
-    mListOperationMutex.unlock();
 }
 
 void SingletonManager::RemoveSingleton(SingletonAbs* sng)
 {
-    mListOperationMutex.lock();
     mSingletonsList.remove(sng);
-    sng->mbInSingletonList = false;
-    mListOperationMutex.unlock();
 }
 
 void SingletonManager::RemoveAllSingletons()
 {
-    mListOperationMutex.lock();
     while(mSingletonsList.size() != 0)
     {
-        SingletonAbs *ptr = mSingletonsList.back();
-        mSingletonsList.remove(ptr);
-        ptr->mbInSingletonList = false;
-        delete ptr;
+        bool exist = false;
+        SingletonAbs *ptr = mSingletonsList.give_back(exist);
+        if (exist)
+        {
+            //std::cerr << "Remove: " << ptr->GetName() << std::endl;
+            delete ptr;
+        }
     }
-    mListOperationMutex.unlock();
 }

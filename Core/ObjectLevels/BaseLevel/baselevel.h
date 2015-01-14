@@ -11,8 +11,9 @@ protected:
     virtual ~BaseLevel();
 
 public:
-    glm::vec3 ** const GetVertexArray(void);
-    void SetVertexQuantity(unsigned int quantity);
+    glm::vec3 **GetVertexArray(void);
+
+    virtual void SetVertexQuantity(unsigned int quantity);
     unsigned int GetVertexArrayQuantity(void) const;
 
     const glm::mat4 &GetPositionRotationScaleMatrix(void);

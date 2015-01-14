@@ -1,7 +1,7 @@
 #include "object.h"
 #include "../ResourceLoader/modelloader.h"
 
-Object::Object()
+Object::Object() : mbVisible(true)
 {
     ;
 }
@@ -30,13 +30,20 @@ void Object::SetScene(Scene *scene)
 
 void Object::Draw()
 {
-    GraphicLevel::Draw();
+    if (mbVisible)
+        GraphicLevel::Draw();
 
     for (auto i : mDerivedObjects)
     {
         Object * obj = i;
         obj->Draw();
     }
+}
+
+void Object::SetVertexQuantity(unsigned int quantity)
+{
+    BaseLevel::SetVertexQuantity(quantity);
+    GraphicLevel::SetVertexQuantity(quantity);
 }
 
 bool Object::LoadModel(const char *file)

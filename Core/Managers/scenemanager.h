@@ -10,6 +10,8 @@ public:
     SceneManager();
     virtual ~SceneManager() override;
 
+    const char *GetName(void) const override;
+
     bool LoadFirstScene(void);
 
     Scene *GetCurrentScene(void);

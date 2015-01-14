@@ -1,45 +1,54 @@
 #include "timermanager.h"
 #include "timer.h"
 
-std::list<Timer *> TimerManager::mTimerList;
 std::mutex TimerManager::mTimerListOperations;
-std::chrono::steady_clock::time_point TimerManager::mLastWakeUpTime;
+//std::chrono::high_resolution_clock::time_point TimerManager::mLastWakeUpTime;
 
 TimerManager::TimerManager()
 {
-    ;
+    mLastWakeUpTime = std::chrono::high_resolution_clock::now();
 }
 
 TimerManager::~TimerManager()
 {
     mTimerListOperations.lock();
-
-    for (auto i : mTimerList)
+    while(mTimerList.size() != 0)
     {
-        Timer *t = i;
-        mTimerList.remove(t);
-        t->SetInTimersList(false);
-        t->~Timer();
+        Timer *timer = mTimerList.back();
+        if (nullptr != timer)
+        {
+            timer->mbInTimersList = false;
+            timer->~Timer();
+        }
+        mTimerList.remove(timer);
     }
-
-    mTimerList.clear();
     mTimerListOperations.unlock();
+}
+
+const char *TimerManager::GetName() const
+{
+    return __PRETTY_FUNCTION__;
 }
 
 void TimerManager::AddTimer(Timer *timer)
 {
-    mTimerListOperations.lock();
+    while(!mTimerListOperations.try_lock())
+    {
+        // wait for lock mutex
+    }
     mTimerList.push_back(timer);
-    timer->SetInTimersList(true);
+    timer->mbInTimersList = true;
     mTimerListOperations.unlock();
 }
 
 void TimerManager::RemoveTimer(Timer *timer)
 {
-    mTimerListOperations.lock();
-    mTimerList.remove(timer);
-    timer->SetInTimersList(false);
-    mTimerListOperations.unlock();
+    if (mTimerListOperations.try_lock())
+    {
+        mTimerList.remove(timer);
+        timer->mbInTimersList = false;
+        mTimerListOperations.unlock();
+    }
 }
 
 void TimerManager::Execute()
@@ -63,10 +72,11 @@ void TimerManager::Execute()
             }
 
             // Handle time difference
-            std::chrono::steady_clock::time_point timeNow = std::chrono::steady_clock::now();
+            std::chrono::high_resolution_clock::time_point timeNow = std::chrono::high_resolution_clock::now();
+            timeGone = std::chrono::duration_cast<std::chrono::milliseconds>(timeNow - mLastWakeUpTime).count();
 
-            std::chrono::duration<unsigned int, std::ratio<1,1000> > time_span = std::chrono::duration_cast<std::chrono::milliseconds>(timeNow - mLastWakeUpTime);
-            timeGone = time_span.count();
+            //
+            // timeGone contain time from last wake up.
 
             timer->MilisecondsGone(timeGone);
 
@@ -86,7 +96,7 @@ void TimerManager::Execute()
         }
         mTimerListOperations.unlock();
 
-        mLastWakeUpTime = std::chrono::steady_clock::now();
+        mLastWakeUpTime = std::chrono::high_resolution_clock::now();
 
         //std::cerr << "Sleep: " << millToSleep << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(millToSleep));
@@ -96,5 +106,5 @@ void TimerManager::Execute()
         // In case of empty list - sleep 1 second
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
-    mLastWakeUpTime = std::chrono::steady_clock::now();
+    //mLastWakeUpTime = std::chrono::high_resolution_clock::now();
 }

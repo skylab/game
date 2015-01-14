@@ -1,7 +1,6 @@
 #include "threadregister.h"
 
-std::list<Thread *> ThreadRegister::mThreadRegister;
-std::mutex ThreadRegister::mThreadListOperation;
+std::list<Thread*> ThreadRegister::mThreadList;
 
 ThreadRegister::ThreadRegister()
 {
@@ -13,38 +12,22 @@ ThreadRegister::~ThreadRegister()
     ;
 }
 
-void ThreadRegister::AddThread(Thread *th)
+const char *ThreadRegister::GetName() const
 {
-    mThreadListOperation.lock();
-    mThreadRegister.push_back(th);
-    mThreadListOperation.unlock();
+    return __PRETTY_FUNCTION__;
 }
 
-void ThreadRegister::RemoveThread(Thread *th)
+void ThreadRegister::AddThread(Thread *thread)
 {
-    mThreadListOperation.lock();
-    mThreadRegister.remove(th);
-    mThreadListOperation.unlock();
+    mThreadList.push_back(thread);
 }
 
-bool ThreadRegister::ThreadValid(Thread *th)
+void ThreadRegister::RemoveThread(Thread *thread)
 {
-    mThreadListOperation.lock();
+    mThreadList.remove(thread);
+}
 
-    if (mThreadRegister.empty())
-    {
-        mThreadListOperation.unlock();
-        return false;
-    }
-
-    bool found = false;
-
-    for(auto i : mThreadRegister)
-    {
-        if (th == i)
-            found = true;
-    }
-
-    mThreadListOperation.unlock();
-    return found;
+bool ThreadRegister::ThreadInList(Thread *thread)
+{
+    return mThreadList.end() != std::find(mThreadList.begin(), mThreadList.end(), thread);
 }

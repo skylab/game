@@ -2,6 +2,8 @@
 #define GRAPHICLEVEL_H
 
 #include "../BaseLevel/baselevel.h"
+#include "texture.h"
+#include "../../Infra/preinfra.h"
 class Scene;
 class ShaderProgramm;
 
@@ -15,19 +17,28 @@ public:
     virtual void SetScene(Scene *scene);
     virtual void Draw(void);
 
+    virtual void SetVertexQuantity(unsigned int quantity) override;
+    glm::vec3 **GetUVArray(void);
+
+    bool AddTexture(Texture *texture);
+    int GetTextureNumberInObject(Texture *texture);
+
 protected:
     void LoadToGraphicMemory(void);
 
 protected:
-    GLuint mVBO;
     Scene *mScene;
-    //glm::mat4 GetPosRotScalMatrix(void);
+    GLuint mVBO; // Vertexes
+    GLuint mUVBO; // UV coordinates
+    GLuint mSamplerBO;
 
-    bool mVisible;
-    ShaderProgramm *mShaderProgramm;
+    ShaderProgramm *mShaderProgramm;    
     glm::mat4 mPVMTranslationRotationScaleMatrix;
     int mDrawPrimitives;
-    char **mTextureName;
+
+    glm::vec3 *mUV;
+
+    std::vector<Texture *> mTextureList;
 };
 
 #endif // GRAPHICLEVEL_H

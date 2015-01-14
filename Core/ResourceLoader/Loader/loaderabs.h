@@ -2,6 +2,7 @@
 #define LOADERABS_H
 
 #include "../../ObjectLevels/object.h"
+#include "../../Managers/texturemanager.h"
 
 class LoaderAbs
 {

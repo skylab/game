@@ -16,7 +16,6 @@ SOURCES += main.cpp \
     Core/ObjectLevels/GraphicLevel/graphiclevel.cpp \
     Core/ObjectLevels/PhysicLevel/physiclevel.cpp \
     Core/Infra/thread.cpp \
-    Core/Infra/threadregister.cpp \
     Core/Infra/timer.cpp \
     Core/Infra/timermanager.cpp \
     Core/Main/scene.cpp \
@@ -54,7 +53,28 @@ SOURCES += main.cpp \
     Core/Managers/windowmanager.cpp \
     Core/Managers/keyboardmanager.cpp \
     Core/Main/button.cpp \
-    Core/Managers/shadermanager.cpp
+    Core/Managers/shadermanager.cpp \
+    Core/Listeners/mouselistener.cpp \
+    Core/Listeners/keyboardlistener.cpp \
+    Core/Infra/threadregister.cpp \
+    Core/Managers/texturemanager.cpp \
+    Core/ObjectLevels/GraphicLevel/texture.cpp \
+    Core/Libs/soil/image_DXT.c \
+    Core/Libs/soil/image_helper.c \
+    Core/Libs/soil/SOIL.c \
+    Core/Libs/soil/stb_image_aug.c \
+    Core/ResourceLoader/textureloader.cpp \
+    Core/ResourceLoader/TextureLoaders/loaderjpeg.cpp \
+    Core/ResourceLoader/TextureLoaders/textureloaderabs.cpp \
+    Core/ResourceLoader/TextureLoaders/textureloaderbmp.cpp \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpheader.cpp \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfo.cpp \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfoheaderabs.cpp \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfoheadercore.cpp \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfoheaderv3.cpp \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfoheaderv4.cpp \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfoheaderv5.cpp \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpimage.cpp
 
 HEADERS += \
     Core/Infra/preinfra.h \
@@ -65,7 +85,6 @@ HEADERS += \
     Core/ObjectLevels/GraphicLevel/graphiclevel.h \
     Core/ObjectLevels/PhysicLevel/physiclevel.h \
     Core/Infra/thread.h \
-    Core/Infra/threadregister.h \
     Core/Infra/timer.h \
     Core/Infra/timermanager.h \
     Core/Main/scene.h \
@@ -235,7 +254,33 @@ HEADERS += \
     Core/Managers/windowmanager.h \
     Core/Managers/keyboardmanager.h \
     Core/Main/button.h \
-    Core/Managers/shadermanager.h
+    Core/Managers/shadermanager.h \
+    Core/Listeners/mouselistener.h \
+    Core/Listeners/keyboardlistener.h \
+    Core/Infra/threadregister.h \
+    Core/Infra/list.h \
+    Core/Managers/texturemanager.h \
+    Core/ObjectLevels/GraphicLevel/texture.h \
+    Core/Libs/soil/image_DXT.h \
+    Core/Libs/soil/image_helper.h \
+    Core/Libs/soil/SOIL.h \
+    Core/Libs/soil/stb_image_aug.h \
+    Core/Libs/soil/stbi_DDS_aug.h \
+    Core/Libs/soil/stbi_DDS_aug_c.h \
+    Core/ResourceLoader/textureloader.h \
+    Core/ResourceLoader/TextureLoaders/loaderjpeg.h \
+    Core/ResourceLoader/TextureLoaders/textureloaderabs.h \
+    Core/ResourceLoader/TextureLoaders/textureloaderbmp.h \
+    Core/typedefs.h \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpheader.h \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfo.h \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfoheaderabs.h \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfoheadercore.h \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfoheaderv3.h \
+    Core/Infra/utils.h \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfoheaderv4.h \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpinfoheaderv5.h \
+    Core/ResourceLoader/TextureLoaders/BMP_Stack/bmpimage.h
 
 OTHER_FILES += \
     Resources/Shaders/FragmentShader.fsh \
@@ -244,5 +289,10 @@ OTHER_FILES += \
     Resources/Models/Impreza/chasis.jpg \
     Resources/Models/Impreza/chasis_a.jpg \
     Resources/Models/Impreza/ruedas.jpg \
-    Resources/Models/Impreza/ventanas.jpg
+    Resources/Models/Impreza/ventanas.jpg \
+    Resources/Models/Impreza_bmp/impreza_3ds.3ds \
+    Resources/Models/Impreza_bmp/chasis.bmp \
+    Resources/Models/Impreza_bmp/chasis_a.bmp \
+    Resources/Models/Impreza_bmp/ruedas.bmp \
+    Resources/Models/Impreza_bmp/ventanas.bmp
 

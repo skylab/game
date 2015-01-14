@@ -3,10 +3,11 @@
 
 #include "../Infra/preinfra.h"
 #include "camera.h"
+#include "../Listeners/keyboardlistener.h"
 
 class Object;
 
-class Scene
+class Scene : public KeyboardListener
 {
 public:
     Scene();
@@ -19,10 +20,13 @@ public:
 
     void Draw(void);
 
+    virtual void CheckKeys(void) override;
+
 private:
     std::mutex mObjectListOperation;
     Camera mCamera;
     std::list<Object *> mObjectList;
+    unsigned int mLastDrawingTime;
 };
 
 #endif // SCENE_H

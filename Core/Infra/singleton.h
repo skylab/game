@@ -37,7 +37,7 @@ protected:
     virtual ~Singleton() override
     {
         ;
-    }
+    }    
 
     Singleton(const Singleton&); // W/O implementation
     Singleton & operator = (const Singleton&); // W/O implementation

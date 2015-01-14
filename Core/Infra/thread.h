@@ -5,6 +5,7 @@
 
 class Thread
 {
+    friend void ExecuteThread(Thread *ptr);
 protected:
     Thread();
     virtual ~Thread();

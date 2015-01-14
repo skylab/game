@@ -12,15 +12,17 @@ public:
     TimerManager();
     virtual ~TimerManager();
 
+    const char *GetName(void) const override;
+
     void AddTimer(Timer *timer);
     void RemoveTimer(Timer *timer);
 
     void Execute(void) override;
 
 private:
-    static std::list<Timer *> mTimerList;
+    std::list<Timer *> mTimerList;
     static std::mutex mTimerListOperations;
-    static std::chrono::steady_clock::time_point mLastWakeUpTime;
+    std::chrono::high_resolution_clock::time_point mLastWakeUpTime;
 };
 
 #endif // TIMERMANAGER_H

@@ -1,9 +1,11 @@
 #include "timer.h"
 #include "timermanager.h"
 
-Timer::Timer() : mbInTimersList(false)
+static std::chrono::time_point<std::chrono::high_resolution_clock> startTime(std::chrono::high_resolution_clock::now());
+
+Timer::Timer() : mbInTimersList(false), mMiliseconds(0), mMilisecondsLeft(0), mbCyclical(false)
 {
-    TimerManager::Instance()->AddTimer(this);
+    TimerManager::Instance();
 }
 
 Timer::~Timer()
@@ -12,19 +14,24 @@ Timer::~Timer()
         TimerManager::Instance()->RemoveTimer(this);
 }
 
+void Timer::StartTimer(unsigned int miliseconds, bool cyclical)
+{
+    mMiliseconds = miliseconds;
+    mMilisecondsLeft = mMiliseconds;
+    mbCyclical = cyclical;
+    TimerManager::Instance()->AddTimer(this);
+}
+
+void Timer::StopTimer()
+{
+    if (mbInTimersList)
+        TimerManager::Instance()->RemoveTimer(this);
+}
+
 void Timer::Timeout()
 {
     // Do nothing;
-}
-
-void Timer::SetInTimersList(bool val)
-{
-    mbInTimersList = val;
-}
-
-bool Timer::GetInTimersList() const
-{
-    return mbInTimersList;
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 
 int Timer::GetMilisecondsLeft() const
@@ -45,4 +52,10 @@ bool Timer::Cyclical() const
 void Timer::StartCycle()
 {
     mMilisecondsLeft = mMiliseconds;
+}
+
+std::chrono::milliseconds Timer::GetCurrentTimeMs()
+{
+    std::chrono::milliseconds ms( std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - startTime) );
+    return ms;
 }

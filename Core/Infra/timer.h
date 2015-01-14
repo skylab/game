@@ -1,22 +1,27 @@
 #ifndef TIMER_H
 #define TIMER_H
 
+#include "preinfra.h"
+
 class Timer
 {
+    friend class TimerManager;
 public:
     Timer();
     virtual ~Timer();
 
-    virtual void Timeout(void);
+    void StartTimer(unsigned int miliseconds, bool cyclical);
+    void StopTimer(void);
 
-    void SetInTimersList(bool val);
-    bool GetInTimersList(void) const;
+    virtual void Timeout(void);
 
     int GetMilisecondsLeft() const;
     void MilisecondsGone(int sec);
 
     bool Cyclical() const;
     void StartCycle();
+
+    static std::chrono::milliseconds GetCurrentTimeMs(void);
 
 private:
     bool mbInTimersList;

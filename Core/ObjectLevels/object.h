@@ -13,6 +13,8 @@ public:
     virtual void SetScene(Scene *scene) override;
     virtual void Draw(void) override;
 
+    virtual void SetVertexQuantity(unsigned int quantity) override;
+
 public:
     bool LoadModel(const char *file);
 
@@ -20,6 +22,7 @@ public:
     void RemoveDerivedObject(Object *object);
 
 private:
+    bool mbVisible;
     std::list<Object*> mDerivedObjects;
 };
 

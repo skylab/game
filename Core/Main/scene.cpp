@@ -1,13 +1,18 @@
 #include "scene.h"
-
 #include "../ObjectLevels/object.h"
+#include "../Managers/windowmanager.h"
+#include "../Infra/timer.h"
 
-Scene::Scene()
+Scene::Scene() : mLastDrawingTime(0)
 {
     mCamera.SetProsition(glm::vec3(0.0f, 0.0f, 3.0f));
 
     Object *obj = new Object();
-    if (obj->LoadModel("Resources/Models/Impreza/impreza_3ds.3ds"))
+
+    //if (obj->LoadModel("Resources/Models/Impreza/impreza_3ds.3ds"))
+        //AddObject(obj);
+
+    if (obj->LoadModel("Resources/Models/Impreza_bmp/impreza_3ds.3ds"))
         AddObject(obj);
 
     glEnable(GL_DEPTH_TEST);
@@ -53,6 +58,12 @@ Camera *Scene::GetCamera()
 
 void Scene::Draw(void)
 {
+    // Ask FPS
+    //float drawDelaySec = (Timer::GetCurrentTimeMs().count() - mLastDrawingTime) / 1000.0f;
+    //mLastDrawingTime = Timer::GetCurrentTimeMs().count();
+    // 1 second / time delay = frames per second
+    //std::cerr << 1.0f / drawDelaySec << std::endl;
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     mObjectListOperation.lock();
@@ -65,4 +76,25 @@ void Scene::Draw(void)
         }
     }
     mObjectListOperation.unlock();
+
+    // To avoid overload of system add delay between frames (60 fps)
+    // TODO : Remove after release
+    std::this_thread::sleep_for(std::chrono::milliseconds(16));
+}
+
+void Scene::CheckKeys(void)
+{
+    if (Key::Escape.Press())
+    {
+        std::cerr << "Received " << (const char*)Key::Escape << std::endl;
+        WindowManager::Instance()->Terminate();
+    }
+    if (Key::F1.Press())
+    {
+        WindowManager::Instance()->SetWindowWindthHeight(1024, 768);
+    }
+    if (Key::F2.Press())
+    {
+        WindowManager::Instance()->SetCursorVisible(!WindowManager::Instance()->GetCorsorVisible());
+    }
 }

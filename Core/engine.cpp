@@ -4,22 +4,28 @@
 
 #include "Managers/windowmanager.h"
 #include "Managers/keyboardmanager.h"
-
 #include "Managers/scenemanager.h"
 
 void RemoveAllSingletons()
 {
     SingletonManager::Instance()->RemoveAllSingletons();
+    std::cerr << "All singletons removed" << std::endl;
 }
 
 Engine::Engine()
 {
+    // Post work clearing of memory.
     atexit(RemoveAllSingletons);
 }
 
 Engine::~Engine()
 {
     ;
+}
+
+const char *Engine::GetName() const
+{
+    return __PRETTY_FUNCTION__;
 }
 
 bool Engine::Execute(void)
@@ -33,6 +39,7 @@ bool Engine::Execute(void)
     }
     else
     {
+        std::cerr << "Can't execute Engine. Init failed." << std::endl;
         return false;
     }
 }

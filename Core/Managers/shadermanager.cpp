@@ -23,6 +23,11 @@ ShaderManager::~ShaderManager()
     mListOperations.unlock();
 }
 
+const char *ShaderManager::GetName() const
+{
+    return __PRETTY_FUNCTION__;
+}
+
 ShaderProgramm *ShaderManager::GetShaderProgramm(const char *vertex, const char *fragment)
 {
     mListOperations.lock();

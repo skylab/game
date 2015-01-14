@@ -4,23 +4,29 @@
 #include "../Libs/glew/glew.h"
 #include <GL/gl.h>
 #include <GL/glext.h>
-
 #include "../Libs/glfw/glfw3.h"
 
+#include "../Infra/timer.h"
+
 #include "scenemanager.h"
+#include "../Listeners/mouselistener.h"
 
 void CusrosPositionChanged(GLFWwindow *window, double xpos, double ypos)
 {
     (void)window; // disable warning
+    int x = (int)xpos;
+    int y = (int)ypos;
+    MouseListener::SendNotification(x, y);
 }
 
 void WindowSizeChanged(GLFWwindow *window, int width, int height)
 {
     (void)window;
-    SceneManager::Instance()->Reshape(width, height);
+    glfwSetWindowSize(window, width, height);
+    glViewport(0, 0, width, height);
 }
 
-WindowManager::WindowManager() : mWindow(nullptr), mWidth(200), mHeight(200), mWindowCreated(true), mbTerminate(false)
+WindowManager::WindowManager() : mWindow(nullptr), mWidth(500), mHeight(500), mWindowCreated(true), mbTerminate(false), mbCursorVisible(true)
 {
     if (nullptr != mWindow)
     {
@@ -59,12 +65,19 @@ WindowManager::WindowManager() : mWindow(nullptr), mWidth(200), mHeight(200), mW
     //TODO set callbacks
     glfwSetCursorPosCallback(mWindow, CusrosPositionChanged);
     glfwSetWindowSizeCallback(mWindow, WindowSizeChanged);
+
+    Timer::GetCurrentTimeMs();
 }
 
 WindowManager::~WindowManager()
 {
     glfwTerminate();
     glfwDestroyWindow(mWindow);
+}
+
+const char *WindowManager::GetName() const
+{
+    return __PRETTY_FUNCTION__;
 }
 
 GLFWwindow *WindowManager::GetWindow()
@@ -92,6 +105,22 @@ int WindowManager::GetWindowWidth() const
 int WindowManager::GetWindowHeight() const
 {
     return mHeight;
+}
+
+void WindowManager::SetCursorPosition(int x, int y)
+{
+    glfwSetCursorPos(mWindow, x, y);
+}
+
+void WindowManager::SetCursorVisible(bool val)
+{
+    glfwSetInputMode(mWindow, GLFW_CURSOR, (val? GLFW_CURSOR_NORMAL : GLFW_CURSOR_HIDDEN));
+    mbCursorVisible = val;
+}
+
+bool WindowManager::GetCorsorVisible() const
+{
+    return mbCursorVisible;
 }
 
 void WindowManager::Draw()

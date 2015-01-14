@@ -9,6 +9,8 @@ public:
     Engine();
     virtual ~Engine() override;
 
+    virtual const char *GetName(void) const;
+
     bool Execute(void);
 
 private:

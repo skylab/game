@@ -1,10 +1,8 @@
 #ifndef THREADREGISTER_H
 #define THREADREGISTER_H
 
-#include "preinfra.h"
 #include "singleton.h"
-
-class Thread;
+#include "thread.h"
 
 class ThreadRegister : public Singleton<ThreadRegister>
 {
@@ -12,13 +10,14 @@ public:
     ThreadRegister();
     virtual ~ThreadRegister() override;
 
-    void AddThread(Thread *th);
-    void RemoveThread(Thread *th);
-    bool ThreadValid(Thread *th);
+    virtual const char *GetName(void) const;
+
+    void AddThread(Thread *thread);
+    void RemoveThread(Thread *thread);
+    bool ThreadInList(Thread *thread);
 
 private:
-    static std::list<Thread *> mThreadRegister;
-    static std::mutex mThreadListOperation;
+    static std::list<Thread*> mThreadList;
 };
 
 #endif // THREADREGISTER_H

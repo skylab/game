@@ -46,8 +46,8 @@ ShaderProgramm::ShaderProgramm(const char *vertex, const char *fragment) : mID(0
     glGetProgramiv(mID, GL_LINK_STATUS, &link_ok);
     if(!link_ok)
     {
-        std::cerr << __PRETTY_FUNCTION__ << ": Can't link shaders" << std::endl;
-      return;
+        std::cerr << __PRETTY_FUNCTION__ << ": Can't link shaders:" << log << std::endl;
+        return;
     }
 }
 
@@ -55,6 +55,11 @@ ShaderProgramm::~ShaderProgramm()
 {
     mID = 0;
     glDeleteProgram(mID);
+}
+
+int &ShaderProgramm::ID()
+{
+    return mID;
 }
 
 int ShaderProgramm::GetUniform(const char *uniformName)

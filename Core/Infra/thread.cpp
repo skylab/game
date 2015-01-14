@@ -4,7 +4,7 @@
 
 void ExecuteThread(Thread *ptr)
 {
-    while (ThreadRegister::Instance()->ThreadValid(ptr))
+    while (ThreadRegister::Instance()->ThreadInList(ptr))
     {
         ptr->Execute();
     }
@@ -12,9 +12,9 @@ void ExecuteThread(Thread *ptr)
 
 Thread::Thread()
 {
-    ThreadRegister::Instance()->AddThread(this);
     try
     {
+        ThreadRegister::Instance()->AddThread(this);
         mThread = new std::thread(ExecuteThread, this);
     }
     catch(std::bad_alloc &ba)
@@ -28,6 +28,7 @@ Thread::Thread()
 Thread::~Thread()
 {
     ThreadRegister::Instance()->RemoveThread(this);
+    mThread->join();
     delete mThread;
     mThread = nullptr;
 }

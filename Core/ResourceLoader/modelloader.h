@@ -10,6 +10,8 @@ public:
     ModelLoader();
     virtual ~ModelLoader();
 
+    const char *GetName(void) const override;
+
     bool LoadModelFile(const char *filename, Object *object);
 };
 

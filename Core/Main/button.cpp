@@ -2,11 +2,9 @@
 
 #include "../Managers/keyboardmanager.h"
 
-const char *defaultButtonName = "Unknown";
-
-Button::Button() : mButtonCode(0), mButtonName(defaultButtonName)
+Button::Button(int code, const char *name) : mButtonCode(code), mButtonName(name)
 {
-    ;
+    KeyboardManager::Instance()->AddButton(this);
 }
 
 Button::~Button()
@@ -27,6 +25,11 @@ bool Button::Release()
 bool Button::Repeat()
 {
     return KeyboardManager::Instance()->CheckRepeat(mButtonCode);
+}
+
+Button::operator const char *()
+{
+    return mButtonName;
 }
 
 Button::operator int()

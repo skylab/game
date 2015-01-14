@@ -20,7 +20,7 @@ BaseLevel::~BaseLevel()
     mVertexQuantity = 0;
 }
 
-glm::vec3 **const BaseLevel::GetVertexArray()
+glm::vec3 **BaseLevel::GetVertexArray()
 {
     return &mVertex;
 }

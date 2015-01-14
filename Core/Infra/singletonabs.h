@@ -9,8 +9,7 @@ protected:
 public:
     virtual ~SingletonAbs();
 
-    // Used in Singleton Manager to prevent double deletion of object.
-    bool mbInSingletonList;
+    virtual const char *GetName(void) const = 0;
 };
 
 #endif // SINGLETONABS_H

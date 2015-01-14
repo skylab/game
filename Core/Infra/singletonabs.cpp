@@ -13,10 +13,6 @@ SingletonAbs::SingletonAbs()
 
 SingletonAbs::~SingletonAbs()
 {
-    // Removing from singleton manager. Already
-    if (!mbInSingletonList)
-        return;
-
     SingletonManager *manager = SingletonManager::Instance();
     if (nullptr != manager)
         manager->RemoveSingleton(this);

@@ -2,6 +2,7 @@
 #define SINGLETONMANAGER_H
 
 #include "preinfra.h"
+#include "list.h"
 
 class SingletonAbs;
 
@@ -22,9 +23,9 @@ public:
 
 private:
     static SingletonManager *mInstance;
-    static std::mutex mCreatinMutex;
-    std::list<SingletonAbs *> mSingletonsList;
-    std::mutex mListOperationMutex;
+    static std::mutex mCreationMutex;
+
+    List<SingletonAbs *> mSingletonsList;
 };
 
 #endif // SINGLETONMANAGER_H

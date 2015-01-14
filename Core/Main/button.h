@@ -3,9 +3,8 @@
 
 class Button
 {
-    friend class KeyboardManager;
 public:
-    Button();
+    Button(int code, const char *name);
     ~Button();
 
     bool Press(void);
@@ -13,6 +12,7 @@ public:
     bool Repeat(void);
 
     operator int();
+    operator const char *();
 
 private:
     int mButtonCode;
