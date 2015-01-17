@@ -12,7 +12,7 @@ public:
 
     const char *GetName(void) const override;
 
-    unsigned int LoadTexture(const char *filename);
+    Texture *LoadTexture(const char *filename);
 
     Texture *GetTexture(const char *textureName);
     Texture *GetTexture(unsigned int id);

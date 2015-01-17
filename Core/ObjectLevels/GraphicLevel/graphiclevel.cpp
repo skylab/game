@@ -55,18 +55,29 @@ void GraphicLevel::Draw()
             glUniform1d(useTextureUniform, false);
         }
 
-        // vertixes
+        // 1st Attribute is Vertexes.
         glEnableVertexAttribArray(0);
         glBindBuffer(GL_ARRAY_BUFFER, mVBO);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, nullptr);
+        glVertexAttribPointer(0, // Number in shader layout
+                              3, // Size x+y+z = 3
+                              GL_FLOAT, // Type of data
+                              GL_FALSE, // Normalized?
+                              0, // Stride
+                              nullptr // Array buffer offset
+                              );
 
-        // UV
+        // 2nd Attribute is UV's.
         glEnableVertexAttribArray(1);
         glBindBuffer(GL_ARRAY_BUFFER, mUVBO);
-        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+        glVertexAttribPointer(1,
+                              3,
+                              GL_FLOAT,
+                              GL_FALSE,
+                              0,
+                              nullptr);
 
         // Draw object
-        glDrawArrays(mDrawPrimitives, 0, mVertexQuantity);
+        glDrawArrays(mDrawPrimitives/*GL_TRIANGLES*/, 0, mVertexQuantity);
 
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glDisableVertexAttribArray(0);
@@ -127,7 +138,7 @@ int GraphicLevel::GetTextureNumberInObject(Texture *texture)
         }
     }
 
-    std::cerr << __PRETTY_FUNCTION__ << ": Not found texture" << texture->GetTextureFileName() << std::endl;
+    std::cerr << __PRETTY_FUNCTION__ << ": Not found texture: " << texture->GetTextureFileName() << std::endl;
     return -1;
 }
 

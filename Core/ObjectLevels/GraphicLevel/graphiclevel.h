@@ -29,7 +29,7 @@ protected:
 protected:
     Scene *mScene;
     GLuint mVBO; // Vertexes
-    GLuint mUVBO; // UV coordinates
+    GLuint mUVBO; // UV coordinates U, V, w - what sampler we need
     GLuint mSamplerBO;
 
     ShaderProgramm *mShaderProgramm;    

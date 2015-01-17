@@ -25,7 +25,7 @@ bool Loader3ds::Load(const char *filename, Object *object)
     Object *parent = object;
     Lib3dsMesh * model = nullptr;
 
-    for (int meshCnt = 0; meshCnt < 1 /*file->nmeshes*/; ++meshCnt)
+    for (int meshCnt = 0; meshCnt < file->nmeshes; ++meshCnt)
     {
         model = file->meshes[meshCnt];
 
@@ -43,11 +43,17 @@ bool Loader3ds::Load(const char *filename, Object *object)
             Lib3dsFace *face = &(model->faces[faceCnt]);
 
             // Load material in case of abcense in TextureManager
-            if (0 != TextureManager::Instance()->LoadTexture((GetFilePath(filename)+file->materials[face->material]->texture1_map.name).c_str()))
+            if ( nullptr == TextureManager::Instance()->GetTexture( (GetFilePath(filename)+file->materials[face->material]->texture1_map.name).c_str() ))
             {
-                Texture *texture = TextureManager::Instance()->GetTexture((GetFilePath(filename)+file->materials[face->material]->texture1_map.name).c_str());
-                object->AddTexture(texture);
+                //std::cerr << "Loading: " << file->materials[face->material]->texture1_map.name << std::endl;
+                if (nullptr == TextureManager::Instance()->LoadTexture((GetFilePath(filename)+file->materials[face->material]->texture1_map.name).c_str()))
+                {
+                    std::cerr << __PRETTY_FUNCTION__ << ": Can't load texture" << std::endl;
+                }
             }
+
+            Texture *texture = TextureManager::Instance()->GetTexture( (GetFilePath(filename)+file->materials[face->material]->texture1_map.name).c_str() );
+            object->AddTexture(texture);
 
             // Each face have 3 vertexes. Each vertex have 3 point (x,y,z) each point has UV coordinates
             for (unsigned int facePointCnt = 0; facePointCnt < 3; ++facePointCnt)
@@ -67,11 +73,13 @@ bool Loader3ds::Load(const char *filename, Object *object)
 
                 modelUV[vertexCounter] = glm::vec3(u, v, w);
 
-                //std::cerr << u << " " << v << std::endl;
+                //std::cerr << u << " " << v << " " << w << std::endl;
 
                 modelVertexes[vertexCounter++] = glm::vec3(x, y, z);
             }
         }
+
+        //std::cerr << "######" << std::endl;
 
         // In case when file contain more than 1 mesh - add derived object
         if ((meshCnt + 1) < file->nmeshes)

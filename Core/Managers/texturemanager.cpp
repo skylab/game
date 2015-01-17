@@ -20,18 +20,20 @@ const char *TextureManager::GetName() const
     return __PRETTY_FUNCTION__;
 }
 
-unsigned int TextureManager::LoadTexture(const char *filename)
+Texture *TextureManager::LoadTexture(const char *filename)
 {
     if (nullptr == filename)
     {
         std::cerr << __PRETTY_FUNCTION__ << ": filename is nullptr" << std::endl;
-        return 0;
+        return nullptr;
     }
 
+    // Neet to think about this code
+    /*
     if (nullptr != GetTexture(filename))
     {
         return GetTexture(filename)->ID();
-    }
+    }*/
 
     Texture *texture = nullptr;
     try
@@ -43,7 +45,7 @@ unsigned int TextureManager::LoadTexture(const char *filename)
     {
         std::cerr << __PRETTY_FUNCTION__ << ba.what() << " : Can't allocate texture: " << filename << std::endl;
         texture = nullptr;
-        return 0;
+        return nullptr;
     }
 
     if (nullptr == texture || 0 == texture->ID())
@@ -52,10 +54,10 @@ unsigned int TextureManager::LoadTexture(const char *filename)
         delete texture;
         texture = nullptr;
         std::cerr << __PRETTY_FUNCTION__ << " : Can't create texture: " << filename << std::endl;
-        return 0;
+        return nullptr;
     }
 
-    return texture->ID();
+    return texture;
 }
 
 Texture *TextureManager::GetTexture(const char *textureName)
@@ -66,7 +68,6 @@ Texture *TextureManager::GetTexture(const char *textureName)
         return nullptr;
     }
 
-    Texture *texture = nullptr;
     for (std::list<Texture *>::iterator i = mTextureList.begin(); i != mTextureList.end(); ++i)
     {
         Texture *txt = *i;
@@ -76,7 +77,7 @@ Texture *TextureManager::GetTexture(const char *textureName)
         }
     }
 
-    return texture;
+    return nullptr;
 }
 
 Texture *TextureManager::GetTexture(unsigned int id)
