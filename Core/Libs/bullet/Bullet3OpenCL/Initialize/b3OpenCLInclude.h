@@ -30,7 +30,7 @@ subject to the following restrictions:
   #endif
  #else
   #ifdef USE_MINICL
-   #include "../../MiniCL/cl.h"
+   #include <MiniCL/cl.h>
   #else
    #include <CL/cl.h>
    #ifdef _WIN32

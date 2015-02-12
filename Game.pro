@@ -268,7 +268,8 @@ SOURCES += main.cpp \
     Core/Libs/bullet/LinearMath/btQuickprof.cpp \
     Core/Libs/bullet/LinearMath/btSerializer.cpp \
     Core/Libs/bullet/LinearMath/btVector3.cpp \
-    Core/Libs/bullet/clew/clew.c
+    Core/Libs/bullet/clew/clew.c \
+    Core/Managers/physicmanager.cpp
 
 HEADERS += \
     Core/Infra/preinfra.h \
@@ -843,7 +844,8 @@ HEADERS += \
     Core/Libs/bullet/LinearMath/btTransformUtil.h \
     Core/Libs/bullet/LinearMath/btVector3.h \
     Core/Libs/bullet/btBulletCollisionCommon.h \
-    Core/Libs/bullet/btBulletDynamicsCommon.h
+    Core/Libs/bullet/btBulletDynamicsCommon.h \
+    Core/Managers/physicmanager.h
 
 OTHER_FILES += \
     Resources/Shaders/FragmentShader.fsh \

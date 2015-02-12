@@ -3,6 +3,8 @@
 #include "../Managers/windowmanager.h"
 #include "../Infra/timer.h"
 
+#include "../Managers/physicmanager.h"
+
 Scene::Scene() : mLastDrawingTime(0)
 {
     mCamera.SetProsition(glm::vec3(0.0f, 0.0f, 3.0f));
@@ -17,6 +19,8 @@ Scene::Scene() : mLastDrawingTime(0)
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
+
+    PhysicManager::Instance();
 }
 
 Scene::~Scene()
