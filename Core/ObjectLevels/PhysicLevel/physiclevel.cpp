@@ -2,11 +2,11 @@
 
 //#include "../../Libs/bullet/btBulletDynamicsCommon.h"
 
-#include "../../Managers/physicmanager.h"
+//#include "../../Managers/physicmanager.h"
 
 PhysicLevel::PhysicLevel()
 {
-    PhysicManager::Instance()->AddObject(this);
+    //PhysicManager::Instance()->AddObject(this);
 }
 
 PhysicLevel::~PhysicLevel()

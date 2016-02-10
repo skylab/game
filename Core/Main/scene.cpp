@@ -3,7 +3,7 @@
 #include "../Managers/windowmanager.h"
 #include "../Infra/timer.h"
 
-#include "../Managers/physicmanager.h"
+//#include "../Managers/physicmanager.h"
 
 Scene::Scene() : mLastDrawingTime(0)
 {
@@ -20,7 +20,7 @@ Scene::Scene() : mLastDrawingTime(0)
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
 
-    PhysicManager::Instance();
+    //PhysicManager::Instance();
 }
 
 Scene::~Scene()
